@@ -7,12 +7,40 @@
 
 \begin{document}
 
+
 \maketitle
+
+\cleardoublepage
+\pagenumbering{roman}
 \tableofcontents
 
+\cleardoublepage
+\include{chapters/abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+\part{Introduction}
 \include{chapters/chapter_1}
 \include{chapters/chapter_2}
 \include{chapters/chapter_3}
+
+\part{The Effective Theory}
 \include{chapters/chapter_4}
+\include{chapters/chapter_5}
+
+\part{Discussion and Outlook}
+\include{chapters/chapter_6}
+\include{chapters/chapter_7}
+
+\appendix
+\part{Appendix}
+\include{chapters/appendix_a}
+
+\bibliographystyle{plainnat}
+\addcontentsline{toc}{chapter}{bibliography}
+\bibliography{references/refs}
+
 
 \end{document}

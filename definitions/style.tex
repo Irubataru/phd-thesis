@@ -8,6 +8,14 @@
 \definecolor{ICantExpress}{RGB}{28,20,13}
 \definecolor{Marty}{RGB}{250,42,0}
 
+%%% Part style
+
+\titleformat{\part}[display]
+  {\thispagestyle{empty}\centering\scshape}
+  {\filleft\fontsize{30}{30}\selectfont\partname{} \thepart\filright}
+  {1 ex}
+  {\bfseries\color{Marty}\fontsize{50}{60}\selectfont}
+
 %%% Chapter style
 
 \titleformat{\chapter}[display]
@@ -20,5 +28,24 @@
   [\vspace{2ex}%
     \titlerule]
 
+%%% Section style
+
+\titleformat{\section}
+  {\large}
+  {\thesection}
+  {1.5em}{\scshape}
+
+%%% Subsection style
+
+\titleformat{\subsection}
+  {\large}
+  {\thesubsection}
+  {1.5em}{\itshape}
+
+%%% Table of Contents style
+
 \renewcommand\contentsname{Table of Contents}
-\renewcommand{\cftchapfont}{\color{Marty}\scshape{}\large}
+\renewcommand{\cftchapfont}{\color{Marty}\scshape{}\bfseries{}\large}
+\renewcommand{\cftpartfont}{\scshape{}\bfseries{}\Large}
+
+%%% Appendix Style
