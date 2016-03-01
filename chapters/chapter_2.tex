@@ -2,9 +2,69 @@
 
 In this chapter we will formally introduce the quantum field theory describing
 fermions invariant under local group transformations and introduce the Yang
-Mills Lagrangian. This is covered in \textsc{section} \ref{sec:continuum_gauge}.
+Mills Lagrangian. This is covered in \secref{sec:continuum_gauge}. We follow
+this up in \secref{sec:group_intro} with a brief overview of basic group theory,
+introducing the concepts and tools necessary for the thesis. In
+\secref{sec:symmetries} we investigate the defining symmetry properties of our
+quantum field theory. After this introduction to continuum physics, in
+\secref{sec:lattice_intro} we discretise space-time and put our theory on a
+lattice. In the \secrefs{sec:lattice_symmetries,sec:fermion_doubling,sec:scale_setting}
+we review the similarities and differences between the lattice and the
+continuum, and stress where additional care has to be taken.
+
+For the introduction, standard texts on the subject matter has been consulted.
+Such as introductory volumes on quantum field theory
+\citep[e.g.][]{peskin1995introduction,maggiore2004modern}, lattice gauge theory
+\citep[e.g.][]{montvay1997quantum,gattringer2009quantum} and group theory
+\citep[e.g.][]{georgi1999lie,fulton2013representation}.
 
 \section{Continuum gauge theories with fermions} \label{sec:continuum_gauge}
+
+The undoubtaly most important quantity in Quantum Field Theory (\emph{QFT}) and
+Statistical Mechanics (\emph{SM}) is $\mathcal{Z}$, named the generating
+functional and the partition function in the two theories respectively. It is in
+SM defined as
+%
+\begin{equation}
+  \mathcal{Z}_E = \int \prod_i \mathrm{d} \phi_i e^{-\mathcal{S}_E[\phi_i]},
+\end{equation}
+%
+where we have represented the field parameters by $\phi_i$. There is an analogue
+between the two theories and one can convert between them by Wick rotating the
+time coordinate $x^0_E = -i x^0_M$. Whenever the possibility for confusion
+exists we use an $M$ to symbolise Minkowski space, the world of QFT, and an $E$
+to symbolise Euclidean space, the world of SM.
+
+The action, $\mathcal{S}$, is in turn defined by the Lagrangian density
+%
+\begin{equation}
+  \mathcal{S}[\phi_i] = \int \mathrm{d}^4 x\, \mathcal{L}[\phi_i(x)],
+\end{equation}
+%
+and our theories are therefore uniquely defined through $\mathcal{L}$ and the
+properties of the fields $\phi_i$.
+
+The most basic starting point for us will be the Dirac Lagrangian, which reads
+%
+\begin{equation}
+  \mathcal{L} = \bar{\psi}_i \big(i\gamma^{\mu} \partial_{\mu} - m_i\big)
+  \psi_i.
+\end{equation}
+%
+where we have introduced the fermionic fields $\psi_i$. To get the right
+statistics, these fields have to obey the anti-commutation relations, placing
+them in the group known as Grassmann numbers
+%
+\begin{align}
+  \big\{ \psi_i, \psi_j \big\} &\equiv \psi_i \psi_j + \psi_j \psi_i = 0,\\
+  \big\{ \bar{\psi}_i, \bar{\psi}_j \big\} &\equiv \bar{\psi}_i \bar{\psi}_j +
+    \bar{\psi}_j \bar{\psi}_i = 0,\\
+  \big\{ \bar{\psi}_i, \psi_j \big\} &\equiv \bar{\psi}_i \psi_j + \psi_j
+    \bar{\psi}_i = \delta_{ij}.
+\end{align}
+
+
+\section{Important ideas from group theories} \label{sec:group_intro}
 \section{Symmetry groups and continuum symmetries} \label{sec:symmetries}
 \section{Lattice discretisation} \label{sec:lattice_intro}
 \section{Symmetries on the lattice} \label{sec:lattice_symmetries}
