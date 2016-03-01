@@ -8,6 +8,12 @@
 \definecolor{ICantExpress}{RGB}{28,20,13}
 \definecolor{Marty}{RGB}{250,42,0}
 
+%%% Header styles
+
+\lehead{\textsc{\headmark}}
+\rohead{\headmark}
+\renewcommand*{\chaptermarkformat}{}
+
 %%% Part style
 
 \titleformat{\part}[display]
@@ -38,8 +44,8 @@
 %%% Subsection style
 
 \titleformat{\subsection}
-  {\large}
-  {\thesubsection}
+  {}
+  {{\large\thesubsection}}
   {1.5em}{\itshape}
 
 %%% Table of Contents style

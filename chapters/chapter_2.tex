@@ -63,8 +63,115 @@ them in the group known as Grassmann numbers
     \bar{\psi}_i = \delta_{ij}.
 \end{align}
 
+This Lagrangian describe the dynamics of a set of free, massive fermions, which
+is not very exciting. There are a multitude of ways to add interactions while
+still maintaining the desired symmetry properties (which we will discuss later).
+One is to add a self interaction term, e.g. a four point term, $g
+\big(\bar{\psi}\psi\big)^2$, which results in the NJL model
+\citep{Nambu:1961tp}. Another option is to introduce more fields and
+interactions. Finally one can localise the symmetries of the fields and induce
+new fields and couplings. For this procedure we need a short overview of group
+theory which we will tackle next.
 
 \section{Important ideas from group theories} \label{sec:group_intro}
+
+A group $G$ is a set and a rule for assigning to every (ordered) pair in the set
+a new element also in the set
+%
+\begin{equation}
+  \text{For every} \hskip1ex f, g \in G, \hskip1ex\text{then}\hskip1ex
+    h = fg \in G
+\end{equation}
+%
+this assignment is called the group product. The group product is associative,
+and in every group a unit element exists ($e$). Every element also has an inverse so
+that
+%
+\begin{equation}
+  \forall\hskip.5ex f \in G, \hskip1ex\exists\hskip.5ex f^{-1}
+    \hskip1ex:\hskip1ex f^{-1} f = f f^{-1} = e
+\end{equation}
+%
+A representation of a group $G$ on a complex vector space $V$ is a homomorphism
+%
+\begin{equation}
+  D_{R}:\hskip1em G \to \text{GL}(V)
+\end{equation}
+%
+of the group $G$ on the group of automorphisms of $V$. Therefore representation
+has to maintain the group structure so that
+%
+\begin{align}
+  D_R(f) D_R(g) &= D_R(fg), \label{eq:group_prod}\\
+  D_R(e) &= \mathbb{1}_R.
+\end{align}
+%
+In physics we are normally content with a coordinate basis, in which the
+representations map to $n$ by $n$ invertible matrices, i.e. $V := \mathbb{C}$,
+$\text{GL}(V) := M_{\mathbb{C}}(n,n)$.
+
+\subsection{Lie groups}
+
+If the elements of a group $G$ depend smoothly on some set of parameters,
+$g(\alpha_i) \in G$, we call that group a Lie group. Lie groups make up the
+theory of continuous transformations, and are therefore of special interest to
+physics. The continuous nature of the Lie groups create a sense of closeness
+where two elements that are close to each other can be represented through
+differentials. For example
+%
+\begin{equation}
+  D_R(g(\delta\alpha_i)) = \mathbb{1}_R + i\, \delta \alpha_i T_{Ri} +
+    \mathcal{O}(\delta \alpha^2).
+\end{equation}
+%
+One commonly refers to the $T_{Ri}$ as the generators of the group $G$. Applying
+the smoothness condition to the group product, \meqref{eq:group_prod},
+we find that the commutator of the generators follow a special relation
+%
+\begin{equation}
+  \big[ T_i, T_j \big] = i\, f_{ijk} T_k.
+\end{equation}
+%
+The structure constants, $f_{ijk}$, are in fact independent of the
+representation $R$. They are tremendously important as they summarise the entire
+group multiplication law. They are also referred to as the \emph{algebra} of the
+group, $\mathfrak{g}$. The generators and the group algebra will come into play
+when we later introduce continuous symmetries of our quantum theory of fields.
+
+\subsection{Character and character expansion}
+
+One defines the character of a representation as
+%
+\begin{equation}
+  \chi_R(g) = \tr D_R(g).
+\end{equation}
+%
+The characters appear frequently in field theory due to the cyclic properties of
+the trace and its ability to facilitate the creation of invariant objects. On
+top of this the characters span a basis of functions that share this cyclic
+properties, i.e. any function $\rho(f g f^{-1}) = \rho(g)$. Hence
+%
+\begin{equation}
+  \rho(g) = \sum_r \rho_r \chi_r(g),
+\end{equation}
+%
+with
+\begin{equation}
+  \rho_r = \int_{\mathrlap{g \in G}\hskip1.5ex} \mathrm{d}g \, \chi_r^*(g) \rho(g).
+\end{equation}
+%
+It is normal to factor out both the trivial representation ($D_0(g) = 1$), as
+well as the dimension of the representation, and write
+%
+\begin{equation}
+  \rho(g) = \rho_0 \Big(1 + \sum_{r \neq 0} d_r \bar{\rho}_r \chi_r(g)\Big),
+\end{equation}
+%
+which we will refer to as the character expansion. We will make use of this in
+\secref{sec:char_exp}.
+
+\subsection{Group integrals}
+
 \section{Symmetry groups and continuum symmetries} \label{sec:symmetries}
 \section{Lattice discretisation} \label{sec:lattice_intro}
 \section{Symmetries on the lattice} \label{sec:lattice_symmetries}

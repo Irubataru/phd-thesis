@@ -10,6 +10,7 @@
 
 # Output files
 *.dvi
+thesis.pdf
 
 # Beamer files
 *.snm

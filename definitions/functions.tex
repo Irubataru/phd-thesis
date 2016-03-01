@@ -1,15 +1,22 @@
-%%% Consistency functions
+% --------------------- %
+% Consistency functions %
+% --------------------- %
 
 \newcommand{\sectoken}{\textsc{section}}
 \newcommand{\secstoken}{\textsc{sections}}
 \newcommand{\eqtoken}{\textsc{eq}}
 \newcommand{\figtoken}{\textsc{fig}}
 
-%%% Pretty references
+% ----------------- %
+% Pretty references %
+% ----------------- %
 
 \newcommand{\secref}[1]{\hyperref[#1]{\mbox{\sectoken{} \ref*{#1}}}}
+\newcommand{\meqref}[1]{\hyperref[#1]{\mbox{\eqtoken{} (\ref*{#1})}}}
 
-%%% Horribly complicated command to give a list of section references
+% ----------------------------------------------------------------- %
+% Horribly complicated command to give a list of section references %
+% ----------------------------------------------------------------- %
 
 \newcommand*{\secprevious}{}
 \newcommand*{\secseparator}{}
@@ -31,3 +38,20 @@
   and \secprevious{}%
 }
 
+% ----------------- %
+% mathlap functions %
+% ----------------- %
+
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathclap{\mathpalette\mathclapinternal}
+
+\def\mathllapinternal#1#2{%
+	\llap{$\mathsurround=0pt#1{#2}$}}
+
+\def\mathrlapinternal#1#2{%
+	\rlap{$\mathsurround=0pt#1{#2}$}}
+
+\def\mathclapinternal#1#2{%
+	\clap{$\mathsurround=0pt#1{#2}$}}
