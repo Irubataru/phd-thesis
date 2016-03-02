@@ -48,7 +48,7 @@ The most basic starting point for us will be the Dirac Lagrangian, which reads
 %
 \begin{equation}
   \mathcal{L} = \bar{\psi}_i \big(i\gamma^{\mu} \partial_{\mu} - m_i\big)
-  \psi_i.
+  \psi_i. \label{eq:ldirac}
 \end{equation}
 %
 where we have introduced the fermionic fields $\psi_i$. To get the right
@@ -172,7 +172,55 @@ which we will refer to as the character expansion. We will make use of this in
 
 \subsection{Group integrals}
 
-\section{Symmetry groups and continuum symmetries} \label{sec:symmetries}
+Finally we need to define the integrals over the continuous groups. We introduce
+the Haar integration measure, which has the following properties
+%
+\begin{equation}
+  \int \mathrm{d}g \, \rho(g) = \int \mathrm{d}g \, \rho(fg) 
+    = \int \mathrm{d}g \, \rho(gf) \hskip2ex \forall \hskip1ex f \in G
+\end{equation}
+%
+and the normalisation
+%
+\begin{equation}
+  \int \mathrm{d}g = 1.
+\end{equation}
+%
+During the derivation of the effective theory, we will encounter polynomial
+integrals on the form
+%
+\begin{equation}
+  I = \int \mathrm{d} g \, g^n (g^{-1})^m
+\end{equation}
+%
+or more commonly, with a representation
+%
+\begin{equation}
+  I_{i_1,j_1,...,i_n,j_n}^{k_1,l_1,...,k_m,l_m} = \int \mathrm{d} g \,
+    D_R(g)_{i_1j_1} \cdots D_R(g)_{i_nj_n} D_R(g^{-1})_{k_1l_1} \cdots D_R(g^{-1})_{k_ml_m}.
+\end{equation}
+%
+There are multiple ways of tackling these integrals depending on the Lie group
+one is interested in. For SU($N$) one can for instance decompose the integral
+into generalised Euler angles \citep[as described in][]{Tilma:2004kp}, construct
+generating functionals for the integrals $I_{i_1,j_1,...,i_n,j_n}^{k_1,l_1,...,k_m,l_m}$
+\citep[details in][]{Creutz:1978ub}, or one can use tensor product
+decompositions to write the integrals in terms of Young projectors
+\citep{Myers:2014dia}. In this work a combination of the first two approaches
+has been used, and extensive details are provided in
+\apxrefs{sec:haar_measure,sec:character_integrals,sec:sun_integrals}.
+
+\section{Symmetries of the Lagrangian} \label{sec:symmetries}
+
+With the necessary formalism in place, we can discuss the symmetries of the
+Lagrangian we introduced in \meqref{eq:ldirac}. We will first look at the
+symmetries that come by construction before delving into possible ways of
+extending the theory to be both globally and locally symmetric.
+
+\subsection{By construct symmetries}
+
+\subsection{Gauge symmetries}
+
 \section{Lattice discretisation} \label{sec:lattice_intro}
 \section{Symmetries on the lattice} \label{sec:lattice_symmetries}
 \section{Fermion doubling and chiral symmetry} \label{sec:fermion_doubling}

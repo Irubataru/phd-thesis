@@ -4,6 +4,8 @@
 
 \newcommand{\sectoken}{\textsc{section}}
 \newcommand{\secstoken}{\textsc{sections}}
+\newcommand{\apxtoken}{\textsc{appendix}}
+\newcommand{\apxstoken}{\textsc{appendices}}
 \newcommand{\eqtoken}{\textsc{eq}}
 \newcommand{\figtoken}{\textsc{fig}}
 
@@ -13,6 +15,7 @@
 
 \newcommand{\secref}[1]{\hyperref[#1]{\mbox{\sectoken{} \ref*{#1}}}}
 \newcommand{\meqref}[1]{\hyperref[#1]{\mbox{\eqtoken{} (\ref*{#1})}}}
+\newcommand{\apxref}[1]{\hyperref[#1]{\mbox{\apxoken{} \ref*{#1}}}}
 
 % ----------------------------------------------------------------- %
 % Horribly complicated command to give a list of section references %
@@ -34,6 +37,14 @@
   \renewcommand*{\secprevious}{}%
   \renewcommand*{\secseparator}{}%
   \mbox{\secstoken{}}
+  \forcsvlist{\printoneref}{#1}%
+  and \secprevious{}%
+}
+
+\newcommand{\apxrefs}[1]{%
+  \renewcommand*{\secprevious}{}%
+  \renewcommand*{\secseparator}{}%
+  \mbox{\apxstoken{}}
   \forcsvlist{\printoneref}{#1}%
   and \secprevious{}%
 }
