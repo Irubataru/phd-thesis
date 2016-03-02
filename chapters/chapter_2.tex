@@ -18,7 +18,7 @@ Such as introductory volumes on quantum field theory
 \citep[e.g.][]{montvay1997quantum,gattringer2009quantum} and group theory
 \citep[e.g.][]{georgi1999lie,fulton2013representation}.
 
-\section{Continuum gauge theories with fermions} \label{sec:continuum_gauge}
+\section{The free Dirac Lagrangian} \label{sec:continuum_gauge}
 
 The undoubtaly most important quantity in Quantum Field Theory (\emph{QFT}) and
 Statistical Mechanics (\emph{SM}) is $\mathcal{Z}$, named the generating
@@ -73,7 +73,7 @@ interactions. Finally one can localise the symmetries of the fields and induce
 new fields and couplings. For this procedure we need a short overview of group
 theory which we will tackle next.
 
-\section{Important ideas from group theories} \label{sec:group_intro}
+\section{A group theory perspective} \label{sec:group_intro}
 
 A group $G$ is a set and a rule for assigning to every (ordered) pair in the set
 a new element also in the set
@@ -98,12 +98,12 @@ A representation of a group $G$ on a complex vector space $V$ is a homomorphism
   D_{R}:\hskip1em G \to \text{GL}(V)
 \end{equation}
 %
-of the group $G$ on the group of automorphisms of $V$. Therefore representation
-has to maintain the group structure so that
+of the group $G$ on the group of automorphisms of $V$. Therefore representations
+have to maintain the group structure, meaning
 %
 \begin{align}
-  D_R(f) D_R(g) &= D_R(fg), \label{eq:group_prod}\\
-  D_R(e) &= \mathbb{1}_R.
+  D_R(e) &= \mathbb{1}_R,\\
+  D_R(f) D_R(g) &= D_R(fg). \label{eq:group_prod}
 \end{align}
 %
 In physics we are normally content with a coordinate basis, in which the
@@ -129,7 +129,7 @@ the smoothness condition to the group product, \meqref{eq:group_prod},
 we find that the commutator of the generators follow a special relation
 %
 \begin{equation}
-  \big[ T_i, T_j \big] = i\, f_{ijk} T_k.
+  \big[ T_{Ri}, T_{Rj} \big] = i\, f_{ijk} T_{Rk}.
 \end{equation}
 %
 The structure constants, $f_{ijk}$, are in fact independent of the
@@ -217,11 +217,209 @@ Lagrangian we introduced in \meqref{eq:ldirac}. We will first look at the
 symmetries that come by construction before delving into possible ways of
 extending the theory to be both globally and locally symmetric.
 
-\subsection{By construct symmetries}
+\subsection{Symmetries by construction}
+
+Every quantum field theory is constructed to be symmetric under the full
+Poincar\'{e} group, namely the group of space-time translations plus the Lorentz
+transformations. 
+
+To see the other symmetries of the Dirac Lagrangian we have to decompose the
+fields into its spinorial components. Every element of $\psi_i$ in
+\meqref{eq:ldirac} is a $4$ component spinor, and the $\gamma$'s $4 \times 4$
+matrices. In the standard representation they take for form
+%
+\begin{equation}
+  \psi = \frac{1}{\sqrt{2}} \begin{pmatrix} \psi_R + \psi_L \\ \psi_R - \psi_L \end{pmatrix}, \hskip1cm
+    \gamma^0 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}, \hskip1ex
+    \gamma^i = \begin{pmatrix} 0 & \sigma^i \\ -\sigma^i & 0 \end{pmatrix}.
+\end{equation}
+%
+The fields $\psi_{R,L}$ are two component fields that transform under two
+distinct representations of the Lorentz group, $(\frac{1}{2}, 0)$ and $(0,
+\frac{1}{2})$ respectively. With this basis the Dirac Lagrangian reads
+%
+\begin{equation}
+  \mathcal{L} = i \bar{\psi}_R \gamma^{\mu}\partial_{\mu} \psi_R
+    + i \bar{\psi}_L \gamma^{\mu}\partial_{\mu} \psi_L
+    - m (\bar{\psi}_R\psi_L + \bar{\psi}_L\psi_R).
+\end{equation}
+%
+It is apparent that this Lagrangian is symmetric under the U($1$) $\otimes$ U($1$)
+transformation
+%
+\begin{equation}
+  \psi_{R,L} \to e^{i \alpha_{R,L}} \psi_{R,L}
+\end{equation}
+%
+if and only if the mass term is set to zero. Invariance of the independent
+transformations of the left- and right handed fields is called \emph{chiral}
+symmetry, and signal the existence of helicity eigenstates. The mass term breaks
+the symmetry into a single U($1$) symmetry, where $\alpha_R = \alpha_L$.
+
+The global symmetry group of $\psi$ can be trivially extended to admit any Lie
+group by making the field live in the vector space the representation acts on 
+%
+\begin{equation} \label{eq:global_trafo}
+  \psi \to D_R(g) \psi, \hskip1em \bar{\psi} \to \bar{\psi} D_R^{\dagger}(g),
+  \hskip1em g \in G.
+\end{equation}
+%
+This symmetry has an associated conserved Noether current for every generator of
+the group $G$
+%
+\begin{equation}
+  j^{\mu}_i = \bar{\psi} \gamma^{\mu} T_i \psi, \hskip1ex\text{where}\hskip1ex
+    \partial_{\mu}j^{\mu}_i = 0,
+\end{equation}
+%
+which gives the associated charge
+%
+\begin{equation}
+  Q_i = \int \mathrm{d}^3 x\, \bar{\psi} \gamma^0 T_i \psi.
+\end{equation}
 
 \subsection{Gauge symmetries}
 
+We just saw that the Lagrangian can be trivially extended to be invariant under
+global symmetry transformations. However, we also want to promote them to local
+symmetries. This is motivated post facto by QED, with exhibits a local U($1$)
+symmetry.
+
+The idea was first explored by Weyl, who tried introducing local scale
+transformations to the metric
+%
+\begin{equation}
+  g_{\mu\nu}(x) \to e^{\sigma(x)}g_{\mu\nu}(x)
+\end{equation}
+%
+which prompted the need for an additional vector field to gauge how much one
+needs to adjust scales to compare two separate points. Weyl then showed that
+these vector fields need to follow Maxwell's equations \citep{Weyl:1918ib}.
+Although this ultimately is not how the universe works, it encourages the ideas
+that there is a fundamental relation between local symmetries and the geometry
+of space, also the name stuck. Instead of adjusting local scales we will apply
+group transformations to a vector space that lives on top of space-time.
+
+We define a local group element by a Lie group whose parameters are space-time
+dependent $g(\alpha_i(x))$. We will use the short hand notation $U(x) =
+D_R\big(g(\alpha_i(x))\big)$ for representations of such group elements. We
+suppress the representation $R$ wherever it is not needed. The transformations
+of the fields at a single coordinate follow trivially from
+\meqref{eq:global_trafo}
+%
+\begin{equation} \label{eq:local_trafo}
+  \psi(x) \to U(x) \psi(x), \hskip1em \bar{\psi}(x) \to \bar{\psi}(x)
+  U^{\dagger}(x).
+\end{equation}
+%
+There is however no way to make derivative terms invariant under these
+symmetries. This becomes obvious when writing the derivative in terms of limits
+%
+\begin{equation}
+  \eta^{\mu} \partial_{\mu} \psi(x) = \lim_{\delta \to 0} \frac{1}{\delta} \big(
+    \psi(x + \delta\eta) - \psi(x) \big)
+\end{equation}
+%
+where $\eta^{\mu}$ is some unit vector. We have to take the difference between
+fields at two different points in space-time, which transform independently
+under \meqref{eq:local_trafo}. It is completely nonsensical trying to calculate
+this difference at all, and we therefore instead introduce a two-point parallel
+transporter, $\Lambda(y,x)$, and define the \emph{covariant derivative} as
+%
+\begin{equation}
+  \eta^{\mu} D_{\mu} \psi(x) = \lim_{\delta \to 0} \frac{1}{\delta} \big(
+    \psi(x + \delta\eta) - \Lambda(x+\delta\eta,x)\psi(x) \big)
+\end{equation}
+%
+where this scalar function transform as
+%
+\begin{equation}
+  \Lambda(y,x) \to U(y) \Lambda(y,x) U^{\dagger}(x).
+\end{equation}
+%
+This in turn make the total covariant derivative transform as
+%
+\begin{equation}
+  D_{\mu}\psi(x) \to U(x) D_{\mu} \psi(x),
+\end{equation}
+%
+ensuring that terms of the form $\bar{\psi} D_{\mu} \psi$ remain invariant under
+local symmetry transformations. From its transformation properties, it is
+possible to write $\Lambda$ in terms of the generators of the group. This is on
+infinitesimal form
+%
+\begin{equation}
+  \Lambda(x + \delta\eta,x) = 1 + i g \delta \eta^{\mu} A^i_{\mu}(x) T_i +
+    \mathcal{O}(\delta^2)
+\end{equation}
+%
+where the $A^i_{\mu}$ have to transform as
+%
+\begin{equation}
+  A^i_{\mu} \to A^i_{\mu} + \partial_{\mu} \alpha^i - g f^{ijk} \alpha^j A^k_{\mu}
+    + \mathcal{O}(\alpha^2)
+\end{equation}
+%
+completely independent of the representation. The local symmetric Dirac
+Lagrangian therefore reads
+%
+\begin{equation}
+  \mathcal{L} = \bar{\psi}\big(i \gamma^{\mu} D_{\mu} - m\big) \psi.
+\end{equation}
+%
+Unfortunately, without a kinetic term for the newly introduced fields
+$A^i_{\mu}$, the theory would permit violently oscillating fields with no cost
+in energy. This would make our theory non-renormalisiable, which we want to
+avoid.  We therefore need to find a kinetic term for the fields that admits all
+of our restrictions. To construct such a term we again turn to the field
+transporters $\Lambda$. It is easy to see that the geometric plaquette could
+create such a term
+%
+\begin{align}
+  U_{\mu\nu}(x) =& \Lambda(x, x + \hat{\nu} \delta)
+    \Lambda(x + \hat{\nu} \delta, x + \hat{\mu} \delta + \hat{\nu} \delta) \nonumber\\
+    &\hskip1em\times\Lambda(x + \hat{\mu} \delta + \hat{\nu}\delta, x + \hat{\mu} \delta)
+    \Lambda(x + \hat{\mu}\delta, x)
+\end{align}
+%
+which transforms as
+%
+\begin{equation}
+  U_{\mu\nu}(x) \to U(x) U_{\mu\nu}(x) U^{\dagger}(x)
+\end{equation}
+%
+and therefore $\tr U_{\mu\nu}(x)$ is invariant under local group
+transformations. Expanding $U_{\mu\nu}$ in the fields $A^i_{\mu}$, we get
+%
+\begin{equation}
+  U_{\mu\nu} = 1 + i g \delta^2 T_i \big( \partial_{\mu} A^i_{\nu} - \partial_{\nu}
+  A^i_{\mu} + g f^{ijk} A^j_{\mu} A^k_{\nu} \big) + \mathcal{O}(\delta^3)
+\end{equation}
+%
+from which we extract the term
+%
+\begin{equation}
+  F_{\mu\nu}^i = \partial_{\mu} A^i_{\nu} - \partial_{\nu}
+    A^i_{\mu} + g f^{ijk} A^j_{\mu} A^k_{\nu}
+\end{equation}
+%
+which is both invariant under the gauge transformations as well as being the
+kinetic term we were looking for. The full gauge extended Lagrangian therefore
+reads
+\begin{equation}
+  \mathcal{L} = \bar{\psi}\big(i \gamma^{\mu} D_{\mu} - m\big)\psi
+    - \frac{1}{4} F^i_{\mu\nu} F^{i\hskip.2ex\mu\nu}
+\end{equation}
+
+
+
+
+
 \section{Lattice discretisation} \label{sec:lattice_intro}
+
 \section{Symmetries on the lattice} \label{sec:lattice_symmetries}
+
 \section{Fermion doubling and chiral symmetry} \label{sec:fermion_doubling}
+
 \section{Scale setting and the continuum limit} \label{sec:scale_setting}
+
