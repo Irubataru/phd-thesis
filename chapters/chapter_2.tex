@@ -25,7 +25,7 @@ Statistical Mechanics (\emph{SM}) is $\mathcal{Z}$, named the generating
 functional and the partition function in the two theories respectively. It is in
 SM defined as
 %
-\begin{equation}
+\begin{equation} \label{eq:partition}
   \mathcal{Z}_E = \int \prod_i \mathrm{d} \phi_i e^{-\mathcal{S}_E[\phi_i]},
 \end{equation}
 %
@@ -322,16 +322,21 @@ symmetries. This becomes obvious when writing the derivative in terms of limits
 %
 where $\eta^{\mu}$ is some unit vector. We have to take the difference between
 fields at two different points in space-time, which transform independently
-under \meqref{eq:local_trafo}. It is completely nonsensical trying to calculate
-this difference at all, and we therefore instead introduce a two-point parallel
-transporter, $\Lambda(y,x)$, and define the \emph{covariant derivative} as
+under \meqref{eq:local_trafo}. Naively calculating this difference is
+nonsensical as one is allowed to choose the basis of the representation of the
+different points independently, meaning that $\psi(x)$ and $\psi(y)$ can be
+members of different vector spaces. We therefore introduce the parallel
+transporters, $\Lambda(y,x)$, which transforms between the points $x$ and $y$ in
+a smooth way \citep{Wu:1975es}. We define the \emph{covariant derivative} as
 %
 \begin{equation}
   \eta^{\mu} D_{\mu} \psi(x) = \lim_{\delta \to 0} \frac{1}{\delta} \big(
-    \psi(x + \delta\eta) - \Lambda(x+\delta\eta,x)\psi(x) \big)
+    \psi(x + \delta\eta) - \Lambda(x+\delta\eta,x)\psi(x) \big).
 \end{equation}
 %
-where this scalar function transform as
+The transporter $\Lambda$ is exactly a member of the representations on $G$ as
+it transforms between the bases at the different points. It therefore transforms
+as
 %
 \begin{equation}
   \Lambda(y,x) \to U(y) \Lambda(y,x) U^{\dagger}(x).
@@ -344,9 +349,9 @@ This in turn make the total covariant derivative transform as
 \end{equation}
 %
 ensuring that terms of the form $\bar{\psi} D_{\mu} \psi$ remain invariant under
-local symmetry transformations. From its transformation properties, it is
-possible to write $\Lambda$ in terms of the generators of the group. This is on
-infinitesimal form
+local symmetry transformations. As $\Lambda$ is a representation of $G$, we can
+express it in terms of the generators of the group. This is on infinitesimal
+form
 %
 \begin{equation}
   \Lambda(x + \delta\eta,x) = 1 + i g \delta \eta^{\mu} A^i_{\mu}(x) T_i +
@@ -371,11 +376,12 @@ Unfortunately, without a kinetic term for the newly introduced fields
 $A^i_{\mu}$, the theory would permit violently oscillating fields with no cost
 in energy. This would make our theory non-renormalisiable, which we want to
 avoid.  We therefore need to find a kinetic term for the fields that admits all
-of our restrictions. To construct such a term we again turn to the field
-transporters $\Lambda$. It is easy to see that the geometric plaquette could
-create such a term
+of our restrictions. To construct such a term it is natural to once more turn to
+the parallel transporters, being the main ingredient in adjusting the kinetic
+term of the fermions. Using the gauge transformation of $\Lambda$, it is easy to
+see that the geometric plaquette could create such a term
 %
-\begin{align}
+\begin{align} \label{eq:transport_plaquette}
   U_{\mu\nu}(x) =& \Lambda(x, x + \hat{\nu} \delta)
     \Lambda(x + \hat{\nu} \delta, x + \hat{\mu} \delta + \hat{\nu} \delta) \nonumber\\
     &\hskip1em\times\Lambda(x + \hat{\mu} \delta + \hat{\nu}\delta, x + \hat{\mu} \delta)
@@ -398,7 +404,7 @@ transformations. Expanding $U_{\mu\nu}$ in the fields $A^i_{\mu}$, we get
 %
 from which we extract the term
 %
-\begin{equation}
+\begin{equation} \label{eq:field_strength}
   F_{\mu\nu}^i = \partial_{\mu} A^i_{\nu} - \partial_{\nu}
     A^i_{\mu} + g f^{ijk} A^j_{\mu} A^k_{\nu}
 \end{equation}
@@ -406,20 +412,101 @@ from which we extract the term
 which is both invariant under the gauge transformations as well as being the
 kinetic term we were looking for. The full gauge extended Lagrangian therefore
 reads
-\begin{equation}
-  \mathcal{L} = \bar{\psi}\big(i \gamma^{\mu} D_{\mu} - m\big)\psi
+%
+\begin{equation} \label{eq:gauge_lagrangian}
+  \mathcal{L} = \bar{\psi}\big(i \gamma^{\mu} D_{\mu} - m\big)\psi 
     - \frac{1}{4} F^i_{\mu\nu} F^{i\hskip.2ex\mu\nu}
 \end{equation}
 
-
-
-
-
 \section{Lattice discretisation} \label{sec:lattice_intro}
 
-\section{Symmetries on the lattice} \label{sec:lattice_symmetries}
+With the Lagrangian at hand we want to actually evaluate the partition function
+integral from \meqref{eq:partition}. The integral is however infinite
+dimensional, and has no known closed analytical form unless the theory is
+trivial (non interacting). If the theory is close to being trivial, one can
+apply perturbation theory and systematically solve the integral order by order.
+This is however not the case for the theories we plan to study, and we must
+resort to other means.
+
+In the lattice approach one discretise space-time into a grid, or lattice,
+restricting the fields and variables only to exist at these points. We thus
+introduce a shortest distance, namely the spacing between these grid points,
+commonly named $a$. The coordinates are thus restricted to
+%
+\begin{equation}
+  \big(x_0, x_1, x_2, x_3\big) \in \mathbb{R}^4 
+  \hskip1ex\to\hskip1ex \big(n_0, n_1, n_2, n_3\big) \in
+    \raisebox{.1ex}{\scalebox{0.9}{$\big\{0, 1, ..., N-1\big\}^4$}}.
+\end{equation}
+%
+On top of having a shortest distance, which works as a natural regulariser for
+this approach, we also have a finite volume $\Omega = a^4 N^4$. Therefore, to
+recover physical results, we need to take the continuum limit, $a \to 0$, and the
+infinite volume limit, $N \to 0$, in such a way that $\Omega$ is large enough in
+physical units to encompass the scales we are interested in studying.
+
+Having introduced the lattice, we see that the partition function of the
+discretised theory is simplified compared to the continuum. The simplification
+is not obvious as it quietly changes the number of integrals from being infinite
+to being a finite, albeit still large number.
+
+In this and the following sections we will first construct a Lagrangian to put
+on the lattice and analyse its new symmetry properties. We will then briefly
+discuss how to determine the lattice scale and compare lattice results with
+continuum physics. Finally a brief overview of the real world computations and
+applications of lattice gauge theories will be given.
+
+\subsection{The lattice gauge theory Lagrangian}
+
+Constructing a \emph{good} discretised Lagrangian is both a subject and an art
+of itself. Naively one would think that any Lagrangian that reduces to the
+continuum Lagrangian \eqref{eq:gauge_lagrangian} when we send $a \to 0$ would
+suffice. Or broader, Lagrangians that at most introduce total derivates with 
+vanishing borders when $a \to 0$. Though this is to some extent true, we will
+see that as always, the devil are in the details, and if one does not take great
+care, the continuum theory will not be as it first appears.
+
+In the previous section we introduced the parallel transporters to define how to
+associate two different points in space that can belong to different vector
+spaces. This procedure fits nicely only the lattice as the only modification we
+have to make to the definition of the covariant derivative on the lattice is to
+replace $\delta$ by $a$, and not take the limit. We will exclusively use the
+transporter between nearest neighbour lattice sites, and therefore make the
+abbreviation $U(x + a \eta_\mu, x) = U_{\mu}(x) =
+U_{-\mu}^{\dagger}(x+a\eta_{\mu})$. With this the fermion contribution to the
+lattice action with a symmetrised derivative reads
+%
+\begin{equation}
+  \mathcal{S}_f = a^4 \sum_x \frac{1}{2a}\sum_{\mu=1}^4 
+    \Big( \bar{\psi}(x+\mu)U_{\mu}(x) 
+    - \bar{\psi}(x-\mu) U_{\mu}^{\dagger}(x)  \Big) \psi(x) 
+    + m \bar{\psi}(x)\psi(x),
+\end{equation}
+%
+where the sum goes over the discrete points on the lattice. We have also
+switched to Euclidean space, which is a conscious choice that will benefit us
+later. Including the gauge field is even easier as we can use the plaquette
+transporter we defined in \meqref{eq:transport_plaquette}. This defines the
+Wilson gauge action
+%
+\begin{equation}
+  \mathcal{S}_g = \beta_R a^4 \sum_x \sum_{\mu < \nu} \Big( 1 -
+    \textstyle\frac{1}{d_R} \hskip.2ex \text{Re} \tr U_{R \hskip.2ex\mu\nu}(x) \Big),
+\end{equation}
+%
+where $d_R$ is the dimension of the representation, $d_R = \tr D_R(e)$. $\beta_R$ is the
+coupling constant, and by comparison with the continuum field strength tensor
+\eqref{eq:field_strength}, we find
+%
+\begin{equation}
+  \beta_R = \frac{2 d_R}{g^2}
+\end{equation}
 
 \section{Fermion doubling and chiral symmetry} \label{sec:fermion_doubling}
 
+
+
+
 \section{Scale setting and the continuum limit} \label{sec:scale_setting}
 
+\section{Numerical evaluation of lattice gauge theories}
