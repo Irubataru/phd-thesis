@@ -128,7 +128,7 @@ One commonly refers to the $T_{Ri}$ as the generators of the group $G$. Applying
 the smoothness condition to the group product, \meqref{eq:group_prod},
 we find that the commutator of the generators follow a special relation
 %
-\begin{equation}
+\begin{equation} \label{eq:group_algebra}
   \big[ T_{Ri}, T_{Rj} \big] = i\, f_{ijk} T_{Rk}.
 \end{equation}
 %
@@ -137,6 +137,16 @@ representation $R$. They are tremendously important as they summarise the entire
 group multiplication law. They are also referred to as the \emph{algebra} of the
 group, $\mathfrak{g}$. The generators and the group algebra will come into play
 when we later introduce continuous symmetries of our quantum theory of fields.
+Using the Jacobi identity, it is possible to see that the structure constants
+themselves follow the multiplication law. We can therefore use the structure
+constants as a representation of the algebra $\mathfrak{g}$ called the
+\emph{adjoint representation}
+%
+\begin{equation}
+  \big[ T_{\text{adj}\hskip.2ex i} \big]_{jk} \equiv -i\, f_{ijk},
+\end{equation}
+%
+which fulfils \meqref{eq:group_algebra}.
 
 \subsection{Character and character expansion}
 
@@ -566,7 +576,7 @@ factored out.
 
 In a quest to resolve this issue Wilson introduced an additional term to the
 Lagrangian in the form of a second order derivative. This new term,
-appropriately named the Wilson term, is one order higher in $a$, and therefore
+appropriately named the \emph{Wilson term}, is one order higher in $a$, and therefore
 disappears in the continuum. After some shuffling of the terms, adding the
 Wilson term to the Lagrangian gives us
 %
@@ -590,7 +600,8 @@ The addition of the Wilson term has given an additional mass of $n r/a$ to the
 unwanted doublers, meaning that they properly decouple from the theory in the
 continuum where their masses diverge. 
 
-However, the addition of the Wilson term does not come without a cost. By
+%TODO: Rewrite
+However, including the Wilson term does not come without a cost. By
 introducing the Wilson term we explicitly break chiral symmetry, meaning that
 even with $m=0$, the transformation \eqref{eq:chiral_transformation} is no
 longer a symmetry of the system. 
@@ -609,6 +620,56 @@ discretisation schemes being \emph{domain wall fermions} \citep{Kaplan:1992bt} a
 
 \section{Scale setting and the continuum limit} \label{sec:scale_setting}
 
+We previously mentioned that the lattice spacing $a$ works as a non-perturbative
+regulariser of the theory, and thus sets the internal scale. Any parameter in
+the lattice theory appears as dimensionless combinations, such as $\vec{x}/a$,
+$a \vec{p}$, $a m$, $a^{3/2} \psi(x)$. The scale is therefore to some extent
+hidden, and the only way to access it is by computing observables and comparing
+them to experimental values
+%
+\begin{equation}
+  \lim_{a \to 0} O(m, g; a) = O_{\text{phys}}.
+\end{equation}
+%
+Simply sending $a$ to $0$ is considered to be the \emph{naive} continuum limit,
+as one fails to take into account the parameters' dependence on the scale. The
+parameters that enter our theory is called \emph{bare}, as they vary together
+with the scale
+%
+\begin{equation}
+  m_{\text{phys}} = \lim_{a \to 0} m_{\text{bare}}(a), \hskip2em
+  g_{\text{phys}} = \lim_{a \to 0} g_{\text{bare}}(a).
+\end{equation}
+%
+The dependence of your parameters on the scale can be summarised by the
+Callan-Symanzik equations, which can be computed for any physical observable
+$O_{\text{phys}}$
+%
+\begin{equation}
+  a \frac{\mathrm{d}}{\mathrm{d} a} O_{\text{phys}}
+    = \Big( \frac{\partial}{\partial a} 
+      - \beta \frac{\partial}{\partial g}
+      - \gamma \frac{\partial}{\partial m}
+    \Big) O_{\text{phys}} = 0.
+\end{equation}
+%
+The $\beta$-function describes how much the coupling changes as a function of
+the lattice spacing, and can for instance be calculated through perturbation
+theory. To lowest order in the coupling we get
+%
+\begin{equation}
+  \beta(g) = - a \frac{\partial g}{\partial a} = - \frac{g^3}{(4\pi)^2}
+    \Big( \frac{11}{3} C_{\text{adj}\hskip.2ex 2} - \frac{4}{3} n_f C_R \Big) + \mathcal{O}(g^5).
+\end{equation}
+%
+Here we encounter the group's Casmir operators, $C_R$ and $C_{R\hskip.2ex 2}$. They are
+defined as
+%
+\begin{equation}
+  C_{R \hskip.2ex 2} = || T_{Ri} f^{iab} f^{jba} T_{Rj}||, \hskip2ex
+    C_R = \frac{d_R}{d_{\text{adj}}} C_{R \hskip.2ex 2},
+\end{equation}
+%
 
 
 \section{Numerical evaluation of lattice gauge theories}
