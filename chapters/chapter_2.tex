@@ -247,7 +247,7 @@ distinct representations of the Lorentz group, $(\frac{1}{2}, 0)$ and $(0,
 It is apparent that this Lagrangian is symmetric under the U($1$) $\otimes$ U($1$)
 transformation
 %
-\begin{equation}
+\begin{equation} \label{eq:chiral_transformation}
   \psi_{R,L} \to e^{i \alpha_{R,L}} \psi_{R,L}
 \end{equation}
 %
@@ -282,7 +282,7 @@ which gives the associated charge
 
 We just saw that the Lagrangian can be trivially extended to be invariant under
 global symmetry transformations. However, we also want to promote them to local
-symmetries. This is motivated post facto by QED, with exhibits a local U($1$)
+symmetries. This is motivated post facto by QED, which exhibits a local U($1$)
 symmetry.
 
 The idea was first explored by Weyl, who tried introducing local scale
@@ -294,11 +294,16 @@ transformations to the metric
 %
 which prompted the need for an additional vector field to gauge how much one
 needs to adjust scales to compare two separate points. Weyl then showed that
-these vector fields need to follow Maxwell's equations \citep{Weyl:1918ib}.
-Although this ultimately is not how the universe works, it encourages the ideas
-that there is a fundamental relation between local symmetries and the geometry
-of space, also the name stuck. Instead of adjusting local scales we will apply
-group transformations to a vector space that lives on top of space-time.
+these vector fields need to follow Maxwell's equations, and postulated that
+these gauge fields were in fact nothing else than Maxwell's electromagnetic
+potentials \citep{Weyl:1918ib}. It was later discovered that classically scale
+invariant theories looses this symmetry due to a quantum effect sometimes
+referred to as the \emph{Weyl anomaly}. In fact, it is this very effect that is
+responsible for the bulk contribution to the hadron masses in QCD. So, although
+Weyl's ideas does not describe how the world actually works, it served as a
+cornerstone on which the theories connecting the geometry of space to local
+symmetries was built. Instead of adjusting local length scales, we will apply
+group transformations to vector spaces that live on top of space-time.
 
 We define a local group element by a Lie group whose parameters are space-time
 dependent $g(\alpha_i(x))$. We will use the short hand notation $U(x) =
@@ -334,15 +339,17 @@ a smooth way \citep{Wu:1975es}. We define the \emph{covariant derivative} as
     \psi(x + \delta\eta) - \Lambda(x+\delta\eta,x)\psi(x) \big).
 \end{equation}
 %
-The transporter $\Lambda$ is exactly a member of the representations on $G$ as
-it transforms between the bases at the different points. It therefore transforms
-as
+where the transporter $\Lambda$ make sure we only compare elements of the same
+vector space. These transformations are nothing but coordinate transformations
+of the vector spaces, and must therefore itself be a member of the
+representations on G. From this it follows that it transforms as
 %
 \begin{equation}
   \Lambda(y,x) \to U(y) \Lambda(y,x) U^{\dagger}(x).
 \end{equation}
 %
-This in turn make the total covariant derivative transform as
+This in turn gives rise to the subsequent transformation rule for the covariant
+derivative
 %
 \begin{equation}
   D_{\mu}\psi(x) \to U(x) D_{\mu} \psi(x),
@@ -476,18 +483,19 @@ abbreviation $U(x + a \eta_\mu, x) = U_{\mu}(x) =
 U_{-\mu}^{\dagger}(x+a\eta_{\mu})$. With this the fermion contribution to the
 lattice action with a symmetrised derivative reads
 %
-\begin{equation}
-  \mathcal{S}_f = a^4 \sum_x \frac{1}{2a}\sum_{\mu=1}^4 
-    \Big( \bar{\psi}(x+\mu)U_{\mu}(x) 
-    - \bar{\psi}(x-\mu) U_{\mu}^{\dagger}(x)  \Big) \psi(x) 
-    + m \bar{\psi}(x)\psi(x),
+\begin{equation} \label{eq:naive_fermions}
+  \mathcal{S}_f = a^4 \sum_x \Big( 
+    m \bar{\psi}(x)\psi(x) - 
+    \frac{1}{2a}\sum_{\mu=\pm 1}^{\pm 4}
+    \bar{\psi}(x+\hat{\mu})\gamma^{\mu}U_{\mu}(x) \psi(x) \bigg),
 \end{equation}
 %
 where the sum goes over the discrete points on the lattice. We have also
 switched to Euclidean space, which is a conscious choice that will benefit us
-later. Including the gauge field is even easier as we can use the plaquette
-transporter we defined in \meqref{eq:transport_plaquette}. This defines the
-Wilson gauge action
+later, and used the shorthand definition $\gamma^{-\mu} \equiv -\gamma^{\mu}$.
+Including the gauge field is even easier as we can use the plaquette transporter
+we defined in \meqref{eq:transport_plaquette}. This defines the Wilson gauge
+action
 %
 \begin{equation}
   \mathcal{S}_g = \beta_R a^4 \sum_x \sum_{\mu < \nu} \Big( 1 -
@@ -504,9 +512,103 @@ coupling constant, and by comparison with the continuum field strength tensor
 
 \section{Fermion doubling and chiral symmetry} \label{sec:fermion_doubling}
 
+Although the Lagrangian \meqref{eq:naive_fermions} have the desired
+transformation property, and reproduce the Dirac Lagrangian in the continuum, it
+suffers from a degeneracy in its energy eigenvalues. The easiest way to see this
+is by choosing the trivial representation of the gauge fields and writing down
+the fermion Hamiltonian
+%
+\begin{equation}
+  \mathcal{H}_f = \sum_{\vec{x}} \bigg(
+    m \bar{\psi}(\vec{x}) \psi(\vec{x}) + \frac{i}{2a} \sum_{k=1}^3 \Big(
+      \bar{\psi}(\vec{x}+\hat{k})\gamma^k\psi(\vec{x}) 
+      -\bar{\psi}(\vec{x}-\hat{k})\gamma^k\psi(\vec{x})\Big)\bigg).
+\end{equation}
+%
+From experience we know that the free Hamiltonian is diagonal in momentum space,
+so we introduce a Fourier transform
+%
+\begin{equation}
+  \tilde{\psi}(\vec{p}) = a^3 \sum_{\vec{x}} e^{-i \vec{p}\cdot \vec{x}}
+    \psi(\vec{x})
+\end{equation}
+%
+where the possible values of $\vec{p}$ are restricted to the Brillouin zones
+%
+\begin{equation}
+  p_i = \frac{2\pi}{a N} \nu_i, \hskip1ex \nu_i \in
+    \big\{\textstyle\minus{}\big(\frac{L}{2}\minus{}1\big), ...,
+    \frac{L}{2} \big\} \hskip1ex\Rightarrow\hskip1ex p_i \in \big(\minus\pi, \pi\,\big].
+\end{equation}
+%
+After the Fourier transform the Hamiltonian is
+%
+\begin{equation}
+  \mathcal{H}_f = \frac{1}{(aN)^3}\sum_{\vec{p}} \tilde{\bar{\psi}}(\vec{p})
+    \Big( m + \frac{1}{a} \gamma^k \sin (a p_k) \Big) \tilde{\psi}(\vec{p}).
+\end{equation}
+%
+It can easily be seen that it has eigenvalues
+%
+\begin{equation}
+  H_{\vec{p}} = \pm \sqrt{m^2 + \frac{1}{a^2} \sum_{k=1}^3 \sin^2 (a p_k)}
+\end{equation}
+%
+which for every momentum $\vec{p}$ is $8$-fold degenerate, owing to the
+periodicity of the sine function. This implies that we have $7$ additional,
+unwanted, fermions in the theory whenever we put $1$ in. These \emph{doublers}
+come from the corners of the Brillouin zone, and therefore disappear as we go
+to the continuum limit. That is however of little comfort as they would give
+incalculable effects to loop diagrams at finite volumes which cannot easily be
+factored out.
 
+\subsection{Wilson fermions}
 
+In a quest to resolve this issue Wilson introduced an additional term to the
+Lagrangian in the form of a second order derivative. This new term,
+appropriately named the Wilson term, is one order higher in $a$, and therefore
+disappears in the continuum. After some shuffling of the terms, adding the
+Wilson term to the Lagrangian gives us
+%
+\begin{equation}
+  \mathcal{S}_{f,w} = a^4 \sum_{x} \bigg(
+  \big(m + {\textstyle\frac{4 r}{a}}\big) \bar{\psi}(x) \psi(x)
+  - \frac{1}{2a} \sum_{\mu = \pm 1}^{\pm 4} \bar{\psi}(x+\hat{\mu}) (r +
+  \gamma^{\mu}) U_{\mu}(x) \psi(x) \bigg).
+\end{equation}
+%
+We have introduced the \emph{Wilson parameter} $r$, which has to be in the
+interval $(0, 1]$, and is commonly chosen to be $1$. From this one can calculate
+the Hamiltonian's eigenvalues, and show that have been modified to be
+%
+\begin{equation}
+  H_{\vec{p}} = \pm \sqrt{\bigg(m + \frac{r}{a}\sum_{k=1}^3 (1 - \cos (a p_k) ) \bigg)^2
+    + \frac{1}{a^2} \sum_{k=1}^3 \sin^2 (a p_k)}.
+\end{equation}
+%
+The addition of the Wilson term has given an additional mass of $n r/a$ to the
+unwanted doublers, meaning that they properly decouple from the theory in the
+continuum where their masses diverge. 
+
+However, the addition of the Wilson term does not come without a cost. By
+introducing the Wilson term we explicitly break chiral symmetry, meaning that
+even with $m=0$, the transformation \eqref{eq:chiral_transformation} is no
+longer a symmetry of the system. 
+
+There is in fact a theorem by Nielsen and Ninomiya
+\citep{Nielsen:1980rz,Nielsen:1981xu} which states that one cannot have a lattice
+theory both chirally symmetric and free of doublers at the same time with a
+Dirac Lagrangian that is also local.
+
+Yet all hope is not lost as Ginsparg and Wilson shortly after stated a modified
+equation the fermion propagator has to fulfil to give a chiral theory in the
+continuum \citep{Ginsparg:1981bj}. Although Wilson fermions do not meet these
+requirements, solutions to these equations have since been found. Two notable
+discretisation schemes being \emph{domain wall fermions} \citep{Kaplan:1992bt} and 
+\emph{overlap fermions} \citep{Neuberger:1997fp,Neuberger:1998wv}.
 
 \section{Scale setting and the continuum limit} \label{sec:scale_setting}
+
+
 
 \section{Numerical evaluation of lattice gauge theories}
