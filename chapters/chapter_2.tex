@@ -1,3 +1,5 @@
+% TODO Check subscript f(F) for flavours (fundamental)
+
 \chapter{Gauge Theories and Lattice Gauge Theories}
 
 In this chapter we will formally introduce the quantum field theory describing
@@ -657,10 +659,11 @@ The $\beta$-function describes how much the coupling changes as a function of
 the lattice spacing, and can for instance be calculated through perturbation
 theory. To lowest order in the coupling we get
 %
-\begin{equation}
-  \beta(g) = - a \frac{\partial g}{\partial a} = - \frac{g^3}{(4\pi)^2}
-    \Big( \frac{11}{3} C_{\text{adj}\hskip.2ex 2} - \frac{4}{3} n_f C_R \Big) + \mathcal{O}(g^5).
-\end{equation}
+\begin{align}
+  \beta(g) = - a \frac{\partial g}{\partial a} &= - \frac{g^3}{(4\pi)^2}
+    \Big( \frac{11}{3} C_{\text{adj}\hskip.2ex 2} - \frac{4}{3} n_f C_R \Big) + \mathcal{O}(g^5), \nonumber\\
+  &\equiv - \beta_0 g^3 + \mathcal{O}(g^5) \label{eq:beta_eq}
+\end{align}
 %
 Here we encounter the group's Casmir operators, $C_R$ and $C_{R\hskip.2ex 2}$. They are
 defined as
@@ -670,6 +673,25 @@ defined as
     C_R = \frac{d_R}{d_{\text{adj}}} C_{R \hskip.2ex 2},
 \end{equation}
 %
-
+and take the following values for the fundamental representation of SU($N$)
+%
+\begin{equation}
+  C_F = \frac{1}{2}, \hskip1em C_{\text{adj}\hskip.2ex 2} = N \,.
+\end{equation}
+%
+One can solve the differential equation in \meqref{eq:beta_eq} and get
+%
+\begin{equation}
+  g = \frac{1}{\sqrt{1 - 2\beta_0 \log (a/a_0)}}
+    \hskip1em\Leftrightarrow\hskip1em
+    a = \frac{1}{\Lambda} \exp\Big\{\frac{-1}{2\beta_0 g^2}\Big\} .
+\end{equation}
+%
+We see that although $g$ was initially dimensionless, we have generated an
+energy scale $\Lambda$ through the renormalisation group. We also see that the
+lattice spacing $a$ goes to zero as $g$ goes to zero (and the lattice coupling
+$\beta$ goes to infinity). This is the \emph{true} continuum limit, where one as
+opposed to the naive limit take the change of the parameters into account.
 
 \section{Numerical evaluation of lattice gauge theories}
+
