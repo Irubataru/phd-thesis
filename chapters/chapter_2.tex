@@ -1,4 +1,8 @@
 % TODO Check subscript f(F) for flavours (fundamental)
+% TODO Check "space time", "spacetime", "space-time"
+% TODO Add restrictions on the Yang Mills Lie group (semi-simple, compact?)
+% TODO Consider specifying the gauge group earlier
+% TODO Change title to illustrate that fermions are considered
 
 \chapter{Gauge Theories and Lattice Gauge Theories}
 
@@ -45,6 +49,36 @@ The action, $\mathcal{S}$, is in turn defined by the Lagrangian density
 %
 and our theories are therefore uniquely defined through $\mathcal{L}$ and the
 properties of the fields $\phi_i$.
+
+Of physical interest are expectation values of Hermitian operators $O$, defined
+as
+%
+\begin{equation} \label{eq:expectation_value}
+  \big\langle O[\phi_i] \big\rangle = \frac{1}{\mathcal{Z}_E} 
+    \int \prod_i \mathrm{d} \phi_i \, O[\phi_i]\, e^{-\mathcal{S}_E[\phi_i]}
+\end{equation}
+%
+which correspond to physical observables. These can for example be accessed by
+the introduction of source terms
+%
+% TODO Consider whether I need this
+%
+\begin{equation}
+  \mathcal{Z}_E [\,J_i\,] = \int \prod_i \mathrm{d} \phi_i \,
+    e^{-\mathcal{S}_E[\phi_i] - \int J_i \phi_i}
+\end{equation}
+%
+with which we can rewrite the expectation value in terms of functional
+derivatives
+%
+\begin{equation}
+  \big\langle O[\phi_i] \big\rangle = O\bigg[ \frac{\delta}{\delta J_i} \bigg]
+    \log \mathcal{Z}_E \bigg|_{J=0},
+\end{equation}
+%
+hence the name generating functional.
+
+\subsection{The Dirac Lagrangian}
 
 The most basic starting point for us will be the Dirac Lagrangian, which reads
 %
@@ -690,8 +724,96 @@ One can solve the differential equation in \meqref{eq:beta_eq} and get
 We see that although $g$ was initially dimensionless, we have generated an
 energy scale $\Lambda$ through the renormalisation group. We also see that the
 lattice spacing $a$ goes to zero as $g$ goes to zero (and the lattice coupling
-$\beta$ goes to infinity). This is the \emph{true} continuum limit, where one as
-opposed to the naive limit take the change of the parameters into account.
+$\beta$ goes to infinity). This is the \emph{true} continuum limit, where one, as
+opposed to the naive limit, takes the change of the parameters into account.
 
 \section{Numerical evaluation of lattice gauge theories}
 
+Although the lattice discretisation has decreased the number of integrals in the
+definition of $\mathcal{Z}$ from infinity to something finite, the number of free
+variables is still too great for it to be evaluated, even numerically. The
+fermion fields have $2 N_f d_R$ independent degrees of freedom at every
+position. The gauge field is a four vector at every space-time point with
+$d_{\text{adj}}$ degrees of freedom. Even though the fermion fields can be
+integrated out exactly, this still leaves a highly dimensional integral if one
+wants to look at anything but miniscule volumes.
+
+The only feasible way to handle these types of integrals is by way of Monte
+Carlo integration. This is a stochastic method that instead of summing over all
+values the degrees of freedom can take, as one does in standard numerical
+integration, only sample a small number of these configurations. The value of
+the integral is then reconstructed using this (small) number of configurations.
+
+For this to work well one has to sample the configuration space in an
+intelligent way as the integrand is usually sharply peaked around a small set of
+very specific configurations. A first step is to do importance sampling, where
+one uses the integrand as a probability distribution for the configuration
+space, in the case of the partition function
+%
+\begin{equation}
+  P[\psi,\bar{\psi}, U_{\mu}] \sim e^{-\mathcal{S}[\psi,\bar{\psi}, U_{\mu}]}.
+\end{equation}
+%
+Since direct sampling from the this distribution is not possible in practice,
+one usually constructs a chain of samples, each being related to the previous
+through a Markov chain
+%
+\begin{equation}
+  \Big\{
+    \big[\psi, \bar{\psi}, U_{\mu}\big]_1, 
+    \big[\psi, \bar{\psi}, U_{\mu}\big]_2, ..., 
+    \big[\psi, \bar{\psi}, U_{\mu}\big]_N
+  \Big\}
+\end{equation}
+%
+where the probability of getting one probability given another follows the
+detailed balance equation
+%
+\begin{equation}
+  \frac{%
+    P\big([\,]_{n\hphantom{-1}} \big| [\,]_{n-1}\big)
+  }{%
+    P\big([\,]_{n-1} \big| [\,]_{n\hphantom{-1}}\big)
+  } = e^{\mathcal{S}[\,]_{n-1} - \mathcal{S}[\,]_n} \,.
+\end{equation}
+%
+Which will converge to the correct distribution as long as the chain is
+\emph{ergodic}, i.e. will reach any field configuration in finite (albeit
+arbitrary long) time.
+
+\subsection{Observables}
+
+Using this process to select a finite set of configurations, one can use this to
+obtain an estimate for the expectation value of observables. 
+Commonly named the \emph{ensemble average}, it is given by
+%
+\begin{equation}
+  \bar{O}\big[\psi, \bar{\psi}, U_{\mu}\big] = \frac{1}{N} \sum_{n = 1}^N O\big( [\,]_n \big).
+\end{equation}
+%
+If the set of configurations behave as described in the previous section, it
+converges to the true average, \meqref{eq:expectation_value}, when $N \to
+\infty$.
+
+For any realisable number of configurations we want an estimate for the error.
+This information is encoded in the \emph{autocorrelation function}
+%
+\begin{equation}
+  C_{O}(m) = \big\langle O\big([\,]_n\big) O\big([\,]_{n+m}\big)\big\rangle_n
+    - \big\langle O\big([\,]_n\big)\big\rangle_n^2\,,
+\end{equation}
+%
+which quantize how correlated consecutive measurements are. Since the $n+1$'th
+configuration depend on the $n$'s configuration through the Markov chain,
+$C_O(m) \neq 0$ for $m > 0$. But it is how quickly this function decreases that
+determine how good the estimate for the average is. An important quantity for
+this is the \emph{integrated autocorrelation time}
+%
+\begin{equation}
+  \tau_O = \frac{1}{2} \sum_{m=-\infty}^{+\infty} \frac{C_O(m)}{C_O(0)}.
+\end{equation}
+%
+One can show that approximately $2 \tau_O$ of the consecutive measurements will
+be correlated, meaning that it would be advantageous to only sample the
+observable at this interval instead of for every new configuration
+\citep[sect. 7.1.3]{montvay1997quantum}.
