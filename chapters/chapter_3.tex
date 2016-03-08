@@ -20,21 +20,22 @@ Thermal Field Theory (\emph{TFT}).
 Every quantity of interest to anyone studying equilibrium thermodynamics is
 encoded into the previously mentioned partition function
 %
-\begin{equation}
-  \mathcal{Z} = \sum_i \mathcal{Z}_i = \sum_i e^{-\beta E_i} \,.
-\end{equation}
+\begin{equation} \label{eq-sm-partition-function} \mathcal{Z} = \sum_i
+  \mathcal{Z}_i = \sum_i e^{-\beta E_i} \,.  \end{equation}
 %
 The sum goes over all states of the degrees of freedom of the system with $E_i$
 being the energy cost of the configuration, and $\beta = 1/T$ is the reciprocal
-temperature. How one chooses to define the scope of these \emph{states} depends
-on the physics one is interested in obtaining, as all choices should in the end
-be independent, although different physical quantities are easier to extract in
-some rather than others. Three common descriptions are the
-\emph{microcanonical}-, \emph{canonical}- and \emph{grand canonical} ensembles.
-They differ in their scope as the microcanonical ensemble includes systems at a
-fixed energy shell, the canonical ensemble a system of fixed temperature and
-particle number while the grand canonical ensemble also allows for fluctuations
-in particle numbers.
+temperature\footnote{This should not be confused with the lattice gauge
+  coupling, which was introduced in the previous chapter. $\beta$ will
+  exclusively be used to indicate $1/T$ in this chapter only}. How one chooses
+to define the scope of these \emph{states} depends on the physics one is
+interested in obtaining, as all choices should in the end be independent,
+although different physical quantities are easier to extract in some rather than
+others. Three common descriptions are the \emph{microcanonical}-,
+\emph{canonical}- and \emph{grand canonical} ensembles.  They differ in their
+scope as the microcanonical ensemble includes systems at a fixed energy shell,
+the canonical ensemble a system of fixed temperature and particle number while
+the grand canonical ensemble also allows for fluctuations in particle numbers.
 
 Both the canonical- and grand canonical ensembles have associated partition
 functions, and the two can be related through a simple relation
@@ -110,10 +111,50 @@ statistical probability function, it can never be zero for real and positive
 values of $z$. However, as one increases the volume of the system, the number of
 zeros increases, and tends to a continuous curve in the thermodynamic limit,
 $V\to\infty$. As this curve forms, zeros on the positive and negative imaginary
-axis could tend towards meeting at the real axis, signalling the onset of a
+axis could tend towards coinciding at the real axis, signalling the onset of a
 phase transition.
 
 \section{Thermal field theory} \label{sec-thermal-field-theory}
+
+The quantum partition function is defined similar to the classical one, but with
+the energy and particle numbers promoted to operators
+%
+\begin{equation}
+  \mathcal{Z}_{\text{GC}} = \sum_{\mathclap{[\phi_i, \pi_i]}}
+  \big\langle [\phi_i, \pi_i] \big|
+    z^{\hat{N}} e^{-\beta \hat{H}} \big| [\phi_i, \pi_i] \big\rangle \,.
+\end{equation}
+%
+This sum reduces to a form similar to \meqref{eq-partition} after introducing
+the second quantisation and evaluating the integrals over the conjugate momentum
+fields $\pi_i$.
+
+% TODO is the interval of t_E really compact?
+
+Focussing on the canonical ensemble, there are two amendments which need to be
+made to the Euclidean action in \meqref{eq-action-def}. First the Euclidean time
+$\tau_E$ have to be integrated over the compact interval $[0, \beta]$
+%
+\begin{equation}
+  \mathcal{S}_E[\phi_i] = \int_{\mathrlap{0}}^{\mathrlap{\beta}} \mathrm{d} \tau_E \int \mathrm{d}^3 x \,
+    \mathcal{L}_E\big[\phi_i(x)\big].
+\end{equation}
+%
+The second rectification is a bit more subtle and concerns the periodic boundary
+conditions of the fields. For the fields to respect their statistical properties
+(Bose- vs Fermi statistics) they need to obey the boundary conditions
+%
+\begin{equation}
+  \phi(\tau_E + \beta) = \begin{cases}
+    \hphantom{-}\phi(\tau_E), \hskip1em \text{for bosonic fields}, \\
+    -\phi(\tau_E), \hskip1em \text{for fermionic fields}.
+  \end{cases}
+\end{equation}
+
+We can now return to the grand canonical ensemble and the particle number
+operator $\hat{N}$.
+
+
 
 \section{Thermal fields on the lattice} \label{sec-thermal-lattice-theory}
 
