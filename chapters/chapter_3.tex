@@ -1,10 +1,112 @@
 \chapter{Statistical Mechanics and Phase Transitions}
 
-\section{Thermal field theory}
-\section{Phase transitions and statistical mechanics}
-\section{Thermal fields on the lattice}
-\section{Finite density simulations}
+In this chapter we will give a short overview of some aspects of statistical
+mechanics that are important to the present work in \secref{sec-stat-mech}.
+Then the field theoretical equivalent is given in
+\secref{sec-thermal-field-theory}, before we once more study the discretised
+theory in \secref{sec-thermal-lattice-theory}. We tie up the chapter 
+in \secrefs{sec-finite-density-lattice,sec-sign-problem} with a
+thorough discussion of simulations of finite density systems, and the hurdles
+that need to be overcome.
+
+Several volumes of the standard literature has been consulted with respect to
+the contents of this chapter. These include, but are not limited to,
+\cite{landau2013statistical,pathria2011statistical} for introductions to
+statistical mechanics, and \cite{kapusta2006finite} with an introduction to
+Thermal Field Theory (\emph{TFT}).
+
+\section{Statistical mechanics} \label{sec-stat-mech}
+
+Every quantity of interest to anyone studying equilibrium thermodynamics is
+encoded into the previously mentioned partition function
+%
+\begin{equation}
+  \mathcal{Z} = \sum_i \mathcal{Z}_i = \sum_i e^{-\beta E_i} \,.
+\end{equation}
+%
+The sum goes over all states of the degrees of freedom of the system with $E_i$
+being the energy cost of the configuration, and $\beta = 1/T$ is the reciprocal
+temperature. How one chooses to define the scope of these \emph{states} depends
+on the physics one is interested in obtaining, as all choices should in the end
+be independent, although different physical quantities are easier to extract in
+some rather than others. Three common descriptions are the
+\emph{microcanonical}-, \emph{canonical}- and \emph{grand canonical} ensembles.
+They differ in their scope as the microcanonical ensemble includes systems at a
+fixed energy shell, the canonical ensemble a system of fixed temperature and
+particle number while the grand canonical ensemble also allows for fluctuations
+in particle numbers.
+
+Both the canonical- and grand canonical ensembles have associated partition
+functions, and the two can be related through a simple relation
+%
+\begin{equation}
+  \mathcal{Z}_{\text{GC}}(z, V, T) = \sum_{N=0}^{\infty} z^N \mathcal{Z}_{\text{C}}(N, V, T),
+\end{equation}
+%
+where $z = e^{\beta \mu}$ is the fugacity, $\mu$ being the chemical
+potential. The partition function can in turn be used to calculate a multitude
+of thermodynamic quantities
+%
+\begin{align}
+  P &= \frac{1}{\beta} \bigg( \frac{\partial}{\partial V} \log \mathcal{Z}
+    \bigg)_{\beta,z} \\
+  \langle E \rangle &= \hphantom{\frac{1}{\beta}} \bigg( \frac{\partial}{\partial \beta}
+    \log \mathcal{Z} \bigg)_{z,V} \\
+  \langle N \rangle &= \;z\; \bigg( \frac{\partial}{\partial z}
+    \log \mathcal{Z} \bigg)_{\beta,V}
+\end{align}
+
+\subsection{Phases and phase transitions}
+
+The phase of a system is linked to the characteristic behaviour of one or more
+of its physical quantities, such as the magnetisation of spin glasses, the
+average positions of atoms in a crystal and the molecular composition of
+solutions. We refer to this defining physical physical quantity as the
+\emph{order parameter} of the phase.  The transition between two or more phases
+are known as \emph{phase transitions}, and due to the very nature of phases,
+happen through the induction of mathematical singularities. 
+
+The order of a phase transition is exactly described by which derivative of the
+free energy with respect to the order parameter of choice diverge. First order
+transitions have discontinuous first derivatives, while only higher order
+derivatives diverge for second order transitions.
+
+However, if the order parameter tends towards zero, but never quite reaches it,
+one can define a pseudo-phase transition, known as a \emph{crossover}, to be the
+point of the most rapid change. While this is not a real phase transition,
+following its trajectory in a phase diagram will result in one if one exists,
+linking the two concepts.
+
+Phase transitions is an inherently macroscopic concept, and does not know about
+the microscopic details of the theory. Theories with different microscopic
+details might therefore still behave alike on the macroscopic level. These
+categorise into \emph{universality classes}, catalogued by the singular
+behaviour of their physical quantities close to the transition. If we denote the
+order parameter by $m$, and the ordering field by $h$\footnote{a characteristic
+variable which define the transition, $m\to0$ as $h\to0$}, we can define some of
+the critical exponents by
+%
+\begin{align}
+  m \;&\sim (T - T_c)^{\beta}, \\
+  \bigg(\frac{\partial m}{\partial h}\bigg)_{\mathrlap{T}} &\sim (T - T_c)^{-\gamma}, \\
+  C_V = - \beta^2 &\bigg(\frac{\partial^2 \mathcal{G}}{\partial
+    \beta^2}\bigg)_{\mathrlap{V}} \sim (T - T_c)^{-\alpha}.
+\end{align}
+%
+Systems which have the same critical exponents fall into the same universality
+class. A notable example is the $4D$ Ising model whose critical exponents are
+$\alpha = 0$, $\beta = 1/2$, and $\gamma = 1$.
+
+
+\section{Thermal field theory} \label{sec-thermal-field-theory}
+
+\section{Thermal fields on the lattice} \label{sec-thermal-lattice-theory}
+
+\section{Finite density simulations} \label{sec-finite-density-lattice}
+
 \section{The sign problem, NP hard, exponential cancellations}
+\label{sec-sign-problem}
+
 \subsection{Reweighting}
 \subsection{Analytic extrapolation}
 \subsection{Taylor series}
