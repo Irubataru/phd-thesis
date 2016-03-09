@@ -158,12 +158,12 @@ We can now return to the grand canonical ensemble and the particle number
 operator $\hat{N}$. A suitable operator can be created from the conserved
 Noether charges, such as the one from \meqref{eq-noether-charge}. For every
 distinct conserved charge one wishes to study the dynamics of, there should be a
-separate chemical potential. Two common systems of interest are those of baryon-
-and isospin chemical potential. Baryon chemical potential is connected to the
+separate chemical potential. Two common systems of interest are those of quark-
+and isospin chemical potential. Quark chemical potential is connected to the
 global U$(1)$ symmetry of the fermion fields. The associated Noether charge is
 that of total fermion number
 %
-\begin{equation}
+\begin{equation} \label{eq-quark-number-density-op}
   N_f = \int \mathrm{d}^3 x \, \bar{\psi}_f(x) \gamma^0 \psi_f(x),
 \end{equation}
 %
@@ -245,13 +245,43 @@ temperature and volume independently, and calculate the thermodynamic quantities
   \mathcal{E} &{}={}& \centermathcell{\frac{a_t}{\beta}} \bigg\langle &
     \centermathcell{\frac{\partial \mathcal{S}}{\partial a_t}} &\bigg\rangle, \\
   \mathcal{N} &{}={}& \centermathcell{\minus{}z} \bigg\langle & 
-    \centermathcell{\frac{\partial \mathcal{S}}{\partial z}} &\bigg\rangle
+    \centermathcell{\frac{\partial \mathcal{S}}{\partial z}} &\bigg\rangle.
 \end{alignat}
 %
 Now that they are expressed in terms of ensemble averages we can use the
 previously introduced Monte Carlo methods to estimate their values.
 
 \section{Finite density simulations} \label{sec-finite-density-lattice}
+
+To carry out simulations of systems with non zero quark number density we
+introduce the quark chemical potential. Unfortunately, a naive discretisation 
+of the quark number operator from \meqref{eq-quark-number-density-op} leads to
+divergences in the thermodynamic quantities in the continuum limit
+\citep{Hasenfratz:1983ba,Kogut:1983ia}. This is due to the lack of an implicit
+gauge invariance of the lattice action needed for the right continuum
+cancellations to take place.
+
+The correct way to introduce quark chemical potential to the lattice action is
+by weighing the appropriate gauge links with the correct fugacity coefficient
+%
+\begin{equation}
+  U_0(x) \to z U_0(x), \hskip1em U_0^{\dagger}(x) \to z^{-1}
+    U_0^{\dagger}(x).
+\end{equation}
+%
+This gives us the final form of the Wilson action that we will make use of for
+the work in this thesis
+%
+\begin{align}
+  &\mathcal{S}_{f,w} = a^4 \sum_{x} \bigg(
+    \big(m + {\textstyle\frac{4 r}{a}}\big) \bar{\psi}(x) \psi(x)
+    - \frac{1}{2a} \sum_{\mu = \pm 1}^{\pm 3} \bar{\psi}(x+\hat{\mu}) (r +
+    \gamma^{\mu}) U_{\mu}(x) \psi(x)\nonumber\\
+  &-\frac{1}{2a} \big(\bar{\psi}(x+\hat{0}) (r + \gamma^{0}) z U_{0}(x) \psi(x)
+    + \bar{\psi}(x-\hat{0}) (r - \gamma^{0}) z^{-1} U_{0}^{\dagger}(x-\hat{0}) \psi(x)\big)
+    \bigg)
+\end{align}
+
 
 \section{The sign problem, NP hard, exponential cancellations}
 \label{sec-sign-problem}
