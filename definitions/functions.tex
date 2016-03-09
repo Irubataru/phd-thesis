@@ -55,6 +55,10 @@
 
 \newcommand{\minus}{\raisebox{.16ex}{\scalebox{0.75}{$-$}}}
 
+% To get "eqnarray" centred alignment
+% See: http://tex.stackexchange.com/a/102845/39313
+\newcommand*\centermathcell[1]{\omit\hfil$\displaystyle#1$\hfil\ignorespaces}
+
 % New definition of square root:
 % it renames \sqrt as \oldsqrt
 \let\oldsqrt\sqrt

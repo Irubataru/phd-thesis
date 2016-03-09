@@ -12,8 +12,9 @@ that need to be overcome.
 Several volumes of the standard literature has been consulted with respect to
 the contents of this chapter. These include, but are not limited to,
 \cite{landau2013statistical,pathria2011statistical} for introductions to
-statistical mechanics, and \cite{kapusta2006finite} with an introduction to
-Thermal Field Theory (\emph{TFT}).
+statistical mechanics, \cite{kapusta2006finite} with an introduction to Thermal
+Field Theory (\emph{TFT}), and \cite{montvay1997quantum,Philipsen:2010gj} for
+the lattice formulation of finite temperature theory.
 
 \section{Statistical mechanics} \label{sec-stat-mech}
 
@@ -49,13 +50,15 @@ potential. The partition function can in turn be used to calculate a multitude
 of thermodynamic quantities
 %
 \begin{align}
-  P &= \frac{1}{\beta} \bigg( \frac{\partial}{\partial V} \log \mathcal{Z}
-    \bigg)_{\beta,z} \\
-  \langle E \rangle &= \hphantom{\frac{1}{\beta}} \bigg( \frac{\partial}{\partial \beta}
-    \log \mathcal{Z} \bigg)_{z,V} \\
-  \langle N \rangle &= \;z\; \bigg( \frac{\partial}{\partial z}
-    \log \mathcal{Z} \bigg)_{\beta,V}
+  \mathcal{P} &= \frac{1}{\beta} \bigg( \frac{\partial}{\partial V} \log \mathcal{Z}
+    \bigg)_{\beta,z}, \\
+  \mathcal{E} &= \,\minus\, \bigg( \frac{\partial}{\partial \beta}
+    \log \mathcal{Z} \bigg)_{z,V}, \\
+  \mathcal{N} &= \;z\; \bigg( \frac{\partial}{\partial z}
+    \log \mathcal{Z} \bigg)_{\beta,V},
 \end{align}
+%
+pressure, average energy and average particle number respectively.
 
 \subsection{Phases and phase transitions}
 
@@ -129,7 +132,7 @@ This sum reduces to a form similar to \meqref{eq-partition} after introducing
 the second quantisation and evaluating the integrals over the conjugate momentum
 fields $\pi_i$.
 
-% TODO is the interval of t_E really compact?
+% TODO is the interval of t_E really half open?
 
 Focussing on the canonical ensemble, there are two amendments which need to be
 made to the Euclidean action in \meqref{eq-action-def}. First the Euclidean time
@@ -144,10 +147,10 @@ The second rectification is a bit more subtle and concerns the periodic boundary
 conditions of the fields. For the fields to respect their statistical properties
 (Bose- vs Fermi statistics) they need to obey the boundary conditions
 %
-\begin{equation}
+\begin{equation} \label{eq-boundary-conditions}
   \phi(\tau_E + \beta) = \begin{cases}
-    \hphantom{-}\phi(\tau_E), \hskip1em \text{for bosonic fields}, \\
-    -\phi(\tau_E), \hskip1em \text{for fermionic fields}.
+    \hphantom{\minus}\phi(\tau_E), \hskip1em \text{for bosonic fields}, \\
+    \minus\phi(\tau_E), \hskip1em \text{for fermionic fields}.
   \end{cases}
 \end{equation}
 
@@ -164,9 +167,9 @@ that of total fermion number
   N_f = \int \mathrm{d}^3 x \, \bar{\psi}_f(x) \gamma^0 \psi_f(x),
 \end{equation}
 %
-with either separate or degenerate $\mu_f$ for each fermion species. The isospin
-charge is related to the Cartan generator of the flavour mixing SU$(2)$ symmetry
-of a two flavour system (the third Pauli matrix)
+with either separate or degenerate $\mu_f$ for each of the fermion species. The
+isospin charge is related to the Cartan generator of the flavour mixing SU$(2)$
+symmetry of a two flavour system (the third Pauli matrix)
 %
 \begin{equation}
   N_I  = \int \mathrm{d}^3 x \, \bar{\psi}_i(x) \gamma^0 (\sigma^3)_{ij}
@@ -177,9 +180,76 @@ which for QCD gives the up and down quarks chemical potentials that only differ
 in sign. By tuning the value of $\mu_I$, one can study the effects of a $u/d$
 asymmetry, while adjusting $\mu_f$ induces a particle/anti particle imbalance.
 
-
-
 \section{Thermal fields on the lattice} \label{sec-thermal-lattice-theory}
+
+Following the same path as in \secref{sec-lattice_intro}, discretising the
+expression for the partition function $\mathcal{Z}$ is straightforward. We see
+that lattice theory naturally describe systems at non zero temperature, as the
+temporal extent always will be finite. The temperature is given in terms of the
+number of temporal lattice sites, $N_t$,
+%
+\begin{equation}
+  T = \frac{1}{a N_t}.
+\end{equation}
+%
+Therefore, when going to continuum physics we only want to take the proper
+infinite volume limit for the spatial direction, and in the time direction send
+$a\to0$ and $N_t\to\infty$ in such a way that $a N_t$ remains finite.
+
+At a first glance it might seem as if when integrating lattice theories we can
+only vary the temperature in finite increments, seeing as $N_t$ has to be an integer.
+It is however much more common to keep $N_t$ fixed while varying $a$, which one
+varies by tuning the gauge coupling $g$, as we saw in \secref{sec-scale_setting}.
+
+Other than imposing the proper boundary conditions for the variables, no other
+amendments need to be made for the finite temperature simulations. These follow
+directly from \meqref{eq-boundary-conditions}
+%
+\begin{align}
+  \psi(n_t + N_t) &= \minus \psi(n_t), \\
+  U_{\mu}(n_t + N_t) &= \hphantom{\minus} U_{\mu}(n_t).
+\end{align}
+
+\subsection{Thermodynamic quantities}
+
+In \secref{sec-stat-mech} we stated the thermodynamic quantities $\mathcal{P}$,
+$\mathcal{E}$ and $\mathcal{N}$ in terms of derivatives of the partition
+function. However one cannot sample the partition function through Monte Carlo
+simulations, and we therefore have to device a different scheme to calculate
+these quantities. By interchanging the order of the derivatives and the
+integrals we get 
+%
+\begin{equation}
+  \mathcal{E} = \minus\frac{\partial}{\partial \beta} \log \mathcal{Z}
+    = \frac{1}{\mathcal{Z}} \int \prod_i \mathrm{d} \phi_i \, 
+    \bigg( \frac{\partial\mathcal{S}}{\partial \beta} \bigg) e^{-\mathcal{S}}
+    \equiv \bigg\langle \frac{\partial\mathcal{S}}{\partial \beta} \bigg\rangle
+\end{equation}
+%
+However, there is still a problem in defining the derivative with respect to
+$\beta$. As we wish to keep $N_t$ fixed, we have to vary $\beta$ by varying $a$,
+but we only want to vary the lattice spacing in the temporal direction, not the
+spatial ones. By naively varying $a$, we would not only change the temperature,
+but also the volume, which is supposed to stay fixed in the definition of
+$\mathcal{E}$.
+
+To rectify this we have to introduce an anisotropic lattice, one in which the
+spatial and temporal lattice spacings are different. The magnitude of this
+difference is encoded in the anisotropy parameter $\xi = a_s / a_t$. By varying
+$a_s$ and $a_t$ separately we can compute derivatives with respect to
+temperature and volume independently, and calculate the thermodynamic quantities
+%
+\begin{alignat}{99}
+  \mathcal{P} &{}={}& \centermathcell{\minus\frac{a_s}{3 \beta V}} \bigg\langle &
+    \centermathcell{\frac{\partial \mathcal{S}}{\partial a_s}} &\bigg\rangle, \\
+  \mathcal{E} &{}={}& \centermathcell{\frac{a_t}{\beta}} \bigg\langle &
+    \centermathcell{\frac{\partial \mathcal{S}}{\partial a_t}} &\bigg\rangle, \\
+  \mathcal{N} &{}={}& \centermathcell{\minus{}z} \bigg\langle & 
+    \centermathcell{\frac{\partial \mathcal{S}}{\partial z}} &\bigg\rangle
+\end{alignat}
+%
+Now that they are expressed in terms of ensemble averages we can use the
+previously introduced Monte Carlo methods to estimate their values.
 
 \section{Finite density simulations} \label{sec-finite-density-lattice}
 
