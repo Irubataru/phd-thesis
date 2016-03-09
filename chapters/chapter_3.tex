@@ -133,7 +133,7 @@ fields $\pi_i$.
 
 Focussing on the canonical ensemble, there are two amendments which need to be
 made to the Euclidean action in \meqref{eq-action-def}. First the Euclidean time
-$\tau_E$ have to be integrated over the compact interval $[0, \beta]$
+$\tau_E$ have to be integrated over the half open interval $[0, \beta)$
 %
 \begin{equation}
   \mathcal{S}_E[\phi_i] = \int_{\mathrlap{0}}^{\mathrlap{\beta}} \mathrm{d} \tau_E \int \mathrm{d}^3 x \,
@@ -152,7 +152,30 @@ conditions of the fields. For the fields to respect their statistical properties
 \end{equation}
 
 We can now return to the grand canonical ensemble and the particle number
-operator $\hat{N}$.
+operator $\hat{N}$. A suitable operator can be created from the conserved
+Noether charges, such as the one from \meqref{eq-noether-charge}. For every
+distinct conserved charge one wishes to study the dynamics of, there should be a
+separate chemical potential. Two common systems of interest are those of baryon-
+and isospin chemical potential. Baryon chemical potential is connected to the
+global U$(1)$ symmetry of the fermion fields. The associated Noether charge is
+that of total fermion number
+%
+\begin{equation}
+  N_f = \int \mathrm{d}^3 x \, \bar{\psi}_f(x) \gamma^0 \psi_f(x),
+\end{equation}
+%
+with either separate or degenerate $\mu_f$ for each fermion species. The isospin
+charge is related to the Cartan generator of the flavour mixing SU$(2)$ symmetry
+of a two flavour system (the third Pauli matrix)
+%
+\begin{equation}
+  N_I  = \int \mathrm{d}^3 x \, \bar{\psi}_i(x) \gamma^0 (\sigma^3)_{ij}
+    \psi_j(x),
+\end{equation}
+%
+which for QCD gives the up and down quarks chemical potentials that only differ
+in sign. By tuning the value of $\mu_I$, one can study the effects of a $u/d$
+asymmetry, while adjusting $\mu_f$ induces a particle/anti particle imbalance.
 
 
 
