@@ -1,5 +1,4 @@
 compile_pdf:
-  image: tianon/latex
   script:
     - latexmk -pdf thesis.tex
   artifacts:
