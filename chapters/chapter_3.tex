@@ -269,22 +269,42 @@ by weighing the appropriate gauge links with the correct fugacity coefficient
     U_0^{\dagger}(x).
 \end{equation}
 %
-This gives us the final form of the Wilson action that we will make use of for
-the work in this thesis
+This gives us the final form of the Wilson fermion matrix that we will make use
+of for the work in this thesis
 %
 \begin{align}
-  &\mathcal{S}_{f,w} = a^4 \sum_{x} \bigg(
-    \big(m + {\textstyle\frac{4 r}{a}}\big) \bar{\psi}(x) \psi(x)
-    - \frac{1}{2a} \sum_{\mu = \pm 1}^{\pm 3} \bar{\psi}(x+\hat{\mu}) (r +
-    \gamma^{\mu}) U_{\mu}(x) \psi(x)\nonumber\\
-  &-\frac{1}{2a} \big(\bar{\psi}(x+\hat{0}) (r + \gamma^{0}) z U_{0}(x) \psi(x)
-    + \bar{\psi}(x-\hat{0}) (r - \gamma^{0}) z^{-1} U_{0}^{\dagger}(x-\hat{0}) \psi(x)\big)
-    \bigg)
+  Q_{yx} \hskip1ex&=\hskip1ex \big(m + {\textstyle\frac{4 r}{a}}\big) \delta_{y,x}
+  \hskip1ex-\hskip1ex \frac{1}{2a} \sum_{\mu=\pm 1}^{\pm 3} (r + \gamma^{\mu}) U_{\mu}(x) \delta_{y- \hat{\mu},x} \nonumber\\
+   &\hskip1ex - \frac{1}{2a} \big(\, z (r+\gamma^0) U_0(x) \delta_{y-\hat{0},x}
+   + z^{-1}(r-\gamma^0) U_0^{\dagger}(x-\hat{0}) \delta_{y+\hat{0},x} \big).
 \end{align}
 
+\section{The sign problem} \label{sec-sign-problem}
 
-\section{The sign problem, NP hard, exponential cancellations}
-\label{sec-sign-problem}
+An issue arises when trying to numerically evaluate the partition function
+integrals through Monte Carlo methods. We saw that we use the probability
+density
+%
+\begin{equation}
+  P\big([U_{\mu}]\big) \propto \det Q [U_{\mu}] \, e^{-\mathcal{S}_g[U_{\mu}]}
+\end{equation}
+%
+to evaluate the integrals numerically. This requires that the fermion
+determinant is positive definite, something we guaranteed by the fact that the
+matrix was $\gamma^5$-hermitian. Unfortunately, this property is spoiled when a
+chemical potential is introduced. When digging deeper we find that this
+conceptual issue is just the tip of the iceberg, and that there is a deeper
+issue at play.
+
+The partition function has to be a real positive quantity, and therefore we know
+that if we carry out the integral properly, that all the imaginary contributions
+have to cancel out in the end. It is getting this exact cancellation out of
+inexact numerical methods that is the underlying complication. This is what is
+referred to as the \emph{sign problem}, and the problem is not exclusive to
+lattice studies of finite density fermions. Being categorised as an NP-hard
+problem it is unlikely that we will ever find a generic solution to the problem,
+and it needs to be tackled in an intelligent way though deep understanding of
+the source of the issue itself.
 
 \subsection{Reweighting}
 \subsection{Analytic extrapolation}

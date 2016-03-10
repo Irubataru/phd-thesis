@@ -530,16 +530,36 @@ lattice action with a symmetrised derivative reads
 \begin{equation} \label{eq-naive_fermions}
   \mathcal{S}_f = a^4 \sum_x \Big( 
     m \bar{\psi}(x)\psi(x) - 
-    \frac{1}{2a}\sum_{\mu=\pm 1}^{\pm 4}
+    \frac{1}{2a}\sum_{\mu=\pm 0}^{\pm 3}
     \bar{\psi}(x+\hat{\mu})\gamma^{\mu}U_{\mu}(x) \psi(x) \bigg),
 \end{equation}
 %
 where the sum goes over the discrete points on the lattice. We have also
 switched to Euclidean space, which is a conscious choice that will benefit us
 later, and used the shorthand definition $\gamma^{-\mu} \equiv -\gamma^{\mu}$.
-Including the gauge field is even easier as we can use the plaquette transporter
-we defined in \meqref{eq-transport_plaquette}. This defines the Wilson gauge
-action
+It is common to factor the fields out of the definition and write the action in
+terms of a vector-matrix product
+%
+\begin{equation}
+  \mathcal{S}_f = a^4 \bar{\psi}_y D_{yx} \psi_x, \hskip1em 
+  Q_{yx}[U_{\mu}] = m \delta_{y,x} - \frac{1}{2a} \sum_{\mu=\pm 0}^{\pm 3} \gamma^{\mu}
+    U_{\mu}(x) \delta_{y-\mu,x} \,,
+\end{equation}
+%
+where the spin and gauge indices are hidden.  This is to simplify the expression
+for the integral over the fermion fields, which can be evaluated exactly
+%
+\begin{equation} \label{eq-fermion-integral}
+  \int \prod_{i,j} \mathrm{d} \bar{\psi}_i \psi_j e^{\bar{\psi}_i D_{ij} \psi_j}
+   = \det D,
+\end{equation}
+%
+with $Q$ commonly referred to as the \emph{fermion matrix}, and $\det Q$ the
+\emph{fermion determinant}. The matrix can either be represented as a higher
+dimensional tensor or with super index describing all degrees of freedom.
+
+Having introduced the plaquette transporter in \meqref{eq-transport_plaquette},
+constructing a lattice gauge action is straightforward
 %
 \begin{equation}
   \mathcal{S}_g = \beta_R a^4 \sum_x \sum_{\mu < \nu} \Big( 1 -
@@ -617,13 +637,13 @@ Wilson term to the Lagrangian gives us
 \begin{equation}
   \mathcal{S}_{f,w} = a^4 \sum_{x} \bigg(
   \big(m + {\textstyle\frac{4 r}{a}}\big) \bar{\psi}(x) \psi(x)
-  - \frac{1}{2a} \sum_{\mu = \pm 1}^{\pm 4} \bar{\psi}(x+\hat{\mu}) (r +
+  - \frac{1}{2a} \sum_{\mu = \pm 0}^{\pm 3} \bar{\psi}(x+\hat{\mu}) (r +
   \gamma^{\mu}) U_{\mu}(x) \psi(x) \bigg).
 \end{equation}
 %
 We have introduced the \emph{Wilson parameter} $r$, which has to be in the
 interval $(0, 1]$, and is commonly chosen to be $1$. From this one can calculate
-the Hamiltonian's eigenvalues, and show that have been modified to be
+the Hamiltonian's eigenvalues, and show that they have been modified to be
 %
 \begin{equation}
   H_{\vec{p}} = \pm \sqrt{\bigg(m + \frac{r}{a}\sum_{k=1}^3 (1 - \cos (a p_k) ) \bigg)^2
@@ -734,8 +754,8 @@ variables is still too great for it to be evaluated, even numerically. The
 fermion fields have $2 N_f d_R$ independent degrees of freedom at every
 position. The gauge field is a four vector at every space-time point with
 $d_{\text{adj}}$ degrees of freedom. Even though the fermion fields can be
-integrated out exactly, this still leaves a highly dimensional integral if one
-wants to look at anything but miniscule volumes.
+integrated out exactly \eqref{eq-fermion-integral}, this still leaves a highly
+dimensional integral if one wants to look at anything but miniscule volumes.
 
 The only feasible way to handle these types of integrals is by way of Monte
 Carlo integration. This is a stochastic method that instead of summing over all
@@ -750,10 +770,37 @@ one uses the integrand as a probability distribution for the configuration
 space, in the case of the partition function
 %
 \begin{equation}
-  P[\psi,\bar{\psi}, U_{\mu}] \sim e^{-\mathcal{S}[\psi,\bar{\psi}, U_{\mu}]}.
+  P\big([\psi,\bar{\psi}, U_{\mu}]\big) \propto e^{-\mathcal{S}[\psi,\bar{\psi}, U_{\mu}]}.
 \end{equation}
 %
-Since direct sampling from the this distribution is not possible in practice,
+This is only a viable interpretation as long as the right hand side is a real
+number. We evaluate the fermion integrals according to
+\meqref{eq-fermion-integral}, giving us
+%
+\begin{equation}
+  P\big([U_{\mu}]\big) \propto \det Q[U_{\mu}] \, e^{-\mathcal{S}_g[U_{\mu}]}.
+\end{equation}
+%
+The exponent of the gauge action is clearly both real and complex. The fermion
+determinant can be shown to be real by using the fact that it is
+$\gamma^5$-hermitian
+%
+\begin{equation}
+  \gamma^5 Q \gamma^5 = Q^{\dagger}.
+\end{equation}
+%
+It is however not guaranteed to be positive. We can fix this by studying systems
+of even number of degenerate quarks. The QCD action does not mix the different
+quark species, and we therefore get a separate fermion matrix for every quark
+flavour
+%
+\begin{equation}
+  \det Q = \prod_f \det Q_f
+\end{equation}
+
+% TODO Rewrite connection
+
+Since direct sampling from the distribution is not possible in practice,
 one usually constructs a chain of samples, each being related to the previous
 through a Markov chain
 %
