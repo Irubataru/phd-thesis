@@ -293,20 +293,88 @@ to evaluate the integrals numerically. This requires that the fermion
 determinant is positive definite, something we guaranteed by the fact that the
 matrix was $\gamma^5$-hermitian. Unfortunately, this property is spoiled when a
 chemical potential is introduced. When digging deeper we find that this
-conceptual issue is just the tip of the iceberg, and that there is a deeper
-issue at play.
+conceptual issue is just the tip of the iceberg, and that there is a more
+fundamental issue at play.
 
 The partition function has to be a real positive quantity, and therefore we know
 that if we carry out the integral properly, that all the imaginary contributions
-have to cancel out in the end. It is getting this exact cancellation out of
+have to cancel out in the end. It is getting these exact cancellations out of
 inexact numerical methods that is the underlying complication. This is what is
 referred to as the \emph{sign problem}, and the problem is not exclusive to
 lattice studies of finite density fermions. Being categorised as an NP-hard
 problem it is unlikely that we will ever find a generic solution to the problem,
-and it needs to be tackled in an intelligent way though deep understanding of
+and it needs to be tackled in an intelligent way through deep understanding of
 the source of the issue itself.
 
+The problem is most easily illustrated with a sketch. In
+\figref{fig-sign-problem} we have plotted the real and imaginary part of a
+symmetric function with a complex phase, $f(x) e^{i \theta(x)}$. The real part
+integrates to something finite that is exponentially suppressed by by the phase,
+while the imaginary part integrates to zero. However, this subtlety is hard to
+reproduce numerically, and the number of operations needed to keep the errors
+down grow exponentially with the system size.
+%
+\begin{figure}
+  \includegraphics[width=.5\textwidth]{sign_problem_real}
+  \includegraphics[width=.5\textwidth]{sign_problem_imag}
+  \label{fig-sign-problem}
+  \caption{The essence of the sign problem. Real and imaginary part of a
+    function with a phase, $f(x) e^{i \theta(x)}$.}
+\end{figure}
+
+% TODO Add citations for the various methods
+
+There are multiple workarounds devised to allow for evaluating finite density
+systems using Monte Carlo methods. Such methods include reweighting, Taylor
+expansions, analytic continuation from imaginary chemical potential and  the
+method of stochastic quantisation. Although none of these methods actually
+tackle the essence of the sign problem, with sufficiently powerful computers 
+results with reasonable accuracy can be obtained. However one should take great
+care to sample correctly if one wants sensible results, as was demonstrated in
+\citep{Osborn:2008eg}.
+
+For the remainder of this chapter we will cover the basics ideas of these
+methods, and refer to \citep{deForcrand:2010ys} for a more thorough review.
+
 \subsection{Reweighting}
+
+Reweighting is a refactoring scheme used to great effect where one takes the
+phase of the fermion determinant as part of the observation rather than the
+probability weight. Factoring out the phase
+%
+\begin{equation}
+  \det Q = |\det Q| \, e^{i\theta}
+\end{equation}
+%
+one can rewrite the expectation value of an observable as
+%
+\begin{align}
+  \langle O \rangle  &=
+  \frac{1}{\mathcal{Z}}\int \prod_i \mathrm{d} \phi_i \, O \, | \det
+    Q | \, e^{i \theta} e^{-\mathcal{S}_g} \nonumber\\
+  & \hskip1em = \frac{\mathcal{Z}_{\text{pq}}}{\mathcal{Z}_{\text{pq}}}
+  \frac{\int \prod_i \mathrm{d} \phi_i \, O \, | \det
+    Q | \, e^{i \theta} e^{-\mathcal{S}_g}}{%
+  \int \prod_i \mathrm{d} \phi_i \, | \det
+    Q | \, e^{i \theta} e^{-\mathcal{S}_g}}
+  = \frac{\langle O \, e^{i\theta} \rangle_{\text{pq}}}{\langle e^{i\theta} \rangle_{\text{pq}}} .
+\end{align}
+%
+The \emph{phase quenched} ensembles, where the phase is kept constant, only have
+real weights, and one can therefore utilise Monte Carlo techniques. It is
+possible to introduce a positive function of the phase, $f(\theta)$ to lessen
+the difference between the true ensemble and the phase quenched one
+%
+\begin{equation}
+  \langle O \rangle
+  = \frac{\langle O \, e^{i\theta} / f(\theta) \rangle_f}{%
+    \langle e^{i\theta} / f(\theta) \rangle_f} .
+\end{equation}
+%
+This was explored in \citep{deForcrand:2002pa}, and an optimal choice for $f$
+was determined to be $f(\theta) = |\cos\theta|$.
+
+
 \subsection{Analytic extrapolation}
 \subsection{Taylor series}
 \subsection{Stochastic quantisation}
