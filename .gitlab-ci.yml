@@ -1,6 +1,6 @@
 compile_pdf:
   script:
-    - latexmk -pdf thesis.tex
+    - make
   artifacts:
     paths:
       - thesis.pdf
