@@ -4,3 +4,4 @@ compile_pdf:
   artifacts:
     paths:
       - thesis.pdf
+      - thesis.log
