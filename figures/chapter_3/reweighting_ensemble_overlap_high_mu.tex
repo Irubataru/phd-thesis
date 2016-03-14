@@ -1,0 +1,39 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+
+\input{../../definitions/colour.tex}
+
+\usetikzlibrary{calc,patterns}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\begin{document}
+\begin{tikzpicture}[domain=-2.35:2.35,samples=200]
+  \draw[->,thin,ColourDark] (-2.5,0) -- (2.5,0);
+  \draw[->,thin,ColourDark] (-2,-0.25) -- (-2,3.75);
+
+  \begin{scope}
+    \clip plot (\x, { 3* exp(-2*(\x-0.75)*(\x-0.75)) });
+    \fill[pattern color=ColourHl2, opacity=0.75, pattern=crosshatch] (-2,0) -- plot (\x, { 3* exp(-2*(\x+0.75)*(\x+0.75)) });
+  \end{scope}
+
+  \draw[ColourBase,thick] plot (\x, { 3* exp(-2*(\x-0.75)*(\x-0.75)) });
+  \draw[ColourHl1,thick] plot (\x, { 3* exp(-2*(\x+0.75)*(\x+0.75)) });
+
+  \draw[ColourBase,thick] (1.2,3.5) -- +(0.4,0) node[right,color=ColourDark] {$\mathcal{Z}$};
+  \draw[ColourHl1,thick] (1.2,3.0) -- +(0.4,0) node[right,color=ColourDark] {$\mathcal{Z}_f$};
+
+  \node[ColourDark, anchor=north,inner sep=0pt] at (0,-0.15) [scale=0.75] {$[\phi_i]$};
+  \node[ColourDark, anchor=south, inner sep=0pt] at (0,3.5) [scale=0.75] {$\mu/T
+    \sim 1$};
+\end{tikzpicture}
+\end{document}

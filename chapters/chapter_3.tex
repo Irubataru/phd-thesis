@@ -362,7 +362,7 @@ one can rewrite the expectation value of an observable as
 %
 The \emph{phase quenched} ensembles, where the phase is kept constant, only have
 real weights, and one can therefore utilise Monte Carlo techniques. It is
-possible to introduce a positive function of the phase, $f(\theta)$ to lessen
+possible to introduce a positive function of the phase, $f(\theta)$, to lessen
 the difference between the true ensemble and the phase quenched one
 %
 \begin{equation}
@@ -374,7 +374,69 @@ the difference between the true ensemble and the phase quenched one
 This was explored in \citep{deForcrand:2002pa}, and an optimal choice for $f$
 was determined to be $f(\theta) = |\cos\theta|$.
 
+The sign problem comes into play when the average phase drastically deviates
+from $0$, in which case the ensemble we sample from is far from the ensemble we
+want to measure, drastically increasing the statistics needed. The issue is
+sketched in \figref{fig-reweighting-overlap} where we see the overlap between
+the full and reweighted ensembles. Because the reweighted ensemble deviates
+significantly from the full ensemble at high chemical potentials, most of the
+sampled configurations will be discarded.
+
+\begin{figure}
+  \includegraphics[width=.5\textwidth]{reweighting_ensemble_overlap_low_mu}
+  \includegraphics[width=.5\textwidth]{reweighting_ensemble_overlap_high_mu}
+  \caption{Overlap of the full ensemble to the reweighted ensemble at low and
+    high chemical potential.}
+  \label{fig-reweighting-overlap}
+\end{figure}
 
 \subsection{Analytic extrapolation}
+
+% TODO Get imaginary chemical potential citations for Owe
+% TODO Introduce the Columbia plot
+% TODO Rename to imaginary chemical potential?
+
+Another method that has seen much attention recently is simulating at purely
+imaginary chemical potentials, and then analytically continue from the negative
+$\mu^2$ parameter region to the positive. At purely imaginary $\mu$ the measure
+becomes a real, positive quantity, which can be seen from
+%
+\begin{equation}
+  \det Q^{\dagger} (\mu) = \det Q(-\mu^*).
+\end{equation}
+%
+This has been used to study the critical surfaces of the Columbia plot from
+which one can see a trend as one cross into the region of real chemical
+potential.
+
+On top of being a useful method of extrapolating to real chemical potentials,
+one can also study the interesting phase structure of the region of imaginary
+chemical potentials. Because the imaginary chemical potentials introduce a pure
+phase, the partition function is periodic under centre transformations of the
+group. This is known as the Roberge-Weiss symmetry, and the periodicity leads to
+a phase transition of the same name [citation]. This has been extensively studied in
+[citation].
+
 \subsection{Taylor series}
+
+A similar approach to analytic extrapolation is to calculate the Taylor series
+of an observable and then change the order of integration and derivation,
+leading to the expansion
+%
+\begin{equation}
+  \langle O \rangle_{\mu} = \langle O \rangle_{0}
+   + \bigg\langle \frac{\mathrm{d} O}{\mathrm{d} \mu} \bigg\rangle_{\mathclap{0}} \mu
+   + \frac{1}{2} \bigg\langle \frac{\mathrm{d}^2 O}{\mathrm{d} \mu^2} \bigg\rangle_{\mathclap{0}} \mu^2
+   + \mathcal{O}(\mu^3).
+\end{equation}
+%
+This has been used to try and follow the trajectory of the phase transition into
+the region of finite $\mu$. The convergence region is however governed by the
+partition function's behaviour at imaginary chemical potential, and the
+Roberge-Weiss transition is to our knowledge the bound for any extrapolation
+from zero chemical potential. There is therefore a strict limit to how far this
+expansion is valid, which was the study of \citep{Osborn:2008eg}.
+
 \subsection{Stochastic quantisation}
+
+The final method we will cover is the use of stochastic quantisation.
