@@ -375,7 +375,7 @@ This was explored in \citep{deForcrand:2002pa}, and an optimal choice for $f$
 was determined to be $f(\theta) = |\cos\theta|$.
 
 The sign problem comes into play when the average phase drastically deviates
-from $0$, in which case the ensemble we sample from is far from the ensemble we
+from $0$, in which case the ensemble we sample is far from the ensemble we
 want to measure, drastically increasing the statistics needed. The issue is
 sketched in \figref{fig-reweighting-overlap} where we see the overlap between
 the full and reweighted ensembles. Because the reweighted ensemble deviates
@@ -439,4 +439,49 @@ expansion is valid, which was the study of \citep{Osborn:2008eg}.
 
 \subsection{Stochastic quantisation}
 
-The final method we will cover is the use of stochastic quantisation.
+The final method we will cover is the use of stochastic quantisation. This
+approach is different from the others as it doesn't use Monte Carlo methods at
+all, rather, one uses a different stochastic process to estimate the partition
+function integral, the Langevin equations \citep{Parisi:1980ys}. One introduces
+an additional continuous parameter of the fields, $\alpha$, and then evolve the
+system in this new parameter following the stochastic differential equation
+%
+\begin{equation}
+  \frac{\partial \phi_i (x, \alpha)}{\partial \alpha} = - \frac{\delta
+    \mathcal{S}}{\delta \phi} + \eta(x,\alpha)
+\end{equation}
+%
+where $\eta$ is a Gaussian white noise. The method then relies on the fact that
+in the $\alpha \to \infty$ limit, expectation value of observables with respect
+to the $\eta$ distribution is identical to the true expectation value
+%
+\begin{equation}
+  \lim_{\alpha_i\to\infty} \big\langle O [\phi(x,\alpha)]_i \big\rangle_{\eta}
+    = \big\langle O [\phi(x)]_i \big\rangle,
+\end{equation}
+%
+where the noise average is defined as
+%
+\begin{equation}
+  \big\langle O \big\rangle_{\eta} =
+  \frac{\int \prod_i \mathrm{d} \eta_i \,O\, e^{-\frac{1}{4}\int \mathrm{d}^4
+      x\, \eta(x)^2}}{\int \prod_i \mathrm{d} \eta_i \, e^{-\frac{1}{4}\int
+      \mathrm{d}^4 x\, \eta(x)^2}}\;.
+\end{equation}
+%
+This equality can be rigorously proven for real actions \citep{Huffel:2003hf},
+however one can nevertheless apply the method to complex actions. Although using
+a complex action induces imaginary contributions to the noise average, these are
+expected to average out in the limit for physical observables. This is not
+always the case as the complex Langevin sometimes diverges towards unphysical
+solutions \citep{Ambjorn:1985iw}, the reason for which is still an open question.
+
+The sign problem itself manifests itself in the complex flow of the fields. For
+large values of the chemical potential, the field configurations will spend a
+considerable amount of time in the complex phase, resulting in the need for
+longer flow times before the imaginary contributions average out. This can to
+some extent be remedied by the introduction of gauge cooling
+\citep{Seiler:2012wz}, however this places a restriction of the coupling
+strengths for which the method is applicable. Recently a comparison between the
+reach of reweighting techniques to those of stochastic quantisation, showing
+comparable results \citep{Fodor:2015doa}.

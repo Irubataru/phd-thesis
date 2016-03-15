@@ -26,8 +26,8 @@
     \fill[pattern color=ColourHl2, opacity=0.75, pattern=crosshatch] plot (\x, { 3* exp(-2*(\x+0.15)*(\x+0.15)) });
   \end{scope}
 
-  \draw[ColourBase,thick] plot (\x, { 3* exp(-2*(\x-0.15)*(\x-0.15)) });
-  \draw[ColourHl1,thick] plot (\x, { 3* exp(-2*(\x+0.15)*(\x+0.15)) });
+  \draw[ColourHl1,thick] plot (\x, { 3* exp(-2*(\x-0.15)*(\x-0.15)) });
+  \draw[ColourBase,thick] plot (\x, { 3* exp(-2*(\x+0.15)*(\x+0.15)) });
 
   \draw[ColourBase,thick] (1.2,3.5) -- +(0.4,0) node[right,color=ColourDark] {$\mathcal{Z}$};
   \draw[ColourHl1,thick] (1.2,3.0) -- +(0.4,0) node[right,color=ColourDark] {$\mathcal{Z}_f$};
