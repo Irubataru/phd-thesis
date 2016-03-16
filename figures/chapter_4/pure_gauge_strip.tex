@@ -1,0 +1,57 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/lattice_styles.tex}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+
+
+\begin{document}
+
+\begin{tikzpicture}
+  
+  % Drawing the grid
+  % ------------------------------------------
+  \draw[lattice] (-.25,-.25) grid[step=1] (5.25,1.25);
+  \draw[boundary] (-.25,0.1) -- +(0,.8);
+  \draw[boundary] (5.25,0.1) -- +(0,.8);
+  % ------------------------------------------
+
+  \begin{pgfonlayer}{background}
+    \fill[plaquette] (-.25,0) rectangle (5.25,1);
+  \end{pgfonlayer}
+
+  \draw[link line] (-.25,0) -- (5.25,0);
+  \draw[link line] (-.25,1) -- (5.25,1);
+  
+  \foreach \x in {0,...,4} {
+    \draw[link] (\x,0) -- +(1,0);
+    \draw[link] (\x+1,1) -- +(-1,0);
+  }
+
+  \foreach \x in {0,...,5} {
+    \draw[link double] (\x,0) -- +(0,1);
+  }
+
+  \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.25,-.5) -- +(1.75,0) 
+    node[midway,below=.4mm,anchor=north,inner sep=0pt, scale=0.5] {$t$};
+  \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.5,-.25) -- +(0,1.25) 
+    node[midway,left=.6mm,anchor=east,inner sep=0pt, scale=0.5] {$\vec{x}$};
+
+\end{tikzpicture}
+
+\end{document}

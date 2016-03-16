@@ -19,7 +19,7 @@ the second is the \emph{hopping parameter expansion} for heavy fermions. We
 round of the chapter with a discussion on the numerical evaluation of the
 effective theory.
 
-\section{The effective theory - \texorpdfstring{\it Introduction}{Introduction}}
+\section{The effective theory - \texorpdfstring{\itshape Introduction}{Introduction}}
 
 The essence of the derivation of the effective theory is to integrate out some
 of the degrees of freedom analytically. This will both lessen the burden for the
@@ -95,6 +95,126 @@ be placed at every position, making order counting easier than a standard Taylor
 expansion of the gauge action.
 
 \section{Pure gauge effective theory}
+
+With the character expansion at hand we can evaluate the pure gauge
+contributions to the effective action. Ignoring the quark contribution the
+effective action is
+%
+\begin{equation}
+  e^{-\mathcal{S}_{\text{eff}}} = \int \prod_{x, i} \mathrm{d} U_i(x) \, \prod_p
+    \bigg(1 + \sum_{r \neq 0} d_r u_r(\beta) \chi_r (U_p) \bigg).
+\end{equation}
+%
+Expanding the product over the plaquettes gives a sum of terms which is of the
+form
+%
+\begin{equation}
+  d_{r_1} u_{r_1}(\beta) \chi_{r_1}(U_{p_1}) \, 
+  d_{r_2} u_{r_2}(\beta) \chi_{r_2}(U_{p_2}) \, \cdots
+\end{equation}
+%
+where if one or more of the plaquettes in a term has a link that fall on
+$(x,\mu)$, gives the integral
+%
+\begin{equation}
+  \int \mathrm{d} U_{\mu}(x) \, \chi_{r_1} \big(U_{s_1} U_{\mu}(x) \big) \,
+    \chi_{r_2} \big(U_{s_2} U_{\mu}(x) \big) \, \cdots,
+\end{equation}
+%
+where $U_{s_i}$ is the remaining \emph{staple} after the link $U_{\mu}(x)$ has
+been factored out of the plaquette. One approach to solving these integrals is
+to write carry out the Kronecker product of the representation matrices and
+decompose them to their irreducible representations using the Clebsch-Gordan
+coefficients. We see that only products whose Clebsch-Gordan series contains the
+trivial representation vanish due to the identity
+%
+\begin{equation}
+  \int \mathrm{d} g \, \chi_r (g) = \delta_{r,0}.
+\end{equation}
+%
+On top of restricting the valid plaquette combinations sharing a link, it also
+restricts the graphs created from combining plaquettes to ones that have no
+boundaries. On an infinite lattice the lowest order contribution would therefore
+come from combining six fundamental plaquettes into a cube.
+
+For finite lattices the periodic boundary can be utilised to create closed
+surfaces. In fact, only graphs periodic in the temporal direction give
+contribution to the finite temperature as the non-periodic ones can be
+normalised out. Since we only integrate spatial links the contributing graphs
+need only have closed surfaces in the spatial directions. The lowest order
+contribution to the effective action comes from a strip of plaquettes spanning
+the temporal direction as shown in \figref{fig-plaquette-strip}. Since only two
+links meet at all the spatial sites we only need the integral
+%
+\begin{equation}
+  \int \mathrm{d} U \: \chi_r(V U) \: \chi_s(W U^{-1})
+    = \delta_{r,s} \frac{1}{d_r} \chi_r (V W),
+\end{equation}
+%
+which can be represented graphically as
+%
+\begin{equation}
+  \int \mathrm{d} U \;%
+  \begin{tikzpicture}[baseline={(base)}]
+    \coordinate (base) at (0,.35);
+    \draw[link line] (0,0) rectangle (2,1);
+    \draw[link] (0,0) -- (0,1)
+      node[midway,left=1mm,inner sep=0pt,ColourBase,scale=0.8] {$V$};
+    \draw[link] (2,1) -- (2,0)
+      node[midway,right=1mm,inner sep=0pt,ColourBase,scale=0.8] {$W$};
+    \draw[link double] (1,0) -- (1,1)
+      node[midway,right=1mm,inner sep=0pt,ColourBase,scale=0.8] {$U$};
+  \end{tikzpicture}
+  \,=\, \frac{1}{d_r} \;
+  \begin{tikzpicture}[baseline={(base)}]
+    \coordinate (base) at (0,.35);
+    \draw[link line] (0,0) rectangle (2,1);
+    \draw[link] (0,0) -- (0,1)
+      node[midway,left=1mm,inner sep=0pt,ColourBase,scale=0.8] {$V$};
+    \draw[link] (2,1) -- (2,0)
+      node[midway,right=1mm,inner sep=0pt,ColourBase,scale=0.8] {$W$};
+  \end{tikzpicture} \,.
+\end{equation}
+
+\begin{figure}
+  {\centering
+    \includegraphics[width=.75\textwidth]{pure_gauge_strip}\par}
+  \caption{Lowest order pure gauge contribution to the effective action}
+  \label{fig-plaquette-strip}
+\end{figure}
+
+Integrating out the spatial links of the strip of plaquettes leaves two
+disconnected loops at the neighbouring spatial lattice sites
+%
+\begin{equation}
+  e^{-\mathcal{S}_{\text{eff}}} = 1 + \sum_{\langle \vec{x}, \vec{y} \rangle} u_f^{N_t}
+   L(\vec{x}) L^*(\vec{y}) + \mathcal{O}(u_f^{N_t+1})
+\end{equation}
+%
+where $L$ is the so-called \emph{Polyakov loop}
+%
+\begin{equation}
+  L(\vec{x}) = \tr \prod_{\mathclap{t=0}}^{\mathclap{N_t-1}} U_0(\vec{x},t) .
+\end{equation}
+%
+We see that the explicit time dependence of the links have disappeared as the
+only degrees of freedom left are full windings. The integral over the effective
+action therefore simplify to
+%
+\begin{equation}
+  \mathcal{Z}_{\text{eff}} = \int \prod_{\vec{x},t} \mathrm{d} U_0(\vec{x},t) \,
+    e^{-\mathcal{S}_{\text{eff}}[L]} 
+  = \int \prod_{\vec{x}} \mathrm{d} L(\vec{x}) \, \sqrt{\det U_0} \,
+    e^{-\mathcal{S}_{\text{eff}}[L]} ,
+\end{equation}
+%
+where $\sqrt{\det U_0}$ is the Haar measure of the group, the calculation of
+which will be covered in \apxref{sec-haar_measure}. As one can see the effective
+theory is a three dimensional theory of Polyakov loop interactions. At first
+order we have a nearest neightbour spin system with an effective coupling
+$u_f^{N_t}$.
+
+
 \section{The hopping parameter expansion}
-\section{The effective theory - \texorpdfstring{\it Calculated}{Calculated}}
+\section{The effective theory - \texorpdfstring{\itshape Calculated}{Calculated}}
 \section{Numerical evaluation}

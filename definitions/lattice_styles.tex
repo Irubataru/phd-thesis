@@ -1,0 +1,34 @@
+\usetikzlibrary{decorations,decorations.markings,decorations.pathmorphing}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{
+  lattice/.style={
+    ColourDark, thin
+  },
+  boundary/.style={
+    lattice, opacity=0.75,
+    decoration={snake,segment length=1mm, amplitude=.2mm},decorate
+  },
+  ->-/.style 2 args={decoration={
+    markings,
+    mark=at position #1 with {\arrow{Stealth[angle=45:4pt,round,#2]}}},
+    postaction={decorate}
+  },
+  -<-/.style 2 args={decoration={
+    markings,
+    mark=at position #1 with {\arrowreversed{Stealth[angle=45:4pt,round,#2]}}},
+    postaction={decorate}
+  },
+  link line/.style={
+    draw = ColourBase
+  },
+  link/.style={
+    link line, ->-={.55}{ColourBase}
+  },
+  link double/.style={
+    link line, -<-={.6}{ColourBase}, ->-={.40}{ColourBase}
+  },
+  plaquette/.style={
+    fill = ColourBase, opacity=.3
+  },
+}
