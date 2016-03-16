@@ -1,7 +1,100 @@
 \chapter{The Effective Theory}
 
+Having presented the challenges and difficulties in simulating strongly
+interacting fermions, especially in the dense regime, we will introduce an
+effective theory that tackles some of these problems, while reproducing the full
+theory in a certain parameter region. We will see that although simulations of
+the effective theory still suffer from the side effects of the sign problem
+(complex actions), the essence of the sign problem is weak enough that
+reweighting can be readily applied.
+
+The work in this thesis builds on previous work with the effective theory while
+pushing the derivation further and introducing analytic tools, which we will
+cover in the next session.
+
+In this chapter we will first introduce the effective theory before we introduce
+two expansion schemes that facilitate the computation of the theory. These are
+namely the \emph{character expansion}, mentioned in \secref{sec-group_intro},
+the second is the \emph{hopping parameter expansion} for heavy fermions. We
+round of the chapter with a discussion on the numerical evaluation of the
+effective theory.
+
+\section{The effective theory - \texorpdfstring{\it Introduction}{Introduction}}
+
+The essence of the derivation of the effective theory is to integrate out some
+of the degrees of freedom analytically. This will both lessen the burden for the
+numerical evaluation, having fewer degrees of freedom left to vary, as well as
+lessen the sign problem. The sign problem being milder due to the fact that
+many, or as we will see, most, of the fluctuations cancel exactly, as they
+should. In this we will integrate the spatial gauge links of the partition
+function
+%
+\begin{equation}
+  \mathcal{Z} = \int \prod_{x, \mu} \mathrm{d} U_{\mu}(x) \, \det Q \, [U_{\mu}] \,
+    e^{-\mathcal{S}_g[U_{\mu}]}
+    \equiv \int \prod_{x} \mathrm{d} U_0(x) \,
+    e^{-\mathcal{S}_{\text{eff}}[U_0]},
+\end{equation}
+%
+which defines the effective action to be
+%
+\begin{equation}
+  \mathcal{S}_{\text{eff}} = - \log \int \prod_{x, i} \mathrm{d} U_i(x) \, \det
+    Q \, [U_{\mu}] \, e^{-\mathcal{S}_g [U_{\mu}]}.
+\end{equation}
+%
+The integrals over the spatial gauge links $U_i(x)$ is unfortunately not
+something we can evaluate analytically without the aid of approximations. We
+will therefore introduce two expansion schemes and work towards deriving the
+effective theory such that reproduce the exact expansion coefficients of the
+full theory in the end.
+
 \section{The character expansion} \label{sec-char_exp}
+
+The first expansion we will apply is the character expansion introduced in 
+\secref{sec-group_intro}. In the form of an exact equality, it is not of much
+help. Nevertheless, from the character expansion of the single plaquette gauge
+contribution
+\footnote{We will from this point forward assume that the gauge group is SU$(N_c)$
+  and that the fermions transform under the fundamental representation unless
+  stated otherwise.}
+%
+\begin{equation}
+  e^{-\beta (1 - \frac{1}{N_c} \text{Re} \tr U_p)} = u_0(\beta) \bigg(1 +
+  \sum_{r \neq 0} d_r\, u_r(\beta)\, \chi_r(U_p) \bigg),
+\end{equation}
+%
+we see that the character expansion coefficients are dependent on the lattice
+gauge coupling $\beta$. It can be easily seen that the higher dimensional
+representations come with a higher power of this coupling. A natural ordering
+therefore arises if one expands around the infinite coupling limit, $g\to\infty$,
+$\beta\to0$. This expansion scheme is aptly named the \emph{strong coupling
+  expansion}, and has been the focus of numerous studies for the past decades,
+also having picked up in recent years by groups studying conformal field
+theories. Introductions to the field can be found in \cite{Drouffe:1983fv} and
+\cite{montvay1997quantum}.
+
+The lowest order character expansion coefficient, namely that of the fundamental
+representation, has for SU$(3)$ been calculated to high orders
+%
+\begin{align}
+  u_f(\beta) &= \frac{1}{N_c} \frac{\int \mathrm{d} g\, \tr g\, e^{-\frac{\beta}{2 N_c}
+    ( \tr g + \tr g^{\dagger})}}{\int \mathrm{d} g\: e^{-\frac{\beta}{2 N_c}
+    ( \tr g + \tr g^{\dagger})}} \nonumber\\
+  &\hskip1em= \frac{
+    x + \frac{1}{2} x^2 + x^3 + \frac{5}{8} x^4 + \frac{13}{24} x^5 + \mathcal{O}(x^6)%
+  }{%
+    1 + x^2 + \frac{1}{3} x^3 + \frac{1}{2} x^4 + \frac{1}{4} x^5 + \mathcal{O}(x^6)%
+  }, \hskip2ex x=\frac{\beta}{2 N_c}.
+\end{align}
+%
+To leading order $u_f(\beta) \approx \frac{\beta}{2 N_c^2}$, and we
+therefore use $u_f$ as our expansion parameter rather than $\beta$. The
+character expansion only permits a single plaquette from any representation to
+be placed at every position, making order counting easier than a standard Taylor
+expansion of the gauge action.
+
 \section{Pure gauge effective theory}
 \section{The hopping parameter expansion}
-\section{The full effective theory}
+\section{The effective theory - \texorpdfstring{\it Calculated}{Calculated}}
 \section{Numerical evaluation}
