@@ -188,13 +188,13 @@ disconnected loops at the neighbouring spatial lattice sites
 %
 \begin{equation}
   e^{-\mathcal{S}_{\text{eff}}} = 1 + \sum_{\langle \vec{x}, \vec{y} \rangle} u_f^{N_t}
-  \big( L(\vec{x}) L^*(\vec{y}) + L^*(\vec{x}) L(\vec{y}) \big) + \mathcal{O}(u_f^{N_t+1})
+  \big( L_{\vec{x}} L^*_{\vec{y}} + L^*_{\vec{x}} L_{\vec{y}} \big) + \mathcal{O}(u_f^{N_t+4})
 \end{equation}
 %
 where $L$ is the so-called \emph{Polyakov loop}
 %
 \begin{equation}
-  L(\vec{x}) = \tr \prod_{\mathclap{t=0}}^{\mathclap{N_t-1}} U_0(\vec{x},t) .
+  L_{\vec{x}} = \tr \prod_{\mathclap{t=0}}^{\mathclap{N_t-1}} U_0(\vec{x},t) .
 \end{equation}
 %
 We see that the explicit time dependence of the links have disappeared as the
@@ -204,7 +204,7 @@ action therefore simplify to
 \begin{equation}
   \mathcal{Z}_{\text{eff}} = \int \prod_{\vec{x},t} \mathrm{d} U_0(\vec{x},t) \,
     e^{-\mathcal{S}_{\text{eff}}[L]} 
-  = \int \prod_{\vec{x}} \mathrm{d} L(\vec{x}) \, \sqrt{\det U_0} \,
+  = \int \prod_{\vec{x}} \mathrm{d} L_{\vec{x}} \, \sqrt{\det U_0} \,
     e^{-\mathcal{S}_{\text{eff}}[L]} ,
 \end{equation}
 %
@@ -228,5 +228,204 @@ this thesis is mostly concerned with the cold and dense regime, in which pure
 gauge corrections are negligible.
 
 \section{The hopping parameter expansion}
-\section{The effective theory - \texorpdfstring{\itshape Calculated}{Calculated}}
+
+Even for lattice simulations at zero chemical potential, evaluating the fermion
+determinant is by far the most expensive operation. For heavy quarks it takes a
+close to block diagonal form, while for light quarks the dynamics delocalise,
+and no such simplifications appear. It is therefore clear that the analysis of
+heavy quarks simplifies and an expansion around this limit can be used to derive
+an effective theory for heavy quarks. By rescaling the fields, we see that the
+quark matrix can be refactored to be
+%
+\begin{equation}
+  Q_{yx} = \delta_{yx} - \kappa H_{yx}, \hskip1em \kappa = \frac{1}{2(4 + am)}
+\end{equation}
+%
+where we have introduced the \emph{hopping parameter} $\kappa$ and the
+\emph{hopping matrix} $H$. The hopping matrix for Wilson fermions is
+%
+\begin{equation}
+  H_{yx} = (1 \pm \gamma^0) e^{\pm a\mu} U_{\pm 0}(x) \delta_{y \mp \hat{0},x}
+    + \sum_{\mu = \pm 1}^{\pm 3} (1 + \gamma^{\mu}) U_{\mu}(x) \delta_{y-\hat{\mu},x},
+\end{equation}
+%
+where we have chosen $r=1$. We then expand the fermion propagator in powers of
+$\kappa$ resulting in
+%
+\begin{equation}
+  Q^{-1}_{yx} = \sum_{n=0}^{\infty} \kappa^n (H^n)_{yx} .
+\end{equation}
+%
+Since every factor of $H$ comes with a $\delta_{y+\hat{\mu},x}$, they symbolise
+a single discrete hop on the lattice. And the full fermion propagator is
+therefore the sum of all fermion lines starting at $x$ and ending at $y$. Due to
+the accompanying spin factor, and the fact that $(1 - \gamma^{\mu}) (1 +
+\gamma^{\mu}) = 0$, it is restricted to lines with no backtracking.  If the
+series is truncated it is approximated by lines with a specific upper bound for
+its length. The fermion matrix can likewise be rewritten using the trace-log
+identity
+%
+\begin{equation}
+  \det Q = \exp \big(\tr \log (1 - \kappa H) \big) = \exp \bigg( -\sum_{n=1}^{\infty} \frac{1}{n}
+  \kappa^n \tr H^n \bigg).
+\end{equation}
+%
+The trace over $H^n$ gives all closed fermion loops of length $n$ with no
+backtracking. In lieu of the hopping expansion we see that the fermion
+propagator is the sum of all fermion lines while the determinant is the
+exponential of all fermion loops.
+
+\section{The effective theory}
+
+The first step towards deriving an effective three dimensional theory for heavy
+quarks and strong coupling is to separate the temporal and spatial hops
+%
+\begin{equation}
+  H_{yx} = T^{\pm}_{yx} + \sum_{i=1}^3 S_{i,yx}^{\pm},
+\end{equation}
+%
+where the temporal and spatial hopping matrices are
+%
+\begin{align}
+  T^{\pm}_{yx} &= (1 \pm \gamma^{0}) e^{\pm a\mu} U_{\pm 0}(x)\,
+    \delta_{\vec{y},\vec{x}} \, \delta_{t_y, t_x\pm1},\\
+  S_{i,yx}^{\pm} &= (1\pm \gamma^i) U_{\pm i}(x) \,
+    \delta_{\vec{y},\vec{x}\pm\hat{i}} \,\delta_{t_y,t_x}.
+\end{align}
+%
+The fermion determinant can then be refactored into a static factor and a
+kinematic factor by factoring out the temporal hopping matrix
+%
+\begin{equation}
+  \det (Q) = \det (1 - \kappa T^{\pm} - \kappa S^{\pm})
+   = \det\underbrace{(1 - \kappa T^{\pm})}_{Q_{\text{stat}}} \,
+   \det \underbrace{\Big(1 - \frac{\kappa S^{\pm}}{1 - \kappa
+       T^{\pm}}\Big)}_{Q_{\text{kin}}}.
+\end{equation}
+
+\subsection{Static propagator and static determinant}
+
+For the derivation of the effective theory we need the full static propagator
+and static determinant. Since every hop in the temporal direction come with a
+fugacity factor, the true temporal hopping expansion parameter is $e^{\pm a\mu}
+\kappa$, which is not a small parameter for sufficiently dense systems. 
+
+We can simplify the static determinant through the trace-log identity
+%
+\begin{equation}
+  \det (1 - \kappa T^{\pm}) = \exp \bigg(- \sum_{n=1}^{\infty} \frac{1}{n}
+  \kappa^n \tr (T^+ + T^-)^n \bigg).
+\end{equation}
+%
+Due to the no backtracking criterion we get no mixed $T^+ T^-$ terms, and the
+static determinant factorises into fermion and anti-fermion static determinants
+%
+\begin{equation}
+  \det (1 - \kappa T^{\pm}) = \det (1 - \kappa T^+)\, det (1 - \kappa T^-) .
+\end{equation}
+%
+The trace in the determinant restricts us to closed loops, which for the static
+hopping matrix results in only full windings in the time direction. A term that
+winds the lattice $n$ times has the mathematical form
+%
+\begin{align}
+  &(-1)^n \kappa^{n N_t} (1+\gamma^0)^{n N_t} e^{n N_t a \mu}
+    \sum_{i=0}^{N_t-1} \prod_{t_i=0}^{n N_t-1} U_0(\vec{x},t_i) \nonumber\\
+  &\hskip3cm= \frac{1}{2} N_t (-1)^n (2 e^{a\mu} \kappa)^{n N_t} (1+\gamma^0) W^n(\vec{x}),
+\end{align}
+%
+where $W(\vec{x})$ is the untraced Polyakov loop, the minus sign originate from
+fermion anti-periodicity , and we have used the fact that $(1\pm\gamma^{\mu})^2
+= 2 (1\pm\gamma^{\mu})$. The static determinant therefore simplifies to
+%
+\begin{equation}
+  \exp\bigg(-\frac{1}{2} \tr(1+\gamma^0) \sum_{n=1}^{\infty} \frac{1}{n} (-h_1)^{n}
+  \tr W^n (\vec{x}) \bigg) = \prod_{\vec{x}} \det(1 + h_1 W(\vec{x}))^2,
+\end{equation}
+%
+in which $h_1(\mu) = (2e^{a\mu}\kappa)^{N_t} = z\, e^{N_t \log(2\kappa)}$
+($=\bar{h}_1(-\mu)$) is the static loop (anti loop) weight. Since $W$ is
+a product of $U_0$ matrices it has to belong to the same symmetry group. We can
+therefore use trace decomposition of the determinant together with the
+Cayley-Hamilton theorem to express it in terms of the traces of $W$, namely the
+Polyakov loops. We state the result for SU$(3)$
+%
+\begin{equation}
+  \det(1 + h_1 W) = 1 + h_1 L + h_1^2 L^* + h_1^3
+\end{equation}
+%
+and refer to \apxref{sec-static-determinant} for the more generic approach. The
+full static determinant is therefore
+%
+\begin{equation}
+  \det(1 - \kappa T^{\pm}) = \prod_{\vec{x}} (1 + h_1 L_{\vec{x}} + h_1^2 L^*_{\vec{x}} + h_1^3)^2
+    (1 + \bar{h}_1 L^*_{\vec{x}} +  \bar{h}_1^2 L_{\vec{x}} + \bar{h}_1^3)^2.
+\end{equation}
+
+The static propagator can be calculated in several ways. Either one can once
+more apply the Cayley-Hamilton theorem to calculate the matrix inverse, or one
+can expand in $\kappa$ and then resum the resulting expression to all orders.
+Since the latter approach is limited in convergence, we will choose a third
+method, a straightforward calculation of the matrix inverse. Once more, due to
+the fact that backtracking is disallowed, the propagator separates into two
+pieces
+%
+\begin{equation}
+  \frac{1}{1 - \kappa T^{\pm}} = \frac{1}{1 - \kappa T^+} + \frac{1}{1 - \kappa
+    T^-} -1,
+\end{equation}
+%
+and we are therefore content calculating one of these. The matrix in temporal
+indices has a simple pseudo upper triangular shape, except for one term from the
+periodic boundary condition
+%
+\begin{equation}
+  (1-\kappa T^+)_{t_y t_x} = 
+  \begin{pmatrix}
+    1 & \minus\eta U_0 (1) & 0 & 0 & \cdots & 0\\
+    0 & 1 & \minus\eta U_0 (2) & 0 & \cdots & 0\\
+    0 & 0 & 1 & \minus\eta U_0 (3) & \cdots & 0\\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots\\
+    \eta U_0 (N_t) & 0 & 0 & 0 & \cdots & 1\\
+  \end{pmatrix},
+\end{equation}
+%
+where $\eta = (1+\gamma^0)\kappa e^{a\mu}$ is the time independent factor in
+$T^+$. This matrix can be easily inverted by standard row reduction, giving
+%
+\begin{equation}
+  \scalemath{0.78}{%
+  \frac{1}{1 + \prod_{t=1}^{N_t} \eta U_0(t)}
+  \begin{pmatrix}
+    1 & \eta U_0(1) & \eta^2 U_0(1) U_0(2) & \cdots & \prod_{t=1}^{N_t-1}\eta U_0(t)\\
+    \minus\eta^{N_t-1} U^{\dagger}_0(2) & 1 & \eta U_0(2) & \cdots & \prod_{t=2}^{N_t-1}\eta U_0(t)\\
+    \minus\eta^{N_t-2} U^{\dagger}_0(2) U^{\dagger}_0(3) & \minus\eta^{N_t-1}
+      U^{\dagger}_0(3) & 1 & \cdots & \prod_{t=3}^{N_t-1}\eta U_0(t)\\
+    \vdots  & \vdots  & \vdots  & \ddots & \vdots \\
+    \minus\eta\prod_{t=2}^{N_t} U^{\dagger}_0(t) &
+    \minus\eta^2\prod_{t=3}^{N_t} U^{\dagger}_0(t) &
+    \minus\eta^3\prod_{t=4}^{N_t} U^{\dagger}_0(t) & \cdots & 1
+  \end{pmatrix}}
+\end{equation}
+%
+which on component form simplifies to
+%
+\begin{equation}
+  (1 - \kappa T^{\pm})^{-1}_{t_yt_x} = \delta_{t_y,t_x} + \frac{1 \pm \gamma^0}{2} K^{\pm}_{t_yt_x},
+\end{equation}
+%
+\begin{align}
+  K^+_{t_y t_x} &= \frac{h_1 W}{1 + h_1 W} \delta_{t_y t_x} +
+  (2 e^{a\mu}\kappa)^{t_y-t_x}
+  \frac{U_0(t_x \to t_y)}{1 + h_1 W}
+  ( \theta_{t_y, t_x} - h_1 \theta_{t_x, t_y})\\
+  K^-_{t_y t_x} &= \frac{\bar{h}_1 W^{\dagger}}{1 + \bar{h}_1 W^{\dagger}} \delta_{t_y t_x} +
+  (2 e^{-a\mu}\kappa)^{t_x-t_y}
+  \frac{U_0(t_x \to t_y)}{1 + \bar{h}_1 W^{\dagger}}
+  ( \theta_{t_x, t_y} - \bar{h}_1 \theta_{t_y, t_x})
+\end{align}
+
+
+
+
 \section{Numerical evaluation}
