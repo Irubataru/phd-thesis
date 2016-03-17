@@ -1,34 +1,69 @@
-\usetikzlibrary{decorations,decorations.markings,decorations.pathmorphing}
+\usetikzlibrary{decorations,decorations.markings,decorations.pathmorphing,decorations.pathreplacing}
 \usetikzlibrary{arrows.meta}
+
+\newlength{\deltaskip}
+\setlength{\deltaskip}{.5mm}
+
+\tikzset{
+  % style to apply some styles to each segment of a path
+  on each segment/.style={
+    decorate,
+    decoration={
+      show path construction,
+      moveto code={},
+      lineto code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+      curveto code={
+        \path [#1] (\tikzinputsegmentfirst)
+        .. controls
+        (\tikzinputsegmentsupporta) and (\tikzinputsegmentsupportb)
+        ..
+        (\tikzinputsegmentlast);
+      },
+      closepath code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+    },
+  },
+}
 
 \tikzset{
   lattice/.style={
-    ColourDark, thin
+    ColourDark, line width=.1mm
   },
   boundary/.style={
     lattice, opacity=0.75,
     decoration={snake,segment length=1mm, amplitude=.2mm},decorate
   },
-  ->-/.style 2 args={decoration={
-    markings,
-    mark=at position #1 with {\arrow{Stealth[angle=45:4pt,round,#2]}}},
-    postaction={decorate}
+  mid arrow/.style 2 args={
+    postaction={
+      decorate,
+      decoration={
+        markings,
+        mark=at position #1 with {\arrow{Stealth[angle=45:4pt,round,#2]}}}},
   },
-  -<-/.style 2 args={decoration={
-    markings,
-    mark=at position #1 with {\arrowreversed{Stealth[angle=45:4pt,round,#2]}}},
-    postaction={decorate}
+  mid arrow reversed/.style 2 args={
+    postaction={
+      decorate,
+      decoration={
+        markings,
+        mark=at position #1 with {\arrowreversed{Stealth[angle=45:4pt,round,#2]}}}},
   },
   link line/.style={
-    draw = ColourBase
+    draw = ColourBase, line width=.2mm
   },
   link/.style={
-    link line, ->-={.55}{ColourBase}
+    link line, postaction={on each segment={mid arrow={.55}{ColourBase}}}
   },
   link double/.style={
-    link line, -<-={.6}{ColourBase}, ->-={.40}{ColourBase}
+    link line, postaction={
+      mid arrow={.4}{ColourBase},
+      mid arrow reversed={.6}{ColourBase}}
   },
   plaquette/.style={
-    fill = ColourBase, opacity=.3
+    fill = ColourBase, fill opacity=.1
   },
 }
