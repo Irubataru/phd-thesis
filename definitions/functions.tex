@@ -7,6 +7,7 @@
 \newcommand{\apxtoken}{\textsc{appendix}}
 \newcommand{\apxstoken}{\textsc{appendices}}
 \newcommand{\eqtoken}{\textsc{eq}}
+\newcommand{\eqstoken}{\textsc{eqs}}
 \newcommand{\figtoken}{\textsc{figure}}
 
 % ----------------- %
@@ -54,11 +55,16 @@
 % Customized mathematics %
 % ---------------------- %
 
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 \newcommand{\minus}{\raisebox{.16ex}{\scalebox{0.75}{$-$}}}
 
 % To get "eqnarray" centred alignment
 % See: http://tex.stackexchange.com/a/102845/39313
 \newcommand*\centermathcell[1]{\omit\hfil$\displaystyle#1$\hfil\ignorespaces}
+
+% Get a raised \chi
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}}
 
 % New definition of square root:
 % it renames \sqrt as \oldsqrt

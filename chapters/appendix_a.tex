@@ -1,7 +1,154 @@
 \chapter{Analytical Tools For SU(\texorpdfstring{$N$}{N})}
 
-\section{Calculating the Haar measure} \label{sec-haar_measure}
+The analytic computations contained herein revolve around various SU$(N)$
+dependent quantities, and we therefore need basis for computing these. In this
+appendix we will look at how to compute all the necessary components such as the
+Haar measure in \secref{sec-haar_measure}, the character integrals in
+\secref{sec-character_integrals}, integrals over group polynomials in
+\secref{sec-sun_integrals} and finally the fermionic functions in
+\secrefs{sec-evaluating-fermion-determinants,sec-evaluating-polyakov-coupling-terms}.
+
+\section{Computing the Haar measure} \label{sec-haar_measure}
+
+We want the invariant measure of a group element expressed in terms of its
+spectral decomposition. Any matrix representation of an U$(N)$ matrix has
+unitary eigenvalues $\lambda_i = e^{i\theta_i}$ only, where $\sum_i \theta_i =
+0 \bmod 2\pi$ for the elements of SU$(N)$. We write a matrix $U$ that is a representation
+of U$(N)$ in its decomposed form
+%
+\begin{equation}
+  U = W \Lambda W^{\dagger},
+\end{equation}
+%
+where $\Lambda = \diag (e^{i\theta_1}, ..., e^{i\theta_n})$, and $W W^{\dagger}
+= \mathbb{1}_R$.  A change in $U$ is therefore
+%
+\begin{equation}
+  \mathrm{d}U = W \mathrm{d} \Lambda W^{\dagger} +  W \big[ W^{\dagger} \mathrm{d}
+  W, \Lambda \big] W^{\dagger}.
+\end{equation}
+%
+Using the standard unitary matrix metric, $||M||^2 = \tr(M^{\dagger} M)$, we get
+the size of an infinitesimal square to be
+%
+\begin{equation} \label{eq-infinitesimal-group-square}
+  \mathrm{d} s^2 = \tr (\mathrm{d} U^{\dagger} \mathrm{d} U)
+  = \sum_i \mathrm{d} \theta_i^2 + 2 \sum_{i > j}
+    \big|e^{i \theta_i} - e^{i\theta_j}\big|^2
+    \big| (W^{\dagger} \mathrm{d} W)_{ij} \big|^2
+\end{equation}
+%
+Since one identifies the set of coordinates to the metric through
+$\mathrm{d} s^2 = g_{\mu\nu} \mathrm{d} \xi^{\mu} \mathrm{d} \xi^{\nu}$,
+it is natural to construct the measure as
+%
+\begin{equation} \label{eq-natural-group-measure}
+  \mathrm{d} U(x) = \sqrt{\det g(x)} \prod_{\mu} \mathrm{d}\xi^{\mu}.
+\end{equation}
+%
+To reconcile these two formulae we use the Baker-Campbell-Hausdorff formula to
+express $W^{\dagger} \mathrm{d} W$ in terms of the generators of U$(d_R)$
+%
+\begin{equation}
+  (W^{\dagger} \mathrm{d} W)_{ij} = i (T_a)_{ij} f_{a b}(w) \mathrm{d} w_b
+  \equiv Q_{ijk}(w) \mathrm{d} w_k
+\end{equation}
+%
+with $f$ being some function of the parameters of the generator decomposition.
+The general coordinates will therefore be a combination of the eigenvalue angles
+$\theta_i$ and the parameters $w_i$. The determinant of the metric factorise
+into parts dependent on these coordinates, and we get
+%
+\begin{equation}
+  \det g(x) \sim \big(\det Q(w)\big)^2 \prod_{i>j} \big|e^{i\theta_i} -
+  e^{i\theta_j}\big|^4.
+\end{equation}
+%
+Since we are mostly concerned with the integrals over the eigenvalues only, one
+can integrate out the $w_i$, and get the invariant measure
+%
+\begin{equation}
+  \mathrm{d} U = \underbrace{\prod_{i>j} \big| e^{i\theta_i} - e^{i\theta_j} \big|^2}_{H(U)} \prod_i
+  \mathrm{d} \theta_i,
+\end{equation}
+%
+where we have identified the Haar measure, $H(U)$. Although this relation is
+only true for U$(N)$, it can be trivially extended to SU$(N)$ through the
+previously mentioned restriction, $\sum_i \theta_i = 0 \bmod 2\pi$.
+
+To facilitate the calculation of the Haar measure, we introduce the Vandermonde
+determinant
+%
+\begin{equation}
+  \prod_{i>j} (z_i - z_j) = \det \mathcal{M} =
+  \begin{vmatrix}
+    1 & z_1 & \cdots & z_1^{N-1} \\
+    1 & z_2 & \cdots & z_2^{N-1} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    1 & z_N & \cdots & z_N^{N-1} 
+  \end{vmatrix}.
+\end{equation}
+%
+This relation one can use to rewrite the Haar measure
+%
+\begin{equation}
+  H(U) = \prod_{i>j} \big| z_i - z_j \big|^2
+   = \det \mathcal{M}^{\dagger} \mathcal{M} = \scalemath{0.8}{%
+  \begin{vmatrix}
+    N & \sum_i z_i & \sum_i z_i^2 & \cdots & \sum_i z_i^{N-1} \\
+    \sum_i z_i^{\dagger} & N & \sum_i z_i & \cdots & \sum_i z_i^{N-2} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    \sum_i z_i^{\dagger N-1} & \sum_i z_i^{\dagger N-2} & \sum_i z_i^{\dagger N-3} & \cdots & N
+  \end{vmatrix}}.
+\end{equation}
+%
+For the fundamental representation of SU$(N)$, one has $N - 1$ independent
+eigenvalues. We know that
+%
+\begin{equation}
+  \sum_i z_i^m = \tr U^m \equiv \chi_m,
+\end{equation}
+%
+correspond to the $m$'th powered character. One can therefore employ the
+Caylay-Hamilton theorem to determine how these angles depend on each other.
+This equation reads
+%
+\begin{equation} \label{eq-caylay-hamilton}
+  M^N + c_{N-1} M^{N-1} + \cdots + c_1 M + (-1)^N \det M\: \mathbb{1}_R = 0,
+\end{equation}
+%
+where the coefficients are
+%
+\begin{equation}
+  c_i = \sum_{\{k_n\}} \prod_{l=1}^N \frac{(-1)^{k_l+1}}{l^{k_l} k_l!}
+  \tr(M^l)^{k_l},
+\end{equation}
+%
+in which the sum goes over all integer partitions $\{k_n\}$ so that
+%
+\begin{equation}
+  \sum_{l=1}^N l k_l  = N - i.
+\end{equation}
+%
+Since we know that $\det U = 1$ and $U^{\dagger} U = \mathbb{1}$ for all
+matrices in SU$(N)$, \meqref{eq-caylay-hamilton} can be multiplied by powers of
+$U^{\dagger}$ and traced to find relations to reduce the number of unknowns in
+the Haar measure.
+
+As an example, for SU$(3)$, $\chi_2 = \chi^2 - 2 \chi^*$, giving
+%
+\begin{equation}
+  H(U) =
+  \begin{vmatrix}
+    3 & \chi & \chi^2 - 2 \chi^* \\
+    \chi^* & 3 & \chi \\
+    \chi^{*2} - 2 \chi & \chi^* & 3
+  \end{vmatrix} = 27 - 18 \chi \chi^* + 8 \mathrm{Re} \chi^3 - (\chi \chi^*)^2.
+\end{equation}
+
 \section{\texorpdfstring{$\chi_r \chi_s$}{Ln Lm} integrals} \label{sec-character_integrals}
+
 \section{\texorpdfstring{$g^n (g^{-1})^m$}{Un Udm} integrals} \label{sec-sun_integrals}
-\section{Fermion determinant}
+\section{Fermion determinant} \label{sec-evaluating-fermion-determinants}
 \section{\texorpdfstring{$W_{nm}$}{Wnm} terms}
+\label{sec-evaluating-polyakov-coupling-terms}
