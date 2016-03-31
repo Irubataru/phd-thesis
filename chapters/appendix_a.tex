@@ -137,18 +137,184 @@ the Haar measure.
 
 As an example, for SU$(3)$, $\chi_2 = \chi^2 - 2 \chi^*$, giving
 %
-\begin{equation}
+\begin{equation} \label{eq-su3-haar-measure}
   H(U) =
   \begin{vmatrix}
     3 & \chi & \chi^2 - 2 \chi^* \\
     \chi^* & 3 & \chi \\
     \chi^{*2} - 2 \chi & \chi^* & 3
-  \end{vmatrix} = 27 - 18 \chi \chi^* + 8 \mathrm{Re} \chi^3 - (\chi \chi^*)^2.
+  \end{vmatrix} = 27 - 18\, |\chi|^2  + 8 \mathrm{Re}\, \chi^3 - |\chi|^4.
 \end{equation}
 
 \section{\texorpdfstring{$\chi_r \chi_s$}{Ln Lm} integrals} \label{sec-character_integrals}
 
+One type of integrals we will encounter often are integrals of the form
+%
+\begin{equation}
+  I_{nm} = \int \mathrm{d} U \, \chi(U)^n \chi(U^{\dagger})^m.
+\end{equation}
+%
+These can be most easily calculated through their trigonometric decomposition,
+using the fact that
+%
+\begin{equation}
+  \left. \renewcommand{\arraystretch}{1.75}
+  \begin{array}{c}
+    \chi(U) = {\textstyle\sum_{\alpha=1}^N} e^{i \theta_\alpha} \\
+    \chi(U^{\dagger}) = {\textstyle\sum_{\alpha=1}^N} e^{- i \theta_\alpha}
+  \end{array}\right\}\kern-\nulldelimiterspace
+  \hskip1em {\textstyle\sum_{\alpha=1}^N} \theta_{\alpha} = 0 \bmod 2\pi
+\end{equation}
+%
+together with
+%
+\begin{equation} \label{eq-oscillating-integral}
+  \int_{\mathrlap{-\pi}}^{\pi} \mathrm{d}\alpha \, e^{in \alpha} = \delta(n),
+  \text{ for } n \in \mathbb{Z}
+\end{equation}
+%
+We thus get
+%
+\begin{equation}
+  I_{nm} = \int \big[ \mathrm{d} \theta \big]_i\, H(U)
+  \delta\big({\textstyle\sum}\theta_i = 0\big)
+  \sum_{\{n_i\}} \sum_{\{m_i\}} \prod_{k=1}^n
+  \prod_{l=1}^m \frac{k l}{n_k! m_l!} e^{i n_k \theta_k - i m_l \theta_l}
+\end{equation}
+%
+with the sum over integer partitions so that
+%
+\begin{equation}
+  \sum_{i=1}^N (n,m)_i = (n,m).
+\end{equation}
+%
+Because of \meqref{eq-oscillating-integral}, only the combinations where the sum
+over the angles in the exponent equals zero will survive the integral, and
+therefore calculating the integral reduces to counting all these combinations.
+
+\subsection{Integrals over characters of SU\texorpdfstring{$(3)$}{(3)}}
+
+Since this is not a problem that is solvable in general, we will specialise on
+the group SU$(3)$. In this case we only have two free angles, let's call them
+$\theta$ and $\phi$. The integral is thus
+%
+\begin{align}
+  &I_{nm} = \int \mathrm{d} \theta \mathrm{d} \phi \, H(\theta,\phi)
+  \big(e^{i\theta} + e^{i\phi} + e^{-i(\theta + \phi)}\big)^n
+  \big(e^{-i\theta} + e^{-i\phi} + e^{i(\theta + \phi)}\big)^m \nonumber\\
+  &=\int \mathrm{d} \theta \mathrm{d} \phi \, H(\theta,\phi)
+  \sum_{\{l_i\}} \sum_{\{k_i\}} \frac{n!}{l_1! l_2! l_3!} \frac{m!}{k_1! k_2!
+    k_3!} e^{i \theta (l_1 - l_3 - k_1 + k_3) + i \phi (l_2 - l_3 - k_2 + k_3)}.
+\end{align}
+%
+If we ignore the Haar measure and define a new integral, $J_{nm} = \int
+[\mathrm{d} \theta]_i\, \chi^n \chi^{*m}$, we see by the arguments at the previous
+section that this integral is
+%
+\begin{equation}
+  J_{nm} = \sum_{\{l_i\}} \sum_{\{k_i\}}
+    \frac{n!}{l_1! l_2! l_3!} \frac{m!}{k_1! k_2!k_3!}\,
+    \delta\big(l_1 - l_3 - k_1 + k_3\big)\, \delta\big(l_2 - l_3 - k_2 + k_3\big).
+\end{equation}
+%
+We carry out the explicit sum over four of the variables, and are left
+with
+%
+\begin{equation}
+  J_{nm} = (2\pi)^2 \sum_{l = 0}^n \sum_{k = 0}^m
+    \frac{n!}{l!\, (k + \frac{n-m}{3})!\,(\frac{2n+m}{3} - l - k)!}
+    \frac{m!}{k!\, (l + \frac{m-n}{3})!\,(\frac{2m+n}{3} - l - k)!}
+\end{equation}
+%
+where the remaining variables $l$ and $k$ are restricted by the requirement that
+the factorials are all non negative. Since the Haar measure itself is expressed
+in terms of the characters, using \meqref{eq-su3-haar-measure} we see that the
+full integral is
+%
+\begin{equation}
+  I_{n,m} = 27\, J_{n,m} - 18\, J_{n+1,m+1} + 4\, J_{n+3,m} + 4\, J_{n,m+3} - J_{n+2,m+2}.
+\end{equation}
+%
+From the equation for $J_{nm}$, is is easy to see that it is symmetric in its
+indices, $J_{nm} = J_{mn}$ , and by extension, so is $I_{nm}$. Since all the
+quantities of interest are normalised, we introduce the normalised integral,
+$\tilde{I}_{nm} = I_{nm} / I_{00}$, the value of some of which are listed in 
+\tabref{tab-character-integrals}. Analysing the sequences one notices that they
+have deep combinatorial connections \citep{OEIS}. E.g. the first row is the sequence of
+permutations of $S_n$ with longest increasing subsequence length $<=3$
+(A005802). The first column on the other hand corresponds to the 3 dimensional
+Catalan numbers (A005789). A more thorough review of the combinatorics of
+SU$(3)$ can be found in \citep{Unger:2014oga}.
+
+\begin{table}
+  \begin{center}
+    \begin{tabular}{*8c} \toprule
+      {$\tilde{I}_{nm}$} & $\mathbb{1}$ & $\chi\chi^*$ & $(\chi\chi^*)\mathrlap{^2}$ & $(\chi\chi^*)\mathrlap{^3}$ 
+        & $(\chi\chi^*)\mathrlap{^4}$ & $(\chi\chi^*)\mathrlap{^5}$ & $(\chi\chi^*)\mathrlap{^6}$ \\\midrule
+      $\mathbb{1}$ & 1 & 1 & 2 & 6 & 23 & 103 & 513 \\
+      $\chi^3$ & 1 & 3 & 11 & 47 & 225 & 1\,173 & 6529 \\
+      $\chi^6$ & 5 & 21 & 98 & 498 & 2\,709 & 15\,565 & 93\,500 \\
+      $\chi^9$ & 42 & 210 & 1\,122 & 6\,336 & 37\,466 & 230\,230 & 1\,461\,330 \\
+      $\chi^{12}$ & 462 & 2\,574 & 15\,015 & 91\,091 & 571\,428  & 3\,688\,932 & 24\,410\,334 \\
+      $\chi^{15}$ & 6\,006 & 36\,036 & 223\,652 & 1\,429\,428 & 9\,372\,168 & 62\,833\,836 & 429\,568\,036 \\\bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Some integrals over the characters of SU$(3)$ where the integrand is made
+    up of the product of the topmost row with the leftmost column. All other
+    integrals are zero due to the selection rule of
+    \protect\meqref{eq-selection}.}
+  \label{tab-character-integrals}
+\end{table}
+
+\subsection{Characters of plaquettes}
+
+Another type of integrals that appear often are those of characters over
+plaquettes sharing a common line, like the ones in
+\secref{sec-pure-gauge-theory}. These are integrals of the form
+%
+\begin{equation}
+  F_{nm}^r(V,W) = \int \mathrm{d} U \, \chi_r(VU)^n \chi_r(WU^{\dagger})^m.
+\end{equation}
+%
+In \citep{Bars:1979xb} the authors introduced a recursive formula to evaluate
+the diagonal integrals on this form in the fundamental representation of U$(N)$,
+namely the integrals $F_{nn}^f(V,V^{\dagger})$. The procedure goes as follows. First one
+introduces a new integral
+%
+\begin{equation}
+  G_n(\{V_i\}) = \int \mathrm{d} U \> \chi(V_1 U) \cdots \chi(V_n U) \,
+    \chi(V_1^{\dagger} U^{\dagger}) \cdots \chi(V_n^{\dagger} U^{\dagger}),
+\end{equation}
+%
+and verifies that by introducing the special form $(A_n)_{kl} = \delta_{ik}
+\delta_{lq}$, $(A_n^{\dagger})_{kl} = \delta_{qk} \delta_{lj}$ for some integers
+$i,j,q$, the final factors of $G$ simplify when summing over $k$
+%
+\begin{equation}
+  {\textstyle\sum_k} G_n(\{V_i\}) = \delta_{ij} G_{n-1}(\{V_i\}').
+\end{equation}
+%
+Due to the properties of the integrand of $G$, it has to be U$(N)$ $\times$
+U$(N)$ invariant, and we can therefore decompose any $G$ into its invariant
+combinations. Examples of the two lowest orders give
+%
+\begin{align}
+  G_1(A_1) &= \int \mathrm{d} U \> \chi_f(A_1 U) \, \chi_f(A_1^{\dagger} U^{\dagger})
+   = C \chi_f(A_1 A_1^{\dagger}), \\
+  G_2(A_1,A_2) &= \int \mathrm{d} U \> \chi_f(A_1 U) \chi_f(A_2 U) 
+  \chi_f(A_1^{\dagger} U^{\dagger}) \chi_f(A_2^{\dagger} U^{\dagger})  \nonumber \\
+  &\hskip2em= C_1 \big( \chi_f(A_1 A_1^{\dagger}) \chi_f(A_2 A_2^{\dagger}) + \chi_f(A_1
+  A_2^{\dagger}) \chi_f(A_2 A_1^{\dagger})\big) \nonumber \\
+  &\hskip4em+ C_2 \big(\chi_f(A_1 A_1^{\dagger} A_2 A_2^{\dagger})
+  + \chi_f(A_1 A_2^{\dagger} A_2 A_1^{\dagger}) \big).
+\end{align}
+%
+One then inserts the special form for $A_n$ on the left and right hand side of
+the equations and systematically determine the unknown parameters $C_i$.
+
+
+
 \section{\texorpdfstring{$g^n (g^{-1})^m$}{Un Udm} integrals} \label{sec-sun_integrals}
-\section{Fermion determinant} \label{sec-evaluating-fermion-determinants}
+\section{Static determinant} \label{sec-evaluating-fermion-determinants}
 \section{\texorpdfstring{$W_{nm}$}{Wnm} terms}
 \label{sec-evaluating-polyakov-coupling-terms}
