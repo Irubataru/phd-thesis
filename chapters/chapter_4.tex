@@ -101,12 +101,13 @@ contributions to the effective action. Ignoring the quark contribution the
 effective action is
 %
 \begin{equation}
-  e^{-\mathcal{S}_{\text{eff}}} = \int \prod_{x, i} \mathrm{d} U_i(x) \, \prod_p
+  e^{-\mathcal{S}_{\text{eff}}} = \int \big[ \mathrm{d} U \big]_i \, \prod_p
     \bigg(1 + \sum_{r \neq 0} d_r u_r(\beta) \chi_r (U_p) \bigg).
 \end{equation}
 %
-Expanding the product over the plaquettes gives a sum of terms which is of the
-form
+where we have introduced the shorthand integration measure $\big[ \mathrm{d} U
+\big]_i = \prod_{x,i} \mathrm{d} U_{i}(x)$.  Expanding the product over the
+plaquettes gives a sum of terms which is of the form
 %
 \begin{equation}
   d_{r_1} u_{r_1}(\beta) \chi_{r_1}(U_{p_1}) \, 
@@ -202,7 +203,7 @@ only degrees of freedom left are full windings. The integral over the effective
 action therefore simplify to
 %
 \begin{equation}
-  \mathcal{Z}_{\text{eff}} = \int \prod_{\vec{x},t} \mathrm{d} U_0(\vec{x},t) \,
+  \mathcal{Z}_{\text{eff}} = \int \big[\mathrm{d} U\big]_0 \,
     e^{-\mathcal{S}_{\text{eff}}[L]} 
   = \int \prod_{\vec{x}} \mathrm{d} L_{\vec{x}} \, \sqrt{\det U_0} \,
     e^{-\mathcal{S}_{\text{eff}}[L]} ,
@@ -233,9 +234,9 @@ Even for lattice simulations at zero chemical potential, evaluating the fermion
 determinant is by far the most expensive operation. For heavy quarks it takes a
 close to block diagonal form, while for light quarks the dynamics delocalise,
 and no such simplifications appear. It is therefore clear that the analysis of
-heavy quarks simplifies and an expansion around this limit can be used to derive
-an effective theory for heavy quarks. By rescaling the fields, we see that the
-quark matrix can be refactored to be
+heavy quarks is of reduced complexity, and an expansion around this limit can be
+used to derive an effective theory for heavy quarks. By rescaling the fields, we
+see that the quark matrix can be refactored to be
 %
 \begin{equation}
   Q_{yx} = \delta_{yx} - \kappa H_{yx}, \hskip1em \kappa = \frac{1}{2(4 + am)}
@@ -261,7 +262,7 @@ a single discrete hop on the lattice. And the full fermion propagator is
 therefore the sum of all fermion lines starting at $x$ and ending at $y$. Due to
 the accompanying spin factor, and the fact that $(1 - \gamma^{\mu}) (1 +
 \gamma^{\mu}) = 0$, it is restricted to lines with no backtracking.  If the
-series is truncated it is approximated by lines with a specific upper bound for
+series is truncated, it is approximated by lines with a specific upper bound for
 its length. The fermion matrix can likewise be rewritten using the trace-log
 identity
 %
@@ -281,10 +282,11 @@ The first step towards deriving an effective three dimensional theory for heavy
 quarks and strong coupling is to separate the temporal and spatial hops
 %
 \begin{equation}
-  H_{yx} = T^{\pm}_{yx} + \sum_{i=1}^3 S_{i,yx}^{\pm},
+  H_{yx} = T_{yx} + \sum_{i=1}^3 S_{i,yx},
 \end{equation}
 %
-where the temporal and spatial hopping matrices are
+where the temporal and spatial hopping matrices are divided into positive and
+negative components: $T = T^+ + T^-$, $S_i = S_i^+ + S_i^-$, and
 %
 \begin{align}
   T^{\pm}_{yx} &= (1 \pm \gamma^{0}) e^{\pm a\mu} U_{\pm 0}(x)\,
@@ -297,13 +299,13 @@ The fermion determinant can then be refactored into a static factor and a
 kinematic factor by factoring out the temporal hopping matrix
 %
 \begin{equation}
-  \det (Q) = \det (1 - \kappa T^{\pm} - \kappa S^{\pm})
-   = \det\underbrace{(1 - \kappa T^{\pm})}_{Q_{\text{stat}}} \,
-   \det \underbrace{\Big(1 - \frac{\kappa S^{\pm}}{1 - \kappa
-       T^{\pm}}\Big)}_{Q_{\text{kin}}}.
+  \det (Q) = \det (1 - \kappa T - \kappa S)
+   = \det\underbrace{(1 - \kappa T)}_{Q_{\text{stat}}} \,
+   \det \underbrace{\Big(1 - \frac{\kappa S}{1 - \kappa
+       T}\Big)}_{Q_{\text{kin}}}.
 \end{equation}
 
-\subsection{Static propagator and static determinant}
+\subsection{Static determinant}
 
 For the derivation of the effective theory we need the full static propagator
 and static determinant. Since every hop in the temporal direction come with a
@@ -313,7 +315,7 @@ fugacity factor, the true temporal hopping expansion parameter is $e^{\pm a\mu}
 We can simplify the static determinant through the trace-log identity
 %
 \begin{equation}
-  \det (1 - \kappa T^{\pm}) = \exp \bigg(- \sum_{n=1}^{\infty} \frac{1}{n}
+  \det (1 - \kappa T) = \exp \bigg(- \sum_{n=1}^{\infty} \frac{1}{n}
   \kappa^n \tr (T^+ + T^-)^n \bigg).
 \end{equation}
 %
@@ -321,12 +323,12 @@ Due to the no backtracking criterion we get no mixed $T^+ T^-$ terms, and the
 static determinant factorises into fermion and anti-fermion static determinants
 %
 \begin{equation}
-  \det (1 - \kappa T^{\pm}) = \det (1 - \kappa T^+)\, det (1 - \kappa T^-) .
+  \det (1 - \kappa T) = \det (1 - \kappa T^+)\, \det (1 - \kappa T^-) .
 \end{equation}
 %
 The trace in the determinant restricts us to closed loops, which for the static
 hopping matrix results in only full windings in the time direction. A term that
-winds the lattice $n$ times has the mathematical form
+winds the lattice $n$ times in the positive direction has the mathematical form
 %
 \begin{align}
   &(-1)^n \kappa^{n N_t} (1+\gamma^0)^{n N_t} e^{n N_t a \mu}
@@ -336,7 +338,7 @@ winds the lattice $n$ times has the mathematical form
 %
 where $W(\vec{x})$ is the untraced Polyakov loop, the minus sign originate from
 fermion anti-periodicity , and we have used the fact that $(1\pm\gamma^{\mu})^2
-= 2 (1\pm\gamma^{\mu})$. The static determinant therefore simplifies to
+= 2 (1\pm\gamma^{\mu})$. The positive static determinant therefore simplifies to
 %
 \begin{equation}
   \exp\bigg(-\frac{1}{2} \tr(1+\gamma^0) \sum_{n=1}^{\infty} \frac{1}{n} (-h_1)^{n}
@@ -344,8 +346,8 @@ fermion anti-periodicity , and we have used the fact that $(1\pm\gamma^{\mu})^2
 \end{equation}
 %
 in which $h_1(\mu) = (2e^{a\mu}\kappa)^{N_t} = z\, e^{N_t \log(2\kappa)}$
-($=\bar{h}_1(-\mu)$) is the static loop (anti loop) weight. Since $W$ is
-a product of $U_0$ matrices it has to belong to the same symmetry group. We can
+($=\bar{h}_1(-\mu)$) is the static loop (anti loop) weight. Since $W$ is simply
+a product of $U_0$ matrices, it has to belong to the same symmetry group. We can
 therefore use trace decomposition of the determinant together with the
 Cayley-Hamilton theorem to express it in terms of the traces of $W$, namely the
 Polyakov loops. We state the result for SU$(3)$
@@ -358,9 +360,11 @@ and refer to \apxref{sec-static-determinant} for the more generic approach. The
 full static determinant is therefore
 %
 \begin{equation}
-  \det(1 - \kappa T^{\pm}) = \prod_{\vec{x}} (1 + h_1 L_{\vec{x}} + h_1^2 L^*_{\vec{x}} + h_1^3)^2
+  \det(1 - \kappa T) = \prod_{\vec{x}} (1 + h_1 L_{\vec{x}} + h_1^2 L^*_{\vec{x}} + h_1^3)^2
     (1 + \bar{h}_1 L^*_{\vec{x}} +  \bar{h}_1^2 L_{\vec{x}} + \bar{h}_1^3)^2.
 \end{equation}
+
+\subsection{Static propagator}
 
 The static propagator can be calculated in several ways. Either one can once
 more apply the Cayley-Hamilton theorem to calculate the matrix inverse, or one
@@ -371,7 +375,7 @@ the fact that backtracking is disallowed, the propagator separates into two
 pieces
 %
 \begin{equation}
-  \frac{1}{1 - \kappa T^{\pm}} = \frac{1}{1 - \kappa T^+} + \frac{1}{1 - \kappa
+  \frac{1}{1 - \kappa T} = \frac{1}{1 - \kappa T^+} + \frac{1}{1 - \kappa
     T^-} -1,
 \end{equation}
 %
@@ -394,17 +398,17 @@ where $\eta = (1+\gamma^0)\kappa e^{a\mu}$ is the time independent factor in
 $T^+$. This matrix can be easily inverted by standard row reduction, giving
 %
 \begin{equation}
-  \scalemath{0.78}{%
-  \frac{1}{1 + \prod_{t=1}^{N_t} \eta U_0(t)}
+  \scalemath{0.8}{%
+  \frac{1}{1\!+\!\prod_{t=1}^{N_t}\!\eta U_0(t)}
   \begin{pmatrix}
-    1 & \eta U_0(1) & \eta^2 U_0(1) U_0(2) & \cdots & \prod_{t=1}^{N_t-1}\eta U_0(t)\\
-    \minus\eta^{N_t-1} U^{\dagger}_0(2) & 1 & \eta U_0(2) & \cdots & \prod_{t=2}^{N_t-1}\eta U_0(t)\\
+    1 & \eta U_0(1) & \eta^2 U_0(1) U_0(2) & \cdots & \prod_{t=1}^{N_t-1}\!\eta U_0(t)\\
+    \minus\eta^{N_t-1} U^{\dagger}_0(2) & 1 & \eta U_0(2) & \cdots & \prod_{t=2}^{N_t-1}\!\eta U_0(t)\\
     \minus\eta^{N_t-2} U^{\dagger}_0(2) U^{\dagger}_0(3) & \minus\eta^{N_t-1}
-      U^{\dagger}_0(3) & 1 & \cdots & \prod_{t=3}^{N_t-1}\eta U_0(t)\\
+      U^{\dagger}_0(3) & 1 & \cdots & \prod_{t=3}^{N_t-1}\!\eta U_0(t)\\
     \vdots  & \vdots  & \vdots  & \ddots & \vdots \\
-    \minus\eta\prod_{t=2}^{N_t} U^{\dagger}_0(t) &
-    \minus\eta^2\prod_{t=3}^{N_t} U^{\dagger}_0(t) &
-    \minus\eta^3\prod_{t=4}^{N_t} U^{\dagger}_0(t) & \cdots & 1
+    \minus\eta\prod_{t=2}^{N_t}\!U^{\dagger}_0(t) &
+    \minus\eta^2\prod_{t=3}^{N_t}\!U^{\dagger}_0(t) &
+    \minus\eta^3\prod_{t=4}^{N_t}\!U^{\dagger}_0(t) & \cdots & 1
   \end{pmatrix}}
 \end{equation}
 %
@@ -414,18 +418,101 @@ which on component form simplifies to
   (1 - \kappa T^{\pm})^{-1}_{t_yt_x} = \delta_{t_y,t_x} + \frac{1 \pm \gamma^0}{2} K^{\pm}_{t_yt_x},
 \end{equation}
 %
-\begin{align}
-  K^+_{t_y t_x} &= \frac{h_1 W}{1 + h_1 W} \delta_{t_y t_x} +
+\vspace*{-2em}
+%
+\begin{alignat}{4}
+  K^+_{t_y t_x} &= \frac{h_1 W}{1 + h_1 W} \delta_{t_y t_x} &&+
   (2 e^{a\mu}\kappa)^{t_y-t_x}
-  \frac{U_0(t_x \to t_y)}{1 + h_1 W}
-  ( \theta_{t_y, t_x} - h_1 \theta_{t_x, t_y})\\
-  K^-_{t_y t_x} &= \frac{\bar{h}_1 W^{\dagger}}{1 + \bar{h}_1 W^{\dagger}} \delta_{t_y t_x} +
+  &\frac{U_0(t_x \!\to\! t_y)}{1 + h_1 W}
+  ( \theta_{t_y, t_x} - h_1 \theta_{t_x, t_y}),\\
+  K^-_{t_y t_x} &= \frac{\bar{h}_1 W^{\dagger}}{1 + \bar{h}_1 W^{\dagger}} \delta_{t_y t_x} &&+
   (2 e^{-a\mu}\kappa)^{t_x-t_y}
-  \frac{U_0(t_x \to t_y)}{1 + \bar{h}_1 W^{\dagger}}
-  ( \theta_{t_x, t_y} - \bar{h}_1 \theta_{t_y, t_x})
-\end{align}
+  &\frac{U_0(t_x \!\to\! t_y)}{1 + \bar{h}_1 W^{\dagger}}
+  ( \theta_{t_x, t_y} - \bar{h}_1 \theta_{t_y, t_x}).
+\end{alignat}
+%
+We have introduced the gauge transporter $U_0(t_x \!\to\! t_y)$, which is
+%
+\begin{equation}
+  U_0(t_x \!\to\! t_y) =  \left\{ \renewcommand{\arraystretch}{1.75}
+  \begin{array}{@{}l@{\quad}l@{}}
+    \prod_{t = t_x}^{t_y-1} U_0(t) & \text{if} \hspace{.75em} t_x < t_y,\\
+    \prod_{t = t_y}^{t_x-1} U_0^{\dagger}(t) & \text{if} \hspace{.75em} t_x > t_y.
+  \end{array}\right.\kern-\nulldelimiterspace
+\end{equation}
 
+\subsection{Spatial hopping expansion}
 
+We now have all the necessary ingredients to start a systematic expansion of the
+kinetic quark determinant. First, we introduce the fundamental building blocks
+of the spatial hopping expansion
+%
+\begin{alignat}{99}
+  P &= \>\sum_{i=1}^3 P_i &&= \frac{1}{1-\kappa T} \sum_{i=1}^3 \kappa S_i^+, \\
+  M &= \>\sum_{i=1}^3 M_i &&= \frac{1}{1-\kappa T} \sum_{i=1}^3 \kappa S_i^-.
+\end{alignat}
+%
+The $P$ and $M$ therefore symbolise a single lattice hop in positive or negative
+spatial directions, combined with arbitrary movement in the temporal direction,
+including all windings. The kinetic determinant, the object of our expansion,
+is simply
+%
+\begin{equation}
+  \det Q_{\text{kin}} = \det ( 1 - P - M ) = \exp \bigg(- \sum_{n=1}^{\infty}
+  \frac{1}{n} \tr (P + M)^n \bigg),
+\end{equation}
+%
+and since $P$ and $M$ both come with a single power of $\kappa$, we can expand
+around these two being $0$. The determinant is described by all closed fermion
+lines, and thus we need an equal number of positive and negative hops. The
+next to leading order contribution is therefore
+%
+\begin{equation}
+  \det Q_{\text{kin}} = \exp \Big( - \tr(PM) - \tr(PPMM) -
+    {\textstyle\frac{1}{2}}\tr(PMPM) + \mathcal{O}(\kappa^6)\Big).
+\end{equation}
+%
+For every $P$ and $M$ we get a multitude of different combinations of terms
+depending on whether we have fermions coupled to fermions, or fermions to
+anti-fermions. The four combinations of the lowest order $\tr(PM)$ term is shown in
+\figref{fig-lowest-order-fermionic}.
 
+\begin{figure}
+  {\centering
+    \includegraphics[width=.75\textwidth]{pure_fermion_lowest}\par}
+  \caption{The four contributions from the lowest order spatial hopping
+    expansion.\hskip1em The principal path is indicated in \ColHlIText{} and the
+    additional windings in \ColBaseText{}}
+  \label{fig-lowest-order-fermionic}
+\end{figure}
+
+To be able to calculate the spatial gauge integrals, it is necessary to expand
+the exponential. The spatial integral of the lowest order contribution therefore
+reads
+%
+\begin{equation}
+  \int \big[ \mathrm{d} U \big]_i \> e^{-\tr(PM)}
+    = \int \big[ \mathrm{d} U \big]_i \> (1 - \tr(PM) + \mathcal{O}(\kappa^4)).
+\end{equation}
+%
+For the current integral, only the spatial gauge links are of interest, and we
+have
+%
+\begin{equation}
+  \int \big[ \mathrm{d} U \big]_i \tr(PM)
+   = \int \big[ \mathrm{d} U \big]_i \sum_j \tr\big( F(U_0) U_j(\vec{x},t_1) G(U_0)
+   U^{\dagger}_j(\vec{x},t_2) \big)
+\end{equation}
+%
+with $F$ and $G$ being some functions of the temporal gauge links $U_0$. Using
+one of the simplest gauge integral selection rules
+\meqref{eq-gauge-integral-selection-rule}, we see that this integral is only
+non zero if the two links overlap, namely if $t_1 = t_2$.
+
+\section{Gauge corrections}
+
+\section{Resummations}
+
+\section{The cold and dense}
 
 \section{Numerical evaluation}

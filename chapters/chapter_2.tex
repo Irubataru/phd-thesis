@@ -541,7 +541,7 @@ It is common to factor the fields out of the definition and write the action in
 terms of a vector-matrix product
 %
 \begin{equation}
-  \mathcal{S}_f = a^4 \bar{\psi}_y D_{yx} \psi_x, \hskip1em 
+  \mathcal{S}_f = a^4 \bar{\psi}_y Q_{yx} \psi_x, \hskip1em 
   Q_{yx}[U_{\mu}] = m \delta_{y,x} - \frac{1}{2a} \sum_{\mu=\pm 0}^{\pm 3} \gamma^{\mu}
     U_{\mu}(x) \delta_{y-\mu,x} \,,
 \end{equation}
@@ -550,8 +550,8 @@ where the spin and gauge indices are hidden.  This is to simplify the expression
 for the integral over the fermion fields, which can be evaluated exactly
 %
 \begin{equation} \label{eq-fermion-integral}
-  \int \prod_{i,j} \mathrm{d} \bar{\psi}_i \psi_j e^{\bar{\psi}_i D_{ij} \psi_j}
-   = \det D,
+  \int \prod_{i,j} \mathrm{d} \bar{\psi}_i \psi_j e^{\bar{\psi}_i Q_{ij} \psi_j}
+   = \det Q,
 \end{equation}
 %
 with $Q$ commonly referred to as the \emph{fermion matrix}, and $\det Q$ the

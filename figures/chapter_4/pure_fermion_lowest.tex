@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/lattice_styles.tex}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\begin{document}
+
+\begin{tikzpicture}
+  
+  % Positive - positive
+  % ----------------------------------------------------------------------------
+  \begin{scope}
+    % Grid
+    % --------------------------------------------------
+    \draw[lattice] (-.25,-.25) grid[step=1] (1.25,4.75);
+    \draw[boundary] (0.1,-.25) -- +(.8,0);
+    \draw[boundary] (0.1,4.75) -- +(.8,0);
+    % --------------------------------------------------
+    
+    % Fermion lines
+    % -----------------------------------------------------------
+    \begin{scope}
+      \clip (-.25,-.25) rectangle (1.25,4.75);
+      \draw[link=ColourHl1] (\deltaskip, 4) -- ++(0,1);
+      \draw[link=ColourHl1] (\deltaskip,-1) -- ++(0,1) -- ++(0,1)
+        -- ++(1cm-2\deltaskip,0) -- ++(0,1) -- ++(0,1) -- ++(0,1)
+        -- ++(2\deltaskip-1cm,0);
+      \foreach \x in {-1,...,4} {
+        \draw[link] (-\deltaskip,\x) -- +(0,1);
+        \draw[link] (1cm+\deltaskip,\x) -- +(0,1);
+      }
+    \end{scope}
+    % -----------------------------------------------------------
+    
+    % Axes
+    % --------------------------------------------------------------------------
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.25,-.5) -- +(1.25,0) 
+      node[midway,below=.4mm,anchor=north,inner sep=0pt, scale=0.5] {$\vec{x}$};
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.5,-.25) -- +(0,1.75) 
+      node[midway,left=.6mm,anchor=east,inner sep=0pt, scale=0.5] {$t$};
+    % --------------------------------------------------------------------------
+  \end{scope}
+  % ----------------------------------------------------------------------------
+
+  % Positive - negative
+  % ----------------------------------------------------------------------------
+  \begin{scope}[xshift=2.5cm]
+    % Grid
+    % --------------------------------------------------
+    \draw[lattice] (-.25,-.25) grid[step=1] (1.25,4.75);
+    \draw[boundary] (0.1,-.25) -- +(.8,0);
+    \draw[boundary] (0.1,4.75) -- +(.8,0);
+    % --------------------------------------------------
+    
+    % Fermion lines
+    % -----------------------------------------------------------
+    \begin{scope}
+      \clip (-.25,-.25) rectangle (1.25,4.75);
+      \draw[link=ColourHl1] (\deltaskip, 1) -- ++(0,1) -- ++(0,1) -- ++(0,1)
+       -- ++(1cm - 2\deltaskip,0) -- ++(0,-1) -- ++(0,-1) -- ++(0,-1)
+       -- ++(2\deltaskip-1cm,0);
+      \foreach \x in {-1,...,4} {
+        \draw[link] (-\deltaskip,\x) -- +(0,1);
+        \draw[link] (1cm+\deltaskip,5cm - \x cm) -- +(0,-1);
+      }
+    \end{scope}
+    % -----------------------------------------------------------
+    
+    % Axes
+    % --------------------------------------------------------------------------
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.25,-.5) -- +(1.25,0) 
+      node[midway,below=.4mm,anchor=north,inner sep=0pt, scale=0.5] {$\vec{x}$};
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.5,-.25) -- +(0,1.75) 
+      node[midway,left=.6mm,anchor=east,inner sep=0pt, scale=0.5] {$t$};
+    % --------------------------------------------------------------------------
+  \end{scope}
+  % ----------------------------------------------------------------------------
+
+  % Negative - Positive
+  % ----------------------------------------------------------------------------
+  \begin{scope}[xshift=5cm]
+    % Grid
+    % --------------------------------------------------
+    \draw[lattice] (-.25,-.25) grid[step=1] (1.25,4.75);
+    \draw[boundary] (0.1,-.25) -- +(.8,0);
+    \draw[boundary] (0.1,4.75) -- +(.8,0);
+    % --------------------------------------------------
+    
+    % Fermion lines
+    % -----------------------------------------------------------
+    \begin{scope}
+      \clip (-.25,-.25) rectangle (1.25,4.75);
+      \draw[link=ColourHl1] (\deltaskip, 4) -- ++(0,-1) -- ++(0,-1) -- ++(0,-1)
+       -- ++(1cm - 2\deltaskip,0) -- ++(0,1) -- ++(0,1) -- ++(0,1)
+       -- ++(2\deltaskip-1cm,0);
+      \foreach \x in {-1,...,4} {
+        \draw[link] (1cm+\deltaskip,\x) -- +(0,1);
+        \draw[link] (-\deltaskip,5cm - \x cm) -- +(0,-1);
+      }
+    \end{scope}
+    % -----------------------------------------------------------
+    
+    % Axes
+    % --------------------------------------------------------------------------
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.25,-.5) -- +(1.25,0) 
+      node[midway,below=.4mm,anchor=north,inner sep=0pt, scale=0.5] {$\vec{x}$};
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.5,-.25) -- +(0,1.75) 
+      node[midway,left=.6mm,anchor=east,inner sep=0pt, scale=0.5] {$t$};
+    % --------------------------------------------------------------------------
+  \end{scope}
+  % ----------------------------------------------------------------------------
+
+  % Positive - positive
+  % ----------------------------------------------------------------------------
+  \begin{scope}[xshift=7.5cm]
+    % Grid
+    % --------------------------------------------------
+    \draw[lattice] (-.25,-.25) grid[step=1] (1.25,4.75);
+    \draw[boundary] (0.1,-.25) -- +(.8,0);
+    \draw[boundary] (0.1,4.75) -- +(.8,0);
+    % --------------------------------------------------
+    
+    % Fermion lines
+    % -----------------------------------------------------------
+    \begin{scope}
+      \clip (-.25,-.25) rectangle (1.25,4.75);
+      \draw[link=ColourHl1] (\deltaskip, 5)  -- ++(0,-1)
+       -- ++(1cm - 2\deltaskip,0) -- ++(0,-1) -- ++(0,-1) -- ++(0,-1)
+       -- ++(2\deltaskip - 1cm,0) -- ++(0,-1) -- ++(0,-1);
+      \foreach \x in {-1,...,4} {
+        \draw[link] (-\deltaskip,5cm - \x cm) -- +(0,-1);
+        \draw[link] (1cm+\deltaskip,5cm - \x cm) -- +(0,-1);
+      }
+    \end{scope}
+    % -----------------------------------------------------------
+    
+    % Axes
+    % --------------------------------------------------------------------------
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.25,-.5) -- +(1.25,0) 
+      node[midway,below=.4mm,anchor=north,inner sep=0pt, scale=0.5] {$\vec{x}$};
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.5,-.25) -- +(0,1.75) 
+      node[midway,left=.6mm,anchor=east,inner sep=0pt, scale=0.5] {$t$};
+    % --------------------------------------------------------------------------
+  \end{scope}
+  % ----------------------------------------------------------------------------
+
+\end{tikzpicture}
+
+\end{document}
