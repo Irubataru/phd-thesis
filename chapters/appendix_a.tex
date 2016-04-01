@@ -262,7 +262,7 @@ SU$(3)$ can be found in \citep{Unger:2014oga}.
   \caption{Some integrals over the characters of SU$(3)$ where the integrand is made
     up of the product of the topmost row with the leftmost column. All other
     integrals are zero due to the selection rule of
-    \protect\meqref{eq-selection}.}
+    \protect\meqref{eq-integral-selection-rule}.}
   \label{tab-character-integrals}
 \end{table}
 
@@ -282,8 +282,8 @@ namely the integrals $F_{nn}^f(V,V^{\dagger})$. The procedure goes as follows. F
 introduces a new integral
 %
 \begin{equation}
-  G_n(\{V_i\}) = \int \mathrm{d} U \> \chi(V_1 U) \cdots \chi(V_n U) \,
-    \chi(V_1^{\dagger} U^{\dagger}) \cdots \chi(V_n^{\dagger} U^{\dagger}),
+  G_n(\{V_i\}) = \int \mathrm{d} U \> \chi_f(V_1 U) \cdots \chi_f(V_n U) \,
+    \chi_f(V_1^{\dagger} U^{\dagger}) \cdots \chi_f(V_n^{\dagger} U^{\dagger}),
 \end{equation}
 %
 and verifies that by introducing the special form $(A_n)_{kl} = \delta_{ik}
@@ -300,21 +300,105 @@ combinations. Examples of the two lowest orders give
 %
 \begin{align}
   G_1(A_1) &= \int \mathrm{d} U \> \chi_f(A_1 U) \, \chi_f(A_1^{\dagger} U^{\dagger})
-   = C \chi_f(A_1 A_1^{\dagger}), \\
+   = C_1 \> \chi_f(A_1 A_1^{\dagger}), \\
   G_2(A_1,A_2) &= \int \mathrm{d} U \> \chi_f(A_1 U) \chi_f(A_2 U) 
   \chi_f(A_1^{\dagger} U^{\dagger}) \chi_f(A_2^{\dagger} U^{\dagger})  \nonumber \\
-  &\hskip2em= C_1 \big( \chi_f(A_1 A_1^{\dagger}) \chi_f(A_2 A_2^{\dagger}) + \chi_f(A_1
+  &= C_1 \big( \chi_f(A_1 A_1^{\dagger}) \chi_f(A_2 A_2^{\dagger}) + \chi_f(A_1
   A_2^{\dagger}) \chi_f(A_2 A_1^{\dagger})\big) \nonumber \\
-  &\hskip4em+ C_2 \big(\chi_f(A_1 A_1^{\dagger} A_2 A_2^{\dagger})
+  &\hskip2em+ C_2 \big(\chi_f(A_1 A_1^{\dagger} A_2 A_2^{\dagger})
   + \chi_f(A_1 A_2^{\dagger} A_2 A_1^{\dagger}) \big).
 \end{align}
 %
 One then inserts the special form for $A_n$ on the left and right hand side of
 the equations and systematically determine the unknown parameters $C_i$.
 
-
-
 \section{\texorpdfstring{$g^n (g^{-1})^m$}{Un Udm} integrals} \label{sec-sun_integrals}
+
+In this section we will present a method of computing integrals over
+matrix representations of the SU$(N)$ members. Namely integrals of the form
+\meqref{eq-group-integrals-representation}
+%
+\begin{equation}
+  I_{i_1,j_1,...,i_n,j_n}^{k_1,l_1,...,k_m,l_m} = \int \mathrm{d} U \,
+    U_{i_1j_1} \cdots U_{i_nj_n} U^{\dagger}_{k_1l_1} \cdots U^{\dagger}_{k_ml_m}.
+\end{equation}
+%
+Although there are multiple ways to approach this, we will closely follow the
+paper of \citep{Creutz:1977yy,Creutz:1978ub}. First we introduce the generating
+functional
+%
+\begin{equation}
+  \mathcal{W}(J,K) = \int \mathrm{d} U \, \exp \Big( \tr \big(J U + K U^{\dagger}\big) \Big)
+\end{equation}
+%
+noting that we can use it to reexpress $I$
+%
+\begin{equation}
+  I_{i_1,j_1,...,i_n,j_n}^{k_1,l_1,...,k_m,l_m} = \bigg(
+    \frac{\delta}{\delta J_{i_1j_1}} \cdots \frac{\delta}{\delta J_{i_nj_n}}
+    \frac{\delta}{\delta K_{k_1l_1}} \cdots \frac{\delta}{\delta K_{k_ml_m}}
+    \bigg) \mathcal{W}(J,K) \bigg|_{J=K=0}.
+\end{equation}
+%
+We then use the cofactor expansion of $U^{\dagger}$ to remove the dependence on
+$K$
+%
+\begin{align}
+  U^{\dagger}_{ij} &= \frac{1}{\det U} \big( \cof U^T \big)_{ij} \nonumber\\
+  &= \frac{1}{(N-1)!} \epsilon_{j, i_1, \dots, i_{N-1}} \epsilon_{i, j_1, \dots, j_{N-1}}
+    U_{i_1j_1} \cdots U_{i_{N-1}j_{N-1}}.
+\end{align}
+%
+where we have introduced the completely anti-symmetric tensors $\epsilon$.
+With this we can factor out the dependence of $K$ on the generating function
+%
+\begin{equation}
+  \mathcal{W}(J,K) = \exp\bigg( \tr \Big( K \cof \frac{\delta}{\delta J} \Big) \bigg)
+    \underbrace{\,\int \mathrm{d} U \, \exp \big( \tr (JU) \big)\,}_{\mathcal{W}(J)}.
+\end{equation}
+%
+Using a determinant expansion of $\mathcal{W}(J)$, which is allowed due to the fact that
+$\mathcal{W}(VUW) = \mathcal{W}(U)$ for arbitrary matrices $W, V \in
+\text{SU}(3)$ \citep{Creutz:1977yy}, we finally obtain
+%
+\begin{equation}
+  \mathcal{W}(J) = \sum_{i=0}^{\infty} \frac{2! \cdots (N-1)!}{i! \cdots
+    (i+N-1)!} \big(\det J\big)^i.
+\end{equation}
+%
+Although this expression is a little unwieldy, we can see an immediate selection
+rule for the integrals. Using the fact that the determinant of an $N \times N$ matrix is a
+polynomial of $N$'th power of its elements
+%
+\begin{equation}
+  \det M = \frac{1}{N!} \epsilon_{i_1,\dots,i_N} \epsilon_{j_1, \dots, j_N}
+  M_{i_1j_1} \cdots M_{i_Nj_N},
+\end{equation}
+%
+we see that only factors of $N$'th power derivatives of $\mathcal{W}$ will
+survive when we set $J=0$. Since the cofactor is a $N-1$'th power polynomial we
+get the selection rule
+%
+\begin{equation} \label{eq-integral-selection-rule}
+  \int \mathrm{d} U \, U^n U^{\dagger m} \neq 0  \hskip1em\iff\hskip1em n + (N-1)m = 0 \pmod N.
+\end{equation}
+%
+Finally we will compute the most commonly used integral in this thesis
+%
+\begin{align}
+  I_{ij}^{kl} &= \int \mathrm{d} U \, U_{ij} U^{\dagger}_{kl} \nonumber\\
+  &= \frac{1}{(N-1)!} \epsilon_{l,i_1,\dots,i_{N-1}} \epsilon_{k, j_1, \dots, j_{N-1}}
+    \int \mathrm{d} U \, U_{ij} U_{i_1j_1} \cdots U_{i_{N-1}j_{N-1}} \nonumber\\
+  &= \frac{1}{(N-1)!} \epsilon_{l,i_1,\dots,i_{N-1}} \epsilon_{k, j_1, \dots, j_{N-1}}
+    \bigg( \frac{\delta}{\delta J_{ij}} \frac{\delta}{\delta J_{i_1j_1}} \cdots
+    \frac{\delta}{\delta J_{i_{N-1}j_{N-1}}} \bigg) \mathcal{W}(J) \bigg|_{J=0}
+    \nonumber \\
+  &= \frac{1}{N!(N-1)!} \epsilon_{l,i_1,\dots,i_{N-1}} \epsilon_{k, j_1, \dots, j_{N-1}}
+  \epsilon_{i,i_1,\dots,i_{N-1}} \epsilon_{j,j_1,\dots,j_{N-1}} \nonumber \\
+  &= \frac{1}{N!(N-1)!} (N-1)!\,\delta_{il}\,(N-1)!\,\delta_{jk} = \frac{1}{N}
+  \delta_{il} \delta_{jk} .
+\end{align}
+
 \section{Static determinant} \label{sec-evaluating-fermion-determinants}
 \section{\texorpdfstring{$W_{nm}$}{Wnm} terms}
 \label{sec-evaluating-polyakov-coupling-terms}
