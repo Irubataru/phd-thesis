@@ -94,7 +94,7 @@ character expansion only permits a single plaquette from any representation to
 be placed at every position, making order counting easier than a standard Taylor
 expansion of the gauge action.
 
-\section{Pure gauge effective theory}
+\section{Pure gauge effective theory} \label{sec-pure-gauge-theory}
 
 With the character expansion at hand we can evaluate the pure gauge
 contributions to the effective action. Ignoring the quark contribution the
@@ -300,9 +300,9 @@ kinematic factor by factoring out the temporal hopping matrix
 %
 \begin{equation}
   \det (Q) = \det (1 - \kappa T - \kappa S)
-   = \det\underbrace{(1 - \kappa T)}_{Q_{\text{stat}}} \,
+   = \det\underbrace{(1 - \kappa T)}_{\qstat} \,
    \det \underbrace{\Big(1 - \frac{\kappa S}{1 - \kappa
-       T}\Big)}_{Q_{\text{kin}}}.
+       T}\Big)}_{\qkin}.
 \end{equation}
 
 \subsection{Static determinant}
@@ -315,8 +315,8 @@ fugacity factor, the true temporal hopping expansion parameter is $e^{\pm a\mu}
 We can simplify the static determinant through the trace-log identity
 %
 \begin{equation}
-  \det (1 - \kappa T) = \exp \bigg(- \sum_{n=1}^{\infty} \frac{1}{n}
-  \kappa^n \tr (T^+ + T^-)^n \bigg).
+  \det \qstat \equiv \det (1 - \kappa T) = \exp \bigg(- \sum_{n=1}^{\infty}
+    \frac{1}{n} \kappa^n \tr (T^+ + T^-)^n \bigg).
 \end{equation}
 %
 Due to the no backtracking criterion we get no mixed $T^+ T^-$ terms, and the
@@ -356,8 +356,8 @@ Polyakov loops. We state the result for SU$(3)$
   \det(1 + h_1 W) = 1 + h_1 L + h_1^2 L^* + h_1^3
 \end{equation}
 %
-and refer to \apxref{sec-static-determinant} for the more generic approach. The
-full static determinant is therefore
+and refer to \apxref{sec-evaluating-fermion-determinants} for the more generic
+approach. The full static determinant is therefore
 %
 \begin{equation}
   \det(1 - \kappa T) = \prod_{\vec{x}} (1 + h_1 L_{\vec{x}} + h_1^2 L^*_{\vec{x}} + h_1^3)^2
@@ -375,7 +375,7 @@ the fact that backtracking is disallowed, the propagator separates into two
 pieces
 %
 \begin{equation}
-  \frac{1}{1 - \kappa T} = \frac{1}{1 - \kappa T^+} + \frac{1}{1 - \kappa
+  \qstat^{-1} \equiv \frac{1}{1 - \kappa T} = \frac{1}{1 - \kappa T^+} + \frac{1}{1 - \kappa
     T^-} -1,
 \end{equation}
 %
@@ -424,11 +424,11 @@ which on component form simplifies to
   K^+_{t_y t_x} &= \frac{h_1 W}{1 + h_1 W} \delta_{t_y t_x} &&+
   (2 e^{a\mu}\kappa)^{t_y-t_x}
   &\frac{U_0(t_x \!\to\! t_y)}{1 + h_1 W}
-  ( \theta_{t_y, t_x} - h_1 \theta_{t_x, t_y}),\\
+  ( \theta_{t_y, t_x} - h_1 W\, \theta_{t_x, t_y}),\\
   K^-_{t_y t_x} &= \frac{\bar{h}_1 W^{\dagger}}{1 + \bar{h}_1 W^{\dagger}} \delta_{t_y t_x} &&+
   (2 e^{-a\mu}\kappa)^{t_x-t_y}
   &\frac{U_0(t_x \!\to\! t_y)}{1 + \bar{h}_1 W^{\dagger}}
-  ( \theta_{t_x, t_y} - \bar{h}_1 \theta_{t_y, t_x}).
+  ( \theta_{t_x, t_y} - \bar{h}_1 W^{\dagger} \theta_{t_y, t_x}).
 \end{alignat}
 %
 We have introduced the gauge transporter $U_0(t_x \!\to\! t_y)$, which is
@@ -439,6 +439,14 @@ We have introduced the gauge transporter $U_0(t_x \!\to\! t_y)$, which is
     \prod_{t = t_x}^{t_y-1} U_0(t) & \text{if} \hspace{.75em} t_x < t_y,\\
     \prod_{t = t_y}^{t_x-1} U_0^{\dagger}(t) & \text{if} \hspace{.75em} t_x > t_y.
   \end{array}\right.\kern-\nulldelimiterspace
+\end{equation}
+%
+The full static propagator therefore reads
+%
+\begin{equation} \label{eq-qstat-full}
+  (\qstat^{-1})_{t_y,t_x} = \delta_{t_y,t_x}
+   + \frac{1 + \gamma^0}{2} K^+_{t_y,t_x}
+   + \frac{1 - \gamma^0}{2} K^-_{t_y,t_x}
 \end{equation}
 
 \subsection{Spatial hopping expansion}
@@ -452,13 +460,13 @@ of the spatial hopping expansion
   M &= \>\sum_{i=1}^3 M_i &&= \frac{1}{1-\kappa T} \sum_{i=1}^3 \kappa S_i^-.
 \end{alignat}
 %
-The $P$ and $M$ therefore symbolise a single lattice hop in positive or negative
-spatial directions, combined with arbitrary movement in the temporal direction,
-including all windings. The kinetic determinant, the object of our expansion,
-is simply
+The $P$ and $M$ symbolise a single lattice hop in positive or negative spatial
+directions, combined with arbitrary movement in the temporal direction,
+including all windings. The kinetic determinant, the object of our expansion, is
+simply
 %
 \begin{equation}
-  \det Q_{\text{kin}} = \det ( 1 - P - M ) = \exp \bigg(- \sum_{n=1}^{\infty}
+  \det \qkin = \det ( 1 - P - M ) = \exp \bigg(- \sum_{n=1}^{\infty}
   \frac{1}{n} \tr (P + M)^n \bigg),
 \end{equation}
 %
@@ -468,7 +476,7 @@ lines, and thus we need an equal number of positive and negative hops. The
 next to leading order contribution is therefore
 %
 \begin{equation}
-  \det Q_{\text{kin}} = \exp \Big( - \tr(PM) - \tr(PPMM) -
+  \det \qkin = \exp \Big( - \tr(PM) - \tr(PPMM) -
     {\textstyle\frac{1}{2}}\tr(PMPM) + \mathcal{O}(\kappa^6)\Big).
 \end{equation}
 %
@@ -487,27 +495,125 @@ anti-fermions. The four combinations of the lowest order $\tr(PM)$ term is shown
 \end{figure}
 
 To be able to calculate the spatial gauge integrals, it is necessary to expand
-the exponential. The spatial integral of the lowest order contribution therefore
-reads
+the exponential. The lowest non trivial order contribution to the partition
+function is therefore
 %
 \begin{equation}
-  \int \big[ \mathrm{d} U \big]_i \> e^{-\tr(PM)}
-    = \int \big[ \mathrm{d} U \big]_i \> (1 - \tr(PM) + \mathcal{O}(\kappa^4)).
+  \mathcal{Z}_2 = \int \big[ \mathrm{d} U \big]_{\mu} \det \qstat \, e^{-\tr(PM)}
+    = \int \big[ \mathrm{d} U \big]_{\mu} \det \qstat \, (1 - \tr(PM) + \mathcal{O}(\kappa^4)).
 \end{equation}
 %
-For the current integral, only the spatial gauge links are of interest, and we
-have
+The only nontrivial integral is the one over the $PM$ factor. Focussing on the
+spatial links only, the integral to be solved is
+%
+\begin{multline}
+  I\big[PM\big] = \int \big[ \mathrm{d} U \big]_i \tr(PM) \\
+   = \kappa^2 \int \big[ \mathrm{d} U \big]_i \scalemath{0.95}{\sum_{\vec{x}, j}} \tr_{sct} \hskip-.5ex
+   \big( \qstat^{-1}(\vec{x})(1+\gamma_j) U_j(\vec{x},t_1) 
+   \qstat^{-1}(\vec{x}+\hat{j})(1-\gamma_j)U^{\dagger}_j(\vec{x},t_2) \big).
+   \label{eq-second-order-spatial-integral}
+\end{multline}
+%
+Using one of the simplest gauge integral selection rules
+\meqref{eq-integral-selection-rule}, we see that this integral is only non zero
+if the two links overlap, namely if $t_1 = t_2$. The implications of which
+manifest itself in the temporal indices only. We therefore divide the evaluation
+of the trace into its three remaining indices: spin, colour and temporal.
+
+The spin indices are unrelated to the group integral and can be evaluated
+immediately. Inserting the expression for $\qstat^{-1}$, \meqref{eq-qstat-full},
+we get
+%
+\begin{multline} \textstyle
+  \tr_s \Big( ( 1
+   + \frac{1 + \gamma^0}{2} K^+_{\vec{x}}
+   + \frac{1 - \gamma^0}{2} K^-_{\vec{x}} ) (1+\gamma_j)
+  ( 1 + \frac{1 + \gamma^0}{2} K^+_{\vec{x}+\hat{j}}
+   + \frac{1 - \gamma^0}{2} K^-_{\vec{x}+\hat{j}} ) (1-\gamma_j) \Big) \\[5pt]
+   = 2 (K^+_{\vec{x}} - K^-_{\vec{x}})
+    (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}}).
+\end{multline}
+%
+Inserted back into \meqref{eq-second-order-spatial-integral} we have reduced its
+complexity
+%
+\begin{multline}
+  I\big[PM\big]
+   = 2\kappa^2 \int \big[ \mathrm{d} U \big]_i \scalemath{0.95}{\sum_{\vec{x}, j}} \tr_{ct} \hskip-.5ex
+   \big( (K^+_{\vec{x}} - K^-_{\vec{x}}) U_j(\vec{x},t_1) 
+   (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}})U^{\dagger}_j(\vec{x},t_2) \big), \\
+  = 2\kappa^2 \tr_t \scalemath{0.95}{\sum_{\vec{x}, j}}
+    (K^+_{\vec{x}} - K^-_{\vec{x}})_{ab} (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}})_{cd}
+    \>\delta_{t_1,t_2} \int \mathrm{d} U \, U_{bc} U^{\dagger}_{da}.
+\end{multline}
+%
+In the second line we reintroduced the colour indices, carried out the
+unoccupied link integrals and renamed the spatial links to $U$. Making use of
+the group integral \meqref{eq-uub-integral}, we get
+%
+\begin{align}
+  I\big[ PM \big] &= \frac{2\kappa^2}{N_c} \tr_t \scalemath{0.95}{\sum_{\vec{x}, j}}
+    (K^+_{\vec{x}} - K^-_{\vec{x}})_{ab} (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}})_{cd}
+    \>\delta_{t_1,t_2} \delta_{ab} \delta_{cd}, \nonumber\\
+  &=\frac{2\kappa^2}{N_c} \tr_t \scalemath{0.95}{\sum_{\vec{x}, j}}
+   \tr_c (K^+_{\vec{x}} - K^-_{\vec{x}}) \tr_c (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}})
+    \>\delta_{t_1,t_2}.
+\end{align}
+%
+The final step missing is evaluating the temporal trace, which is easily done by
+summing over the delta and picking out only the diagonal pieces of $K^{\pm}$
+%
+\begin{multline}
+  I\big[ PM \big] = \frac{2\kappa^2}{N_c} \sum_{t_1, t_2} \sum_{\vec{x, j}}
+   \tr_c (K^+_{\vec{x}} - K^-_{\vec{x}})_{t_1 t_2} \tr_c (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}})_{t_2 t_1}
+    \>\delta_{t_1,t_2}, \\
+  = \frac{\kappa^2 N_t}{N_c} \sum_{\langle \vec{x}, \vec{y} \rangle}
+    \tr_c \bigg(\frac{h_1 W_{\vec{x}}}{1 + h_1 W_{\vec{x}}}
+    - \frac{\bar{h}_1 W_{\vec{x}}^{\dagger}}{1 + \bar{h}_1 W_{\vec{x}}^{\dagger}}\bigg) \\
+  \times \tr_c \bigg(\frac{h_1 W_{\vec{y}}}{1 + h_1 W_{\vec{y}}}
+    - \frac{\bar{h}_1 W_{\vec{y}}^{\dagger}}{1 + \bar{h}_1 W_{\vec{y}}^{\dagger}}\bigg).
+\end{multline}
+%
+The final sum over the time-slice resulted in a factor $N_t$. Analysing this
+expression we see that due to the fact that there is no colour mixing between
+sites, the lowest order contribution to the spatial hopping expansion of the
+kinetic determinant is simply a nearest neighbour interaction between Polyakov
+loop dependent objects. We will see later that is is useful to introduce the
+short hand
 %
 \begin{equation}
-  \int \big[ \mathrm{d} U \big]_i \tr(PM)
-   = \int \big[ \mathrm{d} U \big]_i \sum_j \tr\big( F(U_0) U_j(\vec{x},t_1) G(U_0)
-   U^{\dagger}_j(\vec{x},t_2) \big)
+  W_{nm}(\vec{x}) = \tr_c \frac{(h_1 W_{\vec{x}})^m}{(1 + h_1 W_{\vec{x}})^n}, 
+  \hskip1ex\text{and}\hskip1ex
+  \xoverline{W}_{nm}(\vec{x}) = \tr_c
+    \frac{(\bar{h}_1 W^{\dagger}_{\vec{x}})^m}{(1 + \bar{h}_1 W^{\dagger}_{\vec{x}})^n}
 \end{equation}
 %
-with $F$ and $G$ being some functions of the temporal gauge links $U_0$. Using
-one of the simplest gauge integral selection rules
-\meqref{eq-gauge-integral-selection-rule}, we see that this integral is only
-non zero if the two links overlap, namely if $t_1 = t_2$.
+With this the lowest order spatial hopping contribution to the effective action
+can be written as
+%
+\begin{equation}
+  e^{-\mathcal{S}_{\text{eff}}} = 1 - \frac{\kappa^2 N_t}{N_c}
+  \sum_{\langle \vec{x}, \vec{y} \rangle} 
+    \big( W_{11}(\vec{x}) - \xoverline{W}_{11}(\vec{x}) \big)
+    \big( W_{11}(\vec{y}) - \xoverline{W}_{11}(\vec{y}) \big).
+\end{equation}
+%
+At the next to leading order in $\kappa$ we get new terms both to the nearest
+neighbour contribution as well as non local terms spanning further on the
+lattice. Examples of these contributions are sketched in
+\figref{fig-next-order-fermionic}.
+
+\begin{figure}
+  {\centering
+    \includegraphics[width=.75\textwidth]{pure_fermion_next_order_examples}\par}
+  \caption{Examples of next to leading order contributions to the kinematic
+    determinant. Left: single fermion hopping twice between nearest neighbouring
+    sites. Middle: two separate fermions hopping between the same nearest
+    neighbouring sites. Right: single fermion visiting a next to nearest
+    neighbour.}
+  \label{fig-next-order-fermionic}
+\end{figure}
+
 
 \section{Gauge corrections}
 

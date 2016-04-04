@@ -14,7 +14,7 @@ AUXTEX   := $(filter-out $(MAINTEX) $(FIGTEX),$(wildcard **/*.tex))
 
 cd_and_clean = cd $(dir $(realpath $(1))); $(LATEXMK) -C $(notdir $(1))
 
-.PHONY: clean
+.PHONY: clean cleanthesis
 
 $(MAINPDF) : $(AUXTEX) $(MAINTEX) $(FIGPDF)
 	$(LATEXMK) -pdf $(MAINTEX)
@@ -25,3 +25,6 @@ $(FIGPDF): %.pdf: %.tex | $(STYLETEX)
 
 clean: $(MAINTEX) $(FIGTEX)
 	$(foreach file, $^, $(call cd_and_clean,$(file));)
+
+cleanthesis: $(MAINTEX)
+	$(LATEXMK) -C $(MAINTEX)

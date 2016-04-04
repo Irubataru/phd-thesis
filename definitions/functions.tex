@@ -2,6 +2,8 @@
 % Consistency functions %
 % --------------------- %
 
+%%Referencing
+
 \newcommand{\sectoken}{\textsc{section}}
 \newcommand{\secstoken}{\textsc{sections}}
 \newcommand{\apxtoken}{\textsc{appendix}}
@@ -10,6 +12,11 @@
 \newcommand{\eqstoken}{\textsc{eqs}}
 \newcommand{\figtoken}{\textsc{figure}}
 \newcommand{\tabletoken}{\textsc{table}}
+
+%%Naming
+
+\newcommand{\qstat}{Q_{\text{stat}}}
+\newcommand{\qkin}{Q_{\text{kin}}}
 
 % ----------------- %
 % Pretty references %
@@ -80,6 +87,29 @@
   \advance\dimen0-0.2\ht0
   \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
   {\box0\lower0.4pt\box2}}
+
+% xoverline function that has the width of the overline as an additional
+% argument, from http://tex.stackexchange.com/a/22101/39313
+\makeatletter
+\newsavebox\@xoverlineboxA
+\newsavebox\@xoverlineboxB
+\newlength\@xoverlinelen
+
+\newcommand*\xoverline[2][0.75]{%
+    \sbox{\@xoverlineboxA}{$\m@th#2$}%
+    \setbox\@xoverlineboxB\null% Phantom box
+    \ht\@xoverlineboxB=\ht\@xoverlineboxA%
+    \dp\@xoverlineboxB=\dp\@xoverlineboxA%
+    \wd\@xoverlineboxB=#1\wd\@xoverlineboxA% Scale phantom
+    \sbox\@xoverlineboxB{$\m@th\overline{\copy\@xoverlineboxB}$}%  Overlined phantom
+    \setlength\@xoverlinelen{\the\wd\@xoverlineboxA}%   calc width diff
+    \addtolength\@xoverlinelen{-\the\wd\@xoverlineboxB}%
+    \ifdim\wd\@xoverlineboxB<\wd\@xoverlineboxA%
+       \rlap{\hskip 0.5\@xoverlinelen\usebox\@xoverlineboxB}{\usebox\@xoverlineboxA}%
+    \else
+        \hskip -0.5\@xoverlinelen\rlap{\usebox\@xoverlineboxA}{\hskip 0.5\@xoverlinelen\usebox\@xoverlineboxB}%
+    \fi}
+\makeatother
 
 % ----------------- %
 % mathlap functions %

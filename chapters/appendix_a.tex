@@ -128,7 +128,7 @@ with $c_N = 1$ and $c_1 = (-1)^N \det M$ as seen in \meqref{eq-caylay-hamilton}.
 
 Since we know that $\det U = 1$ and $U^{\dagger} U = \mathbb{1}$ for all
 matrices in SU$(N)$, \meqref{eq-caylay-hamilton} can be multiplied by powers of
-$U^{\dagger}$ and traced to find relations to reduce the number of unknowns in
+$U^{\dagger}$ and be traced to find relations to reduce the number of unknowns in
 the Haar measure.
 
 As an example, for SU$(3)$, $\chi_2 = \chi^2 - 2 \chi^*$, giving
@@ -223,9 +223,9 @@ with
 \end{equation}
 %
 where the remaining variables $l$ and $k$ are restricted by the requirement that
-the factorials are all non negative. Since the Haar measure itself is expressed
-in terms of the characters, using \meqref{eq-su3-haar-measure} we see that the
-full integral is
+the factorials all have non negative arguments. Since the Haar measure itself is
+expressed in terms of the characters, using \meqref{eq-su3-haar-measure} we see
+that the full integral is
 %
 \begin{equation}
   I_{n,m} = 27\, J_{n,m} - 18\, J_{n+1,m+1} + 4\, J_{n+3,m} + 4\, J_{n,m+3} - J_{n+2,m+2}.
@@ -393,6 +393,7 @@ Finally we will compute the most commonly used integral in this thesis
   \epsilon_{i,i_1,\dots,i_{N-1}} \epsilon_{j,j_1,\dots,j_{N-1}} \nonumber \\
   &= \frac{1}{N!(N-1)!} (N-1)!\,\delta_{il}\,(N-1)!\,\delta_{jk} = \frac{1}{N}
   \delta_{il} \delta_{jk} .
+  \label{eq-uub-integral}
 \end{align}
 
 \section{Static determinant} \label{sec-evaluating-fermion-determinants}
@@ -425,7 +426,7 @@ with the indices $\{k_i\}_n$ summed over a range bounded by the equations
 \end{equation}
 %
 Due to the fact that the last power is independent, we can use the
-Caylay-Hamilton \meqref{eq-caylay-hamilton} to reduce it out. The first five
+Caylay-Hamilton equation \eqref{eq-caylay-hamilton} to reduce it out. The first five
 groups are listed in \tabref{tab-static-determinant}.
 
 \begin{table}
