@@ -400,5 +400,59 @@ Finally we will compute the most commonly used integral in this thesis
 \end{align}
 
 \section{Static determinant} \label{sec-evaluating-fermion-determinants}
+
+With the measure and various link integrals at hand it is time we approach the
+two fundamental fermionic quantities of the effective theory, namely the static
+determinant and one-site interactive loop terms. The latter we will cover in the
+next section, and we will focus on the static determinant here, namely
+%
+\begin{equation}
+  \det Q_{\text{stat}} = \prod_{\vec{x}} \det ( 1 + h_1 W(\vec{x}) )^2 
+    \det ( 1 + \bar{h}_1 W^{\dagger}(\vec{x}) )^2.
+\end{equation}
+%
+Since these factors are all independent quantities, we can focus on determining
+a single determinant $\det(1 + h_1 W)$, restricting ourselves to $W \in
+\text{SU}(N)$ for the current study. The determinant can be rewritten using the
+trace log identity together with the Mercator series, giving
+%
+\begin{equation}
+  \det ( 1 + h_1 W ) = \sum_{n=0}^N \sum_{\{k_i\}_n} \prod_{l=1}^N
+  \frac{(-1)^{(l+1)k_l}}{l^{k_l} k_l!} h_1^{l k_l} \tr (W^l)^{k_l},
+\end{equation}
+%
+with the indices $\{k_i\}_n$ summed over a range bounded by the equations
+%
+\begin{equation} \textstyle
+  \sum_{i=1}^{N} k_i = n, \hskip1em\text{and}\hskip1em
+  \sum_{i=1}^N i k_i \leq N .
+\end{equation}
+%
+Due to the fact that the last power is independent, we can use the
+Caylay-Hamilton \meqref{eq-caylay-hamilton} to reduce it out. The first five
+groups are listed in \tabref{tab-static-determinant}.
+
+\begin{table}
+  \begin{center}
+    \begin{tabular}{cl} \toprule
+      SU$(N)$ & $\det(1 + h_1 W)$ \\ \midrule
+      $1$ & $1 + h_1$ \\
+      $2$ & $1 + h_1^2 + h_1 \chi_1$ \\
+      $3$ & $1 + h_1^3 + h_1\chi_1 + \frac{1}{2} h_1^2 (\chi_1^2 - \chi_2)$ \\
+      $4$ & $1 + h_1^4 + h_1 \chi_1 + \frac{1}{2} h_1^2 (\chi_1^2 - \chi_2) +
+      \frac{1}{6} h_1^3 (\chi_1^3 - 3 \chi_1 \chi_2 + 2 \chi_3) + \frac{1}{4}
+      h_1^4 \chi_2^2$ \\
+      \multirow{2}{*}{$5$} & $1 + h_1^5 + h_1 \chi_1 + \frac{1}{2} h_1^2 (\chi_1^2 - \chi_2) +
+      \frac{1}{6} h_1^3 (\chi_1^3 - 3 \chi_1 \chi_2 + 2 \chi_3) $ \\
+      & $ + \frac{1}{24} h_1^4 ( \chi_1^4 - 6 \chi_1^2 \chi_2 + 3 \chi_2^2 +
+      8\chi_1 \chi_3 - 6\chi_4 )$ \\ \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption{Static determinants calculated in various groups SU$(N)$ with the
+    independent characters $\chi_i = \tr(U^i)$.}
+  \label{tab-static-determinant}
+\end{table}
+
 \section{\texorpdfstring{$W_{nm}$}{Wnm} terms}
+
 \label{sec-evaluating-polyakov-coupling-terms}
