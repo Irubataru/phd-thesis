@@ -454,5 +454,47 @@ groups are listed in \tabref{tab-static-determinant}.
 \end{table}
 
 \section{\texorpdfstring{$W_{nm}$}{Wnm} terms}
-
 \label{sec-evaluating-polyakov-coupling-terms}
+
+The last group dependent quantity of interest are the effective theory nodes
+which have the form
+%
+\begin{equation}
+  W_{nm} = \tr \frac{(h_1 W)^m}{(1 + h_1 W)^n},
+\end{equation}
+%
+and need to be rewritten in terms of the characters. There are multiple ways to
+work with these quantities. First of all, they can be studied
+directly though its series expansion
+%
+\begin{equation}
+  W_{nm} = \tr (h_1 W)^m \sum_{i=0}^{\infty} (-1)^i \binom{n}{i} W^i,
+\end{equation}
+%
+which is useful for some particular identites. Alternately one can rewrite it in
+terms of its independent factors
+%
+\begin{equation}
+  W_{nm} = \sum_{i=0}^{N-1} a_i \tr{W^i},
+\end{equation}
+%
+then use a combination of its series expansion and the Caylay-Hamilton theorem
+to manipulate the expression and solve for $a_i$. Finally, one can construct a
+generating functional to convert between the different variables. One such
+functional can conveniently be constructed using the expression for the static
+determinant
+%
+\begin{equation}
+  G(\alpha,\beta) = \det ( \alpha + \beta h_1 W ),
+\end{equation}
+%
+where we can write
+%
+\begin{equation}
+  W_{nm} = \frac{(-1)^{n-1}}{(n-1)!} \frac{\partial^{(n-m)}}{\partial \alpha^{(n-m)}}
+    \frac{\partial^{m}}{\partial \beta^m} G(\alpha,\beta)
+    \bigg|_{\alpha=\beta=1}.
+\end{equation}
+%
+The static determinant can of course be calculated with the methods outlined in
+the previous section.
