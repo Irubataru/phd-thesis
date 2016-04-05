@@ -35,12 +35,11 @@
   \begin{scope}
     \clip (-.25, -.25) rectangle (5.75, 1.25);
     \foreach \x in {-1,...,5} {
-      \path [link,plaquette] (\x cm + \deltaskip,0) -- ++(1cm - 2\deltaskip,0)
+      \path [plaquette] (\x cm + \deltaskip,0) -- ++(1cm - 2\deltaskip,0)
         -- ++(0,1cm) -- ++(2\deltaskip - 1cm,0) -- cycle;
     }
   \end{scope}
   % --------------------------------------------------------------------------
-
 
   % Axes
   % --------------------------------------------------------------------------

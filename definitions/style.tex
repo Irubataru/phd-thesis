@@ -1,6 +1,22 @@
 \input{definitions/colour.tex}
 \input{definitions/lattice_styles.tex}
 
+% ---------------- %
+% Component styles %
+% ---------------- %
+
+\let\oldto\to
+\renewcommand{\to}{%
+  \text{\tikz[
+    baseline=-0.25em,
+    execute at end picture = {
+      \path ([xshift=-.5ex] current bounding box.south west)
+        rectangle ([xshift=.5ex] current bounding box.north east);
+    }
+  ]{%
+    \draw[-{Stealth[round]}] (0,0) -- (1em,0);
+}}}
+
 % ------------- %
 % Header Styles %
 % ------------- %
@@ -58,7 +74,6 @@
 \renewcommand\contentsname{Table of Contents}
 \renewcommand{\cftchapfont}{\color{ColourHl1}\scshape{}\bfseries{}\large}
 \renewcommand{\cftpartfont}{\scshape{}\bfseries{}\Large}
-
 
 % ---------------------------- %
 % Fix for natbib link doubling %
