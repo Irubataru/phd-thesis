@@ -117,19 +117,15 @@ This equation reads
   M^N + c_{N-1} M^{N-1} + \cdots + c_1 M + (-1)^N \det M\: \mathbb{1}_R = 0,
 \end{equation}
 %
-where the coefficients are
+where the coefficients can be computed with the recursive \emph{Faddeev-LeVerrier
+algorithm}
 %
 \begin{equation}
-  c_i = \sum_{\{k_n\}} \prod_{l=1}^N \frac{(-1)^{k_l+1}}{l^{k_l} k_l!}
-  \tr(M^l)^{k_l},
+  c_{N-m} = -\frac{1}{m} \sum_{k=1}^m c_{N-m+k} \tr (M^k),
 \end{equation}
 %
-in which the sum goes over all integer partitions $\{k_n\}$ so that
-%
-\begin{equation}
-  \sum_{l=1}^N l k_l  = N - i.
-\end{equation}
-%
+with $c_N = 1$ and $c_1 = (-1)^N \det M$ as seen in \meqref{eq-caylay-hamilton}.
+
 Since we know that $\det U = 1$ and $U^{\dagger} U = \mathbb{1}$ for all
 matrices in SU$(N)$, \meqref{eq-caylay-hamilton} can be multiplied by powers of
 $U^{\dagger}$ and traced to find relations to reduce the number of unknowns in
@@ -212,7 +208,7 @@ If we ignore the Haar measure and define a new integral, $J_{nm} = \int
 section that this integral is
 %
 \begin{equation}
-  J_{nm} = \sum_{\{l_i\}} \sum_{\{k_i\}}
+  J_{nm} = (2\pi)^2 \sum_{\{l_i\}} \sum_{\{k_i\}}
     \frac{n!}{l_1! l_2! l_3!} \frac{m!}{k_1! k_2!k_3!}\,
     \delta\big(l_1 - l_3 - k_1 + k_3\big)\, \delta\big(l_2 - l_3 - k_2 + k_3\big).
 \end{equation}
@@ -440,8 +436,7 @@ groups are listed in \tabref{tab-static-determinant}.
       $2$ & $1 + h_1^2 + h_1 \chi_1$ \\
       $3$ & $1 + h_1^3 + h_1\chi_1 + \frac{1}{2} h_1^2 (\chi_1^2 - \chi_2)$ \\
       $4$ & $1 + h_1^4 + h_1 \chi_1 + \frac{1}{2} h_1^2 (\chi_1^2 - \chi_2) +
-      \frac{1}{6} h_1^3 (\chi_1^3 - 3 \chi_1 \chi_2 + 2 \chi_3) + \frac{1}{4}
-      h_1^4 \chi_2^2$ \\
+      \frac{1}{6} h_1^3 (\chi_1^3 - 3 \chi_1 \chi_2 + 2 \chi_3)$ \\
       \multirow{2}{*}{$5$} & $1 + h_1^5 + h_1 \chi_1 + \frac{1}{2} h_1^2 (\chi_1^2 - \chi_2) +
       \frac{1}{6} h_1^3 (\chi_1^3 - 3 \chi_1 \chi_2 + 2 \chi_3) $ \\
       & $ + \frac{1}{24} h_1^4 ( \chi_1^4 - 6 \chi_1^2 \chi_2 + 3 \chi_2^2 +
