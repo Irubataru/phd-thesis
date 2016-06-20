@@ -10,13 +10,13 @@ reweighting can be readily applied.
 
 The work in this thesis builds on previous work with the effective theory while
 pushing the derivation further and introducing analytic tools, which we will
-cover in the next session.
+cover in the next chapter.
 
 In this chapter we will first introduce the effective theory before we introduce
 two expansion schemes that facilitate the computation of the theory. These are
 namely the \emph{character expansion}, mentioned in \secref{sec-group_intro},
 the second is the \emph{hopping parameter expansion} for heavy fermions. We
-round of the chapter with a discussion on the numerical evaluation of the
+round off the chapter with a discussion on the numerical evaluation of the
 effective theory.
 
 \section{The effective theory - \texorpdfstring{\itshape Introduction}{Introduction}}
@@ -46,7 +46,7 @@ which defines the effective action to be
 The integrals over the spatial gauge links $U_i(x)$ is unfortunately not
 something we can evaluate analytically without the aid of approximations. We
 will therefore introduce two expansion schemes and work towards deriving the
-effective theory such that reproduce the exact expansion coefficients of the
+effective theory such that it reproduce the exact expansion coefficients of the
 full theory in the end.
 
 \section{The character expansion} \label{sec-char_exp}
@@ -124,7 +124,7 @@ $(x,\mu)$, gives the integral
 %
 where $U_{s_i}$ is the remaining \emph{staple} after the link $U_{\mu}(x)$ has
 been factored out of the plaquette. One approach to solving these integrals is
-to write carry out the Kronecker product of the representation matrices and
+to carry out the Kronecker product of the representation matrices and
 decompose them to their irreducible representations using the Clebsch-Gordan
 coefficients. We see that only products whose Clebsch-Gordan series contains the
 trivial representation vanish due to the identity
@@ -209,7 +209,7 @@ action therefore simplify to
     e^{-\mathcal{S}_{\text{eff}}[L]} ,
 \end{equation}
 %
-where $\sqrt{\det U_0}$ is the Haar measure of the group, the calculation of
+where $\sqrt{\det U_0}$ is the reduced Haar measure of the group, the calculation of
 which will be covered in \apxref{sec-haar_measure}. As one can see the effective
 theory is a three dimensional theory of Polyakov loop interactions. At first
 order we have a nearest neightbour spin system with an effective coupling
@@ -295,8 +295,8 @@ negative components: $T = T^+ + T^-$, $S_i = S_i^+ + S_i^-$, and
     \delta_{\vec{y},\vec{x}\pm\hat{i}} \,\delta_{t_y,t_x}.
 \end{align}
 %
-The fermion determinant can then be refactored into a static factor and a
-kinematic factor by factoring out the temporal hopping matrix
+The fermion determinant can then be refactored into static and kinematic factors
+by factoring out the temporal hopping matrix
 %
 \begin{equation}
   \det (Q) = \det (1 - \kappa T - \kappa S)
@@ -595,7 +595,7 @@ can be written as
   e^{-\mathcal{S}_{\text{eff}}} = 1 - \frac{\kappa^2 N_t}{N_c}
   \sum_{\langle \vec{x}, \vec{y} \rangle} 
     \big( W_{11}(\vec{x}) - \xoverline{W}_{11}(\vec{x}) \big)
-    \big( W_{11}(\vec{y}) - \xoverline{W}_{11}(\vec{y}) \big).
+    \big( W_{11}(\vec{y}) - \xoverline{W}_{11}(\vec{y}) \big) + \mathcal{O}(u, \kappa^4)
 \end{equation}
 %
 At the next to leading order in $\kappa$ we get new terms both to the nearest
@@ -665,12 +665,12 @@ fermion hops
   \end{tikzpicture}\;,
 \end{equation}
 %
-which only give the same result due to \meqref{eq-gauge-link-integral-graphic}.
-Higher order corrections can be constructed in a similar manner. We will see
-that this means that most of the finite $\beta$ corrections to the effective
-theory can also be implemented in terms of $\kappa$ corrections by simply
-replacing the plaquettes by a sufficiently long fermion loop with the same
-geometric border.
+which only give the same result after link integration due to
+\meqref{eq-gauge-link-integral-graphic}.  Higher order corrections can be
+constructed in a similar manner. We will see that this means that most of the
+finite $\beta$ corrections to the effective theory can also be implemented in
+terms of $\kappa$ corrections by simply replacing the plaquettes by a
+sufficiently long fermion loop with the same geometric border.
 
 \subsection{Gauge corrections}
 
@@ -709,17 +709,53 @@ plaquettes
   + \mathcal{O}(\kappa^4 \beta,\kappa^2 \beta^3).
 \end{multline}
 %
-When we calculated the static determinant, we saw that every loop in the
-temporal direction came with a weight $h_1(z,\kappa)$. After carrying out the
-spatial gauge links, all the terms in \meqref{eq-static-loop-gauge-corr} result
-in an untraced Polyakov loop, and it is therefore natural to absorb these terms
-into a shift in $h_1$ \citep{Fromm:2011qi,Christensen:2013xea}
+These types of diagrams also result in Polyakov loops after spatial gauge
+integration%
+\footnote{As long as their extended boundary is not in contact with other links
+  or Polyakov loops at the point of integration},
+and can therefore be absorbed into a redefinition of the invariant parameters of
+the static determinant, namely the looping weight $h_1(z,\kappa)$. The shift in
+$h_1$ has been calculated to higher orders in the expansion parameters,
+$\kappa, u$ \citep{Fromm:2011qi,Christensen:2013xea}
 %
 \begin{equation}
   h_1(z,\kappa,\beta) = h_1(z,\kappa) \exp \bigg( 6 N_t \kappa^2 u \bigg(
-    \frac{1-u^{N_t-1}}{1-u} + 4 u^4 - 12\kappa^2 + 9\kappa^2 u + 4 \kappa^2 u^2 -
-    4\kappa^4\bigg) \bigg)
+    \frac{1-u^{N_t-1}}{1-u} + 4 u^4 - 12\kappa^2 + 9\kappa^2 u +
+    \mathcal{O}(\kappa^4, u^4)\bigg) \bigg).
 \end{equation}
+
+Analogously, the nearest neighbour coupling strength has a similar correction
+scheme where we shift spatial hops and fill it with plaquettes. The diagrams are
+shown in \figref{fig-nearest-neighbour-corrections} and they give the following
+corrections to nearest neighbour interactions \citep{Langelage:2014vpa}
+%
+\begin{multline}
+  I\big[PM\big] \to
+    \frac{\kappa^2 N_t}{N_c} \Big(1 + 2 \frac{u-u^{N_t}}{1-u} + 8u^5 + 16\kappa^2 u^4\Big)\\
+  \times \sum_{\langle \vec{x}, \vec{y} \rangle} 
+    \big( W_{11}(\vec{x}) - \xoverline{W}_{11}(\vec{x}) \big)
+    \big( W_{11}(\vec{y}) - \xoverline{W}_{11}(\vec{y}) \big).
+\end{multline}
+%
+It is therefore useful to introduce the nearest neighbour coupling constant
+%
+\begin{equation}
+  h_2(\kappa,\beta) = \frac{\kappa^2 N_t}{N_c} \Big(1 + 2 \frac{u-u^{N_t}}{1-u} + 8u^5
+    +16\kappa^2 u^4 + \mathcal{O}(\kappa^4 u^3)\Big),
+\end{equation}
+%
+which will frequently appear in later calculations.
+
+
+\begin{figure}
+  {\centering
+    \includegraphics[width=.75\textwidth]{nearest_neighbour_corrections}\par}
+  \caption{Diagrams contribution to the corrections to the nearest neighbour
+    coupling constant of the effective theory. From left to right
+    $\mathcal{O}(1)$, $\mathcal{O}(u)$, $\mathcal{O}(u^5)$ and
+    $\mathcal{O}(\kappa^2 u^4)$ respectively.}
+  \label{fig-nearest-neighbour-corrections}
+\end{figure}
 
 
 \section{Resummations}
