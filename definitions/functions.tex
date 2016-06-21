@@ -4,6 +4,7 @@
 
 %%Referencing
 
+\newcommand{\chaptoken}{\textsc{chapter}}
 \newcommand{\sectoken}{\textsc{section}}
 \newcommand{\secstoken}{\textsc{sections}}
 \newcommand{\apxtoken}{\textsc{appendix}}
@@ -22,6 +23,7 @@
 % Pretty references %
 % ----------------- %
 
+\newcommand{\chapref}[1]{\hyperref[#1]{\mbox{\chaptoken{} \ref*{#1}}}}
 \newcommand{\secref}[1]{\hyperref[#1]{\mbox{\sectoken{} \ref*{#1}}}}
 \newcommand{\meqref}[1]{\hyperref[#1]{\mbox{\eqtoken{} (\ref*{#1})}}}
 \newcommand{\apxref}[1]{\hyperref[#1]{\mbox{\apxtoken{} \ref*{#1}}}}
@@ -68,6 +70,10 @@
 
 \newcommand{\minus}{\raisebox{.16ex}{\scalebox{0.75}{$-$}}}
 \newcommand{\mminus}{\raisebox{.25ex}{\scalebox{0.5}{$-$}}}
+
+\newcommand\moment[1][\,]{{\bm{\langle}} #1 {\bm{\rangle}}}
+%\newcommand\cumulant[1][\,]{{\bm{[}} #1 {\bm{]}}}
+\newcommand\cumulant[1][\;]{\mathbold{[} #1 \mathbold{]}}
 
 % To get "eqnarray" centred alignment
 % See: http://tex.stackexchange.com/a/102845/39313

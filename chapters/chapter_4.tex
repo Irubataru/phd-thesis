@@ -38,7 +38,7 @@ function
 %
 which defines the effective action to be
 %
-\begin{equation}
+\begin{equation} \label{eq:eff_action_def}
   \mathcal{S}_{\text{eff}} = - \log \int \prod_{x, i} \mathrm{d} U_i(x) \, \det
     Q \, [U_{\mu}] \, e^{-\mathcal{S}_g [U_{\mu}]}.
 \end{equation}
@@ -498,7 +498,7 @@ To be able to calculate the spatial gauge integrals, it is necessary to expand
 the exponential. The lowest non trivial order contribution to the partition
 function is therefore
 %
-\begin{equation}
+\begin{equation} \label{eq:single_hop_partition}
   \mathcal{Z}_2 = \int \big[ \mathrm{d} U \big]_{\mu} \det \qstat \, e^{-\tr(PM)}
     = \int \big[ \mathrm{d} U \big]_{\mu} \det \qstat \, (1 - \tr(PM) + \mathcal{O}(\kappa^4)).
 \end{equation}
@@ -591,7 +591,7 @@ short hand
 With this the lowest order spatial hopping contribution to the effective action
 can be written as
 %
-\begin{equation}
+\begin{equation} \label{eq:lowest_order_ea_unsummed}
   e^{-\mathcal{S}_{\text{eff}}} = 1 - \frac{\kappa^2 N_t}{N_c}
   \sum_{\langle \vec{x}, \vec{y} \rangle} 
     \big( W_{11}(\vec{x}) - \xoverline{W}_{11}(\vec{x}) \big)
@@ -718,7 +718,7 @@ the static determinant, namely the looping weight $h_1(z,\kappa)$. The shift in
 $h_1$ has been calculated to higher orders in the expansion parameters,
 $\kappa, u$ \citep{Fromm:2011qi,Christensen:2013xea}
 %
-\begin{equation}
+\begin{equation} \label{eq:h1_corrections}
   h_1(z,\kappa,\beta) = h_1(z,\kappa) \exp \bigg( 6 N_t \kappa^2 u \bigg(
     \frac{1-u^{N_t-1}}{1-u} + 4 u^4 - 12\kappa^2 + 9\kappa^2 u +
     \mathcal{O}(\kappa^4, u^4)\bigg) \bigg).
@@ -746,7 +746,6 @@ It is therefore useful to introduce the nearest neighbour coupling constant
 %
 which will frequently appear in later calculations.
 
-
 \begin{figure}
   {\centering
     \includegraphics[width=.75\textwidth]{nearest_neighbour_corrections}\par}
@@ -757,8 +756,168 @@ which will frequently appear in later calculations.
   \label{fig-nearest-neighbour-corrections}
 \end{figure}
 
-
 \section{Resummations}
+
+One of the more powerful tools available to improve convergence is the process
+of resumming an infinite series of terms into a closed analytic expression. This
+has already been utilised in the expression for $h_1$, \meqref{eq:h1_corrections}.
+We will however go though the exponensiation of the effective action in more
+detail as it is an integral part of the linked cluster expansion which will be
+introduced in \chapref{chap5}.
+
+Expanding the single hop partition function,
+\meqref{eq:single_hop_partition}, to all powers gives
+%
+\begin{equation}
+  \mathcal{Z}_2 = \int \big[ \mathrm{d} U \big]_{\mu} \det \qstat \,
+    \sum_{n=0}^{\infty} \frac{(-1)^n}{n!} \big( \tr_{xsc}(PM) \big)^n
+\end{equation}
+%
+where every power carries an independent sum over the spatial degrees of
+freedom. These traces will contain both terms in which the $PM$ matrices have
+overlapping spatial links as well as terms where they are separate. In the
+latter case the integrals themselves separates, and to lowest order we have
+%
+\begin{align}
+  \mathcal{Z}_2 
+  = \int \big[ \mathrm{d} U \big]_{0} \det \qstat \,
+    \sum_{n=0}^{\infty} \frac{(-1)^n}{n!} \bigg( \int \big[\mathrm{d} U\big]_i\tr_{xsc}(PM) \bigg)^n
+    +\mathcal{O}(k^4)&, \nonumber\\
+  = \int \big[ \mathrm{d} U \big]_{0} \det \qstat \,
+    \exp \bigg( -\int \big[\mathrm{d} U\big]_i \tr_{xsc}(PM) \bigg) +
+    \mathcal{O}(\kappa^4)&.
+\end{align}
+%
+We see that since the effective action originate from an exponential it
+naturally also resums to one, with corrections due to overlapping terms can be
+taken into account order by order in a systematic way. This resummation gives a
+more satisfactory expression for $S_{\text{eff}}$ which we gave to first order
+in \meqref{eq:lowest_order_ea_unsummed}
+%
+\begin{equation} \label{eq:lowest_order_ea_unsummed}
+  S_{\text{eff}} = \frac{\kappa^2 N_t}{N_c}
+  \sum_{\langle \vec{x}, \vec{y} \rangle} 
+    \big( W_{11}(\vec{x}) - \xoverline{W}_{11}(\vec{x}) \big)
+    \big( W_{11}(\vec{y}) - \xoverline{W}_{11}(\vec{y}) \big) + \mathcal{O}(u, \kappa^4).
+\end{equation}
+%
+Since the effective action is given by the logarithm of the partial partition
+function, it is more advantageous to expand this quantity directly. To
+facilitate this we introduce the method of moments and cumulants.
+
+\subsection{Method of moments and cumulants}
+
+The method of moments and cumulants is an elegant mathematical formalism which
+can be utilised to extract the correct infinite volume limit for thermodynamic
+physics \citep{Rushbrooke:1980zb,Munster:1980iv}, and will be an integral
+part in the linked cluster expansion of \chapref{chap5}.
+
+The \emph{moment}, $\moment$, is a symmetric function operating on symbols
+where the moment product
+%
+\begin{equation}
+  \moment_1 \otimes \moment_2 =  \moment_3
+\end{equation}
+%
+is defined by
+%
+\begin{equation}
+  \moment[\alpha, \dots, \beta]_3 = \sum_{p_2} \moment[\alpha, \dots, \delta]_1\,
+    \moment[\gamma, \dots, \epsilon]_2
+\end{equation}
+%
+where the sum is over all partitions of the symbols $\alpha, \dots, \beta$ into
+two sets. The \emph{cumulant}, $\cumulant$, of the moment $\moment$ is defined
+through the $\otimes$ exponential
+%
+\begin{equation}
+  \exp_{\otimes} \cumulant = 1 + \sum_{n=1}^{\infty} \frac{1}{n!} \cumulant^{\otimes n}
+    \equiv 1 + \moment,
+\end{equation}
+%
+The moments and the cumulants can then be defined in terms of the other using
+partition sums
+%
+\begin{align}
+  \moment[\alpha_1, \dots, \alpha_n] &= \sum_{k=1}^{n} \sum_{p_k} \cumulant[\alpha_1, \dots, \alpha_m]_1
+    \dots \cumulant[\alpha_i, \dots, \alpha_j]_k \\
+  \cumulant[\alpha_1, \dots, \alpha_n] &= \sum_{k=1}^{n} (-1)^{k-1} (k-1)! \sum_{p_k} 
+  \moment[\alpha_1, \dots, \alpha_m]_1
+    \dots \moment[\alpha_i, \dots, \alpha_j]_k
+\end{align}
+%
+We define the generating functional $f_{\moment}$ through
+indexed variables, $x_{\alpha}$ for $\alpha$ in the set of symbols
+%
+\begin{equation}
+  f_{\moment}(\{x_\alpha\}) = \sum_{n=1}^{\infty} \sum_{\alpha_1,\dots,\alpha_n}
+    \frac{1}{n!} \moment[\alpha_1, \dots, \alpha_n] x_{\alpha_1} \cdots
+    x_{\alpha_n}
+\end{equation}
+%
+with an analogous definition for $f_{\cumulant}(\{x_\alpha\})$. The main theorem
+of the method of moments and cumulants then tell us
+%
+\begin{equation} \label{eq:moment_cumulant_theorem}
+  \exp f_{\cumulant}(\{x_{\alpha}\}) = 1 + f_{\moment}(\{x_{\alpha}\})
+\end{equation}
+%
+which can be easily proven through induction.
+
+Next we want to apply this method to the so far computed effective theory so
+that we can generalise the exponentiation procedure. We want to compute the
+effective action which is defined by \meqref{eq:eff_action_def}. Let us for now
+consider the strong coupling limit of this expression
+%
+\begin{equation}
+  e^{-S_{\text{eff}}} = \int \big[ \mathrm{d} U \big]_i \,
+    \exp \bigg(- \sum_{n=1}^{\infty} \frac{1}{n} \tr (P + M)^n \bigg).
+\end{equation}
+%
+We define the general polymer variables $X_i$ to represent a combination of $\tr
+(P + M)^n$ factors with a connected set of overlapping links and a given spatial
+extent on the lattice. The function $I(X_i)$ gives the value after integration
+over the spatial links of the polymer $X_i$. We introduce a cluster moment such
+that
+%
+\begin{equation}
+  \moment[X_1, \dots, X_n] =
+  \begin{cases}
+    1, & \text{if every $X_i$, $X_j$ is disconnected} \\
+    0, & \text{otherwise}
+  \end{cases}
+\end{equation}
+%
+with which we can easily express the effective action
+%
+\begin{equation}
+  e^{-S_{\text{eff}}} = 1 + \sum_{n=1}^{\infty} \sum_{X_1, \dots, X_n} \frac{1}{n!}\,
+    \moment[X_1, \dots, X_n] I(X_1) \cdots I(X_n)
+\end{equation}
+%
+because we know that the integrals factorise if the polymers share no spatial
+links. We can then compute the logarithm of the above expression using
+\meqref{eq:moment_cumulant_theorem}
+%
+\begin{equation}
+  S_{\text{eff}} = -\sum_{n=1}^{\infty} \sum_{X_1,\dots,X_n} \frac{1}{n!}\,
+    \cumulant[X_1,\dots,X_n]\, I(X_1) \cdots I(X_n).
+\end{equation}
+%
+The crucial observation is that due to the alternating sign in the formula for
+the cumulant in terms of the moments, the cumulants posses the opposite property
+of the moments
+%
+\begin{equation}
+  \cumulant[X_1,\dots,X_n] \neq 0 \iff X_1 \cup \dots \cup X_n \text{ is connected}.
+\end{equation}
+%
+We can therefore conclude that the effective action properly exponentiates if
+one considers connected graphs only, and their combinatorial prefactors are
+given by the cumulants. It should be noted that this is only true in the
+infinite volume limit, but corrections can easily be carried out in an order by
+order basis. Later in the analytical chapter we will work in the actual limit
+where the exponentiation is exact.
 
 \section{The cold and dense}
 
