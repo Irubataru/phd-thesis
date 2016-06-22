@@ -913,11 +913,53 @@ of the moments
 \end{equation}
 %
 We can therefore conclude that the effective action properly exponentiates if
-one considers connected graphs only, and their combinatorial prefactors are
+one considers connected polymers only, and their combinatorial prefactors are
 given by the cumulants. It should be noted that this is only true in the
 infinite volume limit, but corrections can easily be carried out in an order by
 order basis. Later in the analytical chapter we will work in the actual limit
 where the exponentiation is exact.
+
+\subsection{Logarithmic resummation}
+
+One final resummation scheme will be discussed in the following section. It is
+based on a resummation of the exponentiated action into a logarithm as was
+carried out for the pure gauge action in \citep{Langelage:2010yr}. Although it
+does not provide as much numerical benefit as the pure gauge resummation does,
+we will see that it will prove to be a useful tool when we turn to analytic
+evaluation.
+
+We will focus on the lowest order order term in the effective action before
+integration, the previously mentioned $\mathcal{Z}_2$. We want to study the
+expression one obtains when all the nearest neighbour interactions lie on the
+same spatial link
+%
+\begin{equation}
+  S_{\text{eff}} = - \sum_{n=1}^{\infty} \sum_X \frac{1}{n!} \cumulant[X, ..., X] \, I(X)^n + \mathcal{O}(\kappa^4)
+\end{equation}
+%
+where $X = \tr_{xsc}(PM)$. In the earlier calculations we saw that $\sum_X = N_t
+\sum_{\langle x,y \rangle}$ and the single link cumulant is
+$\cumulant[X, \dots, X] = (-1)^{n-1} (n-1)!$. The $\mathcal{Z}_2$ effective
+action therefore gives
+%
+\begin{align}
+  S_{\text{eff}} &= - N_t \sum_{\langle x,y \rangle} \sum_{n=1}^{\infty}
+    \frac{(-1)^{n-1}}{n} I(X)^n + \mathcal{O}(\kappa^4), \nonumber\\
+    &= \hphantom{-} N_t \sum_{\langle x,y \rangle} \log \big( - I(X) \big) + \mathcal{O}(\kappa^4)
+\end{align}
+%
+and the full $\mathcal{Z}_2$ is therefore
+%
+\begin{equation}
+  \mathcal{Z}_2 \approx \int_{U_0} \det \qstat \prod_{\langle \vec{x},\vec{y} \rangle}
+    \Big(1 - \frac{\kappa^2}{N_c} 
+    \big( W_{11}(\vec{x}) - \xoverline{W}_{11}(\vec{x}) \big)
+    \big( W_{11}(\vec{y}) - \xoverline{W}_{11}(\vec{y}) \big) \Big)^{N_t},
+\end{equation}
+%
+with higher order corrections at $\mathcal{O}(\kappa^4)$. This formulation is
+particularly useful for studying e.g. the finite volume dependence of the Yang
+Lee zeros.
 
 \section{The cold and dense}
 
