@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,multirow,array}
+\usepackage{xcolor}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/mathematics_styles.tex}
+\input{../../definitions/functions.tex}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tabular}
+\setlength\PreviewBorder{1mm}
+
+\tikzset{
+  every node/.style = {anchor=south, text depth=0.35ex, inner sep=1pt}
+}
+
+\begin{document}
+\setlength{\extrarowheight}{18pt}
+\begin{tabular}{cccc} \toprule
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=6pt] (b.north);
+    \path[contraction] (c.north) edge [skip loop=6pt] (d.north);
+    \path[contraction] (e.north) edge [skip loop=6pt] (f.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=8pt] (d.north);
+    \path[contraction] (c.north) edge [skip loop=4pt] (b.north);
+    \path[contraction] (e.north) edge [skip loop=4pt] (f.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=4pt] (b.north);
+    \path[contraction] (c.north) edge [skip loop=8pt] (f.north);
+    \path[contraction] (e.north) edge [skip loop=4pt] (d.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=12pt] (f.north);
+    \path[contraction] (c.north) edge [skip loop=4pt] (d.north);
+    \path[contraction] (e.north) edge [skip loop=8pt] (b.north);
+  \end{tikzpicture} \\ \midrule
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=8pt] (f.north);
+    \path[contraction] (c.north) edge [skip loop=4pt] (b.north);
+    \path[contraction] (e.north) edge [skip loop=4pt] (d.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=4pt] (d.north);
+    \path[contraction] (c.north) edge [skip loop=12pt] (f.north);
+    \path[contraction] (e.north) edge [skip loop=8pt] (b.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=4pt] (c.north);
+    \path[contraction] (c.north) edge [skip loop=4pt] (e.north);
+    \path[contraction] (b.north) edge [skip loop=8pt] (d.north);
+    \path[contraction] (d.north) edge [skip loop=8pt] (f.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=6pt] (d.north);
+    \path[contraction] (c.north) edge [skip loop=6pt] (b.north);
+    \path[contraction] (e.north) edge [skip loop=6pt] (f.north);
+  \end{tikzpicture} \\ \midrule
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=6pt] (b.north);
+    \path[contraction] (c.north) edge [skip loop=6pt] (f.north);
+    \path[contraction] (d.north) edge [skip loop=6pt] (e.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=8pt] (f.north);
+    \path[contraction] (b.north) edge [skip loop=8pt] (e.north);
+    \path[contraction] (c.north) edge [skip loop=4pt] (d.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=8pt] (f.north);
+    \path[contraction] (b.north) edge [skip loop=4pt] (e.north);
+    \path[contraction] (c.north) edge [skip loop=4pt] (d.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=8pt] (f.north);
+    \path[contraction] (b.north) edge [skip loop=4pt] (e.north);
+    \path[contraction] (c.north) edge [skip loop=8pt] (d.north);
+  \end{tikzpicture} \\ \midrule
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=8pt] (f.north);
+    \path[contraction] (b.north) edge [skip loop=4pt] (c.north);
+    \path[contraction] (d.north) edge [skip loop=8pt] (e.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=8pt] (f.north);
+    \path[contraction] (b.north) edge [skip loop=8pt] (c.north);
+    \path[contraction] (d.north) edge [skip loop=4pt] (e.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=4pt] (d.north);
+    \path[contraction] (b.north) edge [skip loop=8pt] (e.north);
+    \path[contraction] (c.north) edge [skip loop=8pt] (f.north);
+  \end{tikzpicture} &
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=8pt] (d.north);
+    \path[contraction] (b.north) edge [skip loop=8pt] (e.north);
+    \path[contraction] (c.north) edge [skip loop=4pt] (f.north);
+  \end{tikzpicture} \\ \midrule
+  \begin{tikzpicture}[baseline={(a.south)}]
+    \node (a) {$P$};
+    \node (b) [right=0pt of a]{$M$};
+    \node (c) [right=0pt of b]{$P$};
+    \node (d) [right=0pt of c]{$M$};
+    \node (e) [right=0pt of d]{$P$};
+    \node (f) [right=0pt of e]{$M$};
+    \path[contraction] (a.north) edge [skip loop=6pt] (d.north);
+    \path[contraction] (b.north) edge [skip loop=6pt] (e.north);
+    \path[contraction] (c.north) edge [skip loop=6pt] (f.north);
+  \end{tikzpicture} & & & \\ \bottomrule
+\end{tabular}
+\end{document}

@@ -34,32 +34,54 @@
 % Horribly complicated command to give a list of section references %
 % ----------------------------------------------------------------- %
 
-\newcommand*{\secprevious}{}
-\newcommand*{\secseparator}{}
+\newcommand*{\refprevious}{}
+\newcommand*{\refseparator}{}
 
 % Prints the previously stored reference, and stores the current
-\newcommand{\printoneref}[1]{%
-  \secprevious%
-  \secseparator%
-  \renewcommand*{\secprevious}{%
-    \ref{#1}}% store the current element in the \secprevious variable
-  \renewcommand*{\secseparator}{, }% update the separator after first element
+\newcommand{\printoneref}[2][, ]{%
+  \refprevious%
+  \refseparator%
+  \renewcommand*{\refprevious}{%
+    \ref{#2}}% store the current element in the \refprevious variable
+  \renewcommand*{\refseparator}{#1}% update the separator after first element
 }
 
 \newcommand{\secrefs}[1]{%
-  \renewcommand*{\secprevious}{}%
-  \renewcommand*{\secseparator}{}%
+  \renewcommand*{\refprevious}{}%
+  \renewcommand*{\refseparator}{}%
   \mbox{\secstoken{}}
-  \forcsvlist{\printoneref}{#1}%
-  and \secprevious{}%
+  \forcsvlist{\printoneref[, ]}{#1}%
+  and \refprevious{}%
 }
 
 \newcommand{\apxrefs}[1]{%
-  \renewcommand*{\secprevious}{}%
-  \renewcommand*{\secseparator}{}%
+  \renewcommand*{\refprevious}{}%
+  \renewcommand*{\refseparator}{}%
   \mbox{\apxstoken{}}
-  \forcsvlist{\printoneref}{#1}%
-  and \secprevious{}%
+  \forcsvlist{\printoneref[, ]}{#1}%
+  and \refprevious{}%
+}
+
+\newcommand{\meqrefs}[2][,]{%
+  \renewcommand*{\refprevious}{}%
+  \renewcommand*{\refseparator}{}%
+  \mbox{\eqstoken{} (}%
+  \forcsvlist{\printoneref[#1]}{#2}%
+  \refprevious{})%
+}
+
+
+% -------------- %
+% tikz functions %
+% -------------- %
+
+\tikzset{
+    skip loop/.style={
+      to path={-- ++(0,#1) -| (\tikztotarget)}
+    },
+    position/.style args={#1:#2 from #3}{
+        at=(#3.#1), anchor=#1+180, shift=(#1:#2)
+    }
 }
 
 % ---------------------- %

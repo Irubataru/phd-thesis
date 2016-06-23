@@ -374,7 +374,7 @@ method, a straightforward calculation of the matrix inverse. Once more, due to
 the fact that backtracking is disallowed, the propagator separates into two
 pieces
 %
-\begin{equation}
+\begin{equation} \label{eq:static_prop_separation}
   \qstat^{-1} \equiv \frac{1}{1 - \kappa T} = \frac{1}{1 - \kappa T^+} + \frac{1}{1 - \kappa
     T^-} -1,
 \end{equation}
@@ -429,6 +429,7 @@ which on component form simplifies to
   (2 e^{-a\mu}\kappa)^{t_x-t_y}
   &\frac{U_0(t_x \!\to\! t_y)}{1 + \bar{h}_1 W^{\dagger}}
   ( \theta_{t_x, t_y} - \bar{h}_1 W^{\dagger} \theta_{t_y, t_x}).
+  \label{eq:kminus_def}
 \end{alignat}
 %
 We have introduced the gauge transporter $U_0(t_x \!\to\! t_y)$, which is
@@ -749,7 +750,7 @@ which will frequently appear in later calculations.
 \begin{figure}
   {\centering
     \includegraphics[width=.75\textwidth]{nearest_neighbour_corrections}\par}
-  \caption{Diagrams contribution to the corrections to the nearest neighbour
+  \caption{Diagrams contributing to the corrections to the nearest neighbour
     coupling constant of the effective theory. From left to right
     $\mathcal{O}(1)$, $\mathcal{O}(u)$, $\mathcal{O}(u^5)$ and
     $\mathcal{O}(\kappa^2 u^4)$ respectively.}
@@ -963,6 +964,349 @@ Lee zeros.
 
 \section{The cold and dense}
 
+Although we have built the foundations for the calculation of the effective 3D
+theory, we have still not presented any results beyond leading order in the
+hopping expansion beyond the discussions on resummation. In
+\citep{Langelage:2014vpa} the effective theory was computed to
+$\mathcal{O}(\kappa^4)$, and a detailed computation of the appearing terms as
+well as gauge corrections can be found in \citep{Neuman:2015zb}. In the same
+publications an observation was made that the effective action greatly simplify
+in the cold and dense limit, an area of QCD which is of great interest. The two
+limits aid our computations in two ways. In the dense limit the thermodynamics
+is dominated by quarks, not anti-quarks, and we can therefore neglect any such
+terms involving anti-quarks. Mathematically this would be an expansion to
+zeroth order in $\bar{h}_1$. The simplifications coming from the cold limit, the
+limit in which $N_t \to \infty$ are more subtle and is easiest to see with an
+example.
+
+\begin{figure}
+  {\centering
+    \includegraphics[width=.75\textwidth]{cold_pmpm_hops}\par}
+  \caption{The different spatial and temporal occupation of the $\tr(PMPM)$ term
+    appearing at the NLO of the hopping parameter expansion. The last figure in
+    which all spatial hops occupy the same spatial link vanish in the cold
+    limit.}
+  \label{fig-pmpm-hop-variants}
+\end{figure}
+
+Consider the term $\tr(PMPM)$ appearing at NLO of the hopping parameter
+expansion. The term has four spatial hops which has to pair up for the gauge
+integral to give something non-zero. There are three fundamental scenarios
+which fulfil this criterion, these are depicted in \figref{fig-pmpm-hop-variants}.
+In the leftmost graph the two pair of hops occupy different spatial positions
+and can therefore never overlap. The temporal sum in which case gives a factor
+$N_t^2$ as the two hops can independently choose a temporal slice. When the two
+hops occupy the same nearest neighbour pair we have two situations. There are
+$N_t(N_t-1)$ copies in which they occupy different time slices and $N_t$ copies
+in which they overlap. Since
+%
+\begin{equation}
+  \int \mathrm{d} U\, U U^{\dagger} U U^{\dagger} \neq
+  \bigg(\int \mathrm{d} U\, U U^{\dagger} \bigg)^2
+\end{equation}
+%
+they naturally give different results, all of which is accounted for by the
+method of moments and cumulants. However, the integrals and spin traces are
+independent of the number of temporal lattice sites, and there therefore has to
+exist an $N_t$ for which
+%
+\begin{equation}
+  N_t(N_t-1) \bigg( \int \mathrm{d} U \, U U^{\dagger} \bigg)^2 \gg
+  N_t \int \mathrm{d} U \, U U^{\dagger} U U^{\dagger}
+\end{equation}
+%
+and the more complicated overlapping diagrams can be neglected.
+
 \subsection{Combinatorics}
+
+Before we present the N\textsuperscript{3}LO result for the effective action in
+the cold and dense limit we review some of the combinatorics that went into the
+computation.
+
+Because of the selection criterion for non-vanishing gauge integrals
+\meqref{eq-integral-selection-rule} we see that one must restrict the coordinate
+sums in the matrix multiplications of the $P$ and $M$ matrices in such a way
+that spatial links overlap and give contributing results. We therefore define a
+contraction
+%
+\begin{subequations}
+  \begin{align}
+    \begin{tikzpicture}[inline math]
+      \node (one) {$P_{xy}$};
+      \node (two) [right=0pt of one]{$M_{zw}$};
+      \path[contraction] ([xshift=5pt]one.north west) edge [skip loop=6pt] ([xshift=7pt]two.north west);
+    \end{tikzpicture} &= P_{xy} M_{zw} \,\delta_{\vec{y}\vec{z}} \delta_{\vec{x}\vec{w}} \,\delta_{t_yt_w} \,,
+    \label{eq:contraction_def_pm}\\
+    \begin{tikzpicture}[inline math]
+      \node (one) {$P_{xy}$};
+      \node (two) [right=0pt of one]{$P_{zw}$};
+      \path[contraction] ([xshift=5pt]one.north west) edge [skip loop=6pt] ([xshift=5pt]two.north west);
+    \end{tikzpicture} &= P_{xy} P_{zw} \,\delta_{\vec{x}\vec{z}} \delta_{\vec{y}\vec{w}} \,\delta_{t_yt_w} \,,
+    \label{eq:contraction_def_pp}
+  \end{align}
+\end{subequations}
+%
+which can trivially be extended to the contraction of more elements. We see that
+the contraction fixes a single temporal index as well as fully fixes the
+spatial position and orientation of every matrix but one. One can also contract
+more than one matrix as can be seen in \tabref{tab-pmpmpm-contractions} showing
+all non-vanishing contractions of the NNLO term $\tr(PMPMPM)$. Due to the fact
+that every contraction fixes a temporal index in all matrices involved we see
+that the degrees of freedom naturally decrease. The various contractions of
+\tabref{tab-pmpmpm-contractions} can be categorised into three distinct groups
+%
+\begin{subequations}
+  \tikzset{
+    every node/.style = {anchor=south, text depth=0.ex, inner sep=1pt}
+  }
+  \begin{align}
+    \sum_{\mathclap{t_1,t_2,t_3}} \begin{tikzpicture}[baseline = .5ex]
+      \node (a) {$P$};
+      \node (b) [right=0pt of a]{$M$};
+      \node (c) [right=0pt of b]{$P$};
+      \node (d) [right=0pt of c]{$M$};
+      \node (e) [right=0pt of d]{$P$};
+      \node (f) [right=0pt of e]{$M$};
+      \path[contraction] (a.north) edge [skip loop=6pt] (b.north);
+      \path[contraction] (c.north) edge [skip loop=6pt] (d.north);
+      \path[contraction] (e.north) edge [skip loop=6pt] (f.north);
+    \end{tikzpicture} \propto N_{t}^3\;,\\
+    \sum_{t_1,t_2}\begin{tikzpicture}[baseline = .5ex]
+      \node (a) {$P$};
+      \node (b) [right=0pt of a]{$M$};
+      \node (c) [right=0pt of b]{$P$};
+      \node (d) [right=0pt of c]{$M$};
+      \node (e) [right=0pt of d]{$P$};
+      \node (f) [right=0pt of e]{$M$};
+      \path[contraction] (a.north) edge [skip loop=6pt] (b.north);
+      \path[contraction] (c.north) edge [skip loop=6pt] (f.north);
+      \path[contraction] (d.north) edge [skip loop=6pt] (e.north);
+    \end{tikzpicture} \propto N_{t}^2\;,\\
+    \sum_{t_1,t_2}\begin{tikzpicture}[baseline = .5ex]
+      \node (a) {$P$};
+      \node (b) [right=0pt of a]{$M$};
+      \node (c) [right=0pt of b]{$P$};
+      \node (d) [right=0pt of c]{$M$};
+      \node (e) [right=0pt of d]{$P$};
+      \node (f) [right=0pt of e]{$M$};
+      \path[contraction] (a.north) edge [skip loop=4pt] (c.north);
+      \path[contraction] (c.north) edge [skip loop=4pt] (e.north);
+      \path[contraction] (b.north) edge [skip loop=8pt] (d.north);
+      \path[contraction] (d.north) edge [skip loop=8pt] (f.north);
+    \end{tikzpicture} \propto N_{t}^2\;,\\
+    \sum_{t_1}\begin{tikzpicture}[baseline = .5ex]
+      \node (a) {$P$};
+      \node (b) [right=0pt of a]{$M$};
+      \node (c) [right=0pt of b]{$P$};
+      \node (d) [right=0pt of c]{$M$};
+      \node (e) [right=0pt of d]{$P$};
+      \node (f) [right=0pt of e]{$M$};
+      \path[contraction] (a.north) edge [skip loop=6pt] (d.north);
+      \path[contraction] (b.north) edge [skip loop=6pt] (e.north);
+      \path[contraction] (c.north) edge [skip loop=6pt] (f.north);
+    \end{tikzpicture} \propto N_{t}\;.
+  \end{align}
+\end{subequations}
+%
+Generally the power of $N_t$ is the same as the number of independent
+contractions. This is only true when $N_t$ is large as the number of free
+temporal slices must be large enough for the contractions to be separate. Since
+we are interested in the $N_t \gg 1$ range, we will disregard contributions from
+contractions not consisting of a single $PM$ pair.
+
+\begin{table}
+  \begin{center}
+    \includegraphics{pmpmpm_contractions}
+  \end{center}
+  \caption{All contractions contributing to the $\mathcal{O}(\kappa^6)$ term
+    $\tr(PMPMPM)$.}
+  \label{tab-pmpmpm-contractions}
+\end{table}
+
+At this stage in the computation we will disperse with the notion that hops in
+positive and negative spatial direction are distinguishable. In contrast to the
+temporal hops, which get boosted by baryon chemical potential, there is no
+asymmetry between positive and negative spatial hops. We therefore switch to a
+notation which focus on the dominant pairings
+%
+{
+\begin{equation}
+  \tikzset{
+    every node/.style = {anchor=south, text depth=0.35ex, inner sep=1pt}
+  }
+  \tr \begin{tikzpicture}[baseline={([yshift=-2pt]one.center)}]
+    \node (one) {$X$};
+    \node (two) [right=0pt of one] {$i$};
+    \node (three) [right=0pt of two] {$Y$};
+    \node (four) [right=0pt of three] {$i$};
+  \end{tikzpicture} \;=\; 
+  \tr \begin{tikzpicture}[baseline={([yshift=-2pt]one.center)}]
+      \node (one) {$X$};
+      \node (two) [right=0pt of one] {$P$};
+      \node (three) [right=0pt of two] {$Y$};
+      \node (four) [right=0pt of three] {$M$};
+      \path[contraction] (two.north) edge [skip loop=6pt] (four.north);
+    \end{tikzpicture} \;+\;
+  \tr \begin{tikzpicture}[baseline={([yshift=-2pt]one.center)}]
+      \node (one) {$X$};
+      \node (two) [right=0pt of one] {$M$};
+      \node (three) [right=0pt of two] {$Y$};
+      \node (four) [right=0pt of three] {$P$};
+      \path[contraction] (two.north) edge [skip loop=6pt] (four.north);
+    \end{tikzpicture},
+\end{equation}
+}
+%
+in which $X$ and $Y$ symbolise the rest of the term, and is disallowed from
+having spatial hops overlapping with the $i$\textsuperscript{th} pairing. Every
+contracted $PM$ pair is labelled by an arbitrary symbol $i$, and is invariant
+under relabelling. Of the terms in \tabref{tab-pmpmpm-contractions}, the six
+terms which consists of pairings only can in this notation be reduced to three
+%
+\begin{equation} \label{eq:pmpmpm_pairing}
+  \tr \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
+    {1 \& 1 \& 2 \& 2 \& 3 \& 3 \\};, \hskip.5cm
+  \tr \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
+    {1 \& 2 \& 3 \& 3 \& 2 \& 1 \\};, \hskip.5cm
+  \tr \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
+    {1 \& 2 \& 3 \& 1 \& 2 \& 3 \\};.
+\end{equation}
+
+To be a bit more explicit we will quickly go through the notation at NLO. In the
+old notation the kinetic determinant would read
+%
+\begin{equation}
+  \det \qkin = 1 - \tr(PM) + \frac{1}{2} \big(\tr(PM)\big)^2 - \tr(PPMM) -
+    \frac{1}{2} \tr(PMPM) + \mathcal{O}(\kappa^6)
+\end{equation}
+%
+which would give
+%
+\begin{multline}
+  \det \qkin = 
+    1 - \frac{1}{2} \tr(1\,1) + \frac{1}{8} \tr(1\,1) \tr(2\,2) \\
+    + \frac{1}{4}\tr (1\,2) \tr (1\,2) - \frac{1}{2} \tr(1\,1\,2\,2) +
+    \mathcal{O}(\kappa^6, N_t^{-1}).
+\end{multline}
+%
+This latter expression of course only contains non-zero terms while this is yet
+to be done with the $P$ and $M$ notation. When counting terms one has to be
+careful not to over count. E.g. the final term can be expanded into four terms
+in the $PM$ notation
+%
+\begin{equation}
+  \tr(PMPM), \hskip.5em \tr(PMMP), \hskip.5em \tr(MPPM), \hskip.5em \tr(MPMP),
+\end{equation}
+%
+however one should note that the third term is identical to the second under
+cyclic permutations and relabelling, and should therefore be discarded. The
+separate traces are however distinct, and the invariant relabelling must be
+considered on a trace by trace basis. The combinatorial prefactors $1/g$ can be
+computed with the following formula
+%
+\begin{equation}
+  \frac{1}{g}=
+    \frac{%
+      \tikz \node [anchor=north east,scale=0.75,align=center] {\# of unique cyclic \\ permutations of the traces};
+    }{%
+      \tikz \node {$n_2!n_4!\cdots{}n_N!\, 2^{n_2} 4^{n_4} \cdots N^{n_N}$};
+    } \;.
+\end{equation}
+%
+The numerator is the number of cyclic permutations within the traces that
+remain different under relabelling, e.g. $\tr(1\,1\,2\,2)$ has two distinct
+permutations, the one already mentioned and $\tr(1\,2\,2\,1)$. The $n_m$ in the
+numerator is the number of trace factors with $m$ matrices. E.g.
+$\tr(1\,2)\tr(1\,2)$ has $n_2 = 2, n_4 = 0, \dots, n_N = 0$, while
+$\tr(1\,1\,2\,2)$ has $n_2 = 0, n_4 = 1, \dots, n_N = 0$.
+
+\subsection{Dirac indices}
+
+In this subsection we will study the spin structure of the terms dominating the
+cold limit, and subsequently discover that it is in fact trivial in this limit.
+In the limit of high baryon chemical potential, we see from
+\meqrefs[-]{eq:static_prop_separation,eq:kminus_def} that the static propagator
+simplifies to
+%
+\begin{equation}
+  Q^{-1}_{\text{stat},t_y t_x} \approx (1-\kappa T^+)^{-1}_{t_y t_x}
+    =\, \delta_{t_y t_x} + \frac{1+\gamma_0}{2} K^+_{t_y t_x} \,,
+\end{equation}
+%
+in which the matrix $K$ has no spin dependence. We see from the definition of a
+contraction \meqrefs[, ]{eq:contraction_def_pm,eq:contraction_def_pp} that
+the $\delta_{t_y t_x}$ in $\qstat^{-1}$ would impose additional constraints on
+the temporal index and will therefore produce terms which are subleading when
+$N_t$ is large. The only exception is a contraction
+%
+\begin{equation}
+  \begin{tikzpicture}[inline math]
+    \node (one) {$P_{xy}$};
+    \node (two) [right=0pt of one]{$M_{yz}$};
+    \path[contraction] ([xshift=5pt]one.north west) edge [skip loop=6pt] ([xshift=7pt]two.north west);
+  \end{tikzpicture} = P_{xy} M_{yz} \,\delta_{\vec{x}\vec{z}} \,\delta_{t_yt_z}
+\end{equation}
+%
+in which the $\delta_{t_y t_x}$ condition of the $\qstat^{-1}$ matrix of the $M$ 
+factor is already fulfilled. However this would apply no temporal movement and
+is therefore disallowed because the hopping expansion of Wilson fermions does
+not allow backtracking, $(1+\gamma_{\mu})(1-\gamma_{\mu}) = 0$. We can therefore
+to leading order use the following expression for the static propagator
+%
+\begin{equation}
+  Q^{-1}_{\text{stat},t_y t_x} 
+    \begin{tikzpicture}[baseline={([yshift=-1.5pt]equal.center)}]
+      \node (equal) {$=$};
+      \node[above=0pt of equal] [scale=0.65,align=center] {leading\\[0pt]order};
+    \end{tikzpicture}\,
+    \frac{1+\gamma_0}{2} K^+_{t_y t_x} \,.
+\end{equation}
+%
+Since the $K^{\pm}$ matrix has no spin structure, we can easily identify the full Dirac
+trace of any contributing term as
+%
+\begin{equation}
+  \tr_{xsc}(X_{xsc}) = \tr_s\big( (1+\gamma_0)
+  (1\pm\gamma_{i})(1+\gamma_0)(1\pm\gamma_j) \cdots\big) \tr_{xc}(X'_{xc}).
+\end{equation}
+%
+where every $P$ would contribute with a factor $(1+\gamma_0)(1+\gamma_i)$ and
+every $M$ a factor $(1+\gamma_0)(1-\gamma_j)$. To shorten the notation we
+introduce the alias $g_{\mu} = (1+\gamma_{\mu})$ and $\bar{g}_{\mu} =
+(1-\gamma_{\mu})$. In this notation the spin trace of a polymer $X$ gives
+%
+\begin{equation}
+  \tr_s (X'_s) = \tr_s(g_0 g_i g_0 \bar{g}_j \cdots)
+\end{equation}
+%
+We can expand the first product
+%
+\begin{multline}
+  \tr_s((1 + \gamma_0 \pm \gamma_i \pm \gamma_0 \gamma_i)g_0  \cdots) \\
+    = \tr_s(g_0 \cdots) + \tr_s(\gamma_0g_0 \cdots)
+    \pm \tr_s(\gamma_i g_0 \cdots) \pm \tr_s(\gamma_0\gamma_ig_0 \cdots).
+\end{multline}
+%
+The Dirac matrices $\gamma_0$ and $\gamma_i$ anti-commute. Using this fact
+together with $\gamma_0 g_0 = \gamma_0(1+\gamma_0) = (\gamma_0+1) = g_0$, we see
+that the above expression simplifies
+%
+\begin{equation}
+  \tr_s(g_0 \cdots) + \tr_s( g_0 \cdots )
+    \pm \tr_s(\gamma_i g_0 \cdots ) \mp \tr_s(\gamma_i g_0 \cdots )
+    = 2 \tr_s( g_0 \cdots ) .
+\end{equation}
+%
+We therefore replace every $g_0 g_i$ and every $g_0 \bar{g}_j$ pair with a
+factor $2$ until there is only one pair left. The trace of the final pair is
+simply the dimension of the system, in this case $4$. The spin trace of the
+large $N_t$ limit can thus be considered trivial
+%
+\begin{equation}
+  \tr_s(X'_s) = \tr ( \underbrace{g_0 g_i g_0 \bar{g}_j \cdots}_{n \text{ pairs}})
+   = 2^{n-1} \tr(g_0 g_i) = 2^{n+1}.
+\end{equation}
+
+\subsection{A comment on gauge corrections}
 
 \section{Numerical evaluation}
