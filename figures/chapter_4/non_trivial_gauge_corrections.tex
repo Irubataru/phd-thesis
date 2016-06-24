@@ -1,0 +1,314 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/lattice_styles.tex}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\begin{document}
+
+\newlength{\cubeskip}
+\setlength{\cubeskip}{1mm}
+
+\begin{tikzpicture}
+  
+  % u correction
+  % ----------------------------------------------------------------------------
+  \begin{scope}
+    % Grid
+    % --------------------------------------------------
+    \begin{pgfonlayer}{background}
+
+      % Mid layer grid
+      %-------------------------------------------------
+      \foreach \x in {0,1} {
+        \foreach \y in {0,...,2} {
+          \draw[lattice] (\x,\y,-.25) -- (\x,\y,1.25);
+        }
+      }
+      %-------------------------------------------------
+
+      % Background grid
+      %-------------------------------------------------
+      \foreach \x in {0,1} {
+        \draw[lattice] (\x,-.25,0) -- (\x,2.75,0);
+      }
+      \foreach \y in {0,...,2} {
+        \draw[lattice] (-.25,\y,0) -- (1.25,\y,0);
+      }
+      %-------------------------------------------------
+    \end{pgfonlayer}
+
+      % Foreground grid
+      %-------------------------------------------------
+      \foreach \x in {0,1} {
+        \draw[lattice] (\x,-.25,1) -- (\x,2.75,1);
+      }
+      \foreach \y in {0,...,2} {
+        \draw[lattice] (-.25,\y,1) -- (1.25,\y,1);
+      }
+      %-------------------------------------------------
+
+    % --------------------------------------------------
+    
+    % Fermion lines
+    % -----------------------------------------------------------
+    \begin{scope}
+      \begin{pgfonlayer}{background}
+        \begin{scope}
+          \clip (-.25,-.25,0) rectangle (1.25,2.75,0);
+          \draw[primary link] (0,-1,0) -- ++(0,1,0)
+                              -- ++(0,1,0) -- ++(0,1,0)
+                              -- ++(0,1,0) -- ++(0,1,0);
+          \draw[primary link] (1,-1,0) -- ++(0,1,0)
+                              -- ++(0,1,0) -- ++(0,1,0)
+                              -- ++(0,1,0) -- ++(0,1,0);
+        \end{scope}
+      \end{pgfonlayer}
+
+      \begin{scope}
+        \clip (-.25,-.25,1) rectangle (1.25,2.75,1);
+        \draw[primary link] (0,-1,1) -- ++(0,1,0)
+                            -- ++(0,1,0) -- ++(0,1,0)
+                            -- ++(0,1,0);
+        \draw[primary link] (1,-1,1) -- ++(0,1,0)
+                            -- ++(0,1,0) -- ++(0,1,0)
+                            -- ++(0,1,0);
+      \end{scope}
+
+        \draw[link=ColourHl1] (0,1,0) -- ++(0,0,1) -- ++(1,0,0) -- ++(0,0,-1);
+      \begin{pgfonlayer}{background}
+        \draw[link=ColourHl1] (1,1,0) -- ++(-1,0,0);
+        \draw[plaquette] (0.85,1,0.15) -- ++(0,0,0.7)
+                         -- ++(-0.7,0,0) -- ++(0,0,-0.7) -- cycle;
+      \end{pgfonlayer}
+
+    \end{scope}
+    % -----------------------------------------------------------
+
+    \begin{pgfonlayer}{background}
+      \foreach \z in {0,...,4} {
+        \draw[boundary,opacity=0.5] (0.1,-.25,0.1+\z*0.16) -- +(0.8,0,0);
+        \draw[boundary,opacity=0.5] (0.1,2.75,0.1+\z*0.16) -- +(0.8,0,0);
+      }
+    \end{pgfonlayer}
+    
+    % Axes
+    % --------------------------------------------------------------------------
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.6,-.25,1.5) -- +(1.25,0,0) 
+      node[midway,below=.4mm,anchor=north,inner sep=0pt, scale=0.5] {$\vec{x}$};
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.6,-.25,1.5) -- +(0,0,-1.25) 
+      node[midway,above=.4mm,anchor=south east,inner sep=0pt, scale=0.5] {$\vec{y}$};
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.6,-.25,1.5) -- +(0,1.75,0) 
+      node[midway,left=.6mm,anchor=east,inner sep=0pt, scale=0.5] {$t$};
+    % --------------------------------------------------------------------------
+  \end{scope}
+  % ----------------------------------------------------------------------------
+
+  % u^2 correction
+  % ----------------------------------------------------------------------------
+  \begin{scope}[xshift=3.5cm]
+    % Grid
+    % --------------------------------------------------
+    \begin{pgfonlayer}{background}
+
+      % Mid layer grid
+      %-------------------------------------------------
+      \foreach \x in {0,1} {
+        \foreach \y in {0,...,2} {
+          \draw[lattice] (\x,\y,-.25) -- (\x,\y,1.25);
+        }
+      }
+      %-------------------------------------------------
+
+      % Background grid
+      %-------------------------------------------------
+      \foreach \x in {0,1} {
+        \draw[lattice] (\x,-.25,0) -- (\x,2.75,0);
+      }
+      \foreach \y in {0,...,2} {
+        \draw[lattice] (-.25,\y,0) -- (1.25,\y,0);
+      }
+      %-------------------------------------------------
+    \end{pgfonlayer}
+
+      % Foreground grid
+      %-------------------------------------------------
+      \foreach \x in {0,1} {
+        \draw[lattice] (\x,-.25,1) -- (\x,2.75,1);
+      }
+      \foreach \y in {0,...,2} {
+        \draw[lattice] (-.25,\y,1) -- (1.25,\y,1);
+      }
+      %-------------------------------------------------
+
+    % --------------------------------------------------
+    
+    % Fermion lines
+    % -----------------------------------------------------------
+    \begin{scope}
+      \begin{pgfonlayer}{background}
+        \begin{scope}
+          \clip (-.25,-.25,0) rectangle (1.25,2.75,0);
+          \draw[primary link] (0,-1,0) -- ++(0,1,0)
+                              -- ++(0,1,0) -- ++(0,1,0)
+                              -- ++(0,1,0);
+          \draw[primary link] (1,-1,0) -- ++(0,1,0)
+                              -- ++(0,1,0) -- ++(0,1,0)
+                              -- ++(0,1,0);
+        \end{scope}
+      \end{pgfonlayer}
+
+      \begin{scope}
+        \clip (-.25,-.25,1) rectangle (1.25,2.75,1);
+        \draw[primary link] (0,-1,1) -- ++(0,1,0)
+                            -- ++(0,1,0) -- ++(0,1,0)
+                            -- ++(0,1,0);
+        \draw[primary link] (1,-1,1) -- ++(0,1,0)
+                            -- ++(0,1,0) -- ++(0,1,0)
+                            -- ++(0,1,0);
+      \end{scope}
+
+        \draw[link=ColourHl1] (0,1,0) -- ++(0,0,1) -- ++(1,0,0);
+        \draw[link=ColourHl1] (1,2,1) -- ++(0,0,-1);
+      \begin{pgfonlayer}{background}
+        \draw[link=ColourHl1] (1,1,0) -- ++(-1,0,0);
+        \draw[plaquette] (0.85,1,0.15) -- ++(0,0,0.7)
+                         -- ++(-0.7,0,0) -- ++(0,0,-0.7) -- cycle;
+        \draw[primary plaquette] (1,1.15,0.85) -- ++(0,0,-0.7)
+                         -- ++(0,0.7,0) -- ++(0,0,0.7) -- cycle;
+      \end{pgfonlayer}
+
+    \end{scope}
+    % -----------------------------------------------------------
+
+    \begin{pgfonlayer}{background}
+      \foreach \z in {0,...,4} {
+        \draw[boundary,opacity=0.5] (0.1,-.25,0.1+\z*0.16) -- +(0.8,0,0);
+        \draw[boundary,opacity=0.5] (0.1,2.75,0.1+\z*0.16) -- +(0.8,0,0);
+      }
+    \end{pgfonlayer}
+    
+    % Axes
+    % --------------------------------------------------------------------------
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.6,-.25,1.5) -- +(1.25,0,0) 
+      node[midway,below=.4mm,anchor=north,inner sep=0pt, scale=0.5] {$\vec{x}$};
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.6,-.25,1.5) -- +(0,0,-1.25) 
+      node[midway,above=.4mm,anchor=south east,inner sep=0pt, scale=0.5] {$\vec{y}$};
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.6,-.25,1.5) -- +(0,1.75,0) 
+      node[midway,left=.6mm,anchor=east,inner sep=0pt, scale=0.5] {$t$};
+    % --------------------------------------------------------------------------
+  \end{scope}
+  % ----------------------------------------------------------------------------
+
+  % u^2 correction
+  % ----------------------------------------------------------------------------
+  \begin{scope}[xshift=7cm]
+    % Grid
+    % --------------------------------------------------
+    \begin{pgfonlayer}{background}
+
+      % Mid layer grid
+      %-------------------------------------------------
+      \foreach \x in {0,1} {
+        \foreach \y in {0,...,2} {
+          \draw[lattice] (\x,\y,-.25) -- (\x,\y,1.25);
+        }
+      }
+      %-------------------------------------------------
+
+      % Background grid
+      %-------------------------------------------------
+      \foreach \x in {0,1} {
+        \draw[lattice] (\x,-.25,0) -- (\x,2.75,0);
+      }
+      \foreach \y in {0,...,2} {
+        \draw[lattice] (-.25,\y,0) -- (1.25,\y,0);
+      }
+      %-------------------------------------------------
+    \end{pgfonlayer}
+
+      % Foreground grid
+      %-------------------------------------------------
+      \foreach \x in {0,1} {
+        \draw[lattice] (\x,-.25,1) -- (\x,2.75,1);
+      }
+      \foreach \y in {0,...,2} {
+        \draw[lattice] (-.25,\y,1) -- (1.25,\y,1);
+      }
+      %-------------------------------------------------
+
+    % --------------------------------------------------
+    
+    % Fermion lines
+    % -----------------------------------------------------------
+    \begin{scope}
+      \begin{pgfonlayer}{background}
+        \begin{scope}
+          \clip (-.25,-.25,0) rectangle (1.25,2.75,0);
+          \draw[primary link] (0,-1,0) -- ++(0,1,0)
+                              -- ++(0,1,0) -- ++(0,1,0)
+                              -- ++(0,1,0);
+          \draw[primary link] (1,-1,0) -- ++(0,1,0)
+                              -- ++(0,1,0) -- ++(0,1,0)
+                              -- ++(0,1,0);
+        \end{scope}
+      \end{pgfonlayer}
+
+      \begin{scope}
+        \clip (-.25,-.25,1) rectangle (1.25,2.75,1);
+        \draw[primary link] (0,-1,1) -- ++(0,1,0)
+                            -- ++(0,1,0) -- ++(0,1,0)
+                            -- ++(0,1,0);
+        \draw[primary link] (1,-1,1) -- ++(0,1,0)
+                            -- ++(0,1,0) -- ++(0,1,0)
+                            -- ++(0,1,0);
+      \end{scope}
+
+        \draw[link=ColourHl1] (0,1,0) -- ++(0,0,1) -- ++(1,0,0);
+      \begin{pgfonlayer}{background}
+        \draw[plaquette] (0.1,1.1,0) -- ++(0,.8,0) -- ++(.8,0,0) -- ++(0,-.8,0) -- cycle;
+        \draw[plaquette] (0.85,1,0.15) -- ++(0,0,0.7) -- ++(-0.7,0,0) -- ++(0,0,-0.7) -- cycle;
+        \draw[primary plaquette] (1,1.15,0.85) -- ++(0,0,-0.7) -- ++(0,0.7,0) -- ++(0,0,0.7) -- cycle;
+        \draw[primary link] (1,2,1) -- ++(0,0,-1) -- ++(-1,0,0);
+      \end{pgfonlayer}
+
+    \end{scope}
+    % -----------------------------------------------------------
+
+    \begin{pgfonlayer}{background}
+      \foreach \z in {0,...,4} {
+        \draw[boundary,opacity=0.5] (0.1,-.25,0.1+\z*0.16) -- +(0.8,0,0);
+        \draw[boundary,opacity=0.5] (0.1,2.75,0.1+\z*0.16) -- +(0.8,0,0);
+      }
+    \end{pgfonlayer}
+    
+    % Axes
+    % --------------------------------------------------------------------------
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.6,-.25,1.5) -- +(1.25,0,0) 
+      node[midway,below=.4mm,anchor=north,inner sep=0pt, scale=0.5] {$\vec{x}$};
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.6,-.25,1.5) -- +(0,0,-1.25) 
+      node[midway,above=.4mm,anchor=south east,inner sep=0pt, scale=0.5] {$\vec{y}$};
+    \draw[arrows={-Stealth[length=2pt]},thin,ColourDark] (-.6,-.25,1.5) -- +(0,1.75,0) 
+      node[midway,left=.6mm,anchor=east,inner sep=0pt, scale=0.5] {$t$};
+    % --------------------------------------------------------------------------
+  \end{scope}
+  % ----------------------------------------------------------------------------
+
+
+\end{tikzpicture}
+
+\end{document}

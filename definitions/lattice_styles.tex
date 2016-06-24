@@ -71,9 +71,15 @@
   },
   plaquette/.default=ColourBase,
   primary link/.style={
+    %draw, shorten <= -1.6pt, white, line width=1.6pt, postaction={
     draw, shorten <= -1.6pt, white, line width=1.6pt, postaction={
       draw, shorten <= -0.2pt, line width=0.4pt, link = #1}
   },
   primary link/.default=ColourHl1,
+  primary plaquette/.style={
+    draw, shorten <= -1.6pt, white, line width=1.6pt, postaction={
+      draw, shorten <= -0.2pt, line width=.4pt, plaquette = #1}
+  },
+  primary plaquette/.default=ColourBase,
 }
 
