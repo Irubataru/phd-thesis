@@ -740,7 +740,7 @@ corrections to nearest neighbour interactions \citep{Langelage:2014vpa}
 %
 It is therefore useful to introduce the nearest neighbour coupling constant
 %
-\begin{equation}
+\begin{equation} \label{eq:h2_gauge_corrections}
   h_2(\kappa,\beta) = \frac{\kappa^2 N_t}{N_c} \Big(1 + 2 \frac{u-u^{N_t}}{1-u} + 8u^5
     +16\kappa^2 u^4 + \mathcal{O}(\kappa^4 u^3)\Big),
 \end{equation}
@@ -1017,7 +1017,7 @@ exist an $N_t$ for which
 %
 and the more complicated overlapping diagrams can be neglected.
 
-\subsection{Combinatorics}
+\subsection{Combinatorics} \label{sec:combinatorics}
 
 Before we present the N\textsuperscript{3}LO result for the effective action in
 the cold and dense limit we review some of the combinatorics that went into the
@@ -1175,7 +1175,7 @@ terms which consists of pairings only can in this notation be reduced to three
 To be a bit more explicit we will quickly go through the notation at NLO. In the
 old notation the kinetic determinant would read
 %
-\begin{equation}
+\begin{equation} \label{eq:expanded_pm_notation}
   \det \qkin = 1 - \tr(PM) + \frac{1}{2} \big(\tr(PM)\big)^2 - \tr(PPMM) -
     \frac{1}{2} \tr(PMPM) + \mathcal{O}(\kappa^6)
 \end{equation}
@@ -1307,7 +1307,7 @@ large $N_t$ limit can thus be considered trivial
    = 2^{n-1} \tr(g_0 g_i) = 2^{n+1}.
 \end{equation}
 
-\subsection{A comment on gauge corrections}
+\subsection{A comment on gauge corrections} \label{sec:gauge_comment}
 
 Before we finally state the N\textsuperscript{3}LO effective action for the cold
 and dense we need to examine a final set of apparently low order graphs which
@@ -1346,6 +1346,153 @@ links arbitrarily in the temporal coordinate.
 \end{figure}
 
 \subsection{The \texorpdfstring{$\mathcal{O}(\kappa^8)$}{O(k8)} effective action}
+
+We finally turn our attention to the higher order contributions to the effective
+theory. Although the groundwork has been laid the combinatorics still has to be
+carried out. As the number of terms grow exponentially as well as their
+complexity, there is little chance of a straight forward computation ever
+getting all the prefactors correct. A computer program has therefore been
+developed as part of this work to compute the effective theory in the limit of
+cold QCD \citep{jonas_rylund_glesaaen_2016_56319}.
+
+The software computes the effective theory terms in a series of easily
+understandable steps
+%
+\begin{enumerate}
+  \item Compute all permutations of $P$ and $M$ that can enter a trace to a
+    given order.
+  \item Finds and collects all terms that are identical.
+  \item Computes all combinations of traces of lower orders which give a
+    contribution to the given order
+  \item Compute all contractions of $P$'s and $M$'s which can be realised
+    spatially.
+  \item Compute all spatial realisations of ambiguous multi trace contractions.
+  \item Apply colour deltas from the spatial gauge integrals.
+  \item Sum over all temporal permutations for every link.
+\end{enumerate}
+\begin{figure}
+  {\centering
+    \includegraphics[width=.6\textwidth]{spatial_contraction_examples}\par}
+  \caption{The two possible spatial configurations of the contraction of
+    $(\tr(P\,P\,M\,M))^2$ in \protect\meqref{eq:special-spatial-contraction}.}
+  \label{fig-spatial-multitrace}
+\end{figure}
+%
+The first three steps are essentially expanding the exponential as shown in
+\meqref{eq:expanded_pm_notation}. Whereas steps four and five loosely translates
+to switching from the $PM$ notation to the contracted notation, as was
+introduced in \secref{sec:combinatorics}. The fourth step can be amended by
+placing a constriction on the contractions requiring an equal number of $P$ and
+$M$ in between contractions, and requiring the spatial detour to return to its
+starting point. For example
+%
+\begin{equation}
+  \tikzset{
+    every node/.style = {anchor=south, text depth=0.ex, inner sep=1pt}
+  }
+  \tr \begin{tikzpicture}[baseline={([yshift=1.5pt]one.south)}]
+      \node (one) {$P$};
+      \node (two) [right=0pt of one] {$P$};
+      \node (three) [right=0pt of two] {$M$};
+      \node (four) [right=0pt of three] {$M$};
+      \path[contraction] (one.north) edge [skip loop=4pt] (three.north);
+      \path[contraction] (two.north) edge [skip loop=8pt] (four.north);
+    \end{tikzpicture},
+\end{equation}
+%
+is an impossible contraction as the contracted $P$ and $M$ matrices can never
+overlap. Contractions across multiple traces are more complicated as the traces
+can be translated and rotated with respect to each other. An example of the
+disambiguates can be seen in the $\mathcal{O}(\kappa^8)$ term
+%
+\begin{equation} \label{eq:special-spatial-contraction}
+  \tikzset{
+    every node/.style = {anchor=south, text depth=0.ex, inner sep=1pt}
+  }
+  \begin{tikzpicture}[baseline={([yshift=1.5pt]one.south)}]
+      \node (tr1) {$\tr($};
+      \node (one) [right=0pt of tr1,yshift=-1pt] {$P$};
+      \node (two) [right=0pt of one] {$P$};
+      \node (three) [right=0pt of two] {$M$};
+      \node (four) [right=0pt of three] {$M$};
+      \node (leftpar) [right=0pt of four,yshift=1pt] {$)$};
+      \node (tr2) [right=.1cm of leftpar] {$\tr($};
+      \node (five) [right=0pt of tr2,yshift=-1pt] {$P$};
+      \node (six) [right=0pt of five] {$P$};
+      \node (seven) [right=0pt of six] {$M$};
+      \node (eight) [right=0pt of seven] {$M$};
+      \node (leftpar2) [right=0pt of eight,yshift=1pt] {$)$};
+      \path[contraction] (four.north) edge [skip loop=4pt] (five.north);
+      \path[contraction] (three.north) edge [skip loop=8pt] (six.north);
+      \path[contraction] (two.north) edge [skip loop=12pt] (seven.north);
+      \path[contraction] (one.north) edge [skip loop=16pt] (eight.north);
+    \end{tikzpicture},
+\end{equation}
+%
+which has two possibilities for the spatial extent
+%
+\begin{equation}
+  \tr(P_i P_j M_i M_j) \tr (P_j P_i M_j M_i) \hskip1ex\text{ and }\hskip1ex
+  \tr(P_i P_j M_j M_i) \tr (P_i P_j M_j M_i).
+\end{equation}
+%
+The graphical representation of the two choices are depicted in
+\figref{fig-spatial-multitrace}. Applying the deltas in colour due to the
+integral over the gauge link is simple as we only need a single integral in the
+cold and dense regime, namely the integral from \meqref{eq-uub-integral}
+%
+\begin{equation}
+  I_{ij}^{kl} = \int \mathrm{d} U \, U_{ij} U^{\dagger}_{kl} = \frac{1}{N_c}
+  \delta_{il} \delta_{jk}.
+\end{equation}
+%
+After the computation has been carried out and equal terms have been collected
+we get the full effective action to a given order in $\kappa$ as output. The
+number of terms at a given order is plotted in \figref{fig:number_of_terms}, in
+which we see that it explode as we increase the expansion order. This is a
+roadblock for the numerical evaluation as the number of operation one has to do
+to compute the Monte Carlo weight / Complex Langevin force at some point will
+overtake even that of computing the fermion determinant in full. The number of
+terms can be reduced by around one order of magnitude by changing from the two
+representations presented earlier and summing up equal terms, however this is
+only a simplification for analytic evaluations as the numerical work stays
+constant.
+
+\begin{figure}
+  {\centering
+    \includegraphics[width=\textwidth]{hopping_number_of_terms}\par}
+  \caption{Number of terms generated by the software at varying orders in
+    $\kappa$.}
+  \label{fig:number_of_terms}
+\end{figure}
+
+In \citep{Glesaaen:2015vtp}, as well as in this thesis we work with the
+effective action up to $\mathcal{O}(\kappa^8u^5)$. Due to the lengthy expression
+we will give the effective action in a graphical representation. This will also
+serve as a convenient notation for the analytic evaluation which we will
+tackle in the next session. The full expression will be given in
+\apxref{apx:full_k8_action}. We symbolise factors of $W_{n,m}(\vec{x})$ by
+vertices where $n$ is the number of bonds entering a vertex and $m$ is the
+number indicated on the node. Furthermore, vertices which are connected by one
+or more nodes are nearest neighbours on the lattice
+%
+%\input{input/chapter_4/kapp8_graphical.tex}
+\begin{equation} \label{eq:effective_action_kapp8}
+  \tikz \node[anchor=base, baseline, minimum width=.9\textwidth, draw, minimum height=2cm, ColourHl1,thick] {Dummy equation}; 
+\end{equation}
+%
+The sums over "degrees of freedom" represents the remaining spatial trace which
+remains to be carried out either for analytic computations or during numerical
+evaluation. We see that all the higher order interactions comes with a coupling
+constant equal to a power of the nearest neighbour coupling constant $h_2$. This
+is not very hard to see mathematically as every new spatial link comes with a
+combinatorial factor of $N_t$, a hopping factor of $\kappa^2$ and the gauge
+integration results in a factor of $N_c^{-1}$ for every integrated link. Due to
+the fact that no spatial link ever overlap we can apply gauge corrections on a
+link by link basis regardless of whether they connect the same nearest neighbour
+sites. Corrections to this will appear at NLO in $N_t^{-1}$. The gauge
+corrections are therefore given by replacing $h_2 \to h_2(\beta)$ as given by
+\meqref{eq:h2_gauge_corrections}.
 
 
 \section{Numerical evaluation}

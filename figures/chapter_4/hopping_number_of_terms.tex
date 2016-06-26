@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\pgfplotsset{compat=1.12}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \begin{scope}[baseline]
+    \begin{axis}[
+      xlabel={$\mathcal{O}(\kappa^n)$},
+      scaled ticks=false,
+      ylabel={$\#$ of terms},
+      label shift=-.1cm,
+      xtick=data,
+      xmin=0,
+      ytick={0, 1e5, 2e5, 3e5},
+      yticklabels={0, 1e5, 2e5, 3e5},
+      ymin=0, ymax=3.5e5,
+      y post scale=0.75
+    ]
+      \addplot[ColourBase,ultra thick,mark=*] table {data/hopping_terms.table};
+    \end{axis}
+  \end{scope}
+
+  %\begin{scope}[baseline, yshift=-3.5cm]
+  \begin{scope}[baseline, xshift=8.cm]
+    \begin{semilogyaxis}[
+      xlabel={$\mathcal{O}(\kappa^n)$},
+      %ylabel={$\#$ of terms},
+      label shift=-.1cm,
+      xtick=data,
+      xmin=0,
+      ytick={1, 1e2, 1e4, 1e6},
+      yticklabels={1e0, 1e2, 1e4, 1e6},
+      ymin=1e-1,
+      ymax=1.5e7,
+      minor ytick={.25, .5, .75, 25, 50, 75, 2.5e3, 5e3, 7.5e3, 2.5e5, 5e5, 7.5e5},
+      y post scale=0.75
+    ]
+      \addplot[ColourBase,ultra thick,mark=*] table {data/hopping_terms.table};
+  \end{semilogyaxis}  
+  \end{scope}
+\end{tikzpicture}%
+\end{document}

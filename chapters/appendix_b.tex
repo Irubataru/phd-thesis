@@ -1,0 +1,81 @@
+\chapter{Additional analytic results}
+
+In this chapter we will summarise all additional analytic results which are
+either to lengthy, or do not fit into the main text.
+
+\section{Non graphical \texorpdfstring{$\mathcal{O}(\kappa^8)$}{O(k8)} effective action}
+\label{apx:full_k8_action}
+
+The effective action to $\mathcal{O}(\kappa^8 N_t^{-1})$
+
+\begin{flalign}
+  S_{\mathrm{eff}} = S_0 + S_2 + S_4 + S_6 + S_8 + \mathcal{O}\big(\kappa^{10}, \frac{1}{N_{\tau}}\big) &&
+\end{flalign}
+%
+\begin{flalign}
+  S_0 = -\sum_x \log \det \qstat(x), &&
+\end{flalign}
+%
+\begin{flalign} \label{eq:expansionBegin}
+   S_2 = h_2 N_f \sum_x \sum_i W_{1,1}(x) W_{1,1}(x+i), &&
+\end{flalign}
+%
+\begin{flalign}
+  S_4 = 
+    &-h_2^2 N_f \sum_x \sum_{i,j} W_{2,1}(x) W_{1,1}(x+i) W_{1,1}(x+j)& \nonumber\\
+    &-h_2^2 N_f^2 \sum_x \sum_{i} W_{2,1}(x) W_{2,1}(x+i),&
+\end{flalign}
+%
+\begin{flalign}
+  S_6 =
+    +\frac{1}{3}h_2^3 N_f &\sum_x \sum_{i,j,k} \big[ W_{3,1}(x) - W_{3,2}(x) \big] W_{1,1}(x+i) \label{eq:w3w1w1w1}
+     W_{1,1}(x+j) W_{1,1}(x+k)& \nonumber\\
+    +h_2^3 N_f &\sum_x \sum_{i,j,k} W_{2,1}(x) W_{2,1}(x+i) W_{1,1}(x+i+j) W_{1,1}(x+k)& \nonumber\\
+    +2h_2^3 N_f^2 &\sum_x \sum_{i,j} \big[ W_{3,1}(x) - W_{3,2}(x) \big] W_{2,1}(x+i) W_{1,1}(x+j)& \nonumber\\
+    +\frac{1}{6}h_2^3 N_f &\sum_x \sum_i \big[ W_{3,1}(x) W_{3,1}(x+i) + W_{3,2}(x) W_{3,2}(x+i) \big]& \nonumber\\
+    -\frac{4}{3}h_2^3 N_f^3 &\sum_x \sum_i W_{3,1}(x) W_{3,2}(x+i),&
+\end{flalign}
+%
+{
+\allowdisplaybreaks
+\begin{flalign}
+  S_8 =
+  +\frac{1}{12} h_2^4 N_f &\smash[b]{\sum_x} \smash[b]{\sum_{i,j,k,l}}
+    \big[ W_{4,1}(x) - 4 W_{4,2}(x) + W_{4,3}(x) \big] W_{1,1}(x+i) W_{1,1}(x+j)& \nonumber\\
+  & \hspace{4em} \times W_{1,1}(x+k) W_{1,1}(x+l)& \nonumber\\
+  +h_2^4 N_f &\smash[b]{\sum_x} \smash[b]{\sum_{i,j,k,l}}
+    \big[ W_{3,1}(x) - W_{3,2}(x)  \big] W_{2,1}(x+i) W_{1,1}(x+i+j)& \nonumber\\
+  & \hspace{4em} \times W_{1,1}(x+k) W_{1,1}(x+l)& \nonumber\\
+  +h_2^4 N_f &\smash[b]{\sum_x} \smash[b]{\sum_{i,j,k,l}} W_{2,1}(x) W_{2,1}(x+i) W_{2,1}(x+j)& \nonumber\\
+  & \hspace{4em} \times W_{1,1}(x+i+k) W_{1,1}(x+j+l)& \nonumber\\
+  +h_2^4 N_f^2 &\smash[b]{\sum_x} \smash[b]{\sum_{i,j,k}} \big[ W_{4,1}(x) - 4 W_{4,2}(x) + W_{4,3}(x) \big] W_{2,1}(x+i)& \nonumber\\
+  & \hspace{4em} \times W_{1,1}(x+j) W_{1,1}(x+k)& \nonumber\\
+  +h_2^4 N_f^2 &\smash[b]{\sum_x} \smash[b]{\sum_{i,j,k}}
+    \big[ W_{3,1}(x) W_{3,1}(x+i) - 2 W_{3,1}(x) W_{3,2}(x+i) + W_{3,2}(x) W_{3,2}(x+i)\big]& \nonumber\\
+  & \hspace{4em} \times W_{1,1}(x+j) W_{1,1}(x+i+k)& \nonumber\\
+  +2 h_2^4 N_f^2 &\sum_x \sum_{i,j,k}
+    \big[ W_{3,1}(x) - W_{3,2}(x) \big] W_{2,1}(x+i) W_{2,1}(x+j) W_{1,1}(x+j+k)& \nonumber\\
+  + h_2^4 N_f^2 &\sum_x \sum_{i,j} W_{2,1}(x) W_{2,1}(x) W_{2,1}(x+i) W_{2,1}(x+j)& \nonumber\\
+  + \frac{1}{2} h_2^4 N_f^2 &\sum_x \sum_{i,j} W_{2,1}(x) W_{2,1}(x+i) W_{2,1}(x+j) W_{2,1}(x+i+j)& \nonumber\\
+  +\frac{1}{3} h_2^4 N_f &\smash[b]{\sum_x} \smash[b]{\sum_{i,j}}
+  \big[ W_{4,1}(x) W_{3,1}(x+i) - 2 W_{4,2}(x) W_{3,1}(x+i) + 2 W_{4,2}(x) W_{3,2}(x+i)& \nonumber\\
+  & \hspace{4em} - W_{4,3}(x) W_{3,2}(x+i) \big] W_{1,1}(x+j)& \nonumber\\
+  -\frac{4}{3} h_2^4 N_f^3 &\smash[b]{\sum_x} \smash[b]{\sum_{i,j}}
+    \big[ 2 W_{4,2}(x) W_{3,1}(x+i) - W_{4,3}(x) W_{3,1}(x+i) + W_{4,1}(x) W_{3,2}(x+i)& \nonumber\\
+  & \hspace{4em} - 2 W_{4,2}(x) W_{3,2}(x+i) \big] W_{1,1}(x+j)& \nonumber\\
+  + \frac{1}{12} h_2^4 N_f &\sum_x \sum_{i,j}
+    \big[ W_{4,1}(x) - 4 W_{4,2}(x) + W_{4,3}(x) \big] W_{2,1}(x+i) W_{2,1}(x+j)& \nonumber\\
+  + \frac{2}{3} h_2^4 N_f^3 &\sum_x \sum_{i,j}
+    \big[ W_{4,1}(x) - 4 W_{4,2}(x) + W_{4,3}(x) \big] W_{2,1}(x+i) W_{2,1}(x+j)& \nonumber\\
+  + \frac{1}{12} h_2^4 N_f^2 &\smash[b]{\sum_x} \smash[b]{\sum_i}
+    \big[ W_{4,1}(x) W_{4,1}(x+i) + 12 W_{4,2}(x) W_{4,2}(x+i)& \nonumber\\
+  & \hspace{4em} + W_{4,3}(x) W_{4,3}(x+i) \big]& \nonumber\\
+  + \frac{2}{3} h_2^4 N_f^4 &\sum_x \sum_i \big[ W_{4,1}(x) W_{4,3}(x+i) + 2 W_{4,2}(x) W_{4,2}(x+i) \big]& \nonumber\\
+  - \frac{2}{3} h_2^4 N_f^2 &\sum_x \sum_i \big[ W_{4,1}(x) W_{4,2}(x+i) + W_{4,2}(x) W_{4,3}(x+i) \big].&
+\end{flalign}
+}
+%
+The sums over the spatial indices $\{i,j,k,l\}$ are over all spatial directions.
+At the leading order in temperature all gauge corrections come from rescaling
+the coupling constants $h_1$ and $h_2$. Away from the low temperature limits new
+gauge corrections will appear as we saw in \secref{sec:gauge_comment}.

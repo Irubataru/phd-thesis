@@ -1,0 +1,407 @@
+{\allowdisplaybreaks%
+\tikzset{
+  circ/.style={%
+    black,thick,circle,draw,inner sep=2pt,scale=0.75
+  },
+  midtikz/.style={
+    baseline={([yshift=-.5ex]current bounding box.center)},
+  },
+}%
+\setlength{\medmuskip}{2mu}%
+\begin{align} \label{eq:effective_action_kapp8}
+  S_{\mathrm{eff}} &= S_0 + 
+  h_2 N_f \sum_{\mathrm{dof}}  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(270:.75)}] n1) {1}
+      edge[thick] (n1);
+  \end{tikzpicture}
+   - h_2^2 N_f\sum_{\mathrm{dof}}  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:{sqrt(2/3)})}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:{sqrt(2/3)})}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture}
+  - h_2^2 N_f^2\sum_{\mathrm{dof}} \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(270:.75)}] n1) {1}
+      edge[thick,bend left=45] (n1)
+      edge[thick,bend right=45] (n1);
+  \end{tikzpicture}
+  + h_2^3 N_f\sum_{\mathrm{dof}} \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:{sqrt(2/3)})}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:{sqrt(2/3)})}] n2) {1}
+      edge[thick] (n2);
+    \node[circ] (n4) at ([shift={(60:{sqrt(2/3)})}] n3) {1}
+      edge[thick] (n3);
+  \end{tikzpicture} \nonumber\\
+  &+\frac{1}{3} h_2^3 N_f \sum_{\mathrm{dof}} \Bigg( \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] at ([shift={(-30:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(90:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(210:.5)}] n1) {1}
+      edge[thick] (n1);
+  \end{tikzpicture} 
+  -\begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] at ([shift={(-30:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(90:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(210:.5)}] n1) {1}
+      edge[thick] (n1);
+  \end{tikzpicture} \Bigg)
+  +2 h_2^3 N_f^2 \sum_{\mathrm{dof}} \Bigg( \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {1}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1);
+    \node[circ] at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture} 
+  - \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {2}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1);
+    \node[circ] at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture} \Bigg) \nonumber\\
+  &+\frac{1}{6} h_2^3 N_f \sum_{\mathrm{dof}} \Bigg( \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] at ([shift={(270:.75)}] n1) {1}
+      edge[thick,bend left=45] (n1)
+      edge[thick,bend right=45] (n1)
+      edge[thick] (n1);
+  \end{tikzpicture} 
+  - \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] at ([shift={(270:.75)}] n1) {2}
+      edge[thick,bend left=45] (n1)
+      edge[thick,bend right=45] (n1)
+      edge[thick] (n1);
+  \end{tikzpicture} \Bigg)
+  - \frac{4}{3} h_2^3 N_f^3 \sum_{\mathrm{dof}}  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] at ([shift={(270:.75)}] n1) {2}
+      edge[thick,bend left=45] (n1)
+      edge[thick,bend right=45] (n1)
+      edge[thick] (n1);
+  \end{tikzpicture} 
+  - h_2^4 N_f\sum_{\mathrm{dof}} \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:{sqrt(2/3)})}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:{sqrt(2/3)})}] n2) {1}
+      edge[thick] (n2);
+    \node[circ] (n4) at ([shift={(60:{sqrt(2/3)})}] n3) {1}
+      edge[thick] (n3);
+    \node[circ] (n5) at ([shift={(300:{sqrt(2/3)})}] n4) {1}
+      edge[thick] (n4);
+  \end{tikzpicture} \nonumber\\
+  &- \frac{1}{12} h_2^4 N_f\sum_{\mathrm{dof}} \Bigg( \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] at ([shift={(45:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(135:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(225:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(315:.5)}] n1) {1}
+      edge[thick] (n1);
+  \end{tikzpicture}
+  -2 \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] at ([shift={(45:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(135:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(225:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(315:.5)}] n1) {1}
+      edge[thick] (n1);
+  \end{tikzpicture}
+  + \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {3};
+    \node[circ] at ([shift={(45:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(135:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(225:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(315:.5)}] n1) {1}
+      edge[thick] (n1);
+  \end{tikzpicture} \Bigg)
+  -  h_2^4 N_f\sum_{\mathrm{dof}} \Bigg( \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:{sqrt(1/3)})}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:{sqrt(1/3)})}] n2) {1}
+      edge[thick] (n2);
+    \node[circ] (n4) at ([shift={(60:{sqrt(1/3)})}] n3) {1}
+      edge[thick] (n3);
+    \node[circ] (n5) at ([shift={(0:.5)}] n3) {1}
+      edge[thick] (n3);
+  \end{tikzpicture}
+  - \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:{sqrt(1/3)})}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:{sqrt(1/3)})}] n2) {2}
+      edge[thick] (n2);
+    \node[circ] (n4) at ([shift={(60:{sqrt(1/3)})}] n3) {1}
+      edge[thick] (n3);
+    \node[circ] (n5) at ([shift={(0:.5)}] n3) {1}
+      edge[thick] (n3);
+  \end{tikzpicture} \Bigg) \nonumber\\
+  &- h_2^4 N_f^2 \sum_{\mathrm{dof}} \Bigg( \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] at ([shift={(-30:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(90:.65)}] n1) {1}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1);
+    \node[circ] at ([shift={(210:.5)}] n1) {1}
+      edge[thick] (n1);
+  \end{tikzpicture} 
+  -4\begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] at ([shift={(-30:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(90:.65)}] n1) {1}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1);
+    \node[circ] at ([shift={(210:.5)}] n1) {1}
+      edge[thick] (n1);
+  \end{tikzpicture}
+  +\begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {3};
+    \node[circ] at ([shift={(-30:.5)}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] at ([shift={(90:.65)}] n1) {1}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1);
+    \node[circ] at ([shift={(210:.5)}] n1) {1}
+      edge[thick] (n1);
+  \end{tikzpicture} \Bigg)
+  - h_2^4 N_f^2 \sum_{\mathrm{dof}} \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at (0.65,0) {1}
+      edge[thick] (n1);
+    \node[circ] (n3) at (0.65,0.65) {1}
+      edge[thick] (n2);
+    \node[circ] (n4) at (0,0.65) {1}
+      edge[thick] (n3)
+      edge[thick] (n1);
+  \end{tikzpicture} \nonumber\\
+  &-2 h_2^4 N_f^2 \sum_{\mathrm{dof}} \Bigg(  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {1}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+    \node[circ] at ([shift={(60:.75)}] n3) {1}
+      edge[thick] (n3);
+  \end{tikzpicture}
+  - \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {2}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+    \node[circ] at ([shift={(60:.75)}] n3) {1}
+      edge[thick] (n3);
+  \end{tikzpicture} \Bigg)
+  - h_2^4 N_f^2 \sum_{\mathrm{dof}} \Bigg(  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(65:{sqrt(2/3)})}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(-65:{sqrt(2/3)})}] n2) {1}
+      edge[thick,bend left=30] (n2)
+      edge[thick,bend right=30] (n2);
+    \node[circ] (n4) at ([shift={(65:{sqrt(2/3)})}] n3) {1}
+      edge[thick] (n3);
+  \end{tikzpicture}
+  -2 \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(65:{sqrt(2/3)})}] n1) {1}
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(-65:{sqrt(2/3)})}] n2) {2}
+      edge[thick,bend left=30] (n2)
+      edge[thick,bend right=30] (n2);
+    \node[circ] (n4) at ([shift={(65:{sqrt(2/3)})}] n3) {1}
+      edge[thick] (n3);
+  \end{tikzpicture}
+  + \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(65:{sqrt(2/3)})}] n1) {2}
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(-65:{sqrt(2/3)})}] n2) {2}
+      edge[thick,bend left=30] (n2)
+      edge[thick,bend right=30] (n2);
+    \node[circ] (n4) at ([shift={(65:{sqrt(2/3)})}] n3) {1}
+      edge[thick] (n3);
+  \end{tikzpicture} \Bigg) \nonumber\\
+  &-\frac{1}{3} h_2^4 N_f \sum_{\mathrm{dof}} \Bigg(  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {1}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1)
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture}
+  -2 \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {2}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1)
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture}
+  +2 \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {2}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1)
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture}
+  - \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {3}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1)
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture} \Bigg) \nonumber\\
+  &+\frac{4}{3} h_2^4 N_f^3 \sum_{\mathrm{dof}} \Bigg(  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {1}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1)
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture}
+  -2 \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {2}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1)
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture}
+  +2 \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {2}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1)
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture}
+  - \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {3}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1)
+      edge[thick] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick] (n2);
+  \end{tikzpicture} \Bigg) \nonumber\\
+  &-\bigg(\frac{1}{12} N_f + \frac{2}{3} N_f^3 \bigg) h_2^4 \sum_{\mathrm{dof}} \Bigg(  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {1}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick,bend left=30] (n2)
+      edge[thick,bend right=30] (n2);
+  \end{tikzpicture}
+  -4 \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {2}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick,bend left=30] (n2)
+      edge[thick,bend right=30] (n2);
+  \end{tikzpicture}
+  + \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at ([shift={(60:.75)}] n1) {3}
+      edge[thick,bend left=30] (n1)
+      edge[thick,bend right=30] (n1);
+    \node[circ] (n3) at ([shift={(300:.75)}] n2) {1}
+      edge[thick,bend left=30] (n2)
+      edge[thick,bend right=30] (n2);
+  \end{tikzpicture} \Bigg)
+  -\frac{2}{3} h_2^4 N_f^4 \sum_{\mathrm{dof}} \Bigg(  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at (0,-.75) {3}
+      edge[thick, bend right=45] (n1)
+      edge[thick, bend left=45] (n1)
+      edge[thick, bend right=15] (n1)
+      edge[thick, bend left=15] (n1);
+  \end{tikzpicture}
+  +2 \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] (n2) at (0,-.75) {2}
+      edge[thick, bend right=45] (n1)
+      edge[thick, bend left=45] (n1)
+      edge[thick, bend right=15] (n1)
+      edge[thick, bend left=15] (n1);
+  \end{tikzpicture} \Bigg) \nonumber \\
+  &-\frac{1}{12} h_2^4 N_f^2 \sum_{\mathrm{dof}} \Bigg(  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at (0,-.75) {1}
+      edge[thick, bend right=45] (n1)
+      edge[thick, bend left=45] (n1)
+      edge[thick, bend right=15] (n1)
+      edge[thick, bend left=15] (n1);
+  \end{tikzpicture}
+  +12 \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] (n2) at (0,-.75) {2}
+      edge[thick, bend right=45] (n1)
+      edge[thick, bend left=45] (n1)
+      edge[thick, bend right=15] (n1)
+      edge[thick, bend left=15] (n1);
+  \end{tikzpicture}
+  + \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {3};
+    \node[circ] (n2) at (0,-.75) {3}
+      edge[thick, bend right=45] (n1)
+      edge[thick, bend left=45] (n1)
+      edge[thick, bend right=15] (n1)
+      edge[thick, bend left=15] (n1);
+  \end{tikzpicture} \Bigg)
+  +\frac{2}{3} h_2^4 N_f^2 \sum_{\mathrm{dof}} \Bigg(  \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {1};
+    \node[circ] (n2) at (0,-.75) {2}
+      edge[thick, bend right=45] (n1)
+      edge[thick, bend left=45] (n1)
+      edge[thick, bend right=15] (n1)
+      edge[thick, bend left=15] (n1);
+  \end{tikzpicture}
+  + \begin{tikzpicture}[midtikz]
+    \node[circ] (n1) {2};
+    \node[circ] (n2) at (0,-.75) {3}
+      edge[thick, bend right=45] (n1)
+      edge[thick, bend left=45] (n1)
+      edge[thick, bend right=15] (n1)
+      edge[thick, bend left=15] (n1);
+  \end{tikzpicture} \Bigg) +\mathcal{O} \big(\kappa^{10}, \frac{1}{N_{\tau}}\big).
+\end{align}
+}%
