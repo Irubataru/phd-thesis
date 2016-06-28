@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+  every axis plot/.append style={
+      restrict x to domain=0:0.105,
+      error bars/y dir=both, error bars/y explicit,
+      legend image post style={sharp plot,|-|},
+  }
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$h_2$},
+      ylabel={$a^3 n_B$},
+      xmin=0, xmax=0.105,
+      ticklabel style={
+        scale=0.7,
+      },
+      xticklabel style={
+        /pgf/number format/precision=2,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      legend style={
+        at={(0.05,0.05)},
+        anchor=south west,
+        nodraw legend,
+      },
+      y post scale=0.85
+    ]
+    \addplot+[only marks, node style 1] table [
+      x index=0,
+      y index=3,
+      y error index=4
+    ] {data/k2_numeric.table};
+    \addlegendentry{$\kappa^2$}
+
+    \addplot+[only marks, node style 2] table [
+      x index=0,
+      y index=3,
+      y error index=4
+    ] {data/k4_numeric.table};
+    \addlegendentry{$\kappa^4$}
+
+    \addplot+[only marks, node style 3] table [
+      x index=0,
+      y index=3,
+      y error index=4
+    ] {data/k6_numeric.table};
+    \addlegendentry{$\kappa^6$}
+
+    \addplot+[only marks,node style 4] table [
+      x index=0,
+      y index=3,
+      y error index=4
+    ] {data/k8_numeric.table};
+    \addlegendentry{$\kappa^8$}
+    \end{axis}
+
+    \node[scale=0.7, inner sep=0pt] [right=-.2cm of thelegend,yshift=.3cm] {
+      \begin{minipage}{3cm}
+        \begin{align*}
+          h_1 &= 0.8\\
+          N_{\tau} &= 50\\
+          \beta &= 0
+        \end{align*}
+      \end{minipage}};
+\end{tikzpicture}%
+\end{document}

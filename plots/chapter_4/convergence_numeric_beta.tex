@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+  every axis plot/.style={
+      restrict x to domain=0:7.01,
+      only marks,
+      error bars/x dir=both, error bars/x explicit,
+      error bars/y dir=both, error bars/y explicit,
+      legend image post style={sharp plot,|-|},
+      %error bars/error mark options={
+        %line width=1pt,
+      %}
+  }
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$h_2$},
+      ylabel={$a^3 n_B$},
+      xmin=0, xmax=7.1,
+      ticklabel style={
+        scale=0.7,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      legend style={
+        at={(0.05,0.95)},
+        anchor=north west,
+        cells={anchor=west},
+        nodraw legend,
+      },
+      y post scale=0.85
+    ]
+    \addplot+[only marks,node style 5] table [
+      x index=0,
+      y index=1,
+      y error index=2,
+    ] {data/u1_numeric.table};
+    \addlegendentry{$u$}
+
+    \addplot+[only marks,node style 2] table [
+      x index=0,
+      y index=1,
+      y error index=2
+    ] {data/u2_numeric.table};
+    \addlegendentry{$u^2$}
+
+    \addplot+[only marks,node style 3] table [ 
+      x index=0,
+      y index=1,
+      y error index=2
+    ] {data/u3_numeric.table};
+    \addlegendentry{$u^3$}
+
+    \addplot+[only marks,node style 4] table [
+      x index=0,
+      y index=1,
+      y error index=2
+    ] {data/u4_numeric.table};
+    \addlegendentry{$u^4$}
+
+    \addplot+[only marks,node style 1] table [
+      x index=0,
+      y index=1,
+      y error index=2
+    ] {data/u5_numeric.table};
+    \addlegendentry{$u^5$}
+    \end{axis}
+
+    \node[scale=0.7, inner sep=0pt] [right=.0cm of thelegend,yshift=.3cm] {
+      \begin{minipage}{3cm}
+        \begin{align*}
+          \kappa &= 0.009098\\
+          N_{\tau} &= 250
+        \end{align*}
+      \end{minipage}};
+
+\end{tikzpicture}%
+\end{document}

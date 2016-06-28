@@ -1,0 +1,62 @@
+\usetikzlibrary{plotmarks,positioning}
+
+\pgfplotsset{
+  nodraw legend/.style={
+    draw=none,
+    fill=none,
+    font=\scriptsize,
+    row sep=-.1cm,
+    name=thelegend,
+  },
+}
+
+\pgfplotsset{
+  default plot style/.style={
+      %smooth,
+      mark size=1.5,
+      %line width=1pt,
+  },
+  node style 1/.style={
+    ColourBase,
+    mark=*,
+    mark options={
+      fill=ColourBase,
+    },
+    default plot style,
+  },
+  node style 2/.style={
+    ColourHl1,
+    mark=square*,
+    mark options={
+      fill=ColourHl1,
+    },
+    default plot style,
+  },
+  node style 3/.style={
+    ColourHl2,
+    mark=triangle*,
+    mark options={
+      fill=ColourHl2,
+      scale=1.5,
+    },
+    default plot style,
+  },
+  node style 4/.style={
+    ColourHl3,
+    mark=diamond*,
+    mark options={
+      fill=ColourHl3,
+      scale=1.5,
+    },
+    default plot style,
+  },
+  node style 5/.style={
+    ColourBase,
+    mark=*,
+    mark options={
+      fill=ColourBase,
+      scale=0.2,
+    },
+    default plot style,
+  },
+}

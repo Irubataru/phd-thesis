@@ -1496,3 +1496,125 @@ corrections are therefore given by replacing $h_2 \to h_2(\beta)$ as given by
 
 
 \section{Numerical evaluation}
+
+Although the focus of this thesis is the analytic evaluation of the effective
+theory, a couple of remarks on the numerical evaluation is still in order.  At
+the beginning of this chapter we stated the nefarious sign problem as a
+motivation for developing the effective 3D theory. And although the effective
+theory still suffer a conceptual sign problem in the sense that the action take
+complex values, we are in a regime where methods such as reweighting work well.
+A thorough review of the theory's numerical properties can be found in
+\citep{Neuman:2015zb}.
+
+The effective theory offer multiple advantages for numerical evaluation over
+full lattice calculations besides the apparent solution of the sign problem.
+%
+\begin{itemize}
+  \item First and foremost we have replaced the very expensive fermion
+    determinant with a discrete sum over the volume and a handful of terms, an
+    overall much cheaper computation.
+  \item Second the temporal direction has been integrated out and its remnant is
+    encoded in $N_t$ which is a parameter. It is therefore possible to sample
+    observables at multiple temperatures in a single simulation.
+  \item Finally the remaining field variables are traces of group elements of
+    SU($3$) which can be represented by two real angles in comparison to the
+    eight generators needed to represent a gauge link in full lattice QCD.
+\end{itemize}
+%
+Regardless of whether one chooses to do a \emph{Monte Carlo} (MC) or a \emph{Complex Langevin}
+(CL) simulation to deal with the trivial sign problem, it is advantageous to
+rewrite the partition function to depend on the angular representation of the
+group characters as outlined in \apxref{sec-haar_measure}. For SU($3$) we
+replace the characters with
+%
+\begin{equation}
+  L(\vec{x}) \equiv \chi_1 = e^{i \theta_{\vec{x}}} + e^{i \phi_{\vec{x}}} +
+  e^{-i(\theta_{\vec{x}} + \phi_{\vec{x}})}
+\end{equation}
+%
+and the integration measure by
+%
+\begin{equation}
+  \int [\mathrm{d} W]_{\vec{x}} = \frac{1}{(2\pi)^2 N_c!}\int \prod_{\vec{x}} \mathrm{d} \theta_{\vec{x}}
+  \mathrm{d} \phi_{\vec{x}} H(\theta_{\vec{x}}, \phi_{\vec{x}})
+\end{equation}
+%
+where $H$ is the reduced Haar measure given by \meqref{eq-su3-haar-measure}.
+This induces a Polyakov Loop potential in the action
+%
+\begin{equation}
+  \int \big[ \mathrm{d} \theta\, \mathrm{d} \phi \big]_{\vec{x}} \,
+    e^{-S_{\text{eff}} + V[L]},
+\end{equation}
+%
+with the potential as stated in the appendix
+%
+\begin{equation}
+  V[L] = \sum_{\vec{x}} 27 - 18 |L(\vec{x})|^2 + 8 \mathrm{Re} \, L(\vec{x})^3 - |L(\vec{x})|^4.
+\end{equation}
+%
+The effective theory can also be easily extendable to other gauge groups,
+especially other SU($N_c$). One simply has to give the proper reduced Haar
+measure and give the definition for the new Polyakov loop variable
+%
+\begin{equation}
+  L_{N_c}(\vec{x}) = \sum_{n=1}^{N_c-1} e^{i \theta_n(\vec{x})} + e^{-i
+    \sum_{n=1}^{N_c-1} \theta_n (\vec{x})}.
+\end{equation}
+%
+We see that an effective theory using gauge group SU($N_c$) has $N_s^3(N_c-1)$
+degrees of freedom as compared to the $4 N_s^3 N_t (N_c^2 - 1)$ degrees of
+freedom one would have in a full lattice gauge theory simulation. We can
+therefore see that on top of the reduced computation cost the theory also scales
+linearly in complexity with the number of colours as compared to quadratic in a
+full simulation.
+
+\begin{figure}
+  {\centering
+    \includegraphics[width=.49\textwidth]{convergence_numeric_kappa}
+    \includegraphics[width=.49\textwidth]{convergence_numeric_beta}
+    \par}
+  \caption[
+    Left: Convergence of baryon number density in lattice units as a
+      function of the nearest neighbour coupling $h_2$ in various orders of the
+      hopping expansion at strong coupling. Right: Corresponding convergence plot
+      at different orders in the character expansion parameter $u$.
+  ]{
+    Left: Convergence of baryon number density in lattice units as a
+    function of the nearest neighbour coupling $h_2$ in various orders of the
+    hopping expansion at strong coupling. Right: Corresponding convergence plot
+    at different orders in the character expansion parameter $u$
+    \protect\footnotemark.}
+  \label{fig:numerical_convergence}
+\end{figure}
+%
+\footnotetext{Siumulation data courtesy of Mathias Neuman}
+%
+The simulations were carried out using both algorithms, MC with reweighting and
+CL, and the results were cross checked. Both methods give compatible results
+within the parameter range the effective theory is well defined for. Our first
+task is to assess the range of validity of the strong coupling, heavy quark
+action. One expects the additional orders in $\kappa$ to extend the convergence
+region, within which the description of thermodynamic functions by the effective
+action is reliable. We test this by computing the baryon number density at fixed
+values of the coupling $h_1$ and $N_{\tau}$.  Varying $\kappa$ then allows us to
+assess the convergence of the expansion of the kinetic quark determinant.
+\figref{fig:numerical_convergence} (left) shows the results obtained with
+effective actions of increasing order in $\kappa$. One observes clearly how two
+adjacent orders stay together for larger values of $h_2(\kappa)$ as the order is
+increased, thus extending the range where our effective action is reliable.
+\figref{fig:numerical_convergence} (right) shows the same exercise for the
+largest $\kappa$ considered in this work, this time increasing the orders of the
+character expansion. We observe good convergence up to $\beta\sim 6$, which is a
+sufficiently weak coupling to allow for continuum extrapolations. It is
+interesting to note that the convergence properties are not determined by the
+size of the expansion parameters alone.  Even though the $u(\beta)$-values far
+exceed the $\kappa$-values employed in the figures, convergence in $u(\beta)$
+appears to be faster.  The gain in convergence region by the additional orders
+in the effective action can be exploited to study the systematics of our
+effective theory.
+
+We will leave the numeric evaluation for now and will shift our focus to a
+purely analytical treatment of the effective 3D theory using graphical methods
+borrowed from the linked cluster formalism.
+
