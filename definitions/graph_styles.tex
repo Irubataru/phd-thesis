@@ -1,0 +1,29 @@
+% ------------ %
+% graph styles %
+% ------------ %
+
+\tikzset{
+  graph style/.style={
+    baseline={([yshift=-.5ex]current bounding box.center)},
+    node distance=.5,
+  },
+  skeleton node/.style={
+    black,fill,circle,inner sep=0pt,minimum size=3.5pt
+  },
+  skeleton bond/.style={
+    draw,
+  },
+}
+
+% ------------------------------------------- %
+% position function                           %
+% http://tex.stackexchange.com/a/102266/39313 %
+% ------------------------------------------- %
+
+\makeatletter
+\tikzset{
+  position/.style args={#1 degrees from #2}{
+    at=(#2.#1), anchor=#1+180, shift=(#1:\tikz@node@distance)
+  }
+}
+\makeatother

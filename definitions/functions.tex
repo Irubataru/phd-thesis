@@ -13,6 +13,7 @@
 \newcommand{\eqstoken}{\textsc{eqs}}
 \newcommand{\figtoken}{\textsc{figure}}
 \newcommand{\tabletoken}{\textsc{table}}
+\newcommand{\ruletoken}{\textsc{rule}}
 
 %%Naming
 
@@ -29,6 +30,8 @@
 \newcommand{\apxref}[1]{\hyperref[#1]{\mbox{\apxtoken{} \ref*{#1}}}}
 \newcommand{\figref}[1]{\hyperref[#1]{\mbox{\figtoken{} \ref*{#1}}}}
 \newcommand{\tabref}[1]{\hyperref[#1]{\mbox{\tabletoken{} \ref*{#1}}}}
+\newcommand{\ruleref}[1]{\hyperref[#1]{\mbox{\ruletoken{} \ref*{#1}}}}
+
 
 % ----------------------------------------------------------------- %
 % Horribly complicated command to give a list of section references %
@@ -79,9 +82,9 @@
     skip loop/.style={
       to path={-- ++(0,#1) -| (\tikztotarget)}
     },
-    position/.style args={#1:#2 from #3}{
-        at=(#3.#1), anchor=#1+180, shift=(#1:#2)
-    }
+    %position/.style args={#1:#2 from #3}{
+        %at=(#3.#1), anchor=#1+180, shift=(#1:#2)
+    %}
 }
 
 % ---------------------- %
@@ -104,6 +107,12 @@
 % Get a raised \chi
 \DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
 \newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}}
+
+\theoremstyle{defintion}
+\newtheorem{definition}{Definition}[chapter]
+
+\theoremstyle{ruledef}
+\newtheorem{ruledef}{Rule}[chapter]
 
 % New definition of square root:
 % it renames \sqrt as \oldsqrt

@@ -10,7 +10,7 @@
 
 \input{../../definitions/colour.tex}
 \input{../../definitions/mathematics_styles.tex}
-\input{../../definitions/functions.tex}
+%\input{../../definitions/functions.tex}
 
 \pagestyle{empty}
 \usepackage[active,tightpage]{preview}
@@ -18,7 +18,14 @@
 \setlength\PreviewBorder{1mm}
 
 \tikzset{
-  every node/.style = {anchor=south, text depth=0.35ex, inner sep=1pt}
+  every node/.style = {
+    anchor=south,
+    text depth=0.35ex,
+    inner sep=1pt
+  },
+  skip loop/.style={
+    to path={-- ++(0,#1) -| (\tikztotarget)}
+  },
 }
 
 \begin{document}
@@ -67,7 +74,7 @@
     \path[contraction] (a.north) edge [skip loop=12pt] (f.north);
     \path[contraction] (c.north) edge [skip loop=4pt] (d.north);
     \path[contraction] (e.north) edge [skip loop=8pt] (b.north);
-  \end{tikzpicture} \\ \midrule
+  \end{tikzpicture} \\ %\midrule
   \begin{tikzpicture}[baseline={(a.south)}]
     \node (a) {$P$};
     \node (b) [right=0pt of a]{$M$};
@@ -112,7 +119,7 @@
     \path[contraction] (a.north) edge [skip loop=6pt] (d.north);
     \path[contraction] (c.north) edge [skip loop=6pt] (b.north);
     \path[contraction] (e.north) edge [skip loop=6pt] (f.north);
-  \end{tikzpicture} \\ \midrule
+  \end{tikzpicture} \\ %\midrule
   \begin{tikzpicture}[baseline={(a.south)}]
     \node (a) {$P$};
     \node (b) [right=0pt of a]{$M$};
@@ -156,7 +163,7 @@
     \path[contraction] (a.north) edge [skip loop=8pt] (f.north);
     \path[contraction] (b.north) edge [skip loop=4pt] (e.north);
     \path[contraction] (c.north) edge [skip loop=8pt] (d.north);
-  \end{tikzpicture} \\ \midrule
+  \end{tikzpicture} \\ %\midrule
   \begin{tikzpicture}[baseline={(a.south)}]
     \node (a) {$P$};
     \node (b) [right=0pt of a]{$M$};
@@ -200,7 +207,7 @@
     \path[contraction] (a.north) edge [skip loop=8pt] (d.north);
     \path[contraction] (b.north) edge [skip loop=8pt] (e.north);
     \path[contraction] (c.north) edge [skip loop=4pt] (f.north);
-  \end{tikzpicture} \\ \midrule
+  \end{tikzpicture} \\ %\midrule
   \begin{tikzpicture}[baseline={(a.south)}]
     \node (a) {$P$};
     \node (b) [right=0pt of a]{$M$};

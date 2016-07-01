@@ -1,0 +1,209 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,multirow,array,tabu}
+\usepackage{xcolor}
+
+\input{../../definitions/graph_styles.tex}
+
+\usetikzlibrary{positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tabu}
+\setlength\PreviewBorder{0mm}
+
+\tikzset{
+  graph style/.append style={
+    scale=0.8,
+    node distance=.6,
+    every node/.style={
+      scale=0.8,
+    },
+  },
+}
+
+\begin{document}
+\tabulinesep = 1.8mm
+\begin{tabu}{cccccc} \toprule
+  \textbf{Graph} & \textbf{Symmetries} & \textbf{Embeddings} &
+  \textbf{Graph} & \textbf{Symmetries} & \textbf{Embeddings} \\ \midrule
+  \begin{tikzpicture}[graph style, node distance=.45]
+    \node[skeleton node] (n1) {};
+    \node[skeleton node] (n2) [below=of n1] {}
+      edge[skeleton bond] (n1);
+  \end{tikzpicture} & $2$ & $2d$ &
+  \begin{tikzpicture}[graph style,node distance=.4]
+    \node[skeleton node] (n1) {};
+    \node[skeleton node] (n2) [position=330 degrees from n1] {}
+      edge[skeleton bond] (n1);
+    \node[skeleton node] (n3) [position=90 degrees from n1] {}
+      edge[skeleton bond] (n1);
+    \node[skeleton node] (n4) [position=210 degrees from n1] {}
+      edge[skeleton bond] (n1);
+  \end{tikzpicture} & $3!$ & $(2d)^3$ \\ %\midrule
+  \begin{tikzpicture}[graph style]
+    \node[skeleton node] (n1) {};
+    \node[skeleton node] (n2) [position=60 degrees from n1] {}
+      edge[skeleton bond] (n1);
+    \node[skeleton node] (n3) [position=300 degrees from n2] {}
+      edge[skeleton bond] (n2);
+  \end{tikzpicture} & $2$ & $(2d)^2$ &
+  \begin{tikzpicture}[graph style]
+    \node[skeleton node] (n1) {};
+    \node[skeleton node] (n2) [position=60 degrees from n1] {}
+      edge[skeleton bond] (n1);
+    \node[skeleton node] (n3) [position=300 degrees from n2] {}
+      edge[skeleton bond] (n2) edge (n1);
+  \end{tikzpicture} & $6$ & $0$ \\ %\midrule
+  \begin{tikzpicture}[graph style, node distance=.45]
+    \node[skeleton node] (n1) {};
+    \node[skeleton node] (n2) [below=of n1] {}
+      edge[skeleton bond, bend left=45]  (n1)
+      edge[skeleton bond, bend right=45] (n1);
+  \end{tikzpicture} & $4$ & $2d$ &
+  \begin{tikzpicture}[graph style]
+    \node[skeleton node] (n1) {};
+    \node[skeleton node] (n2) [position=60 degrees from n1] {}
+      edge[skeleton bond, bend left=45]  (n1) 
+      edge[skeleton bond, bend right=45] (n1);
+    \node[skeleton node] [position=300 degrees from n2] {}
+      edge[skeleton bond] (n2);
+  \end{tikzpicture} & $2$ & $(2d)^2$ \\ %\midrule
+  \begin{tikzpicture}[graph style]
+    \node[skeleton node] (n1) {};
+    \node[skeleton node] (n2) [position=60 degrees from n1] {}
+      edge[skeleton bond] (n1);
+    \node[skeleton node] (n3) [position=300 degrees from n2] {}
+      edge[skeleton bond] (n2);
+    \node[skeleton node] (n4) [position=60 degrees from n3] {}
+      edge[skeleton bond] (n3);
+  \end{tikzpicture} & $2$ & $(2d)^3$ &
+  \begin{tikzpicture}[graph style, node distance=.45]
+    \node[skeleton node] (n1) {};
+    \node[skeleton node] [below=of n1] {}
+      edge[skeleton bond, bend right=60] (n1)
+      edge[skeleton bond, bend left=60]  (n1)
+      edge[skeleton bond] (n1);
+  \end{tikzpicture} & $2 {\scriptstyle\times} 3!$ & $2d$ \\ %\midrule
+\begin{tikzpicture}[graph style]
+  \node [skeleton node] (n1) {};
+  \node [skeleton node] (n2) [position=60 degrees from n1] {}
+    edge[skeleton bond] (n1);
+  \node [skeleton node] (n3) [position=300 degrees from n2] {}
+    edge[skeleton bond] (n2);
+  \node [skeleton node] (n4) [position=60 degrees from n3] {}
+    edge[skeleton bond] (n3);
+  \node [skeleton node] [position=300 degrees from n4] {}
+    edge[skeleton bond] (n4);
+\end{tikzpicture} & $2$ & $(2d)^4$ &
+\begin{tikzpicture}[graph style, node distance=.4]
+  \node [skeleton node] (n1) {};
+  \node [skeleton node] [position=45 degrees from n1] {}
+    edge[skeleton bond] (n1);
+  \node [skeleton node] [position=135 degrees from n1] {}
+    edge[skeleton bond] (n1);
+  \node [skeleton node] [position=225 degrees from n1] {}
+    edge[skeleton bond] (n1);
+  \node [skeleton node] [position=315 degrees from n1] {}
+    edge[skeleton bond] (n1);
+\end{tikzpicture} & $4!$ & $(2d)^4$ \\ %\midrule
+\begin{tikzpicture}[graph style]
+  \node[skeleton node] (n1) {};
+  \node[skeleton node] (n2) [position=60 degrees from n1] {}
+    edge[skeleton bond] (n1);
+  \node[skeleton node] (n3) [position=300 degrees from n2] {}
+    edge[skeleton bond] (n2);
+  \node[skeleton node] (n4) [position=60 degrees from n3] {}
+    edge[skeleton bond] (n3);
+  \node[skeleton node] [right=of n3] {}
+    edge[skeleton bond] (n3);
+\end{tikzpicture} & $2$ & $(2d)^4$ &
+\begin{tikzpicture}[graph style, node distance=.45]
+  \node[skeleton node] (n1) {};
+  \node[skeleton node] (n2) [right=of n1] {}
+    edge[skeleton bond] (n1);
+  \node[skeleton node] (n3) [above=of n2] {}
+    edge[skeleton bond] (n2);
+  \node[skeleton node] [above=of n1] {}
+    edge[skeleton bond] (n1) edge[skeleton bond] (n3);
+\end{tikzpicture} & $8$ & $2(2d)^2 - 1$ \\ %\midrule
+\begin{tikzpicture}[graph style, node distance=.4]
+  \node [skeleton node] (n1) {};
+  \node [skeleton node] (n2) [position=330 degrees from n1] {}
+    edge[skeleton bond] (n1);
+  \node [skeleton node] (n3) [position=90 degrees from n1] {}
+    edge[skeleton bond, bend left=45]  (n1)
+    edge[skeleton bond, bend right=45] (n1);
+  \node [skeleton node] (n4) [position=210 degrees from n1] {}
+    edge[skeleton bond] (n1);
+\end{tikzpicture} & $2 {\scriptstyle\times} 2!$ & $(2d)^3$ &
+\begin{tikzpicture}[graph style]
+  \node [skeleton node] (n1) {};
+  \node [skeleton node] (n2) [position=60 degrees from n1] {}
+    edge[skeleton bond] (n1);
+  \node [skeleton node] (n3) [position=300 degrees from n2] {}
+    edge[skeleton bond] (n2);
+  \node [skeleton node] (n4) [position=60 degrees from n3] {}
+    edge[skeleton bond, bend right=45] (n3)
+    edge[skeleton bond, bend left=45]  (n3);
+\end{tikzpicture} & $2$ & $(2d)^3$ \\ %\midrule
+\begin{tikzpicture}[graph style]
+  \node [skeleton node] (n1) {};
+  \node [skeleton node] (n2) [position=60 degrees from n1] {}
+    edge[skeleton bond] (n1);
+  \node [skeleton node] (n3) [position=300 degrees from n2] {}
+    edge[skeleton bond, bend right=45] (n2)
+    edge[skeleton bond, bend left=45]  (n2);
+  \node [skeleton node] (n4) [position=60 degrees from n3] {}
+    edge[skeleton bond] (n3);
+\end{tikzpicture} & $2 {\scriptstyle\times} 2!$ & $(2d)^3$ &
+\begin{tikzpicture}[graph style]
+  \node [skeleton node] (n1) {};
+  \node [skeleton node] (n2) [position=60 degrees from n1] {}
+    edge[skeleton bond] (n1);
+  \node [skeleton node] (n3) [position=300 degrees from n2] {}
+    edge[skeleton bond] (n2)
+    edge[skeleton bond, bend right=45] (n1)
+    edge[skeleton bond, bend left=45]  (n1);
+\end{tikzpicture} & $2 {\scriptstyle\times} 2!$ & $0$ \\ %\midrule
+\begin{tikzpicture}[graph style]
+  \node [skeleton node] (n1) {};
+  \node [skeleton node] (n2) [position=60 degrees from n1] {}
+    edge[skeleton bond] (n1);
+  \node [skeleton node] [right=of n2] {}
+    edge[skeleton bond] (n2);
+  \node [skeleton node] (n3) [position=300 degrees from n2] {}
+    edge[skeleton bond] (n2)
+    edge[skeleton bond] (n1);
+\end{tikzpicture} & $2$ & $0$ &
+\begin{tikzpicture}[graph style]
+  \node [skeleton node] (n1) {};
+  \node [skeleton node] (n2) [position=60 degrees from n1] {}
+    edge[skeleton bond, bend left=30]  (n1)
+    edge[skeleton bond, bend right=30] (n1);
+  \node [skeleton node] (n3) [position=300 degrees from n2] {}
+    edge[skeleton bond, bend right=30] (n2)
+    edge[skeleton bond, bend left=30]  (n2);
+\end{tikzpicture} & $2 {\scriptstyle\times} (2!)^2$ & $(2d)^2$ \\ %\midrule
+\begin{tikzpicture}[graph style]
+  \node [skeleton node] (n1) {};
+  \node [skeleton node] (n2) [position=60 degrees from n1] {}
+    edge[skeleton bond] (n1)
+    edge[skeleton bond, bend left=45]  (n1)
+    edge[skeleton bond, bend right=45] (n1);
+  \node [skeleton node] (n3) [position=300 degrees from n2] {}
+    edge[skeleton bond] (n2);
+\end{tikzpicture} & $3!$ & $(2d)^2$ &
+\begin{tikzpicture}[graph style, node distance=.45]
+  \node [skeleton node] (n1) {};
+  \node [skeleton node] (n2) [above=of n1] {}
+    edge[skeleton bond, bend left=20] (n1) edge[skeleton bond, bend right=20] (n1)
+    edge[skeleton bond, bend left=60] (n1) edge[skeleton bond, bend right=60] (n1);
+\end{tikzpicture} & $2 {\scriptstyle\times} 4!$ & $2d$ \\ \bottomrule
+\end{tabu}
+\end{document}
