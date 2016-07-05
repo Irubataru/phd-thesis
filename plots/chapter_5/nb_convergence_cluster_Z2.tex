@@ -1,0 +1,121 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$h_2$},
+      ylabel={$a^3 n_B$},
+      xmin=0.0, xmax=0.15,
+      %ymin=-0.03, ymax=0.005,
+      scaled ticks=false,
+      ticklabel style={
+        scale=0.7,
+      },
+      xticklabel style={
+        /pgf/number format/precision=2,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      %yticklabel style={
+        %/pgf/number format/precision=2,
+        %/pgf/number format/fixed,
+        %/pgf/number format/fixed zerofill,
+      %},
+      minor tick num=3,
+      label shift=-.1cm,
+      legend style={
+        at={(0.05,0.05)},
+        anchor=south west,
+        cells={anchor=west, font=\normalsize},
+        scale=2,
+        nodraw legend,
+      },
+      y post scale=0.65
+    ]
+
+    \addlegendimage{empty legend}
+    \addlegendentry{\hskip .2cm}
+
+    \addlegendimage{empty legend}
+    \addlegendentry{\hskip -.75cm \scalebox{0.8}{$\mathcal{Z}_2$ LCE}} 
+
+    \addplot[no marks, node style 1, line width=1.2pt] table [x index=0, y index=1] {data/nb_conv_Z2.table};
+    \addlegendentry{$\kappa^2$}
+
+    \addplot[no marks, node style 2, line width=1.2pt] table [x index=0, y index=2] {data/nb_conv_Z2.table};
+    \addlegendentry{$\kappa^4$}
+
+    \addplot[no marks, node style 3, line width=1.2pt] table [x index=0, y index=3] {data/nb_conv_Z2.table};
+    \addlegendentry{$\kappa^6$}
+
+    \addplot[no marks, node style 4, line width=1.2pt] table [x index=0, y index=4] {data/nb_conv_Z2.table};
+    \addlegendentry{$\kappa^8$}
+
+    \addlegendimage{empty legend}
+    \addlegendentry{\hskip .2cm}
+
+    \addlegendimage{empty legend}
+    \addlegendentry{\hskip -.75cm \scalebox{0.8}{Simulation}} 
+
+    \addplot+[
+      only marks, node style data,
+      error bars/y dir=both, error bars/y explicit,
+      legend image post style={sharp plot,|-|},
+    ] table [
+      x index=0,
+      y index=3,
+      y error index=4
+    ] {data/k2_numeric.table};
+    \addlegendentry[scale=.8]{Data}
+
+
+    %\addplot[no marks, node style 2, line width=1.2pt] table [x index=0, y index=2] {data/binding_energy_kappa2_2.table};
+    %\addlegendentry{$\kappa = 0.04$}
+
+    %\addplot[no marks, node style 3, line width=1.2pt] table [x index=0, y index=3] {data/binding_energy_kappa2_2.table};
+    %\addlegendentry{$\kappa = 0.06$}
+  \end{axis}
+
+  \node[scale=0.75,inner sep=0pt, anchor=south west] at ([yshift=-.2cm]rel axis cs: 0.28,0) {
+    \begin{minipage}{2cm}%
+      \setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}%
+      \setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}%
+      \begin{align*}
+        h_1 &= 0.8 \\
+        N_t &= 50 \\
+        \beta &= 0
+      \end{align*}%
+    \end{minipage}};
+
+  %\node[inner sep=0pt,anchor=south west] [right=.2cm of thelegend.south east, yshift=.6cm] {
+    %\begin{minipage}{1cm}
+      %\begin{align*}
+        %N_{\tau} &= 50
+      %\end{align*}
+    %\end{minipage}};
+
+\end{tikzpicture}%
+\end{document}

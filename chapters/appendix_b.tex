@@ -79,3 +79,33 @@ The sums over the spatial indices $\{i,j,k,l\}$ are over all spatial directions.
 At the leading order in temperature all gauge corrections come from rescaling
 the coupling constants $h_1$ and $h_2$. Away from the low temperature limits new
 gauge corrections will appear as we saw in \secref{sec:gauge_comment}.
+
+\section{Integrated LCE \texorpdfstring{$n$}{n}-point functions}
+\label{apx:z_functions}
+
+Below are all $z$'s needed for the $n$-point functions in use to carry out the
+analytic computation to $\mathcal{O}(k^8)$ with $N_c = 3$ and $N_f = 2$. The
+definition of $z$ can be found in \meqref{eq:lce_z_definition}. The integrals
+can be easily computed with the methods outlined in \apxref{apxA},
+%
+\begin{subequations}
+\begin{alignat}{4}
+  &z_0 &&= 1 + 20 h_1^3 + 50 h_1^6 + 20 h_1^9 + h_1^{12}, \\
+  &z_{(11)} &&= 15 h_1^3 + 75 h_1^6 + 45 h_1^9 + 3 h_1^{12}, \\
+  &z_{(21)} &&= 21 h_1^3 + 70 h_1^6 + 21 h_1^9, \\
+  &z_{(31)} &&= 28 h_1^3 + 35 h_1^6 - 7 h_1^9, \\
+  &z_{(32)} &&= -7 h_1^3 + 35 h_1^6 + 28 h_1^9, \\
+  &z_{(41)} &&= 36 h_1^3 - 40 h_1^6 + h_1^9, \\
+  &z_{(42)} &&= -8 h_1^3 + 75 h_1^6 - 8 h_1^9, \\
+  &z_{(43)} &&= h_1^3 - 40 h_1^6 + 36 h_1^9, \\
+  &z_{(11)^2} &&= 6 h_1^3 + 95 h_1^6 + 96 h_1^9 + 9 h_1^{12}, \\
+  &z_{(11)(21)} &&= 7 h_1^3 + 105 h_1^6 + 56 h_1^9, \\
+  &z_{(11)(31)} &&= 8 h_1^3 + 100 h_1^6 - 20 h_1^9, \\
+  &z_{(11)(32)} &&= -h_1^3 + 5 h_1^6 + 76 h_1^9, \\
+  &z_{(11)^3} &&= h_1^3 + 90 h_1^6 + 188 h_1^9 + 27 h_1^{12}, \\
+  &z_{(21)^2} &&= 8 h_1^3 + 135 h_1^6 + 8 h_1^9, \\
+  &z_{(11)^2(21)} &&= h_1^3 + 100 h_1^6 + 148 h_1^9, \\
+  &z_{(11)^4} &&= 60 h_1^6 + 312 h_1^9 + 81 h_1^{12}.
+\end{alignat}
+\end{subequations}
+

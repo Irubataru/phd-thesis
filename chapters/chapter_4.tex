@@ -615,6 +615,34 @@ lattice. Examples of these contributions are sketched in
   \label{fig-next-order-fermionic}
 \end{figure}
 
+
+\subsection{Multiple fermion flavours}
+
+The introduction of multiple fermion flavours is in theory trivial. As we have
+no flavour changing processes the different flavours decouple into separate
+terms. The effective theory at $N_f$ different fermion flavours is simply
+%
+\begin{equation}
+  \mathcal{Z} = \int [\mathrm{d} U]_{\mu} \prod_{f=1}^{N_f} \det
+  Q_{f,\mathrm{stat}} \, \exp \bigg( -\sum_{f=1}^{N_f} \sum_{n=1}^{\infty}
+  \frac{1}{n} \tr (P_f + M_f)^n \bigg).
+\end{equation}
+%
+The only difference between different fermionic flavours in QCD is their masses,
+and thus the flavour dependence of the $P_f$ and $M_f$ matrices enter through
+$\kappa_f$ only. For degenerate flavours the situation is even simpler, in that
+case $N_f$ enters as a simple number in the equations
+%
+\begin{equation}
+  \mathcal{Z} = \int [\mathrm{d} U]_{\mu}  \det{}^{N_f} Q_{f,\mathrm{stat}} \,
+  \exp \bigg( -\sum_{f=1}^{N_f} \sum_{n=1}^{\infty}
+  \frac{1}{n} \tr (P_f + M_f)^n \bigg).
+\end{equation}
+%
+This falls through the computation easily, and the power of $N_f$ in any
+effective theory term is determined by the number of fermion traces the term
+originates from.
+
 \section{Mixed contributions and gauge corrections}
 
 So far we have only considered either pure gluonic contributions or pure
@@ -795,7 +823,7 @@ taken into account order by order in a systematic way. This resummation gives a
 more satisfactory expression for $S_{\text{eff}}$ which we gave to first order
 in \meqref{eq:lowest_order_ea_unsummed}
 %
-\begin{equation} \label{eq:lowest_order_ea_unsummed}
+\begin{equation}
   S_{\text{eff}} = \frac{\kappa^2 N_t}{N_c}
   \sum_{\langle \vec{x}, \vec{y} \rangle} 
     \big( W_{11}(\vec{x}) - \xoverline{W}_{11}(\vec{x}) \big)

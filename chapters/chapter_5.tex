@@ -47,7 +47,7 @@ expressed.
 
 To introduce the framework we consider a scalar field with a $2$-point coupling
 %
-\begin{equation}
+\begin{equation} \label{eq:scalar_field_Z}
   \mathcal{Z} = \int [\mathrm{d} \phi] e^{-S_0[\phi] + \frac{1}{2} \sum_{x,y}
     \phi(x) v(x,y) \phi(y)},
 \end{equation}
@@ -62,15 +62,16 @@ the generating functional
 \end{equation}
 %
 Since our goal is to study thermodynamic quantities, we shift our attention to
-the computation of the free energy $\mathcal{W}$, or the generating functional
+the computation of the grand canonical potential $\mathcal{W}$, or the generating functional
 of connected correlation functions
 %
 \begin{equation}
-  \mathcal{W}[J,v] = - \log \mathcal{Z}[J,v].
+  \mathcal{W}[J,v] = \log \mathcal{Z}[J,v].
 \end{equation}
 %
-A linked cluster expansion of the free energy is then defined as the Taylor
-expansion with respect to the coupling $v(x,y)$ around the free theory
+A linked cluster expansion (\emph{LCE}) of the grand canonical potential is then defined as
+the Taylor expansion with respect to the coupling $v(x,y)$ around the free
+theory
 %
 \begin{equation} \label{eq:cluster_expansion_def}
   \mathcal{W}[J,v] = \bigg( \exp \bigg(\frac{1}{2} \sum_{x,y} v(x,y)
@@ -154,7 +155,7 @@ Although the coefficients for the $v^n$ term can be computed systematically from
 exists a formalism in which the terms and their prefactors can be written down
 immediately in an intuitive way.
 %
-\theoremstyle{definition}%
+%\theoremstyle{definition}%
 \begin{definition}{Connected graph}\\
   A graph is a set of vertices and bonds where every bond connects two distinct
   vertices. An $n$-rooted graph has $n$ fixed, distinguishable, external
@@ -172,15 +173,15 @@ immediately in an intuitive way.
 \end{definition}
 %
 \noindent{}%
-To compute the free energy $\mathcal{W}$ one simply takes the set of all
-topologically distinct $0$-rooted connected graph. The order counting is on the
-bond level, meaning that at $\mathcal{O}(v^3)$ we only take $0$-rooted connected
-graphs with three or fewer bonds. The final ingredient is a rule for translating
-between the graphical representation and the mathematical expression for the
-free energy
+To compute $\mathcal{W}$ one simply takes the set of all topologically distinct
+$0$-rooted connected graph. The order counting is on the bond level, meaning
+that at $\mathcal{O}(v^3)$ we only take $0$-rooted connected graphs with three
+or fewer bonds. The final ingredient is a rule for translating between the
+graphical representation and the mathematical expression for the grand canonical
+potential
 %
-\theoremstyle{ruledef}%
-\begin{ruledef}{Free energy $\mathcal{W}$} \label{rule:free_energy}
+%\theoremstyle{ruledef}%
+\begin{ruledef}{Grand canonical potential $\mathcal{W}$} \label{rule:free_energy}
   \begin{enumerate}
     \item Assign a symbol, $x_1, x_2, \dots, x_n$ to every vertex
     \item To every bond connecting vertices $x_i$ and $x_j$ add a factor
@@ -192,7 +193,7 @@ free energy
 \end{ruledef}
 %
 \noindent{}%
-Using this rule we can write the free energy in
+Using this rule we can write the grand canonical potential in
 \meqref{eq:free_energy_before_graph} using a set of graphs
 %
 \begin{equation}
@@ -222,13 +223,13 @@ Using this rule we can write the free energy in
   + \dots \,.
 \end{equation}
 %
-The equality between \ruleref{rule:free_energy} and the free energy linked
-cluster expansion \meqref{eq:cluster_expansion_def} is in no way trivial and
-proofs for the equality are given in e.g.
-\citep{Englert:1963pr,Bloch:1965jp}. The topology of the interaction is still
-yet to be specified and the sums over the symbols \{$x_1$,\dots,$x_n$\} run over
-the entire lattice. Further simplification can be achieved by choosing e.g. a
-uniform nearest neighbour coupling
+The equality between \ruleref{rule:free_energy} and the grand canonical
+potential LCE \meqref{eq:cluster_expansion_def} is in no way trivial and proofs
+for the equality are given in e.g.  \citep{Englert:1963pr,Bloch:1965jp}. The
+topology of the interaction is still yet to be specified and the sums over the
+symbols \{$x_1$,\dots,$x_n$\} run over the entire lattice. Further
+simplification can be achieved by choosing e.g. a uniform nearest neighbour
+coupling
 %
 \begin{equation}
   v(x,y) = 
@@ -241,8 +242,8 @@ uniform nearest neighbour coupling
 We have chosen nearest neighbour interactions here, although it has been shown
 that a graphical expansion non nearest neighbour couplings can be reordered in
 such a way that the class of graphs are identical to the nearest neighbour case
-\citep{Pordt:1996it}. For nearest neighbour interactions the free energy
-simplifies further
+\citep{Pordt:1996it}. For nearest neighbour interactions the grand canonical
+potential simplifies further
 %
 \begin{equation} \label{eq:free_energy_with_embedding}
   \mathcal{W}[v] = N M_0 + \frac{q}{2} v N M_1^2 + \frac{q}{4} v^2 N M_2^2
@@ -277,8 +278,12 @@ the three bond graph
 has an embedding number of zero on a square lattice as there is no way to
 resolve the nearest neighbour requirement of \ruleref{rule:free_energy}. On a
 triangular lattice on the other hand it would have a non-zero embedding number.
-%
-\begin{table}
+A table of the four bond graphs with symmetry factors and embeddings on a square
+lattice can be found in \tabref{tab:graphs_embeddings}. When we later
+extrapolate the graphical methods to the effective theory we will see that these
+are all graphs needed to carry out a computation to order $\kappa^8$.
+
+\begin{table}[ht]
   \begin{center}
     \includegraphics{embedding_and_symmetry}
   \end{center}
@@ -286,13 +291,292 @@ triangular lattice on the other hand it would have a non-zero embedding number.
   on a $d$ dimensional square lattice.}
   \label{tab:graphs_embeddings}
 \end{table}
-%
-A table of the four bond graphs with symmetry factors and embeddings on a square
-lattice can be found in \tabref{tab:graphs_embeddings}. When we later
-extrapolate the graphical methods to the effective theory we will see that these
-are all graphs needed to carry out a computation to order $\kappa^8$.
 
-\subsection{Cluster expansion for the effective theory at LO}
+In the next section we will see how to map the effective theory onto an LCE
+framework and the additional condsiderations that has to be taken into account.
+
+\subsection{LCE for the effective theory at LO}
+
+We start working with the leading order action to establish corresponding
+quantities in the effective action to the ones introduced in the previous
+section. In the dense regime ($\mu \gg T$) the LO effective partition function
+is
+%
+\begin{equation}
+  \mathcal{Z}_2 = \int [ \mathrm{d} U ]_0 \det{}^{N_f} \qstat \exp \bigg(-\frac{1}{2}
+  h_2 N_f \sum_{\langle x,y \rangle} W_{11} (x) W_{11} (y) \bigg),
+\end{equation}
+%
+as we showed in \chapref{chap4}. Comparing the above equation with the scalar
+field partition function we used to introduce the LCE,
+\meqref{eq:scalar_field_Z}, we see that there is a close to one-to-one
+correspondence between the two systems
+%
+\begin{equation}
+  \phi \Leftrightarrow W_{11}, \hskip .5cm v \Leftrightarrow h_2 N_f, \hskip .5cm
+  e^{-S_0[\phi]} \Leftrightarrow \mathcal{J} (U_0, W_{11}) \det \qstat,
+\end{equation}
+%
+where $\mathcal{J} (U_0, W_{11})$ is the Jacobian determinant for the variable
+change. There is however no need to compute $S_0[W_{11}]$ explicitly as the free
+energy only depends on the $n$-point functions $M_n$, which in turn depends on
+expectation values of the free theory. We define the $n$-point functions in
+terms of $z$-functions, which are (for $N_f = 1$)
+%
+\begin{subequations}
+\begin{alignat}{99}
+  \centermathcell{z_{0}} &= &&\int \mathrm{d} W \det \qstat
+    &&= 1 + 4 h_1^3 + h_1^6, \\
+  \centermathcell{z_{(11)}} &=  &&\int \mathrm{d} W \det \qstat
+    W_{11} &&= 6 h_1^3 + 3 h_1^6, \\
+  \centermathcell{z_{(11)^2}} &= &&\int \mathrm{d} W \det
+    \qstat W_{11}^2 &&= 4 h_1^3 + 9 h_1^6, \\
+  \centermathcell{z_{(11)^3}} &= &&\int \mathrm{d} W \det
+    \qstat W_{11}^3 &&= h_1^3 + 17 h_1^6 + h_1^9, \\
+  \centermathcell{z_{(11)^4}} &= &&\int \mathrm{d} W \det
+    \qstat W_{11}^4 &&= 21 h_1^6 + 6 h_1^9,
+\end{alignat}
+\end{subequations}
+%
+while for $N_f = 2$ they take the values
+%
+\begin{subequations}
+\begin{alignat}{99}
+  \centermathcell{z_{0}} &= &&\int \mathrm{d} W \det{}^2 \qstat \,
+    &&= 1 + 20h_1^3 + 50 h_1^6 + 20 h_1^9 + h_1^{12}, \\
+  \centermathcell{z_{(11)}} &=  &&\int \mathrm{d} W \det{}^2 \qstat \,
+    W_{11} &&= 15 h_1^3 + 75 h_1^6 + 45 h_1^9 + 3 h_1^{12}, \\
+  \centermathcell{z_{(11)^2}} &= &&\int \mathrm{d} W \det{}^2
+  \qstat \, W_{11}^2 &&= 6 h_1^3 + 95 h_1^6 + 96 h_1^9 + 9 h_1^{12}, \\
+  \centermathcell{z_{(11)^3}} &= &&\int \mathrm{d} W \det{}^2 
+  \qstat \, W_{11}^3 &&= h_1^3 + 90 h_1^6 + 188 h_1^9 + 27 h_1^{12}, \\
+  \centermathcell{z_{(11)^4}} &= &&\int \mathrm{d} W \det{}^2
+  \qstat \, W_{11}^4 &&= 60 h_1^6 + 312 h_1^9 + 81 h_1^{12}.
+\end{alignat}
+\end{subequations}
+%
+The $z$'s have a fairly convoluted naming scheme. The reason for this is
+that when we include more orders in the effective action we will need to
+put sets of $W_{\{nm\}}$ in the integrand. The $z$'s follow the naming scheme
+%
+\begin{equation} \label{eq:lce_z_definition}
+  z_{(n_1 m_1)^{k_1}\cdots(n_p m_p)^{k_p}} = \int \mathrm{d} W \det{}^{N_f} \qstat
+  W_{n_1 m_1}^{k_1} \cdots W_{n_p m_p}^{k_p}.
+\end{equation}
+%
+A list of all the integrated $z$'s needed to compute the results we will present
+later is given in \apxref{apx:z_functions}. The $n$-point functions are then
+given by
+%
+\begin{subequations}
+\begin{align}
+  M_0 &= \log z_0, \\
+  M_1 &= \frac{z_{(11)}}{z_0}, \\
+  M_2 &= \frac{z_{(11)^2}}{z_0} - \frac{z_{(11)}^2}{z_0^2}, \\
+  M_3 &= \frac{z_{(11)^3}}{z_0} - 3 \frac{z_{(11)^2} z_{(11)}}{z_0^2} + 2 \frac{z_{(11)}^3}{z_0^3}, \\
+  M_4 &= \frac{z_{(11)^4}}{z_0} - 4 \frac{z_{(11)^3} z_{(11)}}{z_0^2} - 3
+  \frac{z_{(11)^2}^2}{z_0^2} + 12 \frac{z_{(11)^2} z_{(11)}^2}{z_0^3} - 6 \frac{z_{(11)}^4}{z_0^4}.
+\end{align} 
+\end{subequations}
+%
+With the full analytic result for the $\mathcal{Z}_2$ partition function at hand
+we can start comparing with results from the numerical evaluation. However,
+first we need to establish the observables.
+
+\subsection{Observables}
+
+We introduced the definition of the observables in \secref{sec-stat-mech}, but
+just as we defined them on the lattice in \secref{sec-thermal-lattice-theory},
+we have to give them in terms of the parameters we are working with. We use the
+fact that  $\mathcal{W}$ is linear in volume in the thermodynamic
+limit, which means that the pressure is given simply as
+%
+\begin{equation}
+  \mathcal{P} = T \bigg( \frac{\partial}{\partial V} \log \mathcal{Z}
+  \bigg)_{T\mathrlap{,z}} = \frac{T}{V}\,\mathcal{W}.
+\end{equation}
+%
+Similarly, taking the derivative with respect to fugacity is also straight
+forward, we can simplify it further using
+%
+\begin{equation}
+  z\, \frac{\partial}{\partial z} \bigg|_{T\mathrlap{,V}} = h_1
+  \frac{\partial}{\partial h_1} \bigg|_{T,V}
+\end{equation}
+%
+which means we can define the baryon number density as
+%
+\begin{equation}
+  n_B = \frac{1}{3} n_q = h_1 \frac{1}{3} \bigg( \frac{\partial}{\partial h_1} \frac{\mathcal{W}}{V} \bigg)_{T,V}.
+\end{equation}
+%
+To compute the energy density $e$ we need to compute the
+derivative
+%
+\begin{equation}
+  e = T^2 \bigg( \frac{\partial}{\partial T} \frac{\log \mathcal{Z}}{V}
+    \bigg)_{z,V}.
+\end{equation}
+%
+We know that $\frac{\log \mathcal{Z}}{V}$ is volume independent, and therefore
+the requirement of keeping $V$ constant is automatically fulfilled. We replace
+the derivative in $T$ by a derivative in $a$, and therefore have
+%
+\begin{equation}
+  e = -\frac{1}{N_t} \bigg( \frac{\partial}{\partial a} \frac{\mathcal{W}}{V}
+    \bigg)_z.
+\end{equation}
+%
+The derivative with respect to the lattice spacing must be handled with a bit of
+care. One option is to define the derivative at constant baryon mass
+%
+\begin{equation}
+  a \frac{\partial}{\partial a} (a m_B) = a m_B.
+\end{equation}
+%
+We base the baryon and meson masses on the full heavy quark results from
+\citep{Smit:2002introduction}, and later with the additional gauge corrections
+from \citep{Langelage:2014vpa}
+%
+\begin{alignat}{99}
+  a m_M &{}={}& \,\acosh &\bigg(1 + \frac{(M^2 - 4)(M^2 - 1)}{2M^2 - 3}\bigg) &&- 24 \kappa^2 \frac{u}{1-u},\\
+  a m_B &{}={}& \log &\bigg(\frac{M^3(M^3 - 2)}{M^3 - \frac{5}{4}}\bigg) &&- 18
+  \kappa^2 \frac{u}{1-u},
+\end{alignat}
+%
+where $M = \frac{1}{2 \kappa}$. In the strong coupling limit we can use this
+to determine $\frac{\partial \kappa}{\partial a}$
+%
+\begin{multline}
+  a \frac{\partial \kappa}{\partial a} = a m_B \Big/
+    \:\frac{\partial a m_B}{\partial \kappa} \\
+  = \scalemath{0.9}{%
+    -\frac{%
+        a m_B e^{-a m_B} \big( e^{a m_B} - 8 + 4 \sqrt{4 + e^{a m_B} (e^{a m_B} - 1)} \,\big)%
+      }{%
+        6 \scalemath{0.8}{\times} 20^{1/3} \sqrt{4 + e^{a m_B} (e^{a m_B} - 1)}
+        \big(e^{-a m_B} \big( 2 + e^{a m_B} - \sqrt{4 + e^{a m_B} (e^{a m_B} - 1)} \big) \big)^{2/3}
+      }}.
+\end{multline}
+%
+Away from strong coupling one has to define the derivative in $a$ as a
+derivative in $\beta$ through the use of implicit functions
+%
+\begin{equation}
+  a \frac{d \beta}{d a} \frac{d \kappa}{d \beta} = - a \frac{d \beta}{d a}
+  \frac{\partial a m_B}{\partial \beta} \,\Big/ \:
+  \frac{\partial a m_B}{\partial \kappa}.
+\end{equation}
+%
+Assuming strong coupling for now we see that the energy density is given in
+terms of the two parameters of the theory
+%
+\begin{equation} \label{eq:energy_dens_mid_calc}
+  e =  -\frac{1}{a N_t} a\frac{\partial \kappa}{\partial a}
+    \frac{\partial h_1}{\partial \kappa} \frac{\partial}{\partial h_1}
+    \frac{\mathcal{W}}{V} \bigg|_z
+  -\frac{1}{a N_t} a\frac{\partial \kappa}{\partial a}
+    \frac{\partial h_2}{\partial \kappa} \frac{\partial}{\partial h_2}
+    \frac{\mathcal{W}}{V} \bigg|_z.
+\end{equation}
+%
+We use the fact that
+%
+\begin{equation}
+  \frac{\partial h_1}{\partial \kappa} \bigg|_z = \frac{N_t}{\kappa} h_1
+\end{equation}
+%
+to see that the first part of \meqref{eq:energy_dens_mid_calc} is
+%
+\begin{equation}
+  -\frac{1}{a N_t} a\frac{\partial \kappa}{\partial a}
+    \frac{\partial h_1}{\partial \kappa} \frac{\partial}{\partial h_1}
+    \frac{\mathcal{W}}{V} \bigg|_z
+  = - \frac{1}{a} \frac{a}{\kappa} \frac{\partial \kappa}{\partial a} h_1
+  \frac{\partial}{\partial h_1} \frac{\mathcal{W}}{V}
+  = -3 \frac{1}{a} \frac{a}{\kappa} \frac{\partial \kappa}{\partial a} n_B
+\end{equation}
+%
+after inserting the definition of $n_B$. Using that to first order in $\kappa$
+that $\frac{\partial \kappa}{\partial a} \sim \minus{}\kappa \frac{m_B}{3}$ we see that
+this first term is somehow related to the rest energy of the system. We subtract
+the energy density by this shift, the resulting quantity should give a good estimate for the
+binding energy of the system at low temperatures where thermal fluctuations are
+suppressed. We define the dimensionless ratio of the binding energy density to
+the rest energy to be
+%
+\begin{equation}
+  \epsilon = \frac{e - m_{B,\text{eff}}\, n_B}{m_{B,\text{eff}}\, n_B},
+\end{equation}
+%
+where
+%
+\begin{equation}
+  m_{B,\text{eff}} = -3 \frac{1}{\kappa} \frac{\partial \kappa}{\partial a}.
+\end{equation}
+%
+\begin{figure}[t]%
+  {\centering%
+    \includegraphics[width=.65\textwidth]{mb_eff_comparison}\par}
+  \caption{Comparison of the effective and full baryon mass used in the definition of $\epsilon$.}%
+  \label{fig:mb_eff_comparison}%
+\end{figure}%
+%
+We plot the effective baryon mass vs the real baryon mass in the strong coupling
+limit for different values of $\kappa$ in \figref{fig:mb_eff_comparison}, and
+see that they mostly agree all the way to $\kappa_{\mathrm{crit}}$, which is far
+enough away from the parameter range in this study that the two can be
+interchanged.
+
+In \figref{fig:convergence_cluster_Z2} we plot the baryon number density in the
+strong coupling limit at varying coupling parameter $h_2$, which can be used to
+test the convergence of the expansion, similar to what we did in \chapref{chap4}
+with \figref{fig:numerical_convergence} (left). We see that the higher order
+linked cluster contribution has a small effect on the convergence, and that it
+agrees with the results from the simulations.
+
+\begin{figure}
+  {\centering
+    \includegraphics[width=.65\textwidth]{nb_convergence_cluster_Z2}\par}
+  \caption{Convergence of LCE carried out on the LO effective theory
+    $\mathcal{Z}_2$, compared to numerical data for the same parameters.}
+  \label{fig:convergence_cluster_Z2}
+\end{figure}
+
+\begin{figure}
+  {\centering
+    \includegraphics[width=.48\textwidth]{binding_energy_Z2_k2}
+    \includegraphics[width=.48\textwidth]{binding_energy_Z2_k8}
+    \par}
+  \caption{Binding energy $\epsilon$ for three different values of $\kappa$ with
+    the $\mathcal{O}(\kappa^2)$ LCE of $\mathcal{Z}_2$ on the left and with the
+    $\mathcal{O}(\kappa^8)$ LCE of $\mathcal{Z}_2$ on the right.}
+  \label{fig:binding_energy_Z2}
+\end{figure}
+
+At this point a note on the multi level expansions is in order. Using the
+methods outlined in \chapref{chap4} we compute the effective theory to some
+order in the smallness parameters $\kappa$ and $u$. This defines a unique system
+with a unique action, which can then be simulated with Monte Carlo or Langevin
+algorithms. Another alternative is to analyse the parition function at the given
+expansion order and determine the new expansion parameters (in this case $h_2$).
+A second expansion can then be carried out to evaluate this specific system
+order by order in this expansion parameter. If the simulation converges to the
+correct result it is expected to reproduce the full (all order) linked cluster
+expansion result of the effective theory at a given order.
+
+Finally we plot the binding energy ratio $\epsilon$ as a function of the
+chemical potential for various values of $\kappa$ in
+\figref{fig:binding_energy_Z2}. We see that the binding energy decrease the
+constituent quark masses (increase $\kappa$), which is what one would expect.
+The plot on the left is to leading order in $h_2$, while the plot on the right
+shows the fourth order, $h_2^4$, of the expansion. As one can see higher order
+solution develops some interesting behaviour at the higher values of $\kappa$ as
+we pass the $\mu_B / m_B = 1$ line. It is however beyond convergence, and we
+need more orders in the effective theory before we can say anything about the
+behaviour at higher chemical potential.
+
+\subsection{Generalisation of the LCE to polynomial interactions}
 
 \subsection{Application to the effective theory, graph embeddings}
 
