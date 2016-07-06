@@ -1,0 +1,181 @@
+\begin{multline} \label{eq:lce_uv_3b}
+  \mathcal{W}[v] \:=\:
+  \tikz[graph style] \node[skeleton node] {};
+  \:+\: \textstyle\frac{1}{2}  \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[inner 1] (n2) [below=of n1] {};
+    \draw[bond 1] (n1) -- (n2);
+  \end{tikzpicture}
+  \:+\: \textstyle\frac{1}{2}  \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[inner 1] (n2) [right=of n1]  {};
+    \node[inner 1] (n3) [position=60 degrees from n1] {};
+    \node[outer 1] (n3o) at (n3) {}
+      edge[bond 1] (n1)
+      edge[bond 1] (n2);
+  \end{tikzpicture} 
+  \:+ \textstyle\frac{1}{4} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[outer 1] (n1o) at (n1) {};
+    \node[inner 1] (n2) [below=of n1] {};
+    \node[outer 1] at (n2) {}
+      edge[bond 1, bend left=45]  (n1o)
+      edge[bond 1, bend right=45] (n1o);
+  \end{tikzpicture}
+  \:+\: \textstyle\frac{1}{2}  \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[inner 2] (n2) [position=60 degrees from n1]  {};
+    \node[inner 2] (n3) [position=300 degrees from n2] {};
+    \draw[bond 2] (n1) -- (n2);
+    \draw[bond 2] (n2) -- (n3);
+  \end{tikzpicture} 
+  \:+ \textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[inner 2] (n2) [below=of n1] {};
+    \node[outer 2] at (n2) {}
+      edge[bond 2, bend left=45]  (n1)
+      edge[bond 2, bend right=45] (n1);
+  \end{tikzpicture}
+  \:+ \textstyle\frac{1}{3!} \:
+  \begin{tikzpicture}[graph style,node distance=.4]
+    \node[inner 1] (n1) {};
+    \node[outer 1] at (n1) {};
+    \node[outerouter 1] (n1o) at (n1) {};
+    \node[inner 1] (n2) [position=330 degrees from n1] {}
+      edge[bond 1] (n1o);
+    \node[inner 1] (n3) [position=90 degrees from n1] {}
+      edge[bond 1] (n1o);
+    \node[inner 1] (n4) [position=210 degrees from n1] {}
+      edge[bond 1] (n1o);
+  \end{tikzpicture}\\
+  \:+ \textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {};
+    \node[outer 1] (n2o) at (n2) {}
+      edge[bond 1] (n1);
+    \node[inner 1] (n3) [position=300 degrees from n2] {};
+    \node[outer 1] (n3o) at (n3) {}
+      edge[bond 1] (n2o);
+    \node[inner 1] (n4) [position=60 degrees from n3] {}
+      edge[bond 1] (n3o);
+  \end{tikzpicture}
+  \:+ \textstyle\frac{1}{6} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[outer 1] (n1o) at (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {};
+    \node[outer 1] (n2o) at (n2) {}
+      edge[bond 1] (n1o);
+    \node[inner 1] (n3) [position=300 degrees from n2] {};
+    \node[outer 1] (n3o) at (n3) {}
+      edge[bond 1] (n2o)
+      edge[bond 1] (n1o);
+  \end{tikzpicture}
+  \:+\textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {};
+    \node[outer 1] (n2o) at (n2) {};
+    \node[outerouter 1] (n2oo) at (n2) {}
+      edge[bond 1, bend left=45]  (n1) 
+      edge[bond 1, bend right=45] (n1);
+    \node[inner 1] [position=300 degrees from n2] {}
+      edge[bond 1] (n2oo);
+  \end{tikzpicture}
+  \:+ \textstyle\frac{1}{2{\scriptstyle\times}3!} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[outer 1] at (n1) {};
+    \node[outerouter 1] (n1o) at (n1) {};
+    \node[inner 1] (n2) [below=of n1] {};
+    \node[outer 1] at (n2) {};
+    \node[outerouter 1] at (n2) {}
+      edge[bond 1]  (n1o)
+      edge[bond 1, bend right=45] (n1o)
+      edge[bond 1, bend left=45] (n1o);
+  \end{tikzpicture}
+  \:+ \textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style,node distance=.4]
+    \node[inner 1] (n1) {};
+    \node[outer 2] (n1o) at (n1) {};
+    \node[inner 2] (n2) [position=330 degrees from n1] {}
+      edge[bond 2] (n1o);
+    \node[inner 1] (n3) [position=90 degrees from n1] {}
+      edge[bond 1] (n1o);
+    \node[inner 2] (n4) [position=210 degrees from n1] {}
+      edge[bond 2] (n1o);
+  \end{tikzpicture} \\
+  \:+ 
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[inner 2] (n2) [position=60 degrees from n1] {}
+      edge[bond 2] (n1);
+    \node[inner 1] (n3) [position=300 degrees from n2] {};
+    \node[outer 2] (n3o) at (n3) {}
+      edge[bond 2] (n2);
+    \node[inner 1] (n4) [position=60 degrees from n3] {}
+      edge[bond 1] (n3o);
+  \end{tikzpicture}
+  \:+ \textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[outer 2] (n1o) at (n1) {};
+    \node[inner 2] (n2) [position=60 degrees from n1] {}
+      edge[bond 2] (n1o);
+    \node[inner 1] (n3) [position=300 degrees from n2] {};
+    \node[outer 2] (n3o) at (n3) {}
+      edge[bond 2] (n2)
+      edge[bond 1] (n1o);
+  \end{tikzpicture}
+  \:+
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[outer 2] (n1o) at (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {};
+    \node[outer 2] (n2o) at (n2) {}
+      edge[bond 2, bend left=45]  (n1o) 
+      edge[bond 1, bend right=45] (n1o);
+    \node[inner 2] [position=300 degrees from n2] {}
+      edge[bond 2] (n2o);
+  \end{tikzpicture}
+  \:+\textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[outer 2] (n1o) at (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {};
+    \node[outer 2] (n2o) at (n2) {}
+      edge[bond 2, bend left=45]  (n1o) 
+      edge[bond 2, bend right=45] (n1o);
+    \node[inner 1] [position=300 degrees from n2] {}
+      edge[bond 1] (n2o);
+  \end{tikzpicture}
+  \:+\textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {};
+    \node[outer 2] (n2o) at (n2) {};
+    \node[outerouter 2] (n2oo) at (n2) {}
+      edge[bond 2, bend left=45]  (n1) 
+      edge[bond 2, bend right=45] (n1);
+    \node[inner 1] [position=300 degrees from n2] {}
+      edge[bond 1] (n2oo);
+  \end{tikzpicture}
+  \:+ \textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[outer 2] at (n1) {};
+    \node[outerouter 2] (n1o) at (n1) {};
+    \node[inner 1] (n2) [below=of n1] {};
+    \node[outer 2] at (n2) {}
+      edge[bond 2]  (n1o)
+      edge[bond 1, bend right=45] (n1o)
+      edge[bond 2, bend left=45] (n1o);
+  \end{tikzpicture}
+  \:+\dots\:.
+\end{multline}

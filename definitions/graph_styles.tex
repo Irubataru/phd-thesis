@@ -15,6 +15,81 @@
   },
 }
 
+% ----------- %
+% Node styles %
+% ----------- %
+
+\tikzset{
+  inner/.style={
+    fill=#1,
+    circle,
+    inner sep=0pt,
+    minimum size=3.5pt
+  },
+  outer/.style={
+    draw=#1,
+    thick, circle,
+    inner sep=0pt,
+    minimum size=6pt,
+  },
+  outerouter/.style={
+    draw=#1,
+    thick, circle,
+    inner sep=0pt,
+    minimum size=9.5pt,
+  },
+  inner 1/.style={
+    inner=ColourBase,
+  },
+  inner 2/.style={
+    inner=ColourHl1,
+  },
+  inner 3/.style={
+    inner=ColourHl2,
+  },
+  outer 1/.style={
+    outer=ColourBase,
+  },
+  outer 2/.style={
+    outer=ColourHl1,
+  },
+  outer 3/.style={
+    outer=ColourHl2,
+  },
+  outerouter 1/.style={
+    outerouter=ColourBase,
+  },
+  outerouter 2/.style={
+    outerouter=ColourHl1,
+  },
+  outerouter 3/.style={
+    outerouter=ColourHl2,
+  },
+}
+
+% ----------- %
+% Bond styles %
+% ----------- %
+
+\tikzset{
+  bond default/.style={
+    skeleton bond,
+    line width=1.2pt,
+  },
+  bond 1/.style={
+    bond default,
+    ColourBase,
+  },
+  bond 2/.style={
+    bond default,
+    ColourHl1,
+  },
+  bond 3/.style={
+    bond default,
+    ColourHl2,
+  },
+}
+
 % ------------------------------------------- %
 % position function                           %
 % http://tex.stackexchange.com/a/102266/39313 %

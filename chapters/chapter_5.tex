@@ -44,6 +44,7 @@ finite spatial extent, a formalism in which the effective theory can then be
 expressed.
 
 \subsection{Classical linked cluster expansion for nearest neighbour interactions}
+\label{sec:classical_lce_nn}
 
 To introduce the framework we consider a scalar field with a $2$-point coupling
 %
@@ -156,7 +157,7 @@ exists a formalism in which the terms and their prefactors can be written down
 immediately in an intuitive way.
 %
 %\theoremstyle{definition}%
-\begin{definition}{Connected graph}\\
+\begin{definition}{Connected graph}\label{def:graph}\\
   A graph is a set of vertices and bonds where every bond connects two distinct
   vertices. An $n$-rooted graph has $n$ fixed, distinguishable, external
   vertices, while all non-rooted vertices are free. A vertex is said to be
@@ -577,6 +578,286 @@ need more orders in the effective theory before we can say anything about the
 behaviour at higher chemical potential.
 
 \subsection{Generalisation of the LCE to polynomial interactions}
+
+Before we can apply the cluster expansion formalism to the full $\mathcal{O}(u^5
+\kappa8)$ effective action we need see how to handle interactions that are more
+complicated than two point interactions. We start with a generalised partition
+function for $n$ component fields $\phi_i$
+%
+\begin{multline} \label{eq:multi_point_scalar_Z}
+  \mathcal{Z} = \int [\mathrm{d} \phi_i] \exp \bigg(-S_0[\phi_i]
+  +\frac{1}{2!} \sum_{x,y} \sum_{i,j} v_{ij}(x,y) \phi_i(x) \phi_j(y) \\
+  +\frac{1}{3!} \sum_{x,y,z} \sum_{i,j,k} u_{ijk}(x,y,z) \phi_i(x) \phi_j(y)
+  \phi_k(z) + \dots \bigg).
+\end{multline}
+%
+We introduce the sources $J_i$ in a similar fashion to how they were introduced
+in \secref{sec:classical_lce_nn}. This gives us a linked cluster expansion for
+the grand canonical potential
+%
+\begin{align}
+  \mathcal{W}[v,u] = \bigg[ \exp&\bigg( \frac{1}{2!} \sum_{x,y} \sum_{i,j} v_{ij}(x,y) 
+    \frac{\delta}{\delta \tilde{v}_{ij}(x,y)} \bigg)  \nonumber \\
+  \times\exp&\bigg( \frac{1}{3!} \sum_{x,y,z} \sum_{i,j,k} u_{ijk}(x,y,z)
+    \frac{\delta}{\delta \tilde{u}_{ijk}(x,y,z)} \bigg) \cdots
+    \bigg] \mathcal{W}[\tilde{v},\tilde{u}] \Bigg|_{\substack{\tilde{v}=0\\\tilde{u}=0\\\cdots}}\;.
+\end{align}
+%
+The derivative with respect to the 3-point coupling $u$ can be expressed in
+terms of derivates w.r.t. the sources
+%
+\begin{multline}
+  \frac{\delta \mathcal{W}}{\delta u_{ijk}(x,y,z)} = \frac{\delta^3 \mathcal{W}}{\delta J_i(x) \delta J_j(y) \delta J_k(z)}
+    + \frac{\delta \mathcal{W}}{\delta J_i(x)} \frac{\delta^2 \mathcal{W}}{\delta J_j(y) \delta J_k(z)}
+    + \frac{\delta \mathcal{W}}{\delta J_j(y)} \frac{\delta^2 \mathcal{W}}{\delta J_i(x) \delta J_k(z)} \\
+  \hspace{2cm} + \frac{\delta \mathcal{W}}{\delta J_k(z)} \frac{\delta^2 \mathcal{W}}{\delta J_i(x) \delta J_j(y)}
+    + \frac{\delta \mathcal{W}}{\delta J_i(x)} \frac{\delta \mathcal{W}}{\delta J_j(y)}
+    \frac{\delta \mathcal{W}}{\delta J_k(z)}\;,
+\end{multline}
+%
+the same is also true for all the higher $n$-point interactions. To
+$\mathcal{O}(v^2, u)$ (two bonds) we get
+%
+{\allowdisplaybreaks%
+\begin{multline} 
+  \mathcal{W}[v,u] = \mathcal{W}[0] + \frac{1}{2} \sum M_i(x) \,v_{ij}(x,y)\, M_j(y)
+  + \frac{1}{4} \sum M_{ij}(x) \,v_{ik}(x,y)v_{jl}(x,y)\, M_{jl}(y)\\
+  + \frac{1}{2} \sum M_i(x) \,v_{ij}(x,y)\, M_{jk}(y) \,v_{kl}(y,z)\, M_1(z)\\
+  + \frac{1}{3!} \sum u_{ijk}(x,y,z) M_i(x) M_j(y) M_k(z) \\
+  + \frac{1}{2} \sum u_{ijk}(x,y,y) M_i(x) M_{jk}(y) + \dots
+\end{multline}}%
+%
+where the sums have been shortened for the sake of brevity and we have assumed
+that the 3-point coupling is cyclic. Just as with the 2-point LCE one can
+systematically carry out the linked cluster expansion, rewriting the derivatives
+in the couplings $v, u, \dots$ order by order and evaluate $\mathcal{W}$.
+However a graphical method is desired as it would greatly benefit the
+expansion. To do this we need to further specify the geometry of the 3-point
+interaction. One natural choice that is compatible with the nearest neighbour
+interaction $v$ is a set of two nearest neighbour interactions
+%
+\begin{equation} \label{eq:udef_wedge}
+  u(x,y,z) = 
+    \begin{cases}
+      \hskip .1cm u & \text{ if $\langle x, y \rangle$ and $\langle y, z \rangle$ are nearest neighbours},\\
+      \hskip .1cm u & \text{ if $\langle x, y \rangle$ and $\langle x, z \rangle$ are nearest neighbours},\\
+      \hskip .1cm u & \text{ if $\langle x, z \rangle$ and $\langle y, z \rangle$ are nearest neighbours},\\
+      \hskip .1cm 0 & \text{ else},
+    \end{cases}
+\end{equation}
+%
+where we have reverted to the one-components fields for simplicity. Using this
+definition for $u$, $\mathcal{W}$ evaluates to 
+%
+\begin{multline}
+  \mathcal{W}[v,u] = N M_0 + \frac{q}{2} v N M_1^2 + \frac{q}{4} v^2 N M_2^2 \\
+    + \frac{q^2}{2} v^2 N M_1^2 M_2 + \frac{q^2}{2} u N M_1^3 + \frac{q}{2} u N
+    M_1 M_2 + \dots
+\end{multline}
+%
+Graphically we can represent the above expression as
+%
+\begin{equation} \label{eq:lce_uv_nn}
+  \mathcal{W}[v] \:=\:
+  \tikz[graph style] \node[skeleton node] {};
+  \:+\: \textstyle\frac{1}{2}  \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[inner 1] (n2) [below=of n1] {};
+    \draw[bond 1] (n1) -- (n2);
+  \end{tikzpicture}
+  \:+\: \textstyle\frac{1}{2}  \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[inner 1] (n2) [right=of n1]  {};
+    \node[inner 1] (n3) [position=60 degrees from n1] {};
+    \node[outer 1] (n3o) at (n3) {}
+      edge[bond 1] (n1)
+      edge[bond 1] (n2);
+  \end{tikzpicture} 
+  \:+ \textstyle\frac{1}{4} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[outer 1] (n1o) at (n1) {};
+    \node[inner 1] (n2) [below=of n1] {};
+    \node[outer 1] at (n2) {}
+      edge[bond 1, bend left=45]  (n1o)
+      edge[bond 1, bend right=45] (n1o);
+  \end{tikzpicture}
+  \:+\: \textstyle\frac{1}{2}  \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[inner 2] (n2) [position=60 degrees from n1]  {};
+    \node[inner 2] (n3) [position=300 degrees from n2] {};
+    \draw[bond 2] (n1) -- (n2);
+    \draw[bond 2] (n2) -- (n3);
+  \end{tikzpicture} 
+  \:+ \textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[inner 2] (n2) [below=of n1] {};
+    \node[outer 2] at (n2) {}
+      edge[bond 2, bend left=45]  (n1)
+      edge[bond 2, bend right=45] (n1);
+  \end{tikzpicture}
+  + \dots \,.
+\end{equation}
+%
+Where the $u$ bonds are coloured \ColBaseText{}, the $v$ bond pair is coloured
+\ColHlIText{} the nodes are coloured based on the number of fields from which
+interaction touches it. This is needed to distinguish e.g. the nodes in the
+final term.  An alternative three point coupling could be a triangular nearest
+neighbour coupling
+%
+\begin{equation}
+  u(x,y,z) = 
+    \begin{cases}
+      \hskip .1cm u & \text{ if $\langle x, y \rangle$, $\langle y, z \rangle$,
+                      and $\langle x, z \rangle$ are nearest neighbours},\\
+      \hskip .1cm 0 & \text{ else},
+    \end{cases}
+\end{equation}
+%
+in which case the final term in \meqref{eq:lce_uv_nn} would be excluded as it is
+not geometrically realisable. It would actually be better to represent this
+particular version of the three point interaction with a three bond diagram
+%
+\begin{equation}
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[inner 2] (n2) [right=of n1] {}
+      edge[bond 2]  (n1);
+    \node[inner 2] [position=60 degrees from n1] {}
+      edge[bond 2] (n1)
+      edge[bond 2] (n2);
+  \end{tikzpicture}
+\end{equation}
+%
+as the bonds are intended to encode the nearest neighbour restriction.
+Regardless of which geometry the $n$-point interactions have there are 
+different paths forward. One option is to compute the derivatives explicitly
+order by order and sum over the coordinates explicitly. Alternatively one can
+write down all mixed graphs that respect the chosen geometry and compute the
+modified symmetry factor. E.g. we see that the two bond nearest neighbour graph
+for the $v$ and $u$ interactions
+%
+\begin{equation}
+  \textstyle\frac{1}{4} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[outer 1] (n1o) at (n1) {};
+    \node[inner 1] (n2) [below=of n1] {};
+    \node[outer 1] at (n2) {}
+      edge[bond 1, bend left=45]  (n1o)
+      edge[bond 1, bend right=45] (n1o);
+  \end{tikzpicture}, \hskip 1cm
+  \textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[inner 2] (n2) [below=of n1] {};
+    \node[outer 2] at (n2) {}
+      edge[bond 2, bend left=45]  (n1)
+      edge[bond 2, bend right=45] (n1);
+  \end{tikzpicture}
+\end{equation}
+%
+have different symmetry factors due to the fact that the node relabelling
+symmetry is broken. A third alternative, and the one we will focus on, is
+through a second embedding step
+%
+\begin{ruledef}{Grand canonical potential $\mathcal{W}$ for $n$ point interactions}%
+  \label{rule:free_energy_n_point}%
+  \begin{enumerate}
+    \item Represent the geometry of the $n$-point interaction $v_n(x_{n_1},
+          x_{n_2}, \dots, x_{n_n})$ as a graph according to \defref{def:graph}
+    \item Construct all graphs with the necessary number of bonds and geometry
+      to the desired order, we refer to these as \emph{skeleton graphs}
+    \item Embed all $n$-point interaction graphs onto the skeleton graphs
+    \item For every embedded $n$-point graph that visits $x_{n_1}, x_{n_2},
+      \dots, x_{n_n}$, add a factor $v_n(x_{n_1}, x_{n_2}, \dots, x_{n_n})$
+    \item For every vertex that with \emph{modified valence}\footnote{%
+        Modified valence is the number of bonds connecting a vertex originating
+        from \emph{different} $n$-point interactions} $p$, add a factor $M_p(x_i)$
+    \item The correct symmetry factor will be the symmetry factor of the skeleton
+          graph times the number of unique isomorphic embeddings 
+  \end{enumerate}%
+\end{ruledef}
+%
+\noindent{}%
+Let us consider the embedding of a $v$-link and a $u$-"wedge" from \meqref{eq:udef_wedge}
+on the three bond graph
+%
+\begin{equation}
+  \textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[skeleton node] (n1) {};
+    \node[skeleton node] (n2) [position=60 degrees from n1] {}
+      edge[skeleton bond, bend left=45]  (n1) 
+      edge[skeleton bond, bend right=45] (n1);
+    \node[skeleton node] [position=300 degrees from n2] {}
+      edge[skeleton bond] (n2);
+  \end{tikzpicture}
+\end{equation}
+%
+This can be done in four different ways
+%
+\begin{equation}
+  \textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[outer 2] (n1o) at (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {};
+    \node[outer 2] (n2o) at (n2) {}
+      edge[bond 1, bend left=45]  (n1o) 
+      edge[bond 2, bend right=45] (n1o);
+    \node[inner 2] [position=300 degrees from n2] {}
+      edge[bond 2] (n2o);
+  \end{tikzpicture}
+  +\textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 1] (n1) {};
+    \node[outer 2] (n1o) at (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {};
+    \node[outer 2] (n2o) at (n2) {}
+      edge[bond 2, bend left=45]  (n1o) 
+      edge[bond 1, bend right=45] (n1o);
+    \node[inner 2] [position=300 degrees from n2] {}
+      edge[bond 2] (n2o);
+  \end{tikzpicture}
+  +\textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[outer 2] (n1o) at (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {};
+    \node[outer 2] (n2o) at (n2) {}
+      edge[bond 2, bend left=45]  (n1o) 
+      edge[bond 2, bend right=45] (n1o);
+    \node[inner 1] [position=300 degrees from n2] {}
+      edge[bond 1] (n2o);
+  \end{tikzpicture}
+  +\textstyle\frac{1}{2} \:
+  \begin{tikzpicture}[graph style]
+    \node[inner 2] (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {};
+    \node[outer 2] (n2o) at (n2) {};
+    \node[outerouter 2] (n2oo) at (n2) {}
+      edge[bond 2, bend left=45]  (n1) 
+      edge[bond 2, bend right=45] (n1);
+    \node[inner 1] [position=300 degrees from n2] {}
+      edge[bond 1] (n2oo);
+  \end{tikzpicture}
+\end{equation}
+%
+where the first two are isomorphic and can be collected to one term. Hence there
+are three unique embeddings of this combination onto the skeleton graph in
+question, where one of the embeddings has a non-unit embedding number, and thus
+a modified symmetry factor. With these two ingredients we present the
+full three bond free energy
+%
+%\input{input/chapter_5/bond_3_w.tex}
+\begin{equation} \label{eq:lce_uv_3b}
+  \tikz \node[anchor=base, baseline, minimum width=.9\textwidth, draw, minimum height=2cm, ColourHl1,thick] {Dummy equation}; 
+\end{equation}
 
 \subsection{Application to the effective theory, graph embeddings}
 
