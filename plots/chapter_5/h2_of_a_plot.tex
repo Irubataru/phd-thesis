@@ -15,22 +15,26 @@
 \pagestyle{empty}
 \usepackage[active,tightpage]{preview}
 \PreviewEnvironment{tikzpicture}
-\setlength\PreviewBorder{1mm}
+\setlength\PreviewBorder{0mm}
 
 \pgfplotsset{
   compat=1.12,
   width=10cm,
+  %every axis plot/.append style={
+      %restrict x to domain=0:0.105,
+      %error bars/y dir=both, error bars/y explicit,
+      %legend image post style={sharp plot,|-|},
+  %}
 }
 
 \begin{document}
 
 \begin{tikzpicture}
     \begin{axis}[
-      xlabel={$\mu_B / m_B$},
-      ylabel={$\epsilon$},
-      xmin=0.98, xmax=1.02,
-      ymin=-0.03, ymax=0.005,
-      scaled ticks=false,
+      xlabel={$a \:[\mathrm{fm}]$},
+      ylabel={$h_2$},
+      xmin=0, xmax=0.16,
+      ymin=0, ymax=0.1,
       ticklabel style={
         scale=0.7,
       },
@@ -46,31 +50,22 @@
       },
       minor tick num=3,
       label shift=-.1cm,
+      y post scale=0.85,
       legend style={
-        at={(0.05,0.05)},
-        anchor=south west,
-        cells={anchor=west, font=\normalsize},
-        scale=2,
+        at={(0.975,0.95)},
+        anchor=north east,
+        cells={anchor=west, font=\footnotesize},
+        scale=1.5,
         nodraw legend,
       },
-      y post scale=0.85
     ]
-    \addplot[no marks, node style 1, line width=1.8pt] table [x index=0, y index=1] {data/binding_energy_kappa2_8.table};
-    \addlegendentry{$\kappa = 0.02$}
+    \addplot[no marks, node style 1, line width=1.8pt] table [x index=0, y index=2] {data/h2_of_a.table};
+    \addplot[no marks, node style 2, line width=1.8pt] table [x index=0, y index=1] {data/h2_of_a.table};
+    \addplot[no marks, node style 3, line width=1.8pt] table [x index=0, y index=3] {data/h2_of_a.table};
 
-    \addplot[no marks, node style 2, line width=1.8pt] table [x index=0, y index=2] {data/binding_energy_kappa2_8.table};
-    \addlegendentry{$\kappa = 0.04$}
+    \legend{$m_B = 20 \:\mathrm{GeV}$, $m_B = 30 \:\mathrm{GeV}$, $m_B = 40 \:\mathrm{GeV}$}
 
-    \addplot[no marks, node style 3, line width=1.8pt] table [x index=0, y index=3] {data/binding_energy_kappa2_8.table};
-    \addlegendentry{$\kappa = 0.06$}
   \end{axis}
-
-  \node[inner sep=0pt,anchor=south west] [right=.2cm of thelegend.south east, yshift=.6cm] {
-    \begin{minipage}{1cm}
-      \begin{align*}
-        N_{\tau} &= 50
-      \end{align*}
-    \end{minipage}};
 
 \end{tikzpicture}%
 \end{document}

@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{0mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+  %every axis plot/.append style={
+      %restrict x to domain=0:0.105,
+      %error bars/y dir=both, error bars/y explicit,
+      %legend image post style={sharp plot,|-|},
+  %}
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$\beta$},
+      ylabel={$h_2$},
+      xmin=5.7, xmax=6.35,
+      ymin=0, ymax=0.1,
+      ticklabel style={
+        scale=0.7,
+      },
+      yticklabel style={
+        /pgf/number format/precision=2,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      y post scale=0.85
+    ]
+    \addplot[no marks, node style 2, line width=1.2pt] table [x index=0, y index=1] {data/h2_of_beta.table};
+  \end{axis}
+
+\end{tikzpicture}%
+\end{document}

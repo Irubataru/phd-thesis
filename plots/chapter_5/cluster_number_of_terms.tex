@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{0mm}
+
+\pgfplotsset{compat=1.12}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \begin{scope}[baseline]
+    \begin{axis}[
+      xlabel={$\mathcal{O}(\kappa^n)$},
+      scaled ticks=false,
+      ylabel={$\#$ of terms},
+      label shift=-.1cm,
+      xtick=data,
+      xmin=0,
+      minor tick num=3,
+      %ytick={0, 1e5, 2e5, 3e5},
+      %yticklabels={0, 1e5, 2e5, 3e5},
+      ymin=0, ymax=300,
+      y post scale=0.65
+    ]
+      \addplot[ColourBase,ultra thick,mark=*] table {data/cluster_terms.table};
+    \end{axis}
+  \end{scope}
+\end{tikzpicture}%
+\end{document}
