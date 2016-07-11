@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$m_M \,[\mathrm{GeV}]$},
+      ylabel={$n_B / m_B^3$},
+      xmin=9.975, xmax=20.,
+      ymin=-0.0049, ymax=0.015,
+      scaled ticks=false,
+      ticklabel style={
+        scale=0.7,
+      },
+      xticklabel style={
+        /pgf/number format/precision=0,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      yticklabel style={
+        /pgf/number format/precision=3,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      legend style={
+        at={(0.90,0.95)},
+        anchor=north east,
+        cells={anchor=west, font=\normalsize},
+        scale=2,
+        nodraw legend,
+      },
+      clip mode=individual,
+      y post scale=0.85
+    ]
+
+    \addplot[error 1] table [
+      x index=0,
+      y index=1,
+      y error index=2,
+    ] {data/nb_of_mpi_a01.table};
+    \addlegendentry{$\kappa^4$}
+
+    \addplot[error 2] table [
+      x index=0,
+      y index=3,
+      y error index=4,
+    ] {data/nb_of_mpi_a01.table};
+    \addlegendentry{$\kappa^6$}
+
+    \addplot[error 4] table [
+      x index=0,
+      y index=5,
+      y error index=6,
+    ] {data/nb_of_mpi_a01.table};
+    \addlegendentry{$\kappa^8$}
+
+  \end{axis}
+
+  \node[scale=0.75,inner sep=0pt] [left=.5cm of thelegend.north west, anchor=north east, yshift=.3cm] {
+    \begin{minipage}{2cm}%
+      \begin{align*}
+        T &= 10 \mathrm{MeV}\\
+        a &= 0.1 \mathrm{fm}\\
+        \mu_B &= 0.999 m_B
+      \end{align*}%
+    \end{minipage}};
+
+  %\node[anchor=south west] at (rel axis cs: 0.1, 0.15) {
+    %\shortstack[l]{
+      %\scalebox{0.8}{Simulations} \\
+      %\ref{pgfplots:data} \, \scalebox{0.8}{Data}
+    %}};
+\end{tikzpicture}%
+\end{document} 

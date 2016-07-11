@@ -8,7 +8,55 @@
     row sep=-.1cm,
     name=thelegend,
   },
+  data w error/.style={
+    only marks,
+    error bars/y dir=both, error bars/y explicit,
+    legend image post style={sharp plot,|-|},
+    error bars/error bar style={
+      line width=1pt,
+    },
+    error bars/error mark options={
+      rotate=90,
+      mark size=2pt,
+      line width=1pt,
+    },
+  },
 }
+
+% ----------- %
+% Line styles %
+% ----------- %
+
+\pgfplotsset{
+  default line style/.style={
+      smooth,
+      line width=1.6pt,
+  },
+  line style 1/.style={
+    ColourBase,
+    default line style,
+  },
+  line style 2/.style={
+    ColourHl1,
+    default line style,
+  },
+  line style 3/.style={
+    ColourHl2,
+    default line style,
+  },
+  line style 4/.style={
+    ColourHl3,
+    default line style,
+  },
+  line style 5/.style={
+    ColourDark2,
+    default line style,
+  },
+}
+
+% ----------- %
+% Node styles %
+% ----------- %
 
 \pgfplotsset{
   default plot style/.style={
@@ -24,6 +72,13 @@
     },
     default plot style,
   },
+  error 1/.style={
+    data w error,
+    ColourBase,
+    mark size=2,
+    line width=1pt,
+    mark=o,
+  },
   node style 2/.style={
     ColourHl1,
     mark=square*,
@@ -31,6 +86,13 @@
       fill=ColourHl1,
     },
     default plot style,
+  },
+  error 2/.style={
+    data w error,
+    ColourHl1,
+    mark size=2,
+    line width=1pt,
+    mark=square,
   },
   node style 3/.style={
     ColourHl2,
@@ -41,6 +103,13 @@
     },
     default plot style,
   },
+  error 3/.style={
+    data w error,
+    ColourHl2,
+    mark size=2,
+    line width=1pt,
+    mark=triangle,
+  },
   node style 4/.style={
     ColourHl3,
     mark=diamond*,
@@ -49,6 +118,13 @@
       scale=1.5,
     },
     default plot style,
+  },
+  error 4/.style={
+    data w error,
+    ColourHl3,
+    mark size=3,
+    line width=1pt,
+    mark=diamond,
   },
   node style 5/.style={
     ColourBase,

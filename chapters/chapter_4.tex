@@ -14,7 +14,7 @@ cover in the next chapter.
 
 In this chapter we will first introduce the effective theory before we introduce
 two expansion schemes that facilitate the computation of the theory. These are
-namely the \emph{character expansion}, mentioned in \secref{sec-group_intro},
+namely the \emph{character expansion}, mentioned in \secref{sec:group_intro},
 the second is the \emph{hopping parameter expansion} for heavy fermions. We
 round off the chapter with a discussion on the numerical evaluation of the
 effective theory.
@@ -49,10 +49,10 @@ will therefore introduce two expansion schemes and work towards deriving the
 effective theory such that it reproduce the exact expansion coefficients of the
 full theory in the end.
 
-\section{The character expansion} \label{sec-char_exp}
+\section{The character expansion} \label{sec:char_exp}
 
 The first expansion we will apply is the character expansion introduced in 
-\secref{sec-group_intro}. In the form of an exact equality, it is not of much
+\secref{sec:group_intro}. In the form of an exact equality, it is not of much
 help. Nevertheless, from the character expansion of the single plaquette gauge
 contribution
 \footnote{We will from this point forward assume that the gauge group is SU$(N_c)$
@@ -94,7 +94,7 @@ character expansion only permits a single plaquette from any representation to
 be placed at every position, making order counting easier than a standard Taylor
 expansion of the gauge action.
 
-\section{Pure gauge effective theory} \label{sec-pure-gauge-theory}
+\section{Pure gauge effective theory} \label{sec:pure-gauge-theory}
 
 With the character expansion at hand we can evaluate the pure gauge
 contributions to the effective action. Ignoring the quark contribution the
@@ -144,7 +144,7 @@ contribution to the finite temperature as the non-periodic ones can be
 normalised out. Since we only integrate spatial links the contributing graphs
 need only have closed surfaces in the spatial directions. The lowest order
 contribution to the effective action comes from a strip of plaquettes spanning
-the temporal direction as shown in \figref{fig-plaquette-strip}. Since only two
+the temporal direction as shown in \figref{fig:plaquette-strip}. Since only two
 links meet at all the spatial sites we only need the integral
 %
 \begin{equation}
@@ -154,7 +154,7 @@ links meet at all the spatial sites we only need the integral
 %
 which can be represented graphically as
 %
-\begin{equation} \label{eq-gauge-link-integral-graphic}
+\begin{equation} \label{eq:gauge-link-integral-graphic}
   \int \mathrm{d} U \;%
   \begin{tikzpicture}[baseline={(base)}]
     \coordinate (base) at (0,.35);
@@ -181,7 +181,7 @@ which can be represented graphically as
   {\centering
     \includegraphics[width=.75\textwidth]{pure_gauge_strip}\par}
   \caption{Lowest order pure gauge contribution to the effective action}
-  \label{fig-plaquette-strip}
+  \label{fig:plaquette-strip}
 \end{figure}
 
 Integrating out the spatial links of the strip of plaquettes leaves two
@@ -210,7 +210,7 @@ action therefore simplify to
 \end{equation}
 %
 where $\sqrt{\det U_0}$ is the reduced Haar measure of the group, the calculation of
-which will be covered in \apxref{sec-haar_measure}. As one can see the effective
+which will be covered in \apxref{sec:haar_measure}. As one can see the effective
 theory is a three dimensional theory of Polyakov loop interactions. At first
 order we have a nearest neightbour spin system with an effective coupling
 $u_f^{N_t}$.
@@ -276,7 +276,7 @@ backtracking. In lieu of the hopping expansion we see that the fermion
 propagator is the sum of all fermion lines while the determinant is the
 exponential of all fermion loops.
 
-\section{Pure fermion effective theory} \label{sec-pure-fermion-eff-theory}
+\section{Pure fermion effective theory} \label{sec:pure-fermion-eff-theory}
 
 The first step towards deriving an effective three dimensional theory for heavy
 quarks and strong coupling is to separate the temporal and spatial hops
@@ -356,7 +356,7 @@ Polyakov loops. We state the result for SU$(3)$
   \det(1 + h_1 W) = 1 + h_1 L + h_1^2 L^* + h_1^3
 \end{equation}
 %
-and refer to \apxref{sec-evaluating-fermion-determinants} for the more generic
+and refer to \apxref{sec:evaluating-fermion-determinants} for the more generic
 approach. The full static determinant is therefore
 %
 \begin{equation}
@@ -444,7 +444,7 @@ We have introduced the gauge transporter $U_0(t_x \!\to\! t_y)$, which is
 %
 The full static propagator therefore reads
 %
-\begin{equation} \label{eq-qstat-full}
+\begin{equation} \label{eq:qstat-full}
   (\qstat^{-1})_{t_y,t_x} = \delta_{t_y,t_x}
    + \frac{1 + \gamma^0}{2} K^+_{t_y,t_x}
    + \frac{1 - \gamma^0}{2} K^-_{t_y,t_x}
@@ -484,7 +484,7 @@ next to leading order contribution is therefore
 For every $P$ and $M$ we get a multitude of different combinations of terms
 depending on whether we have fermions coupled to fermions, or fermions to
 anti-fermions. The four combinations of the lowest order $\tr(PM)$ term is shown in
-\figref{fig-lowest-order-fermionic}.
+\figref{fig:lowest-order-fermionic}.
 
 \begin{figure}
   {\centering
@@ -492,7 +492,7 @@ anti-fermions. The four combinations of the lowest order $\tr(PM)$ term is shown
   \caption{The four contributions from the lowest order spatial hopping
     expansion.\hskip1em The principal path is indicated in \ColHlIText{} and the
     additional windings in \ColBaseText{}}
-  \label{fig-lowest-order-fermionic}
+  \label{fig:lowest-order-fermionic}
 \end{figure}
 
 To be able to calculate the spatial gauge integrals, it is necessary to expand
@@ -512,17 +512,17 @@ spatial links only, the integral to be solved is
    = \kappa^2 \int \big[ \mathrm{d} U \big]_i \scalemath{0.95}{\sum_{\vec{x}, j}} \tr_{sct} \hskip-.5ex
    \big( \qstat^{-1}(\vec{x})(1+\gamma_j) U_j(\vec{x},t_1) 
    \qstat^{-1}(\vec{x}+\hat{j})(1-\gamma_j)U^{\dagger}_j(\vec{x},t_2) \big).
-   \label{eq-second-order-spatial-integral}
+   \label{eq:second-order-spatial-integral}
 \end{multline}
 %
 Using one of the simplest gauge integral selection rules
-\meqref{eq-integral-selection-rule}, we see that this integral is only non zero
+\meqref{eq:integral-selection-rule}, we see that this integral is only non zero
 if the two links overlap, namely if $t_1 = t_2$. The implications of which
 manifest itself in the temporal indices only. We therefore divide the evaluation
 of the trace into its three remaining indices: spin, colour and temporal.
 
 The spin indices are unrelated to the group integral and can be evaluated
-immediately. Inserting the expression for $\qstat^{-1}$, \meqref{eq-qstat-full},
+immediately. Inserting the expression for $\qstat^{-1}$, \meqref{eq:qstat-full},
 we get
 %
 \begin{multline} \textstyle
@@ -535,7 +535,7 @@ we get
     (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}}).
 \end{multline}
 %
-Inserted back into \meqref{eq-second-order-spatial-integral} we have reduced its
+Inserted back into \meqref{eq:second-order-spatial-integral} we have reduced its
 complexity
 %
 \begin{multline}
@@ -550,7 +550,7 @@ complexity
 %
 In the second line we reintroduced the colour indices, carried out the
 unoccupied link integrals and renamed the spatial links to $U$. Making use of
-the group integral \meqref{eq-uub-integral}, we get
+the group integral \meqref{eq:uub-integral}, we get
 %
 \begin{align}
   I\big[ PM \big] &= \frac{2\kappa^2}{N_c} \tr_t \scalemath{0.95}{\sum_{\vec{x}, j}}
@@ -602,7 +602,7 @@ can be written as
 At the next to leading order in $\kappa$ we get new terms both to the nearest
 neighbour contribution as well as non local terms spanning further on the
 lattice. Examples of these contributions are sketched in
-\figref{fig-next-order-fermionic}.
+\figref{fig:next-order-fermionic}.
 
 \begin{figure}
   {\centering
@@ -612,7 +612,7 @@ lattice. Examples of these contributions are sketched in
     sites. Middle: two separate fermions hopping between the same nearest
     neighbouring sites. Right: single fermion visiting a next to nearest
     neighbour.}
-  \label{fig-next-order-fermionic}
+  \label{fig:next-order-fermionic}
 \end{figure}
 
 
@@ -646,9 +646,9 @@ originates from.
 \section{Mixed contributions and gauge corrections}
 
 So far we have only considered either pure gluonic contributions or pure
-fermionic contributions, no mix between the two. In \secref{sec-pure-gauge-theory}
+fermionic contributions, no mix between the two. In \secref{sec:pure-gauge-theory}
 we considered an expansion in $\beta$, ignoring corrections from $\kappa$, while
-in \secref{sec-pure-fermion-eff-theory} we carried out an expansion in $\kappa$
+in \secref{sec:pure-fermion-eff-theory} we carried out an expansion in $\kappa$
 only. In this section we will see how these two expansions affect each other,
 and how the effects can mostly be absorbed into shifts in the effective coupling
 constants.
@@ -695,7 +695,7 @@ fermion hops
 \end{equation}
 %
 which only give the same result after link integration due to
-\meqref{eq-gauge-link-integral-graphic}.  Higher order corrections can be
+\meqref{eq:gauge-link-integral-graphic}.  Higher order corrections can be
 constructed in a similar manner. We will see that this means that most of the
 finite $\beta$ corrections to the effective theory can also be implemented in
 terms of $\kappa$ corrections by simply replacing the plaquettes by a
@@ -713,7 +713,7 @@ consist of making detours in the spatial directions, filling the surface with
 plaquettes
 %
 \begin{multline} \setlength{\medmuskip}{2mu} \setlength{\thickmuskip}{5mu}
-  \label{eq-static-loop-gauge-corr}
+  \label{eq:static-loop-gauge-corr}
   \qstat^{N_t}e^{-\mathcal{S}_g} = 
   \begin{tikzpicture}[baseline=.25em, scale=0.75]
     \clip (0.25,-0.25) rectangle (3.25,1.25);
@@ -755,7 +755,7 @@ $\kappa, u$ \citep{Fromm:2011qi,Christensen:2013xea}
 
 Analogously, the nearest neighbour coupling strength has a similar correction
 scheme where we shift spatial hops and fill it with plaquettes. The diagrams are
-shown in \figref{fig-nearest-neighbour-corrections} and they give the following
+shown in \figref{fig:nearest-neighbour-corrections} and they give the following
 corrections to nearest neighbour interactions \citep{Langelage:2014vpa}
 %
 \begin{multline}
@@ -782,7 +782,7 @@ which will frequently appear in later calculations.
     coupling constant of the effective theory. From left to right
     $\mathcal{O}(1)$, $\mathcal{O}(u)$, $\mathcal{O}(u^5)$ and
     $\mathcal{O}(\kappa^2 u^4)$ respectively.}
-  \label{fig-nearest-neighbour-corrections}
+  \label{fig:nearest-neighbour-corrections}
 \end{figure}
 
 \section{Resummations}
@@ -1014,13 +1014,13 @@ example.
     appearing at the NLO of the hopping parameter expansion. The last figure in
     which all spatial hops occupy the same spatial link vanish in the cold
     limit.}
-  \label{fig-pmpm-hop-variants}
+  \label{fig:pmpm-hop-variants}
 \end{figure}
 
 Consider the term $\tr(PMPM)$ appearing at NLO of the hopping parameter
 expansion. The term has four spatial hops which has to pair up for the gauge
 integral to give something non-zero. There are three fundamental scenarios
-which fulfil this criterion, these are depicted in \figref{fig-pmpm-hop-variants}.
+which fulfil this criterion, these are depicted in \figref{fig:pmpm-hop-variants}.
 In the leftmost graph the two pair of hops occupy different spatial positions
 and can therefore never overlap. The temporal sum in which case gives a factor
 $N_t^2$ as the two hops can independently choose a temporal slice. When the two
@@ -1055,7 +1055,7 @@ the cold and dense limit we review some of the combinatorics that went into the
 computation.
 
 Because of the selection criterion for non-vanishing gauge integrals
-\meqref{eq-integral-selection-rule} we see that one must restrict the coordinate
+\meqref{eq:integral-selection-rule} we see that one must restrict the coordinate
 sums in the matrix multiplications of the $P$ and $M$ matrices in such a way
 that spatial links overlap and give contributing results. We therefore define a
 contraction
@@ -1080,11 +1080,11 @@ contraction
 which can trivially be extended to the contraction of more elements. We see that
 the contraction fixes a single temporal index as well as fully fixes the
 spatial position and orientation of every matrix but one. One can also contract
-more than one matrix as can be seen in \tabref{tab-pmpmpm-contractions} showing
+more than one matrix as can be seen in \tabref{tab:pmpmpm-contractions} showing
 all non-vanishing contractions of the NNLO term $\tr(PMPMPM)$. Due to the fact
 that every contraction fixes a temporal index in all matrices involved we see
 that the degrees of freedom naturally decrease. The various contractions of
-\tabref{tab-pmpmpm-contractions} can be categorised into three distinct groups
+\tabref{tab:pmpmpm-contractions} can be categorised into three distinct groups
 %
 \begin{subequations}
   \tikzset{
@@ -1151,7 +1151,7 @@ contractions not consisting of a single $PM$ pair.
   \end{center}
   \caption{All contractions contributing to the $\mathcal{O}(\kappa^6)$ term
     $\tr(PMPMPM)$.}
-  \label{tab-pmpmpm-contractions}
+  \label{tab:pmpmpm-contractions}
 \end{table}
 
 At this stage in the computation we will disperse with the notion that hops in
@@ -1191,7 +1191,7 @@ notation which focus on the dominant pairings
 in which $X$ and $Y$ symbolise the rest of the term, and is disallowed from
 having spatial hops overlapping with the $i$\textsuperscript{th} pairing. Every
 contracted $PM$ pair is labelled by an arbitrary symbol $i$, and is invariant
-under relabelling. Of the terms in \tabref{tab-pmpmpm-contractions}, the six
+under relabelling. Of the terms in \tabref{tab:pmpmpm-contractions}, the six
 terms which consists of pairings only can in this notation be reduced to three
 %
 \begin{equation} \label{eq:pmpmpm_pairing}
@@ -1345,7 +1345,7 @@ and dense we need to examine a final set of apparently low order graphs which
 have yet to be discussed. They are the result of new geometries only possible to
 construct with the insertion of plaquettes. The first of these appear at
 $\mathcal{O}(\kappa^4 u)$ and is depicted to the far left of
-\figref{fig-nontrivial-gauge}. One combination which gives this contribution is
+\figref{fig:nontrivial-gauge}. One combination which gives this contribution is
 %
 \begin{equation}
   \kappa^4 u\, \int_{\mathrlap{U}\:} \chi(U) \tr_{xsc} (P_i P_j M_i M_j), \hskip.5cm \text{ for } i \neq j.
@@ -1355,7 +1355,7 @@ This however restricts the four quark hops to occupy the same temporal slice and
 therefore only gives a single factor of $N_t$ while the dominating
 $\mathcal{O}(\kappa^4)$ terms give contributions proportional to $N_t^2$. It is
 possible to shift the quark hops on the slices by inserting plaquettes as can be
-seen in the two other graphs in \figref{fig-nontrivial-gauge}, and would give a
+seen in the two other graphs in \figref{fig:nontrivial-gauge}, and would give a
 correction to the formula above
 %
 \begin{equation}
@@ -1373,7 +1373,7 @@ links arbitrarily in the temporal coordinate.
     \includegraphics[width=.95\textwidth]{non_trivial_gauge_corrections}\par}
   \caption{The three first non trivial gauge corrections to
     $\mathcal{O}(\kappa^4)$}
-  \label{fig-nontrivial-gauge}
+  \label{fig:nontrivial-gauge}
 \end{figure}
 
 \subsection{The \texorpdfstring{$\mathcal{O}(\kappa^8)$}{O(k8)} effective action}
@@ -1406,7 +1406,7 @@ understandable steps
     \includegraphics[width=.6\textwidth]{spatial_contraction_examples}\par}
   \caption{The two possible spatial configurations of the contraction of
     $(\tr(P\,P\,M\,M))^2$ in \protect\meqref{eq:special-spatial-contraction}.}
-  \label{fig-spatial-multitrace}
+  \label{fig:spatial-multitrace}
 \end{figure}
 %
 The first three steps are essentially expanding the exponential as shown in
@@ -1468,9 +1468,9 @@ which has two possibilities for the spatial extent
 \end{equation}
 %
 The graphical representation of the two choices are depicted in
-\figref{fig-spatial-multitrace}. Applying the deltas in colour due to the
+\figref{fig:spatial-multitrace}. Applying the deltas in colour due to the
 integral over the gauge link is simple as we only need a single integral in the
-cold and dense regime, namely the integral from \meqref{eq-uub-integral}
+cold and dense regime, namely the integral from \meqref{eq:uub-integral}
 %
 \begin{equation}
   I_{ij}^{kl} = \int \mathrm{d} U \, U_{ij} U^{\dagger}_{kl} = \frac{1}{N_c}
@@ -1555,7 +1555,7 @@ full lattice calculations besides the apparent solution of the sign problem.
 Regardless of whether one chooses to do a \emph{Monte Carlo} (MC) or a \emph{Complex Langevin}
 (CL) simulation to deal with the trivial sign problem, it is advantageous to
 rewrite the partition function to depend on the angular representation of the
-group characters as outlined in \apxref{sec-haar_measure}. For SU($3$) we
+group characters as outlined in \apxref{sec:haar_measure}. For SU($3$) we
 replace the characters with
 %
 \begin{equation}
@@ -1570,7 +1570,7 @@ and the integration measure by
   \mathrm{d} \phi_{\vec{x}} H(\theta_{\vec{x}}, \phi_{\vec{x}})
 \end{equation}
 %
-where $H$ is the reduced Haar measure given by \meqref{eq-su3-haar-measure}.
+where $H$ is the reduced Haar measure given by \meqref{eq:su3-haar-measure}.
 This induces a Polyakov Loop potential in the action
 %
 \begin{equation}
@@ -1601,10 +1601,12 @@ linearly in complexity with the number of colours as compared to quadratic in a
 full simulation.
 
 \begin{figure}
-  {\centering
-    \includegraphics[width=.49\textwidth]{convergence_numeric_kappa}
-    \includegraphics[width=.49\textwidth]{convergence_numeric_beta}
-    \par}
+  \begin{center}
+    \begin{adjustbox}{max width=.99\textwidth}
+      \includegraphics{convergence_numeric_kappa}
+      \includegraphics{convergence_numeric_beta}
+    \end{adjustbox}
+  \end{center}\vskip -.5cm
   \caption[
     Left: Convergence of baryon number density in lattice units as a
       function of the nearest neighbour coupling $h_2$ in various orders of the

@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$a \:[\mathrm{fm}]$},
+      ylabel={$n_B / m_B^3$},
+      xmin=0.06, xmax=0.14,
+      ymin=-0.0002, ymax=0.004,
+      scaled ticks=false,
+      ticklabel style={
+        scale=0.7,
+      },
+      xticklabel style={
+        /pgf/number format/precision=2,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      yticklabel style={
+        /pgf/number format/precision=3,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      legend style={
+        at={(0.95,0.95)},
+        anchor=north east,
+        cells={anchor=west, font=\normalsize},
+        scale=2,
+        nodraw legend,
+      },
+      clip mode=individual,
+      y post scale=0.65
+    ]
+
+    \addlegendimage{empty legend}
+    \addlegendentry{\hskip -.75cm \scalebox{0.8}{$\mu_B = 1.001 m_B$}} 
+
+    \addplot[error 3] table [
+      x index=0,
+      y index=1,
+      y error index=2,
+    ] {data/nb_of_a_mu1001.table};
+    \addlegendentry{$\kappa^4$}
+
+    \addplot[error 4] table [
+      x index=0,
+      y index=5,
+      y error index=6,
+    ] {data/nb_of_a_mu1001.table};
+    \addlegendentry{$\kappa^8$}
+
+
+    \addlegendimage{empty legend}
+    \addlegendentry{\vphantom{x}} 
+    \addlegendimage{empty legend}
+    \addlegendentry{\hskip -.75cm \scalebox{0.8}{$\mu_B = 0.999 m_B$}} 
+
+    \addplot[error 1] table [
+      x index=0,
+      y index=1,
+      y error index=2,
+    ] {data/nb_of_a_mu0999.table};
+    \addlegendentry{$\kappa^4$}
+
+    \addplot[error 2] table [
+      x index=0,
+      y index=5,
+      y error index=6,
+    ] {data/nb_of_a_mu0999.table};
+    \addlegendentry{$\kappa^8$}
+
+  \end{axis}
+
+  \node[scale=0.75,inner sep=0pt] [left=.75cm of thelegend.north west, anchor=north east, yshift=.3cm] {
+    \begin{minipage}{2cm}%
+      \begin{align*}
+        T &= 10 \:\mathrm{MeV}\\
+        m_B &= 30 \:\mathrm{GeV}
+      \end{align*}%
+    \end{minipage}};
+\end{tikzpicture}%
+\end{document} 
+

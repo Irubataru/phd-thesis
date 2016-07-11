@@ -20,11 +20,6 @@
 \pgfplotsset{
   compat=1.12,
   width=10cm,
-  %every axis plot/.append style={
-      %restrict x to domain=0:0.105,
-      %error bars/y dir=both, error bars/y explicit,
-      %legend image post style={sharp plot,|-|},
-  %}
 }
 
 \begin{document}
@@ -33,7 +28,7 @@
     \begin{axis}[
       xlabel={$a \:[\mathrm{fm}]$},
       ylabel={$h_2$},
-      xmin=0, xmax=0.16,
+      xmin=0.0025, xmax=0.16,
       ymin=0, ymax=0.1,
       ticklabel style={
         scale=0.7,

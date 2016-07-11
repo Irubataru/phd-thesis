@@ -4,17 +4,17 @@
 
 In this chapter we will formally introduce the quantum field theory describing
 fermions invariant under local group transformations and introduce the Yang
-Mills Lagrangian. This is covered in \secref{sec-continuum_gauge}. We follow
-this up in \secref{sec-group_intro} with a brief overview of basic group theory,
+Mills Lagrangian. This is covered in \secref{sec:continuum_gauge}. We follow
+this up in \secref{sec:group_intro} with a brief overview of basic group theory,
 introducing the concepts and tools necessary for the thesis. In
-\secref{sec-symmetries} we investigate the defining symmetry properties of our
+\secref{sec:symmetries} we investigate the defining symmetry properties of our
 quantum field theory. After this introduction to continuum physics, in
-\secref{sec-lattice_intro} we discretise space-time and put our theory on a
-lattice. In the \secrefs{sec-fermion_doubling,sec-scale_setting}
+\secref{sec:lattice_intro} we discretise space-time and put our theory on a
+lattice. In the \secrefs{sec:fermion_doubling,sec:scale_setting}
 we review the similarities and differences between the lattice and the
 continuum, and stress where additional care has to be taken. Finally we give a
 very quick introduction to numerical evaluation of lattice theories in
-\secref{sec-numerical_eval}.
+\secref{sec:numerical_eval}.
 
 For the introduction, standard texts on the subject matter has been consulted.
 Such as introductory volumes on quantum field theory
@@ -22,14 +22,14 @@ Such as introductory volumes on quantum field theory
 \citep[e.g.][]{montvay1997quantum,gattringer2009quantum} and group theory
 \citep[e.g.][]{georgi1999lie,fulton2013representation}.
 
-\section{The free Dirac Lagrangian} \label{sec-continuum_gauge}
+\section{The free Dirac Lagrangian} \label{sec:continuum_gauge}
 
 The undoubtaly most important quantity in Quantum Field Theory (\emph{QFT}) and
 Statistical Mechanics (\emph{SM}) is $\mathcal{Z}$, named the generating
 functional and the partition function in the two theories respectively. It is in
 SM defined as
 %
-\begin{equation} \label{eq-partition}
+\begin{equation} \label{eq:partition}
   \mathcal{Z}_E = \int \prod_i \mathrm{d} \phi_i e^{-\mathcal{S}_E[\phi_i]},
 \end{equation}
 %
@@ -41,7 +41,7 @@ to symbolise Euclidean space, the world of SM.
 
 The action, $\mathcal{S}$, is in turn defined by the Lagrangian density
 %
-\begin{equation} \label{eq-action-def}
+\begin{equation} \label{eq:action-def}
   \mathcal{S}[\phi_i] = \int \mathrm{d}^4 x\, \mathcal{L}[\phi_i(x)],
 \end{equation}
 %
@@ -51,7 +51,7 @@ properties of the fields $\phi_i$.
 Of physical interest are expectation values of Hermitian operators $O$, defined
 as
 %
-\begin{equation} \label{eq-expectation_value}
+\begin{equation} \label{eq:expectation_value}
   \big\langle O[\phi_i] \big\rangle = \frac{1}{\mathcal{Z}_E} 
     \int \prod_i \mathrm{d} \phi_i \, O[\phi_i]\, e^{-\mathcal{S}_E[\phi_i]}
 \end{equation}
@@ -82,7 +82,7 @@ The most basic starting point for us will be the Dirac Lagrangian, which reads
 %
 \begin{equation}
   \mathcal{L} = \bar{\psi}_i \big(i\gamma^{\mu} \partial_{\mu} - m_i\big)
-  \psi_i. \label{eq-ldirac}
+  \psi_i. \label{eq:ldirac}
 \end{equation}
 %
 where we have introduced the fermionic fields $\psi_i$. To get the right
@@ -107,7 +107,7 @@ interactions. Finally one can localise the symmetries of the fields and induce
 new fields and couplings. For this procedure we need a short overview of group
 theory which we will tackle next.
 
-\section{A group theory perspective} \label{sec-group_intro}
+\section{A group theory perspective} \label{sec:group_intro}
 
 A group $G$ is a set and a rule for assigning to every (ordered) pair in the set
 a new element also in the set
@@ -137,7 +137,7 @@ have to maintain the group structure, meaning
 %
 \begin{align}
   D_R(e) &= \mathbb{1}_R,\\
-  D_R(f) D_R(g) &= D_R(fg). \label{eq-group_prod}
+  D_R(f) D_R(g) &= D_R(fg). \label{eq:group_prod}
 \end{align}
 %
 In physics we are normally content with a coordinate basis, in which the
@@ -159,10 +159,10 @@ differentials. For example
 \end{equation}
 %
 One commonly refers to the $T_{Ri}$ as the generators of the group $G$. Applying
-the smoothness condition to the group product, \meqref{eq-group_prod},
+the smoothness condition to the group product, \meqref{eq:group_prod},
 we find that the commutator of the generators follow a special relation
 %
-\begin{equation} \label{eq-group_algebra}
+\begin{equation} \label{eq:group_algebra}
   \big[ T_{Ri}, T_{Rj} \big] = i\, f_{ijk} T_{Rk}.
 \end{equation}
 %
@@ -180,7 +180,7 @@ constants as a representation of the algebra $\mathfrak{g}$ called the
   \big[ T_{\text{adj}\hskip.2ex i} \big]_{jk} \equiv -i\, f_{ijk},
 \end{equation}
 %
-which fulfils \meqref{eq-group_algebra}.
+which fulfils \meqref{eq:group_algebra}.
 
 \subsection{Character and character expansion}
 
@@ -212,7 +212,7 @@ well as the dimension of the representation, and write
 \end{equation}
 %
 which we will refer to as the character expansion. We will make use of this in
-\secref{sec-char_exp}.
+\secref{sec:char_exp}.
 
 \subsection{Group integrals}
 
@@ -239,7 +239,7 @@ integrals on the form
 %
 or more commonly, with a representation
 %
-\begin{equation} \label{eq-group-integrals-representation}
+\begin{equation} \label{eq:group-integrals-representation}
   I_{i_1,j_1,...,i_n,j_n}^{k_1,l_1,...,k_m,l_m} = \int \mathrm{d} g \,
     D_R(g)_{i_1j_1} \cdots D_R(g)_{i_nj_n} D_R(g^{-1})_{k_1l_1} \cdots D_R(g^{-1})_{k_ml_m}.
 \end{equation}
@@ -252,12 +252,12 @@ generating functionals for the integrals $I_{i_1,j_1,...,i_n,j_n}^{k_1,l_1,...,k
 decompositions to write the integrals in terms of Young projectors
 \citep{Myers:2014dia}. In this work a combination of the first two approaches
 has been used, and extensive details are provided in
-\apxrefs{sec-haar_measure,sec-character_integrals,sec-sun_integrals}.
+\apxrefs{sec:haar_measure,sec:character_integrals,sec:sun_integrals}.
 
-\section{Symmetries of the Lagrangian} \label{sec-symmetries}
+\section{Symmetries of the Lagrangian} \label{sec:symmetries}
 
 With the necessary formalism in place, we can discuss the symmetries of the
-Lagrangian we introduced in \meqref{eq-ldirac}. We will first look at the
+Lagrangian we introduced in \meqref{eq:ldirac}. We will first look at the
 symmetries that come by construction before delving into possible ways of
 extending the theory to be both globally and locally symmetric.
 
@@ -269,7 +269,7 @@ transformations.
 
 To see the other symmetries of the Dirac Lagrangian we have to decompose the
 fields into its spinorial components. Every element of $\psi_i$ in
-\meqref{eq-ldirac} is a $4$ component spinor, and the $\gamma$'s $4 \times 4$
+\meqref{eq:ldirac} is a $4$ component spinor, and the $\gamma$'s $4 \times 4$
 matrices. In the standard representation they take for form
 %
 \begin{equation}
@@ -291,7 +291,7 @@ distinct representations of the Lorentz group, $(\frac{1}{2}, 0)$ and $(0,
 It is apparent that this Lagrangian is symmetric under the U($1$) $\otimes$ U($1$)
 transformation
 %
-\begin{equation} \label{eq-chiral_transformation}
+\begin{equation} \label{eq:chiral_transformation}
   \psi_{R,L} \to e^{i \alpha_{R,L}} \psi_{R,L}
 \end{equation}
 %
@@ -303,7 +303,7 @@ the symmetry into a single U($1$) symmetry, where $\alpha_R = \alpha_L$.
 The global symmetry group of $\psi$ can be trivially extended to admit any Lie
 group by making the field live in the vector space the representation acts on 
 %
-\begin{equation} \label{eq-global_trafo}
+\begin{equation} \label{eq:global_trafo}
   \psi \to D_R(g) \psi, \hskip1em \bar{\psi} \to \bar{\psi} D_R^{\dagger}(g),
   \hskip1em g \in G.
 \end{equation}
@@ -318,7 +318,7 @@ the group $G$
 %
 which gives the associated charge
 %
-\begin{equation} \label{eq-noether-charge}
+\begin{equation} \label{eq:noether-charge}
   Q_i = \int \mathrm{d}^3 x\, \bar{\psi} \gamma^0 T_i \psi.
 \end{equation}
 
@@ -354,9 +354,9 @@ dependent $g(\alpha_i(x))$. We will use the short hand notation $U(x) =
 D_R\big(g(\alpha_i(x))\big)$ for representations of such group elements. We
 suppress the representation $R$ wherever it is not needed. The transformations
 of the fields at a single coordinate follow trivially from
-\meqref{eq-global_trafo}
+\meqref{eq:global_trafo}
 %
-\begin{equation} \label{eq-local_trafo}
+\begin{equation} \label{eq:local_trafo}
   \psi(x) \to U(x) \psi(x), \hskip1em \bar{\psi}(x) \to \bar{\psi}(x)
   U^{\dagger}(x).
 \end{equation}
@@ -371,7 +371,7 @@ symmetries. This becomes obvious when writing the derivative in terms of limits
 %
 where $\eta^{\mu}$ is some unit vector. We have to take the difference between
 fields at two different points in space-time, which transform independently
-under \meqref{eq-local_trafo}. Naively calculating this difference is
+under \meqref{eq:local_trafo}. Naively calculating this difference is
 nonsensical as one is allowed to choose the basis of the representation of the
 different points independently, meaning that $\psi(x)$ and $\psi(y)$ can be
 members of different vector spaces. We therefore introduce the parallel
@@ -432,7 +432,7 @@ the parallel transporters, being the main ingredient in adjusting the kinetic
 term of the fermions. Using the gauge transformation of $\Lambda$, it is easy to
 see that the geometric plaquette could create such a term
 %
-\begin{align} \label{eq-transport_plaquette}
+\begin{align} \label{eq:transport_plaquette}
   U_{\mu\nu}(x) =& \Lambda(x, x + \hat{\nu} \delta)
     \Lambda(x + \hat{\nu} \delta, x + \hat{\mu} \delta + \hat{\nu} \delta) \nonumber\\
     &\hskip1em\times\Lambda(x + \hat{\mu} \delta + \hat{\nu}\delta, x + \hat{\mu} \delta)
@@ -455,7 +455,7 @@ transformations. Expanding $U_{\mu\nu}$ in the fields $A^i_{\mu}$, we get
 %
 from which we extract the term
 %
-\begin{equation} \label{eq-field_strength}
+\begin{equation} \label{eq:field_strength}
   F_{\mu\nu}^i = \partial_{\mu} A^i_{\nu} - \partial_{\nu}
     A^i_{\mu} + g f^{ijk} A^j_{\mu} A^k_{\nu}
 \end{equation}
@@ -464,15 +464,15 @@ which is both invariant under the gauge transformations as well as being the
 kinetic term we were looking for. The full gauge extended Lagrangian therefore
 reads
 %
-\begin{equation} \label{eq-gauge_lagrangian}
+\begin{equation} \label{eq:gauge_lagrangian}
   \mathcal{L} = \bar{\psi}\big(i \gamma^{\mu} D_{\mu} - m\big)\psi 
     - \frac{1}{4} F^i_{\mu\nu} F^{i\hskip.2ex\mu\nu}
 \end{equation}
 
-\section{Lattice discretisation} \label{sec-lattice_intro}
+\section{Lattice discretisation} \label{sec:lattice_intro}
 
 With the Lagrangian at hand we want to actually evaluate the partition function
-integral from \meqref{eq-partition}. The integral is however infinite
+integral from \meqref{eq:partition}. The integral is however infinite
 dimensional, and has no known closed analytical form unless the theory is
 trivial (non interacting). If the theory is close to being trivial, one can
 apply perturbation theory and systematically solve the integral order by order.
@@ -511,7 +511,7 @@ applications of lattice gauge theories will be given.
 
 Constructing a \emph{good} discretised Lagrangian is both a subject and an art
 of itself. Naively one would think that any Lagrangian that reduces to the
-continuum Lagrangian \eqref{eq-gauge_lagrangian} when we send $a \to 0$ would
+continuum Lagrangian \eqref{eq:gauge_lagrangian} when we send $a \to 0$ would
 suffice. Or broader, Lagrangians that at most introduce total derivates with 
 vanishing borders when $a \to 0$. Though this is to some extent true, we will
 see that as always, the devil are in the details, and if one does not take great
@@ -527,7 +527,7 @@ abbreviation $U(x + a \eta_\mu, x) = U_{\mu}(x) =
 U_{-\mu}^{\dagger}(x+a\eta_{\mu})$. With this the fermion contribution to the
 lattice action with a symmetrised derivative reads
 %
-\begin{equation} \label{eq-naive_fermions}
+\begin{equation} \label{eq:naive_fermions}
   \mathcal{S}_f = a^4 \sum_x \Big( 
     m \bar{\psi}(x)\psi(x) - 
     \frac{1}{2a}\sum_{\mu=\pm 0}^{\pm 3}
@@ -549,7 +549,7 @@ terms of a vector-matrix product
 where the spin and gauge indices are hidden.  This is to simplify the expression
 for the integral over the fermion fields, which can be evaluated exactly
 %
-\begin{equation} \label{eq-fermion-integral}
+\begin{equation} \label{eq:fermion-integral}
   \int \prod_{i,j} \mathrm{d} \bar{\psi}_i \psi_j e^{\bar{\psi}_i Q_{ij} \psi_j}
    = \det Q,
 \end{equation}
@@ -558,7 +558,7 @@ with $Q$ commonly referred to as the \emph{fermion matrix}, and $\det Q$ the
 \emph{fermion determinant}. The matrix can either be represented as a higher
 dimensional tensor or with super index describing all degrees of freedom.
 
-Having introduced the plaquette transporter in \meqref{eq-transport_plaquette},
+Having introduced the plaquette transporter in \meqref{eq:transport_plaquette},
 constructing a lattice gauge action is straightforward
 %
 \begin{equation}
@@ -568,15 +568,15 @@ constructing a lattice gauge action is straightforward
 %
 where $d_R$ is the dimension of the representation, $d_R = \tr D_R(e)$. $\beta_R$ is the
 coupling constant, and by comparison with the continuum field strength tensor
-\eqref{eq-field_strength}, we find
+\eqref{eq:field_strength}, we find
 %
 \begin{equation}
   \beta_R = \frac{2 d_R}{g^2}
 \end{equation}
 
-\section{Fermion doubling and chiral symmetry} \label{sec-fermion_doubling}
+\section{Fermion doubling and chiral symmetry} \label{sec:fermion_doubling}
 
-Although the Lagrangian \meqref{eq-naive_fermions} have the desired
+Although the Lagrangian \meqref{eq:naive_fermions} have the desired
 transformation property, and reproduce the Dirac Lagrangian in the continuum, it
 suffers from a degeneracy in its energy eigenvalues. The easiest way to see this
 is by choosing the trivial representation of the gauge fields and writing down
@@ -657,7 +657,7 @@ continuum where their masses diverge.
 %TODO: Rewrite
 However, including the Wilson term does not come without a cost. By
 introducing the Wilson term we explicitly break chiral symmetry, meaning that
-even with $m=0$, the transformation \eqref{eq-chiral_transformation} is no
+even with $m=0$, the transformation \eqref{eq:chiral_transformation} is no
 longer a symmetry of the system. 
 
 There is in fact a theorem by Nielsen and Ninomiya
@@ -672,7 +672,7 @@ requirements, solutions to these equations have since been found. Two notable
 discretisation schemes being \emph{domain wall fermions} \citep{Kaplan:1992bt} and 
 \emph{overlap fermions} \citep{Neuberger:1997fp,Neuberger:1998wv}.
 
-\section{Scale setting and the continuum limit} \label{sec-scale_setting}
+\section{Scale setting and the continuum limit} \label{sec:scale_setting}
 
 We previously mentioned that the lattice spacing $a$ works as a non-perturbative
 regulariser of the theory, and thus sets the internal scale. Any parameter in
@@ -714,7 +714,7 @@ theory. To lowest order in the coupling we get
 \begin{align}
   \beta(g) = - a \frac{\partial g}{\partial a} &= - \frac{g^3}{(4\pi)^2}
     \Big( \frac{11}{3} C_{\text{adj}\hskip.2ex 2} - \frac{4}{3} n_f C_R \Big) + \mathcal{O}(g^5), \nonumber\\
-  &\equiv - \beta_0 g^3 + \mathcal{O}(g^5) \label{eq-beta_eq}
+  &\equiv - \beta_0 g^3 + \mathcal{O}(g^5) \label{eq:beta_eq}
 \end{align}
 %
 Here we encounter the group's Casmir operators, $C_R$ and $C_{R\hskip.2ex 2}$. They are
@@ -731,9 +731,9 @@ and take the following values for the fundamental representation of SU($N$)
   C_F = \frac{1}{2}, \hskip1em C_{\text{adj}\hskip.2ex 2} = N \,.
 \end{equation}
 %
-One can solve the differential equation in \meqref{eq-beta_eq} and get
+One can solve the differential equation in \meqref{eq:beta_eq} and get
 %
-\begin{equation} \label{eq-running-coupling}
+\begin{equation} \label{eq:running-coupling}
   g = \frac{1}{\sqrt{1 - 2\beta_0 \log (a/a_0)}}
     \hskip1em\Leftrightarrow\hskip1em
     a = \frac{1}{\Lambda} \exp\Big\{\frac{-1}{2\beta_0 g^2}\Big\} .
@@ -746,7 +746,7 @@ $\beta$ goes to infinity). This is the \emph{true} continuum limit, where one, a
 opposed to the naive limit, takes the change of the parameters into account.
 
 \section{Numerical evaluation of lattice gauge theories}
-\label{sec-numerical_eval}
+\label{sec:numerical_eval}
 
 Although the lattice discretisation has decreased the number of integrals in the
 definition of $\mathcal{Z}$ from infinity to something finite, the number of free
@@ -754,7 +754,7 @@ variables is still too great for it to be evaluated, even numerically. The
 fermion fields have $2 N_f d_R$ independent degrees of freedom at every
 position. The gauge field is a four vector at every space-time point with
 $d_{\text{adj}}$ degrees of freedom. Even though the fermion fields can be
-integrated out exactly \eqref{eq-fermion-integral}, this still leaves a highly
+integrated out exactly \eqref{eq:fermion-integral}, this still leaves a highly
 dimensional integral if one wants to look at anything but miniscule volumes.
 
 The only feasible way to handle these types of integrals is by way of Monte
@@ -775,7 +775,7 @@ space, in the case of the partition function
 %
 This is only a viable interpretation as long as the right hand side is a real
 number. We evaluate the fermion integrals according to
-\meqref{eq-fermion-integral}, giving us
+\meqref{eq:fermion-integral}, giving us
 %
 \begin{equation}
   P\big([U_{\mu}]\big) \propto \det Q[U_{\mu}] \, e^{-\mathcal{S}_g[U_{\mu}]}.
@@ -838,7 +838,7 @@ Commonly named the \emph{ensemble average}, it is given by
 \end{equation}
 %
 If the set of configurations behave as described in the previous section, it
-converges to the true average, \meqref{eq-expectation_value}, when $N \to
+converges to the true average, \meqref{eq:expectation_value}, when $N \to
 \infty$.
 
 For any realisable number of configurations we want an estimate for the error.

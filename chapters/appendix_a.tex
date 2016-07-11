@@ -3,12 +3,12 @@
 The analytic computations contained herein revolve around various SU$(N)$
 dependent quantities, and we therefore need basis for computing these. In this
 appendix we will look at how to compute all the necessary components such as the
-Haar measure in \secref{sec-haar_measure}, the character integrals in
-\secref{sec-character_integrals}, integrals over group polynomials in
-\secref{sec-sun_integrals} and finally the fermionic functions in
-\secrefs{sec-evaluating-fermion-determinants,sec-evaluating-polyakov-coupling-terms}.
+Haar measure in \secref{sec:haar_measure}, the character integrals in
+\secref{sec:character_integrals}, integrals over group polynomials in
+\secref{sec:sun_integrals} and finally the fermionic functions in
+\secrefs{sec:evaluating-fermion-determinants,sec:evaluating-polyakov-coupling-terms}.
 
-\section{Computing the Haar measure} \label{sec-haar_measure}
+\section{Computing the Haar measure} \label{sec:haar_measure}
 
 We want the invariant measure of a group element expressed in terms of its
 spectral decomposition. Any matrix representation of an U$(N)$ matrix has
@@ -31,7 +31,7 @@ where $\Lambda = \diag (e^{i\theta_1}, ..., e^{i\theta_n})$, and $W W^{\dagger}
 Using the standard unitary matrix metric, $||M||^2 = \tr(M^{\dagger} M)$, we get
 the size of an infinitesimal square to be
 %
-\begin{equation} \label{eq-infinitesimal-group-square}
+\begin{equation} \label{eq:infinitesimal-group-square}
   \mathrm{d} s^2 = \tr (\mathrm{d} U^{\dagger} \mathrm{d} U)
   = \sum_i \mathrm{d} \theta_i^2 + 2 \sum_{i > j}
     \big|e^{i \theta_i} - e^{i\theta_j}\big|^2
@@ -42,7 +42,7 @@ Since one identifies the set of coordinates to the metric through
 $\mathrm{d} s^2 = g_{\mu\nu} \mathrm{d} \xi^{\mu} \mathrm{d} \xi^{\nu}$,
 it is natural to construct the measure as
 %
-\begin{equation} \label{eq-natural-group-measure}
+\begin{equation} \label{eq:natural-group-measure}
   \mathrm{d} U(x) = \sqrt{\det g(x)} \prod_{\mu} \mathrm{d}\xi^{\mu}.
 \end{equation}
 %
@@ -113,7 +113,7 @@ correspond to the $m$'th powered character. One can therefore employ the
 Caylay-Hamilton theorem to determine how these angles depend on each other.
 This equation reads
 %
-\begin{equation} \label{eq-caylay-hamilton}
+\begin{equation} \label{eq:caylay-hamilton}
   M^N + c_{N-1} M^{N-1} + \cdots + c_1 M + (-1)^N \det M\: \mathbb{1}_R = 0,
 \end{equation}
 %
@@ -124,16 +124,16 @@ algorithm}
   c_{N-m} = -\frac{1}{m} \sum_{k=1}^m c_{N-m+k} \tr (M^k),
 \end{equation}
 %
-with $c_N = 1$ and $c_1 = (-1)^N \det M$ as seen in \meqref{eq-caylay-hamilton}.
+with $c_N = 1$ and $c_1 = (-1)^N \det M$ as seen in \meqref{eq:caylay-hamilton}.
 
 Since we know that $\det U = 1$ and $U^{\dagger} U = \mathbb{1}$ for all
-matrices in SU$(N)$, \meqref{eq-caylay-hamilton} can be multiplied by powers of
+matrices in SU$(N)$, \meqref{eq:caylay-hamilton} can be multiplied by powers of
 $U^{\dagger}$ and be traced to find relations to reduce the number of unknowns in
 the Haar measure.
 
 As an example, for SU$(3)$, $\chi_2 = \chi^2 - 2 \chi^*$, giving
 %
-\begin{equation} \label{eq-su3-haar-measure}
+\begin{equation} \label{eq:su3-haar-measure}
   H(U) =
   \begin{vmatrix}
     3 & \chi & \chi^2 - 2 \chi^* \\
@@ -142,7 +142,7 @@ As an example, for SU$(3)$, $\chi_2 = \chi^2 - 2 \chi^*$, giving
   \end{vmatrix} = 27 - 18\, |\chi|^2  + 8 \mathrm{Re}\, \chi^3 - |\chi|^4.
 \end{equation}
 
-\section{\texorpdfstring{$\chi_r \chi_s$}{Ln Lm} integrals} \label{sec-character_integrals}
+\section{\texorpdfstring{$\chi_r \chi_s$}{Ln Lm} integrals} \label{sec:character_integrals}
 
 One type of integrals we will encounter often are integrals of the form
 %
@@ -164,7 +164,7 @@ using the fact that
 %
 together with
 %
-\begin{equation} \label{eq-oscillating-integral}
+\begin{equation} \label{eq:oscillating-integral}
   \int_{\mathrlap{-\pi}}^{\pi} \mathrm{d}\alpha \, e^{in \alpha} = \delta(n),
   \text{ for } n \in \mathbb{Z}
 \end{equation}
@@ -184,7 +184,7 @@ with the sum over integer partitions so that
   \sum_{i=1}^N (n,m)_i = (n,m).
 \end{equation}
 %
-Because of \meqref{eq-oscillating-integral}, only the combinations where the sum
+Because of \meqref{eq:oscillating-integral}, only the combinations where the sum
 over the angles in the exponent equals zero will survive the integral, and
 therefore calculating the integral reduces to counting all these combinations.
 
@@ -224,7 +224,7 @@ with
 %
 where the remaining variables $l$ and $k$ are restricted by the requirement that
 the factorials all have non negative arguments. Since the Haar measure itself is
-expressed in terms of the characters, using \meqref{eq-su3-haar-measure} we see
+expressed in terms of the characters, using \meqref{eq:su3-haar-measure} we see
 that the full integral is
 %
 \begin{equation}
@@ -235,7 +235,7 @@ From the equation for $J_{nm}$, is is easy to see that it is symmetric in its
 indices, $J_{nm} = J_{mn}$ , and by extension, so is $I_{nm}$. Since all the
 quantities of interest are normalised, we introduce the normalised integral,
 $\tilde{I}_{nm} = I_{nm} / I_{00}$, the value of some of which are listed in 
-\tabref{tab-character-integrals}. Analysing the sequences one notices that they
+\tabref{tab:character-integrals}. Analysing the sequences one notices that they
 have deep combinatorial connections \citep{OEIS}. E.g. the first row is the sequence of
 permutations of $S_n$ with longest increasing subsequence length $<=3$
 (A005802). The first column on the other hand corresponds to the 3 dimensional
@@ -258,15 +258,15 @@ SU$(3)$ can be found in \citep{Unger:2014oga}.
   \caption{Some integrals over the characters of SU$(3)$ where the integrand is made
     up of the product of the topmost row with the leftmost column. All other
     integrals are zero due to the selection rule of
-    \protect\meqref{eq-integral-selection-rule}.}
-  \label{tab-character-integrals}
+    \protect\meqref{eq:integral-selection-rule}.}
+  \label{tab:character-integrals}
 \end{table}
 
 \subsection{Characters of plaquettes}
 
 Another type of integrals that appear often are those of characters over
 plaquettes sharing a common line, like the ones in
-\secref{sec-pure-gauge-theory}. These are integrals of the form
+\secref{sec:pure-gauge-theory}. These are integrals of the form
 %
 \begin{equation}
   F_{nm}^r(V,W) = \int \mathrm{d} U \, \chi_r(VU)^n \chi_r(WU^{\dagger})^m.
@@ -308,11 +308,11 @@ combinations. Examples of the two lowest orders give
 One then inserts the special form for $A_n$ on the left and right hand side of
 the equations and systematically determine the unknown parameters $C_i$.
 
-\section{\texorpdfstring{$g^n (g^{-1})^m$}{Un Udm} integrals} \label{sec-sun_integrals}
+\section{\texorpdfstring{$g^n (g^{-1})^m$}{Un Udm} integrals} \label{sec:sun_integrals}
 
 In this section we will present a method of computing integrals over
 matrix representations of the SU$(N)$ members. Namely integrals of the form
-\meqref{eq-group-integrals-representation}
+\meqref{eq:group-integrals-representation}
 %
 \begin{equation}
   I_{i_1,j_1,...,i_n,j_n}^{k_1,l_1,...,k_m,l_m} = \int \mathrm{d} U \,
@@ -375,7 +375,7 @@ we see that only factors of $N$'th power derivatives of $\mathcal{W}$ will
 survive when we set $J=0$. Since the cofactor is a $N-1$'th power polynomial we
 get the selection rule
 %
-\begin{equation} \label{eq-integral-selection-rule}
+\begin{equation} \label{eq:integral-selection-rule}
   \int \mathrm{d} U \, U^n U^{\dagger m} \neq 0  \hskip1em\iff\hskip1em n + (N-1)m = 0 \pmod N.
 \end{equation}
 %
@@ -393,10 +393,10 @@ Finally we will compute the most commonly used integral in this thesis
   \epsilon_{i,i_1,\dots,i_{N-1}} \epsilon_{j,j_1,\dots,j_{N-1}} \nonumber \\
   &= \frac{1}{N!(N-1)!} (N-1)!\,\delta_{il}\,(N-1)!\,\delta_{jk} = \frac{1}{N}
   \delta_{il} \delta_{jk} .
-  \label{eq-uub-integral}
+  \label{eq:uub-integral}
 \end{align}
 
-\section{Static determinant} \label{sec-evaluating-fermion-determinants}
+\section{Static determinant} \label{sec:evaluating-fermion-determinants}
 
 With the measure and various link integrals at hand it is time we approach the
 two fundamental fermionic quantities of the effective theory, namely the static
@@ -426,8 +426,8 @@ with the indices $\{k_i\}_n$ summed over a range bounded by the equations
 \end{equation}
 %
 Due to the fact that the last power is independent, we can use the
-Caylay-Hamilton equation \eqref{eq-caylay-hamilton} to reduce it out. The first five
-groups are listed in \tabref{tab-static-determinant}.
+Caylay-Hamilton equation \eqref{eq:caylay-hamilton} to reduce it out. The first five
+groups are listed in \tabref{tab:static-determinant}.
 
 \begin{table}
   \begin{center}
@@ -446,11 +446,11 @@ groups are listed in \tabref{tab-static-determinant}.
   \end{center}
   \caption{Static determinants calculated in various groups SU$(N)$ with the
     independent characters $\chi_i = \tr(U^i)$.}
-  \label{tab-static-determinant}
+  \label{tab:static-determinant}
 \end{table}
 
 \section{\texorpdfstring{$W_{nm}$}{Wnm} terms}
-\label{sec-evaluating-polyakov-coupling-terms}
+\label{sec:evaluating-polyakov-coupling-terms}
 
 The last group dependent quantity of interest are the effective theory nodes
 which have the form

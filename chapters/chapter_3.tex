@@ -1,11 +1,11 @@
 \chapter{Statistical Mechanics and Phase Transitions}
 
 In this chapter we will give a short overview of some aspects of statistical
-mechanics that are important to the present work in \secref{sec-stat-mech}.
+mechanics that are important to the present work in \secref{sec:stat-mech}.
 Then the field theoretical equivalent is given in
-\secref{sec-thermal-field-theory}, before we once more study the discretised
-theory in \secref{sec-thermal-lattice-theory}. We tie up the chapter 
-in \secrefs{sec-finite-density-lattice,sec-sign-problem} with a
+\secref{sec:thermal-field-theory}, before we once more study the discretised
+theory in \secref{sec:thermal-lattice-theory}. We tie up the chapter 
+in \secrefs{sec:finite-density-lattice,sec:sign-problem} with a
 thorough discussion of simulations of finite density systems, and the hurdles
 that need to be overcome.
 
@@ -16,12 +16,12 @@ statistical mechanics, \cite{kapusta2006finite} with an introduction to Thermal
 Field Theory (\emph{TFT}), and \cite{montvay1997quantum,Philipsen:2010gj} for
 the lattice formulation of finite temperature theory.
 
-\section{Statistical mechanics} \label{sec-stat-mech}
+\section{Statistical mechanics} \label{sec:stat-mech}
 
 Every quantity of interest to anyone studying equilibrium thermodynamics is
 encoded into the previously mentioned partition function
 %
-\begin{equation} \label{eq-sm-partition-function} \mathcal{Z} = \sum_i
+\begin{equation} \label{eq:sm-partition-function} \mathcal{Z} = \sum_i
   \mathcal{Z}_i = \sum_i e^{-\beta E_i} \,.  \end{equation}
 %
 The sum goes over all states of the degrees of freedom of the system with $E_i$
@@ -117,7 +117,7 @@ $V\to\infty$. As this curve forms, zeros on the positive and negative imaginary
 axis could tend towards coinciding at the real axis, signalling the onset of a
 phase transition.
 
-\section{Thermal field theory} \label{sec-thermal-field-theory}
+\section{Thermal field theory} \label{sec:thermal-field-theory}
 
 The quantum partition function is defined similar to the classical one, but with
 the energy and particle numbers promoted to operators
@@ -128,14 +128,14 @@ the energy and particle numbers promoted to operators
     z^{\hat{N}} e^{-\beta \hat{H}} \big| [\phi_i, \pi_i] \big\rangle \,.
 \end{equation}
 %
-This sum reduces to a form similar to \meqref{eq-partition} after introducing
+This sum reduces to a form similar to \meqref{eq:partition} after introducing
 the second quantisation and evaluating the integrals over the conjugate momentum
 fields $\pi_i$.
 
 % TODO is the interval of t_E really half open?
 
 Focussing on the canonical ensemble, there are two amendments which need to be
-made to the Euclidean action in \meqref{eq-action-def}. First the Euclidean time
+made to the Euclidean action in \meqref{eq:action-def}. First the Euclidean time
 $\tau_E$ have to be integrated over the half open interval $[0, \beta)$
 %
 \begin{equation}
@@ -147,7 +147,7 @@ The second rectification is a bit more subtle and concerns the periodic boundary
 conditions of the fields. For the fields to respect their statistical properties
 (Bose- vs Fermi statistics) they need to obey the boundary conditions
 %
-\begin{equation} \label{eq-boundary-conditions}
+\begin{equation} \label{eq:boundary-conditions}
   \phi(\tau_E + \beta) = \begin{cases}
     \hphantom{\minus}\phi(\tau_E), \hskip1em \text{for bosonic fields}, \\
     \minus\phi(\tau_E), \hskip1em \text{for fermionic fields}.
@@ -156,14 +156,14 @@ conditions of the fields. For the fields to respect their statistical properties
 
 We can now return to the grand canonical ensemble and the particle number
 operator $\hat{N}$. A suitable operator can be created from the conserved
-Noether charges, such as the one from \meqref{eq-noether-charge}. For every
+Noether charges, such as the one from \meqref{eq:noether-charge}. For every
 distinct conserved charge one wishes to study the dynamics of, there should be a
 separate chemical potential. Two common systems of interest are those of quark-
 and isospin chemical potential. Quark chemical potential is connected to the
 global U$(1)$ symmetry of the fermion fields. The associated Noether charge is
 that of total fermion number
 %
-\begin{equation} \label{eq-quark-number-density-op}
+\begin{equation} \label{eq:quark-number-density-op}
   N_f = \int \mathrm{d}^3 x \, \bar{\psi}_f(x) \gamma^0 \psi_f(x),
 \end{equation}
 %
@@ -180,9 +180,9 @@ which for QCD gives the up and down quarks chemical potentials that only differ
 in sign. By tuning the value of $\mu_I$, one can study the effects of a $u/d$
 asymmetry, while adjusting $\mu_f$ induces a particle/anti particle imbalance.
 
-\section{Thermal fields on the lattice} \label{sec-thermal-lattice-theory}
+\section{Thermal fields on the lattice} \label{sec:thermal-lattice-theory}
 
-Following the same path as in \secref{sec-lattice_intro}, discretising the
+Following the same path as in \secref{sec:lattice_intro}, discretising the
 expression for the partition function $\mathcal{Z}$ is straightforward. We see
 that lattice theory naturally describe systems at non zero temperature, as the
 temporal extent always will be finite. The temperature is given in terms of the
@@ -199,11 +199,11 @@ $a\to0$ and $N_t\to\infty$ in such a way that $a N_t$ remains finite.
 At a first glance it might seem as if when integrating lattice theories we can
 only vary the temperature in finite increments, seeing as $N_t$ has to be an integer.
 It is however much more common to keep $N_t$ fixed while varying $a$, which one
-varies by tuning the gauge coupling $g$, as we saw in \secref{sec-scale_setting}.
+varies by tuning the gauge coupling $g$, as we saw in \secref{sec:scale_setting}.
 
 Other than imposing the proper boundary conditions for the variables, no other
 amendments need to be made for the finite temperature simulations. These follow
-directly from \meqref{eq-boundary-conditions}
+directly from \meqref{eq:boundary-conditions}
 %
 \begin{align}
   \psi(n_t + N_t) &= \minus \psi(n_t), \\
@@ -212,7 +212,7 @@ directly from \meqref{eq-boundary-conditions}
 
 \subsection{Thermodynamic quantities}
 
-In \secref{sec-stat-mech} we stated the thermodynamic quantities $\mathcal{P}$,
+In \secref{sec:stat-mech} we stated the thermodynamic quantities $\mathcal{P}$,
 $\mathcal{E}$ and $\mathcal{N}$ in terms of derivatives of the partition
 function. However one cannot sample the partition function through Monte Carlo
 simulations, and we therefore have to device a different scheme to calculate
@@ -251,11 +251,11 @@ temperature and volume independently, and calculate the thermodynamic quantities
 Now that they are expressed in terms of ensemble averages we can use the
 previously introduced Monte Carlo methods to estimate their values.
 
-\section{Finite density simulations} \label{sec-finite-density-lattice}
+\section{Finite density simulations} \label{sec:finite-density-lattice}
 
 To carry out simulations of systems with non zero quark number density we
 introduce the quark chemical potential. Unfortunately, a naive discretisation 
-of the quark number operator from \meqref{eq-quark-number-density-op} leads to
+of the quark number operator from \meqref{eq:quark-number-density-op} leads to
 divergences in the thermodynamic quantities in the continuum limit
 \citep{Hasenfratz:1983ba,Kogut:1983ia}. This is due to the lack of an implicit
 gauge invariance of the lattice action needed for the right continuum
@@ -279,7 +279,10 @@ of for the work in this thesis
    + e^{-a\mu}(r-\gamma^0) U_0^{\dagger}(x-\hat{0}) \delta_{y+\hat{0},x} \big).
 \end{align}
 
-\section{The sign problem} \label{sec-sign-problem}
+% TODO: Write about lattice saturation
+% \label{sec:saturation}
+
+\section{The sign problem} \label{sec:sign-problem}
 
 An issue arises when trying to numerically evaluate the partition function
 integrals through Monte Carlo methods. We saw that we use the probability
@@ -307,7 +310,7 @@ and it needs to be tackled in an intelligent way through deep understanding of
 the source of the issue itself.
 
 The problem is most easily illustrated with a sketch. In
-\figref{fig-sign-problem} we have plotted the real and imaginary part of a
+\figref{fig:sign-problem} we have plotted the real and imaginary part of a
 symmetric function with a complex phase, $f(x) e^{i \theta(x)}$. The real part
 integrates to something finite that is exponentially suppressed by by the phase,
 while the imaginary part integrates to zero. However, this subtlety is hard to
@@ -315,11 +318,15 @@ reproduce numerically, and the number of operations needed to keep the errors
 down grow exponentially with the system size.
 %
 \begin{figure}
-  \includegraphics[width=.5\textwidth]{sign_problem_real}
-  \includegraphics[width=.5\textwidth]{sign_problem_imag}
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics[scale=2]{sign_problem_real}
+      \includegraphics[scale=2]{sign_problem_imag}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
   \caption{The essence of the sign problem. Real and imaginary part of a
     function with a phase, $f(x) e^{i \theta(x)}$.}
-  \label{fig-sign-problem}
+  \label{fig:sign-problem}
 \end{figure}
 
 % TODO Add citations for the various methods
@@ -377,17 +384,21 @@ was determined to be $f(\theta) = |\cos\theta|$.
 The sign problem comes into play when the average phase drastically deviates
 from $0$, in which case the ensemble we sample is far from the ensemble we
 want to measure, drastically increasing the statistics needed. The issue is
-sketched in \figref{fig-reweighting-overlap} where we see the overlap between
+sketched in \figref{fig:reweighting-overlap} where we see the overlap between
 the full and reweighted ensembles. Because the reweighted ensemble deviates
 significantly from the full ensemble at high chemical potentials, most of the
 sampled configurations will be discarded.
 
 \begin{figure}
-  \includegraphics[width=.5\textwidth]{reweighting_ensemble_overlap_low_mu}
-  \includegraphics[width=.5\textwidth]{reweighting_ensemble_overlap_high_mu}
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics[scale=2]{reweighting_ensemble_overlap_low_mu}
+      \includegraphics[scale=2]{reweighting_ensemble_overlap_high_mu}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
   \caption{Overlap of the full ensemble to the reweighted ensemble at low and
     high chemical potential.}
-  \label{fig-reweighting-overlap}
+  \label{fig:reweighting-overlap}
 \end{figure}
 
 \subsection{Analytic extrapolation}

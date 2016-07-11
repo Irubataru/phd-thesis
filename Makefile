@@ -29,7 +29,8 @@ $(FIGPDF): %.pdf: %.tex | $(STYLETEX)
 
 $(PLOTPDF): %.pdf: %.tex | $(STYLETEX)
 	cd $(dir $<); \
-	$(LATEX) $(notdir $<)
+	$(LATEXMK) -C $(notdir $<); \
+	$(LATEXMK) -pdf $(notdir $<)
 
 clean: $(MAINTEX) $(FIGTEX)
 	$(foreach file, $^, $(call cd_and_clean,$(file));)
