@@ -1,0 +1,91 @@
+\documentclass[11pt,tikz]{standalone}
+\usepackage{eulervm}
+\usepackage{libertine}
+%\usepackage{amsmath,amssymb}
+
+\input{../../definitions/mathematics_styles.tex}
+\input{../../definitions/graph_styles.tex}
+
+\begin{document}
+
+\begin{tikzpicture}[eft graph]
+  \node (l1) {$\mathcal{C}_0 = $};
+  \node[circle,inner sep=2pt,minimum size=.5cm,draw,thick,right=.75cm of l1] (g1) [align=center,scale=0.75] {rest of\\the term};
+  \node[eft node] [position=150 degrees from g1] {1}
+    edge[eft bond] (g1);
+  \path
+    [postaction={
+      decoration={
+        raise=-1ex,
+        text effects along path,
+        text={...},
+        text align=center,
+        text effects/.cd,
+          text along path,
+          every letter/.style={scale=1.0}},
+      decorate}]
+    [postaction={
+      decoration={
+        text effects along path,
+        text={m ends},
+        text align=center,
+        text effects/.cd,
+          text along path,
+          every letter/.style={scale=.75}},
+      decorate}]
+    (g1) ++(150:1.15cm) arc (150:60:1.15cm);
+  \node[eft node] [position=60 degrees from g1] {1}
+    edge[eft bond] (g1);
+  \node[eft node] [position=300 degrees from g1] {1}
+    edge[eft bond] (g1);
+  \draw[->,thick] (3.5,0) -- +(2.5,0) node[midway,yshift=1ex,scale=0.75,font=\bfseries] {resummation};
+  \begin{scope}[xshift=7.05cm]
+    \node (l2) {$\mathcal{C}_n = $};
+    \node[circle,inner sep=2pt,minimum size=.5cm,draw,thick,right=.75cm of l2] (g2) [align=center,scale=0.75] {rest of\\the term};
+  \path
+    [postaction={
+      decoration={
+        raise=-1ex,
+        text effects along path,
+        text={...},
+        text align=center,
+        text effects/.cd,
+          text along path,
+          every letter/.style={scale=1.0}},
+      decorate}]
+    [postaction={
+      decoration={
+        text effects along path,
+        text={m ends},
+        text align=center,
+        text effects/.cd,
+          text along path,
+          every letter/.style={scale=.75}},
+      decorate}]
+    (g2) ++(150:1.15cm) arc (150:60:1.15cm);
+    \node[eft node] [position=150 degrees from g2] {1}
+      edge[eft bond] (g2);
+    \node[eft node] (g21) [position=60 degrees from g2] {1}
+      edge[thick] (g2);
+    \node[eft node] (g22) [position=300 degrees from g21] {1}
+      edge[thick] (g21);
+    \node[circle,scale=0.75] (g23) [position=60 degrees from g22] {\dots}
+      edge[thick] (g22);
+    \node[eft node] (g24) [position=300 degrees from g23] {1}
+      edge[thick] (g23);
+    \node[eft node] (g25) [position=60 degrees from g24] {1}
+      edge[thick] (g24);
+    \node[eft node] (g26) [position=300 degrees from g2] {1}
+      edge[thick] (g2);
+    \node[eft node] (g27) [position=60 degrees from g26] {1}
+      edge[thick] (g26);
+    \node[circle,scale=0.75] (g28) [position=300 degrees from g27] {\dots}
+      edge[thick] (g27);
+    \node[eft node] (g29) [position=60 degrees from g28] {1}
+      edge[thick] (g28);
+    \node[eft node] (g210) [position=300 degrees from g29] {1}
+      edge[thick] (g29);
+  \end{scope}
+\end{tikzpicture}
+
+\end{document}

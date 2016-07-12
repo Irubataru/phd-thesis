@@ -1207,7 +1207,7 @@ cluster expansion, as is expected.
   \caption{Results from the Pad\'e approximants. Left: Convergence plot at
     strong coupling compared to the normal series from the LCE. Right: The
     nucleon binding energy as a function of chemical potential at different
-    orders.}.
+    orders.}
   \label{fig:pade_results}
 \end{figure}
 
@@ -1228,5 +1228,602 @@ We will refrain from analysing any more results until we have introduced a final
 improvement to the analytic approach.
 
 \section{Analytic resummation} \label{sec:analytic_resummation}
+
+So far we have managed to analytically calculate the grand canonical potential
+of the effective theory to the same order as the effective theory itself, and
+consequently achieved access to the thermodynamic quantities analytically.
+Although this by itself is both useful due to the permanence of the results, as
+well as the additional mathematical insight into the theory it admits, we have
+merely reproduced the simulated results. In this section, further improvements to
+the theory will be analysed, which will push the analytic evaluation beyond that
+of the numerically obtained ones. We will start by introducing a resummation
+scheme on the level of the effective theory first in
+\secref{sec:chain_resummation}. We will then proceed to a resummation on the
+cluster expansion level in \secref{sec:cluster_resummation}. Finally, in
+\secref{sec:ladder_resummation}, we will review a second hypothetical
+resummation, again on the level of the effective theory.
+
+\subsection{Chain resummation} \label{sec:chain_resummation}
+
+We start with a motivating example. Consider the following four terms from the
+effective action \meqref{eq:effective_action_kapp8}
+%
+\begin{equation}
+  h_2 N_f \sum_{\mathrm{dof}} \;
+  \begin{tikzpicture}[eft graph, node distance=.4]
+    \node[eft node] (n1) {1};
+    \node[eft node] (n2) [below=of n1] {1}
+      edge[eft bond] (n1);
+  \end{tikzpicture}, \;
+  - h_2^2 N_f\sum_{\mathrm{dof}}  \:
+  \begin{tikzpicture}[eft graph]
+    \node[eft node] (n1) {1};
+    \node[eft node] (n2) [position=60 degrees from n1] {1}
+      edge[eft bond] (n1);
+    \node[eft node] (n3) [position=300 degrees from n2] {1}
+      edge[eft bond] (n2);
+  \end{tikzpicture}, \;
+  h_2^3 N_f\sum_{\mathrm{dof}} \:
+  \begin{tikzpicture}[eft graph]
+    \node[eft node] (n1) {1};
+    \node[eft node] (n2) [position=60 degrees from n1] {1}
+      edge[eft bond] (n1);
+    \node[eft node] (n3) [position=300 degrees from n2] {1}
+      edge[eft bond] (n2);
+    \node[eft node] (n4) [position=60 degrees from n3] {1}
+      edge[eft bond] (n3);
+  \end{tikzpicture}, \;
+  - h_2^4 N_f\sum_{\mathrm{dof}} \:
+  \begin{tikzpicture}[eft graph]
+    \node[eft node] (n1) {1};
+    \node[eft node] (n2) [position=60 degrees from n1] {1}
+      edge[eft bond] (n1);
+    \node[eft node] (n3) [position=300 degrees from n2] {1}
+    edge[eft bond] (n2);
+    \node[eft node] (n4) [position=60 degrees from n3] {1}
+      edge[eft bond] (n3);
+    \node[eft node] (n5) [position=300 degrees from n4] {1}
+      edge[eft bond] (n4);
+  \end{tikzpicture} .
+\end{equation}
+%
+It is clear that these four terms follow a common pattern that generates a
+chain. Each of the terms above extend the chain by one node while maintaining a
+common prefactor. By studying the mathematically equivalent formulation, we
+observe that every new link in the chain contributes a factor $h_2 W_{21}$ to
+the term, in addition to the necessary spatial geometry. One can check the other
+terms in the $\kappa^8$ action, e.g.
+%
+\begin{equation}
+  2 h_2^3 N_f^2 \sum_{\mathrm{dof}} \; \Bigg(
+  \begin{tikzpicture}[eft graph]
+    \node[eft node] (n1) {1};
+    \node[eft node] (n2) [position=60 degrees from n1] {1}
+      edge[eft bond, bend left=30]  (n1)
+      edge[eft bond, bend right=30] (n1);
+    \node[eft node] (n3) [position=300 degrees from n2] {1}
+      edge[eft bond] (n2);
+  \end{tikzpicture} - 
+  \begin{tikzpicture}[eft graph]
+    \node[eft node] (n1) {1};
+    \node[eft node] (n2) [position=60 degrees from n1] {2}
+      edge[eft bond, bend left=30]  (n1)
+      edge[eft bond, bend right=30] (n1);
+    \node[eft node] (n3) [position=300 degrees from n2] {1}
+      edge[eft bond] (n2);
+  \end{tikzpicture} \Bigg), \;
+  -2 h_2^4 N_f^2 \sum_{\mathrm{dof}} \; \Bigg(
+  \begin{tikzpicture}[eft graph]
+    \node[eft node] (n1) {1};
+    \node[eft node] (n2) [position=60 degrees from n1] {1}
+      edge[eft bond, bend left=30]  (n1)
+      edge[eft bond, bend right=30] (n1);
+    \node[eft node] (n3) [position=300 degrees from n2] {1}
+      edge[eft bond] (n2);
+    \node[eft node] (n4) [position=60 degrees from n3] {1}
+      edge[eft bond] (n3);
+  \end{tikzpicture} - 
+  \begin{tikzpicture}[eft graph]
+    \node[eft node] (n1) {1};
+    \node[eft node] (n2) [position=60 degrees from n1] {2}
+      edge[eft bond, bend left=30]  (n1)
+      edge[eft bond, bend right=30] (n1);
+    \node[eft node] (n3) [position=300 degrees from n2] {1}
+      edge[eft bond] (n2);
+    \node[eft node] (n4) [position=60 degrees from n3] {1}
+      edge[eft bond] (n3);
+  \end{tikzpicture} \Bigg),
+\end{equation}
+%
+all follow the this pattern. The conjecture is then that every singly connected
+node, namely every factor $W_{11}$, can be extended to a chain of arbitrary
+length, and that these terms will appear in a predictable form at higher orders.
+The chain resummation can schematically be represented as
+%
+\begin{equation} \label{eq:chain_schematic}
+  \tikz[midtikz] \node[inner sep=0pt] (fig) {\includegraphics[scale=1.05]{resummation_schematic}};\;,
+\end{equation}
+%
+in which $\mathcal{C}_0$ represents and arbitrary unsummed term with $m$ singly
+connected nodes (\emph{open ends}), and $\mathcal{C}_n$ represents the same term
+where the $m$ opens ends have been extended a combined total of $n$ times. We
+then sum over the extension $n$ of the $m$ open ends which will result in a
+replacement of all open ends
+%
+\begin{equation} \label{eq:chain_subst}
+  W_{11}(x) \to W_{11}(x) \sum_{n=0}^{\infty} \mathcal{G}(\{x_n\}) \prod_{i=1}^{n} (-h_2) W_{21}(x_i).
+\end{equation}
+%
+The factor $\mathcal{G}(\{x_n\})$ represents the geometry of the chain, which we
+will later embed onto the polymer linked cluster expansion developed in the
+previous section. Before this point we need to review the mathematical structure
+of the resummation, and its origin.
+
+\subsubsection{Combinatorial analysis}
+
+We already introduced the combinatorics of the cold and dense regime in
+\secref{sec:combinatorics}, which we will build upon in this section. The first
+observation we need to make is the types of terms before the spatial gauge link
+integrals that contribute to the chain. We will simply state the general pattern
+here and prove it later. We define an \emph{open end} to consist of two
+consecutive hops that form a pair, such as $1 \, 1$. When we introduced the
+pairing notation we used the sixth order single trace as an example, which can
+appear in three combinations (as in \meqref{eq:pmpmpm_pairing})
+%
+\begin{equation}
+  \tr \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
+    {1 \& 1 \& 2 \& 2 \& 3 \& 3 \\};, \hskip.5cm
+  \tr \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
+    {1 \& 2 \& 3 \& 3 \& 2 \& 1 \\};, \hskip.5cm
+  \tr \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
+    {1 \& 2 \& 3 \& 1 \& 2 \& 3 \\};.
+\end{equation}
+%
+The first term has three open ends, the second has two open ends (including cyclic
+permutations), while the final term has no open ends. An extension of the chain
+is obtained by inserting a new pair in between an already existing open end.
+Instead of the quark then hopping forth and directly back again, it will take a
+detour through this new position
+%
+% TODO: Check notation consistency (positions)
+\begin{subequations}
+  \begin{align}
+    \dots
+    \tikz[baseline=-3pt]
+      \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&] {1 \& 1 \\};
+    \hspace{.25cm}
+    &\tikz
+      \draw[->,>=stealth] (0,0) -- +(1cm,0); \hspace{.3cm}
+    \dots \: W_{11}(\vec{x}), \\
+    \dots
+    \tikz[baseline=-3pt]
+      \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&] {1 \& 2 \& 2 \& 1 \\};
+    \hspace{.25cm}
+    &\tikz
+      \draw[->,>=stealth] (0,0) -- +(1cm,0); \hspace{.3cm}
+    \dots \: W_{21}(\vec{x}) W_{11}(\vec{x} + i), \\
+    \dots
+    \tikz[baseline=-3pt]
+      \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&] {1 \& 2 \& 3 \& 3\& 2 \& 1 \\};
+    \hspace{.25cm}
+    &\tikz
+      \draw[->,>=stealth] (0,0) -- +(1cm,0); \hspace{.3cm}
+    \dots \: W_{21}(\vec{x}) W_{21}(\vec{x} + i) W_{11}(\vec{x} + i + j).
+  \end{align}
+\end{subequations}
+%
+The prefactors of terms in this resummation can be calculated from symmetry
+arguments.  Assume that we know the symmetry prefactor $1/g$ of a term with $N$
+open ends.  Extending one of these can be done in $N/g$ distinct ways, which all
+break the previous symmetry. The sum of all such insertions thus have a
+prefactor of $N/g$ which is $N$ times that of the base diagram.
+However, instead of counting the number of these permutations, one can make the
+observation that the problem is equivalent to distributing $n$ indistinguishable
+objects to $N$ distinguishable bins. This is assuming that extending any of the
+chains give the same result. This is obviously not true in general, as they
+result in different geometric objects, however, when we later embed these
+objects onto the linked cluster expansion we will only consider the embeddings
+in which this discrepancy is irrelevant. In this special case the new symmetry
+factor from extending a graph with a symmetry factor $1/g$ with $N$ open ends by
+$n$ links is
+%
+\begin{equation} \label{eq:resummed_symmetry}
+  \frac{1}{g'} = \frac{1}{g} \binom{N - 1 + n}{n}\;.
+\end{equation}
+%
+% TODO: Reformulate
+This is also only true if we consider a \emph{root graph}, which is any graph
+that does not appear as an extension to any other lower order graph. This is
+however not a problem as long as we carry out the resummation on an order by
+order basis. With this in place we will carry out the gauge integrals
+recursively on a chain matrix to show that the above mentioned expression does
+indeed appear. As argued, the chain can be expressed as
+%
+\begin{equation}
+  \tikz[baseline=-3pt]
+    \matrix [
+      matrix of math nodes,
+      inner sep=1.5pt,
+      ampersand replacement=\&
+    ] {X \& 1 \& 2 \& 3 \& 4 \& \dots \& n \& n \& \dots \& 4 \& 3 \& 2 \& 1 \\};,
+\end{equation}
+%
+where $X$ represents the remainder of the term, which may or may not include
+additional open ends, and or chains. Since the expression has a recursive
+structure it is natural to define the matrices $G_n$ so that
+%
+\begin{equation}
+  \begin{tikzpicture}[baseline={([yshift=-.65ex] nodes.center)}]
+    \matrix (nodes) [
+      matrix of math nodes,
+      inner sep=1.5pt,
+      ampersand replacement=\&
+    ] {1 \& 2 \& 3 \& 4 \& \dots \& n \& n \& \dots \& 4 \& 3 \& 2 \& 1 \\};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+    ]
+      ([yshift=-.2cm]nodes-1-1.south west) -- ([yshift=-.2cm]nodes-1-12.south east)
+      node[midway,below=5pt] {$G_n$};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        amplitude=5pt
+      },
+    ]
+      ([yshift=.2cm]nodes-1-2.north west) -- ([yshift=.2cm]nodes-1-11.north east)
+      node[midway,above=5pt] {$G_{n-1}$};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+    ]
+      ([yshift=-1.1cm]nodes-1-3.south west) -- ([yshift=-1.1cm]nodes-1-10.south east)
+      node[midway,below=5pt] {$G_{n-2}$};
+  \end{tikzpicture}\; .
+\end{equation}
+%
+The matrix $G_n$ is then defined in terms of $G_{n-1}$. In
+\secref{sec:combinatorics} we saw that the static propagator in the cold dense
+limit had the approximate expression \meqref{eq:leading_order_static_prop},
+meaning that the effecitve hopping matrices take the form
+%
+\begin{alignat}{99}
+  P^{ab}_{\alpha\beta}(y,x) &= \kappa \Big(\frac{1+\gamma_0}{2}\Big)_{\alpha\gamma} K^{ac}_{\vec{x}}(t_y,t_x)
+    \sum_{i=1}^3  (1+\gamma_i)_{\gamma\beta} U_{\vec{x},i}^{cb} &&\delta_{\vec{y},\vec{x}+i} \\
+  M^{ab}_{\alpha\beta}(y,x) &= \kappa \Big(\frac{1+\gamma_0}{2}\Big)_{\alpha\gamma} K^{ac}_{\vec{x}}(t_y,t_x)
+    \sum_{i=1}^3  (1-\gamma_i)_{\gamma\beta} U^{\dagger,cb}_{\vec{x},i} &&\delta_{\vec{y},\vec{x}-i}
+\end{alignat}
+%
+where we have shortened the $K^+$ notation for the brevity. Colour indices are
+denoted by Roman characters, while the Driac indices are symbolised by Greek
+letters. We also saw in \secref{sec:dirac_indices} that the Dirac trace is
+somewhat trivial. The colour matrix content to enter the integrals is thus
+%
+\begin{equation}
+  K^{ac}_{\vec{x}}(t_y,t_x) U^{cb}_{\vec{x},i}, \hskip.5cm\text{and}\hskip.5cm
+  K^{ac}_{\vec{x}}(t_y,t_x) U^{\dagger{}, cb}_{\vec{x},i}.
+\end{equation}
+%
+We are now ready to evaluate the colour integrals over the matrix $G_n$
+%
+\begin{align}
+  G_{n}^{af}(t_1,t_2;\vec{x}_0) &= 2 \kappa^2 \sum_{i_0,t_3} \int \mathrm{d} U_{\vec{x}_0,i_0}(t_2) \;
+    K_{\vec{x}_0}^{ab}(t_1,t_2)U_{\vec{x}_0,i_0}^{bc}(t_2) \nonumber \\
+    &\hspace{3cm}\times G_{n-1}^{cd}(t_2,t_3;\vec{x}_0+i_0) K^{de}_{\vec{x}_0+i_0}(t_3,t_2)
+    U_{\vec{x}_0,i_0}^{\dagger,ef}(t_2) \nonumber\\
+  &= \frac{2 \kappa^2}{N_c} \sum_{i_0,t_3} K_{\vec{x}_0}^{ab}(t_1,t_2) G_{n-1}^{cd}(t_2,t_3;\vec{x}_0+i)
+    K^{de}_{\vec{x}_0+i}(t_3,t_2) \delta_{ce}\delta_{bf} \nonumber\\
+  &= \frac{2 \kappa^2}{N_c} \sum_{i_0,t_3} K_{\vec{x}_0}^{af}(t_1,t_2) \tr_c \big[ G_{n-1}(t_2,t_3;\vec{x}_0+i)
+    K_{\vec{x}_0+i}(t_3,t_2) \big] \;.\label{eq:chain_integral}
+\end{align}
+%
+The coordinate $\vec{x}_0$ is the coordinate of the beginning of the chain, and
+we see that we have a recursive structure for these spatial positions as we move
+on the chain $\vec{x}_{m+1} = \vec{x}_m + i_m$. We use the above equation to
+define $G_{n-1}$ in terms of $G_{n-2}$
+%
+\begin{equation}
+  G_{n-1}^{ab}(t_2,t_3;\vec{x}_1) = \frac{2 \kappa^2}{N_c} \sum_{i_1,t_4} K_{\vec{x}_1}^{ab}(t_2,t_3)
+    \tr_c \big[ G_{n-2}(t_3,t_4;\vec{x}_2) K_{\vec{x}_2}(t_4,t_3) \big]\;.
+\end{equation}
+%
+We insert the expression for $G_{n-1}$ into the one for $G_n$, and get
+%
+\begin{multline}
+  G_{n}^{af}(t_1,t_2;\vec{x}_0)
+    = \bigg(\frac{2 \kappa^2}{N_c}\bigg)^2
+      \sum_{t_3,t_4} \sum_{i_0,i_1} K_{\vec{x}_0}^{af}(t_1,t_2)
+      \tr_c \big[ G_{n-2}(t_3,t_4;\vec{x}_2) K_{\vec{x}_2}(t_4,t_3) \big] \\
+  \times
+  \begin{tikzpicture}[baseline={([yshift=-.5ex] trace.center)}]
+    \node[inner sep=0pt] (trace) {%
+      $\tr_c \big[ K_{\vec{x}_1}(t_2,t_3) K_{\vec{x}_1}(t_3,t_2)\big]$};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+    ]
+      ([yshift=-.2cm]trace.south west) -- ([yshift=-.2cm]trace.south east)
+      node[midway,below=5pt] {$-\frac{1}{2}\,W_{21}(\vec{x}_1)$};
+  \end{tikzpicture} \,.
+\end{multline}
+%
+We see that the structure of $G_{n}$ stays the same after one step of the
+recursion, except for a factor of $W_{21}$ as well as sums over new degrees of
+freedom. The recursion ends at $G_1$, which is the open end of the chain, and is
+given by a consecutive, paired hop
+%
+\begin{align}
+  G_{1}^{ae}(\tau_1,\tau_2;\vec{x}_n) &=
+    2 \kappa^2 \sum_{i_n} \int \mathrm{d} \vec{U}_{\vec{x}_n,i_n} \, K^{ab}_{\vec{x}_n}(t_1,t_2)
+    U_{\vec{x}_n,i_n}^{bc}(t_2) K^{cd}_{\vec{x}_{n+1}}(t_2,t_2)
+    U_{\vec{x}_n,i_n}^{\dagger,de}(t_2) \nonumber \\
+  &= \frac{2 \kappa^2}{N_c} \sum_{i_n}K^{ae}_{\vec{x}_n}(t_1,t_2)
+  \begin{tikzpicture}[baseline={([yshift=-.5ex] trace.center)}]
+    \node[inner sep=0pt] (trace) {%
+      $\tr_c \big[ K_{\vec{x}_{n+1}}(t_2,t_2) \big]$};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+    ]
+      ([yshift=-.2cm]trace.south west) -- ([yshift=-.2cm]trace.south east)
+      node[midway,below=5pt] {$\frac{1}{2} W_{11}(\vec{x}_{n+1})$};
+  \end{tikzpicture} \,.
+\end{align}
+%
+Recursively inserting the expressions for the $G_{m}$ matrices we obtain a final
+result for the full chain matrix
+%
+\begin{multline}
+  G_{n}^{ab}(t_1,t_2;\vec{x}_0) =
+    K_{\vec{x}_0}^{ab}(t_1,t_2) \bigg(\frac{2 \kappa^2}{N_c}\bigg)^n
+    \sum_{\substack{t_3,t_4,\\\dots,t_{n+1}}}
+    \sum_{\substack{i_0,i_1,\\\dots,i_n}}
+      W_{11}(\vec{x}_{n+1}) \prod_{k=2}^{n} \big(-W_{21}(\vec{x}_k)\big) \\
+  =K_{\vec{x}_0}^{ab}(t_1,t_2) \bigg(\frac{2 \kappa^2}{N_c}\bigg)^n 
+  N_{t}^{n-1} \sum_{\substack{i_0,i_1,\\\dots,i_n}}
+    W_{11}(\vec{x}_{n+1}) \prod_{k=2}^{n} \big(-W_{21}(\vec{x}_k)\big)\;. \label{eq:full_gn}
+\end{multline}
+%
+The sums over the temporal variables could be trivially evaluated as the
+$W_{nm}$ factors are independent of their time argument.
+
+To tie it all together let us consider a generic contribution which has $N$ open
+ends
+%
+\begin{equation} \label{eq:chain_begin}
+  \mathcal{C}_0 = \frac{1}{g} \tr \big[
+    G_1(t_1,t_2;\vec{x}_1) M_1 G_1 (t_3,t_4;\vec{x}_2) M_2 \cdots
+    G_1 (t_{2N-1},t_{2N};\vec{x}_N) M_N
+  \big]\;,
+\end{equation}
+%
+where the matrices $M_i$ are the rest of the term, comparable to the left hand
+side of \meqref{eq:chain_schematic}. We have only considered a single trace term
+here, however the analysis can be easily extended to multi trace terms as a
+chain can only reside within one fermion trace. Inserting the expression for
+$G_1$ gives
+%
+\begin{multline}
+  \mathcal{C}_0 =
+    \frac{1}{g} \tr \big[
+      K(t_1,t_2;\vec{x}_1) M_1 K(t_3,t_4;\vec{x}_2) M_2
+      \cdots K(t_{2N-1},t_{2N};\vec{x}_N) M_N
+    \big] \\
+  \times \bigg(\frac{\kappa^2}{N_c}\bigg)^N\;\sum_{\mathclap{i_1,i_2,\dots,i_N}}
+    W_{1,1}(\vec{x}_1 + i_1) W_{1,1}(\vec{x}_2 + i_2) 
+    \cdots W_{1,1}(\vec{x}_N + i_N).
+\end{multline}
+%
+We can now attach chains of length $n_i$ to each of the $N$ open ends so that
+the total length of the chain is $n$, corresponding to the right hand side of
+\meqref{eq:chain_schematic}
+%
+\begin{multline}
+  \mathcal{C}_n =
+    \hskip .2cm\sum_{\mathclap{n_1,n_2,\dots,n_N}} \hskip .5cm
+      \frac{1}{g_{\{n_i\}}}
+      \tr \big[
+        G_{n_1 + 1}(t_1,t_2;\vec{x}_1) M_1
+        G_{n_2+1} (t_3,t_4;\vec{x}_2) M_2 \\ 
+        \cdots \times G_{n_N + 1} (t_{2N-1},t_{2N};\vec{x}_N) M_N
+      \big]
+    \delta\Big(\scalemath{0.8}{\sum_{i=1}^N n_i - n}\Big).
+\end{multline}
+%
+This gives a symmetry factor that depends on the partitioning of the attachments
+$\{n_i\}$.  We insert the expression for $G_n$ from \meqref{eq:full_gn}, which
+gives us
+%
+\begin{multline}
+  \mathcal{C}_n =
+    \hskip .2cm\sum_{\mathclap{n_1,n_2,\dots,n_N}} \hskip .5cm
+      \frac{1}{g_{\{n_i\}}}
+      \tr \big[
+        K(t_1,t_2;\vec{x}_1) M_1 K(t_3,t_4;\vec{x}_2) M_2 \cdots
+        K(t_{2N-1},t_{2N};\vec{x}_N) M_N
+      \big]\\
+  \times \bigg(\frac{\kappa^2}{N_c}\bigg)^{N+\mathrlap{n}}
+    N_{t}^n \sum_{\{\vec{x}_i\}} \prod_{j=1}^N W_{1,1}(\vec{x}_{j (n_j+1)})
+    \prod_{k=0}^{n_j} \big(-W_{2,1}(\vec{x}_{j k})\big) \;
+    \delta\Big(\scalemath{0.8}{\sum_{i=1}^N n_i - n}\Big),
+\end{multline}
+%
+where we once more have introduced recursive coordinate vectors
+$\vec{x}_{i(j+1)} = \vec{x}_{ij} + i_{ij}$ which originate from the base
+position $\vec{x}_{i0} \equiv \vec{x}_i$. There is a remaining sum over all
+geometries of the extended graphs through the variables $\{\vec{x}_i\}$ which we
+have to examine further.  We see that the base diagram, what is explicitly left
+in the trace, is the same for the term with and without attachments, which is
+the crucial observation necessary for the correctness of the chain resummation.
+
+\subsubsection{Embeddings}
+
+To be able to say anything about the final sum over the chain positions we once
+more turn to the graph- and lattice embeddings. The snaking chain is in no way a
+foreign principle to the LCE, as it is the basic ingredient for cluster
+expansion resummation schemes, which we will analyse further in the next
+section. For now it is enough to know that for every chain graph there exists a
+skeleton graph with the appropriate geometry. For example,
+%
+\begin{equation} \label{eq:skeleton_chains}
+  \tikz[midtikz] \node[inner sep=0pt] (fig) {%
+    \includegraphics[scale=1.05]{valid_skeleton_chains}};\;,
+\end{equation}
+%
+all have the proper geometry to have a chain embedded onto them, assuming that
+\tikz \node[outer 2] {}; denotes a suitable \emph{graph remainder}. The sum over
+all valid skeleton graphs is unfortunately an impossible task, and we will have
+to restrict the analysis to a subset of the graphs we can compute. One such set
+is all graphs where the chain never overlaps with itself, nor the graph
+remainder. We can thus apply this resummation scheme to all embeddings and
+combinations of graphs entering into the full $\mathcal{O}(\kappa^8)$ polymeric
+linked cluster expansion. This includes direct map embeddings such as
+%
+\begin{equation}
+  \input{input/chapter_5/emb_direct_map.tex}\;, 
+\end{equation}
+%
+embeddings where the overlap only appears in sections of the diagram to highest
+order,
+%
+\begin{equation}
+  \input{input/chapter_5/emb_semi_direct.tex}\;, 
+\end{equation}
+%
+and finally multi-diagram embeddings with free ends
+%
+\begin{equation}
+  \input{input/chapter_5/emb_multi_graph.tex}\;.
+\end{equation}
+%
+We have introduced the symbol
+\,\tikz \node[resum node,scale=1.6] {};\, to indicate a resummed open end in our
+diagrammatic representation. For this subset of all possible embeddings of the
+chain, the integrals, embedding factors and symmetry factors can be computed.
+
+We finish the computation of the resummed graph $\mathcal{C}_n$ with this
+restricted set of embeddings, and label this set $\mathcal{C}_n^*$. The total
+symmetry factor after summing over the extension partitions $\{n_i\}$ are
+exactly the ones we argued for in \meqref{eq:resummed_symmetry}
+%
+\begin{equation}
+  \sum_{\mathclap{n_1,n_2,\dots,n_N}}  \hskip .5cm \frac{1}{g_{\{n_i\}}} = \frac{1}{g} \binom{N-1+n}{n}\;.
+\end{equation}
+%
+The spatial integral over the $\mathcal{C}_n^*$ is
+%
+\begin{multline}
+  \int [\mathrm{d} U]_0 \, \mathcal{C}_n^*
+  = \frac{1}{g} \binom{N-1+n}{n} \Omega \int [\mathrm{d} U]_0 \, \det{}^{N_f}\big[Q_{\mathrm{stat}}\big]
+    \tr \big[ K_1 M_1 K_2 M_2 \cdots K_N M_N  \big] \\
+  \times \bigg(\frac{2d \kappa^2}{N_c}\int [\mathrm{d} U]_0 \,
+    \det{}^{N_f}\big[Q_{\mathrm{stat}}\big] W_{11}\bigg)^N
+  \bigg(\minus{}\frac{2d \kappa^2N_{\tau}}{N_c}\int [\mathrm{d} U]_0 \,
+      \det{}^{N_f}\big[Q_{\mathrm{stat}}\big] W_{21}\bigg)^{\mathrlap{n}}\;.
+\end{multline}
+%
+Here $\Omega$ is the embedding factor of the base diagram, and every new node in
+the chain will contribute with a lattice embedding of $(2d)$ as discussed in
+\secref{sec:classical_lce_nn}. The integrals over $W_{11}$ and $W_{21}$ is
+nothing but the previously defined $z$-functions. Finally we sum over the total
+length of the attachments $n$
+%
+\begin{multline}
+  \sum_{n=0}^{\infty} \int [\mathrm{d} U]_0 \mathcal{C}_n^*
+    = \frac{1}{g} \int [\mathrm{d} U]_0 \bar{\mathcal{C}}_0^*\:
+    \Big(\frac{(2d) \kappa^2}{N_c} z_{(11)}\Big)^N
+    \sum_{n=0}^{\infty} \binom{N-1+n}{n} \big(-(2d) h_2\, z_{(21)}\big)^n \\
+  = \frac{1}{g} \int [\mathrm{d} U]_0 \bar{\mathcal{C}}_0^*\:
+  \bigg(\frac{(2d) \kappa^2}{N_c} \frac{z_{(11)}}{1 + (2d) h_2\, z_{(21)}} \bigg)^{\mathrlap{N}}.
+\end{multline}
+%
+To highlight the substitution we have extracted the open ends from the base
+graph $\mathcal{C}_0$, and named the remainder $\bar{\mathcal{C}}_0$. This final
+equation proves the resummation identity in \meqref{eq:chain_subst}. At the
+linked cluster level we make the substitution
+%
+\begin{equation}
+  z_{(11)} \hskip .1cm\to\hskip .1cm \frac{z_{(11)}}{1 + (2d) h_2\, z_{(21)}},
+\end{equation}
+%
+at an order by order level, making sure we remove the appropriate higher order
+graphs this resummation predicts. A demonstration of the convergence power of
+resummation is shown in \figref{fig:resummation_demonstration} (left), where we
+have plotted the contribution to the baryon number density of the single chain,
+single graph terms. We plot the full result up the highest known order as well
+as higher order truncated results from the resummation formula, and the resummed
+result itself. We see that the different orders diverge to $\pm \infty$ at some
+point at increasing values of $h_2$ while the full resummed result stays under
+control.
+
+\begin{figure}
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics{resummed_nb_test_single_chain}
+      \includegraphics{M_cumulants}
+    \end{adjustbox}
+  \end{center}\vskip -.6cm
+  \caption{Left: Known and predicted contributions to baryon number density for
+  a single chain single graph embedding. Right: The $M$-cumulants as a function
+  of $h_1$ for three different embedding types.}
+  \label{fig:resummation_demonstration}
+\end{figure}
+
+Finally, the systematic errors introduced by the resummation need to be
+discussed. In the resummation scheme we chose a specific embedding for the
+higher order graphs while neglecting other embeddings at the same order. Due to
+the nature of the method of moments and cumulants this results in a slight
+overcounting of the number of terms as the embedding factor $(2d)^n$ will
+naturally include geometries that overlap with itself. One possible way to
+rectify this is to change the embedding factor to the correct one, given by the
+theory of the \emph{Self-Avoiding Walk} see e.g. \citep{Rensburg:2009jpa} for a
+review. This is however not the preferred aproach as it would spoil the nice
+properties of the cluster expansion. We rather regard the cumulants as the
+primitive objects of the theory, for which the embedding factor is correct. One
+might then study the amplitude of the corrections appearing at the same orders
+as the chain elements. In \figref{fig:resummation_demonstration} (right) we plot
+the value of three cumulants as a function of of their primary variable, $h_1$.
+We see that the free value is for all values of $h_1$ at least one order of
+magnitude higher than its overlapping counterparts. This behaviour is due to the
+fact that the integrals
+%
+\begin{equation}
+  \int \mathrm{d} L \, W_{nm}^N, \hskip .5cm\text{and}\hskip .5cm
+  \bigg(\int \mathrm{d} L \, W_{nm} \bigg)^N
+\end{equation}
+%
+are of the same order of magnitude, resulting in cancellations in the cumulants.
+This gives us additional confidence in the resummation, and shows that the
+systematic errors are small.
+
+\subsection{Cluster resummation} \label{sec:cluster_resummation}
+
+\subsection{Ladder resummation} \label{sec:ladder_resummation}
+
+
+\subsection{Results}
+
 \section{Large \texorpdfstring{$N_c$}{Nc} limit} \label{sec:large_nc_study}
 \section{Yang Lee Zeros} \label{sec:yang_lee_zeros}

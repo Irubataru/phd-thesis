@@ -1,3 +1,5 @@
+\usetikzlibrary{shapes.geometric}
+
 % ------------ %
 % graph styles %
 % ------------ %
@@ -65,6 +67,14 @@
   outerouter 3/.style={
     outerouter=ColourHl2,
   },
+  resum node/.style={
+    %fill=ColourDark2,
+    fill=ColourHl2,
+    regular polygon,
+    regular polygon sides=6,
+    inner sep=0pt,
+    minimum size=5pt
+  },
 }
 
 % ----------- %
@@ -87,6 +97,26 @@
   bond 3/.style={
     bond default,
     ColourHl2,
+  },
+}
+
+% ----------------------- %
+% Effective theory styles %
+% ----------------------- %
+
+\tikzset{
+  eft node/.style={
+    black, thick,
+    circle, draw,
+    inner sep=2pt,
+    scale=0.75,
+  },
+  eft bond/.style={
+    thick,
+  },
+  eft graph/.style={
+    baseline={([yshift=-.5ex]current bounding box.center)},
+    node distance=.5,
   },
 }
 
