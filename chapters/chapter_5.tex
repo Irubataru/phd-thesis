@@ -1693,13 +1693,14 @@ skeleton graph with the appropriate geometry. For example,
 \end{equation}
 %
 all have the proper geometry to have a chain embedded onto them, assuming that
-\tikz \node[outer 2] {}; denotes a suitable \emph{graph remainder}. The sum over
-all valid skeleton graphs is unfortunately an impossible task, and we will have
-to restrict the analysis to a subset of the graphs we can compute. One such set
-is all graphs where the chain never overlaps with itself, nor the graph
-remainder. We can thus apply this resummation scheme to all embeddings and
-combinations of graphs entering into the full $\mathcal{O}(\kappa^8)$ polymeric
-linked cluster expansion. This includes direct map embeddings such as
+\tikz \node[outer 2, fill=ColourHl1] {}; denotes a suitable \emph{graph
+  remainder}. The sum over all valid skeleton graphs is unfortunately an
+impossible task, and we will have to restrict the analysis to a subset of the
+graphs we can compute. One such set is all graphs where the chain never overlaps
+with itself, nor the graph remainder. We can thus apply this resummation scheme
+to all embeddings and combinations of graphs entering into the full
+$\mathcal{O}(\kappa^8)$ polymeric linked cluster expansion. This includes direct
+map embeddings such as
 %
 \begin{equation}
   \input{input/chapter_5/emb_direct_map.tex}\;, 
@@ -1811,7 +1812,7 @@ fact that the integrals
 %
 \begin{equation}
   \int \mathrm{d} L \, W_{nm}^N, \hskip .5cm\text{and}\hskip .5cm
-  \bigg(\int \mathrm{d} L \, W_{nm} \bigg)^N
+  \bigg(\int \mathrm{d} L \, W_{nm} \bigg)^N,
 \end{equation}
 %
 are of the same order of magnitude, resulting in cancellations in the cumulants.
@@ -1819,6 +1820,170 @@ This gives us additional confidence in the resummation, and shows that the
 systematic errors are small.
 
 \subsection{Cluster resummation} \label{sec:cluster_resummation}
+
+As mentioned earlier, the idea of graph level resummation schemes has been
+around for the LCE since its conception \citep[see e.g.][for a review]{Wortis:1980zb}, and
+the same machinery is to some extent applicable here as well. We will
+nonetheless choose a simpler approach to LCE resummations that complements the
+already incorporated chain resummation. In the previous section we analysed how
+to create chains on the level of the effective theory. This is however not the
+only way of creating chains. Instead of extending the base diagrams at the
+pre-integral level, one can create chains with the LCE ingredients themselves. For
+example a chain of lowest order nearest neighbour interactions
+%
+\begin{equation}
+  \begin{tikzpicture}[graph style]
+    \node[outer 2,fill=ColourHl1] (n1) {};
+    \node[outer 1] (n2) [position=60 degrees from n1] {}
+      edge[bond 1] (n1);
+    \node[inner 1] at (n2) {};
+    \node[outer 1] (n3) [position=300 degrees from n2] {}
+      edge[bond 1] (n2);
+    \node[inner 1] at (n3) {};
+    \node[inner sep=2pt,circle,draw,thin,densely dotted] (n4) [position=60 degrees from n3] [scale=0.5] {$\cdots$}
+      edge[bond 1] (n3);
+    \node[outer 1] (n5) [position=300 degrees from n4] {}
+      edge[bond 1] (n4);
+    \node[inner 1] at (n5) {};
+    \node[outer 1] (n6) [position=60 degrees from n5] {}
+      edge[bond 1] (n5);
+    \node[inner 1] at (n6) {};
+    \node[outer 1] (n7) [position=300 degrees from n6] {}
+      edge[bond 1] (n6);
+    \node[inner 1] at (n7) {};
+    \node[inner sep=2pt,circle,draw,thin,densely dotted] (n8) [position=60 degrees from n7] [scale=0.5] {$\cdots$}
+      edge[bond 1] (n7);
+    \node[outer 1] (n9) [position=300 degrees from n8] {}
+      edge[bond 1] (n8);
+    \node[inner 1] at (n9) {};
+    \node[outer 1] (n10) [position=60 degrees from n9] {}
+      edge[bond 1] (n9);
+    \node[inner 1] at (n10) {};
+    \node[outer 1] (n11) [position=300 degrees from n10] {}
+      edge[bond 1] (n10);
+    \node[inner 1] at (n11) {};
+  \end{tikzpicture}
+\end{equation}
+%
+Further improvements is gained by mixing the two expansion schemes and extending
+every open end by all combinations of chain segments resulting in a chain of a
+certain length
+%
+\begin{equation}
+  \begin{tikzpicture}[graph style, baseline={([yshift=.5ex] n1.center)}]
+    \node[outer 2,fill=ColourHl1] (n1) {};
+    \node[inner 1] (n2) [position=60 degrees from n1] {}
+      edge[bond 1] (n1);
+    \node[inner 1] (n3) [position=300 degrees from n2] {}
+      edge[bond 1] (n2);
+    \node[inner sep=2pt,circle,draw,thin,densely dotted] (n4) [position=60 degrees from n3] [scale=0.5] {$\cdots$}
+      edge[bond 1] (n3);
+    \node[outer 2] (n5) [position=300 degrees from n4] {}
+      edge[bond 1] (n4);
+    \node[inner 1] at (n5) {};
+    \node[inner 2] (n6) [position=60 degrees from n5] {}
+      edge[bond 2] (n5);
+    \node[inner 2] (n7) [position=300 degrees from n6] {}
+      edge[bond 2] (n6);
+    \node[inner sep=2pt,circle,draw,thin,densely dotted] (n8) [position=60 degrees from n7] [scale=0.5] {$\cdots$}
+      edge[bond 2] (n7);
+    \node[inner 3] (n9) [position=300 degrees from n8] {}
+      edge[bond 3] (n8);
+    \node[inner 3] (n10) [position=60 degrees from n9] {}
+      edge[bond 3] (n9);
+    \node[inner 3] (n11) [position=300 degrees from n10] {}
+      edge[bond 3] (n10);
+
+    \draw [
+      decorate,
+      line width=1.0pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+    ]
+      ([yshift=-.2cm] n1.center) -- ([yshift=-.2cm] n5.center)
+      node[midway,below=7.5pt,scale=0.65] {chain $1$};
+
+    \draw [
+      decorate,
+      line width=1.0pt,
+      decoration={
+        brace,
+        amplitude=5pt
+      },
+    ]
+      ([yshift=.3cm] n4.center -| n5.center) -- ([yshift=.3cm] n8.center)
+      node[midway,above=7.5pt,scale=0.65] {chain $2$};
+
+    \draw [
+      decorate,
+      line width=1.0pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+    ]
+      ([yshift=-.2cm] n9.center -| n8.center) -- ([shift={(2pt,-.2cm)}] n11.center)
+      node[midway,below=7.5pt,scale=0.65] {chain $m$};
+
+  \end{tikzpicture}
+\end{equation}
+%
+This can most easily be achieved by partitioning a chain into $m \in [1,n]$
+smaller chains . E.g. one such partition with $m = 4$, $n = 6$, is
+%
+\begin{equation}
+  \begin{tikzpicture}[graph style,node distance=0.5,baseline={([yshift=-.5ex]n0.center)}]
+    \node[outer 2, fill=ColourHl1] (n0) {};
+    \foreach \x in {1,...,6} {%
+      \pgfmathparse{\x-1}
+      \edef\y{\pgfmathresult}
+      \node[inner 1] (n\x) [right=of n\y] {}
+        edge[bond 1] (n\y);
+    }
+    \draw[{Stealth[round]}-,thick] ([yshift=-.2cm] n2.center) -- +(0,-.4cm);
+    \draw[{Stealth[round]}-,thick] ([yshift=-.2cm] n3.center) -- +(0,-.4cm);
+    \draw[{Stealth[round]}-,thick] ([yshift=-.2cm] n5.center) -- +(0,-.4cm);
+  \end{tikzpicture}
+  \hskip .5cm\to\hskip .5cm
+  \begin{tikzpicture}[graph style,node distance=0.5,baseline={([yshift=-.5ex]n0.center)}]
+    \node[outer 2, fill=ColourHl1] (n0) {};
+    \node[inner 1] (n1) [right=of n0] {}
+      edge[bond 1] (n0);
+    \node[inner 1] (n2i) [right=of n1] {};
+    \node[outer 2] (n2) at (n2i) {}
+      edge[bond 1] (n1);
+    \node[inner 2] (n3i) [right=of n2] {};
+    \node[outer 3] (n3) at (n3i) {}
+      edge[bond 2] (n2);
+    \node[inner 3] (n4) [right=of n3] {}
+      edge[bond 3] (n3);
+    \node[inner 3] (n5i) [right=of n4] {};
+    \node[outer 4] (n5) at (n5i) {}
+      edge[bond 3] (n4);
+    \node[inner 4] (n6) [right=of n5] {}
+      edge[bond 4] (n5);
+  \end{tikzpicture} \;.
+\end{equation}
+%
+Every cut in the chain will replace a $-h_2 W_{21}$ in the chain formula by a
+factor $-2 h_2 N_f W_{(11)^2}$, and $m$ replacements on a $n$ long chain can be
+done in $\binom{n}{m}$ ways. The combined cluster and chain resummation formula
+is therefore summarised as the replacement
+%
+\begin{multline}
+  z_{(11)} \hskip .2cm\to\hskip .2cm z_{(11)} \sum_{n=0}^{\infty} 
+    \sum_{m=0}^{n} \binom{n}{m} (-(2d)h_2)^{n+m}\, z_{(21)}^n\, (N_f z_{(11)^2})^m \\
+  = \frac{z_{(11)}}{1 + 2 (2d) h_2 N_f\, z_{(11)^2} + (2d) h_2\, z_{(21)}}.
+\end{multline}
+%
+As this is only a fraction of the full LCE resummation scheme, further
+improvements are expected to appear as one eventually crancks the machinery.
+However this particular subset of cluster resummations synergise well with the
+already developed chain resummation.
 
 \subsection{Ladder resummation} \label{sec:ladder_resummation}
 

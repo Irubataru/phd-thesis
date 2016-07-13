@@ -10,12 +10,12 @@
 \begin{document}
   \begin{tikzpicture}[graph style]
     \begin{scope}
-      \node[outer 2] (n1) {};
+      \node[outer 2, fill=ColourHl1] (n1) {};
       \node[skeleton node] (n2) [position=60 degrees from n1] {}
         edge[skeleton bond] (n1);
       \node[skeleton node] (n3) [position=300 degrees from n2] {}
         edge[skeleton bond] (n2);
-      \node[inner sep=2pt,circle] (n4) [position=60 degrees from n3] [scale=0.5] {$\cdots$}
+      \node[inner sep=2pt,circle,draw,thin,densely dotted] (n4) [position=60 degrees from n3] [scale=0.5] {$\cdots$}
         edge[skeleton bond] (n3);
       \node[skeleton node] (n5) [position=300 degrees from n4] {}
         edge[skeleton bond] (n4);
@@ -23,7 +23,7 @@
         edge[skeleton bond] (n5);
       \node[skeleton node] (n7) [position=300 degrees from n6] {}
         edge[skeleton bond] (n6);
-      \node[inner sep=2pt,circle] (n8) [position=60 degrees from n7] [scale=0.5] {$\cdots$}
+      \node[inner sep=2pt,circle,draw,thin,densely dotted] (n8) [position=60 degrees from n7] [scale=0.5] {$\cdots$}
         edge[skeleton bond] (n7);
       \node[skeleton node] (n9) [position=300 degrees from n8] {}
         edge[skeleton bond] (n8);
@@ -33,19 +33,21 @@
         edge[skeleton bond] (n10);
     \end{scope}
     \begin{scope}[xshift=4cm]
-      \node[outer 2] (n1) {};
+      \node[outer 2, fill=ColourHl1] (n1) {};
       \node[skeleton node] (n2) [position=60 degrees from n1] {}
         edge[skeleton bond] (n1);
       \node[skeleton node] (n3) [position=300 degrees from n2] {}
         edge[skeleton bond] (n2);
-      \node[inner sep=2pt,circle] (n4) [position=60 degrees from n3] [scale=0.5] {$\cdots$}
+      \node[inner sep=2pt,circle,draw,thin,densely dotted] (n4)
+        [position=60 degrees from n3] [scale=0.5] {$\cdots$}
         edge[skeleton bond] (n3);
       \node[skeleton node] (n5) [node distance=.4,position=350 degrees from n4] {}
         edge[skeleton bond] (n4);
       \node[skeleton node] at (n3 -| n5) {}
         edge[skeleton bond,bend right=45] (n5)
         edge[skeleton bond,bend left=45]  (n5);
-      \node[inner sep=2pt,circle] (n8) [node distance=.4,position=10 degrees from n5] [scale=0.5] {$\cdots$}
+      \node[inner sep=2pt,circle,draw,thin,densely dotted] (n8)
+        [node distance=.4,position=10 degrees from n5] [scale=0.5] {$\cdots$}
         edge[skeleton bond] (n5);
       \node[skeleton node] (n9) [position=300 degrees from n8] {}
         edge[skeleton bond] (n8);
@@ -55,12 +57,12 @@
         edge[skeleton bond] (n10);
     \end{scope}
     \begin{scope}[xshift=8cm]
-      \node[outer 2] (n1) {};
+      \node[outer 2, fill=ColourHl1] (n1) {};
       \node[skeleton node] (n2) [position=60 degrees from n1] {}
         edge[skeleton bond] (n1);
       \node[skeleton node] (n3) [position=300 degrees from n2] {}
         edge[skeleton bond] (n2);
-      \node[inner sep=2pt,circle] (n4) [position=60 degrees from n3] [scale=0.5] {$\cdots$}
+      \node[inner sep=2pt,circle,draw,thin,densely dotted] (n4) [position=60 degrees from n3] [scale=0.5] {$\cdots$}
         edge[skeleton bond] (n3);
       \node[skeleton node] (n5) [position=300 degrees from n4] {}
         edge[skeleton bond] (n4);
@@ -68,7 +70,7 @@
         edge[skeleton bond] (n5);
       \node[skeleton node] (n7) [position=300 degrees from n6] {}
         edge[skeleton bond] (n6);
-      \node[inner sep=2pt,circle] (n8) [position=60 degrees from n7] [scale=0.5] {$\cdots$}
+      \node[inner sep=2pt,circle,draw,thin,densely dotted] (n8) [position=60 degrees from n7] [scale=0.5] {$\cdots$}
         edge[skeleton bond] (n7);
       \node[skeleton node] (n9) [position=300 degrees from n8] {}
         edge[skeleton bond] (n8);
