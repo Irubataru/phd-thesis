@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+  every axis plot/.append style={
+    smooth,
+    line width=1.0pt,
+    samples=50,
+    domain=0:1,
+  }
+}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$h_1$},
+      ylabel={$z_{(11)^5}$},
+      xmin=0.6, xmax=1.0,
+      ymin=-100, ymax=700,
+      scaled ticks=false,
+      ticklabel style={
+        scale=0.7,
+      },
+      xticklabel style={
+        /pgf/number format/precision=2,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      y post scale=0.85
+    ]
+    \addplot[ColourBase,dashed] {%
+      25*x^6 + 410*x^9 - 338*x^12 - 139*x^15 + 960*x^18 - 2100*x^21 - 60*x^24 + 210*x^27 - 90*x^30
+    };
+    \label{trunc:4}
+
+    \addplot[ColourHl1,dashed] {%
+      25*x^6 + 420*x^9 + 342*x^12 + 421*x^15 + 420*x^18 + 300*x^21 + 2100*x^24 + 540*x^27 + 120*x^30 + 30*x^33
+    };
+    \label{trunc:5}
+
+    \addplot[ColourHl2,dashed] {%
+      25*x^6 + 420*x^9 + 222*x^12 - 79*x^15 + 20*x^18 - 300*x^24 - 2100*x^27 - 540*x^30
+    };
+    \label{trunc:6}
+
+    \addplot[ColourHl3,dashed] {%
+      25*x^6 + 420*x^9 + 222*x^12 +x^15 + 300*x^27 + 2100*x^30 + 540*x^33
+    };
+    \label{trunc:7}
+
+    \addplot[ColourHl1,dashdotted] {%
+      25*x^6 + 420*x^9 + 222*x^12 +x^15 - 300*x^30 - 2100*x^33 - 540*x^36
+    };
+    \label{trunc:8}
+
+    \addplot[ColourBase,dashdotted] {%
+      25*x^6 + 420*x^9 + 222*x^12 + x^15 + 300*x^33 + 2100*x^36 + 540*x^39
+    };
+    \label{trunc:9}
+
+    \addplot[ColourHl3,dashdotted] {%
+      25*x^6 + 420*x^9 + 222*x^12 + x^15 - 300*x^36 - 2100*x^39 - 540*x^42
+    };
+    \label{trunc:10}
+
+    \addplot[ColourHl2,dashdotted] {%
+      25*x^6 + 420*x^9 + 222*x^12 + x^15 + 300*x^39 + 2100*x^42 + 540*x^45
+    };
+    \label{trunc:11}
+
+    \addplot[ColourDark,line width=1pt] {%
+      25*x^6 + 420*x^9 + 222*x^12 + x^15
+    };
+    \label{trunc:full}
+  
+    \node[anchor=north west,scale=0.8] (leg1) at (rel axis cs: 0.05, 0.975) {
+      \shortstack[l] {%
+        Truncated\\
+        \ref{trunc:4} \, $\mathcal{O}(W^4)$\\
+        \ref{trunc:5} \, $\mathcal{O}(W^5)$\\
+        \ref{trunc:6} \, $\mathcal{O}(W^6)$\\
+        \ref{trunc:7} \, $\mathcal{O}(W^7)$\\
+        \ref{trunc:8} \, $\mathcal{O}(W^8)$\\
+        \ref{trunc:9} \, $\mathcal{O}(W^9)$\\
+        \ref{trunc:10} \, $\mathcal{O}(W^{10})$\\
+        \ref{trunc:11} \, $\mathcal{O}(W^{11})$}};
+
+    \node[scale=0.8] [right=of leg1.north east,anchor=north west] {
+      \shortstack[l] {%
+        \vphantom{Full}\\
+        \ref{trunc:full}\, \scalebox{0.8}{Full}}};
+
+  \end{axis}
+\end{tikzpicture}%
+\end{document} 

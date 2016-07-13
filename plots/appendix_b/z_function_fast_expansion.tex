@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+  every axis plot/.append style={
+    smooth,
+    line width=1.6pt,
+    samples=50,
+    domain=0:1,
+  }
+}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$h_1$},
+      ylabel={$z_{(11)^5}$},
+      xmin=0.6, xmax=1.0,
+      ymin=-100, ymax=700,
+      scaled ticks=false,
+      ticklabel style={
+        scale=0.7,
+      },
+      xticklabel style={
+        /pgf/number format/precision=2,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      y post scale=0.85
+    ]
+
+    \addplot[ColourBase,dashed] {%
+      0
+    };
+    \label{trunc:3}
+
+    \addplot[ColourHl1,dashed] {%
+      25*x^6
+    };
+    \label{trunc:6}
+
+    \addplot[ColourHl2,dashed] {%
+      25*x^6 + 420*x^9
+    };
+    \label{trunc:9}
+
+    \addplot[ColourHl3,dashed] {%
+      25*x^6 + 420*x^9 + 222*x^12
+    };
+    \label{trunc:12}
+
+    \addplot[ColourBase,dashdotted] {%
+      25*x^6 + 420*x^9 + 222*x^12 + x^15
+    };
+    \label{trunc:15}
+
+    \addplot[ColourDark,line width=0.8pt] {%
+      25*x^6 + 420*x^9 + 222*x^12 + x^15
+    };
+    \label{trunc:full}
+  
+    \node[anchor=north west,scale=0.8] (leg1) at (rel axis cs: 0.05, 0.975) {
+      \shortstack[l] {%
+        Truncated\\
+        \ref{trunc:3} \, $\mathcal{O}(h_1^3)$\\
+        \ref{trunc:6} \, $\mathcal{O}(h_1^6)$\\
+        \ref{trunc:9} \, $\mathcal{O}(h_1^9)$\\
+        \ref{trunc:12} \, $\mathcal{O}(h_1^{12})$\\
+        \ref{trunc:15} \, $\mathcal{O}(h_1^{15})$}};
+
+    \node[scale=0.8] [right=of leg1.north east,anchor=north west] {
+      \shortstack[l] {%
+        \vphantom{Full}\\
+        \ref{trunc:full}\, \scalebox{0.8}{Full}}};
+
+  \end{axis}
+\end{tikzpicture}%
+\end{document} 

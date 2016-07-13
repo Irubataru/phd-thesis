@@ -109,3 +109,54 @@ can be easily computed with the methods outlined in \apxref{apxA},
 \end{alignat}
 \end{subequations}
 
+
+\section{Higher order \texorpdfstring{$z$}{z}-functions}
+
+So far we have only encountered $z$-functions of order $\leq 2 N_f$. This has
+the advantage that the resulting integrals over the characters enter only in
+polynomial form. This is due to the fact that the $W_{nm}$ term is
+%
+\begin{equation}
+  W_{nm} = \frac{w_{nm}}{\det{}^n(1 + h_1 W)}
+\end{equation}
+%
+where $w_{nm}$ is a polynomial in the characters. As the denominator enters to
+power $2 N_f$ in the integrand from the static determinant, the resulting
+integral only has polynomials of the characters, which we saw how to solve in
+\apxref{sec:character_integrals}. For higher orders, an expansion is needed.
+The simplest option is to expand the expression for $W_{nm}$ directly
+%
+\begin{equation}
+  W_{nm} = \tr \bigg( \frac{(h_1 W)^m}{(1 + h_1 W)^n} \bigg) = \tr \bigg( (h_1
+  W)^m \sum_{k=0}^{\infty} \binom{k + n - 1}{k} (-h_1 W)^k \bigg)
+\end{equation}
+%
+In this case the expression is a series in $W$, and the higher powers of the $W$
+matrices have to be rewritten to lower order ones using the Caylay-Hamilton
+equation. Using this, a direct computation of $z_{(11)^5}$ has been carried out
+as an example and the order by order results are compared to the full result in
+\figref{fig:z_function_expansions} (left). 
+
+\begin{figure}
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics{z_function_slow_expansion}
+      \includegraphics{z_function_fast_expansion}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{Expansions schemes for the higher order $z$-functions at $N_f = 2$.
+    Left: Direct expansion in the $W$ matrices. Right: Reshuffling of the
+    expansion to a series in $h_1$.}
+  \label{fig:z_function_expansions}
+\end{figure}
+
+Unfortunately, convergence of this series is particularly slow, and it will for
+any order diverge from the correct result at $h_1 = 1$. To amend this, one can
+shuffle the expansion either into a series in the full characters by including
+the lower orders from the static determinant, or one can reorder it into a pure
+expansion in $h_1$, also here taking the already existing orders of the static
+determinant into account. The latter choice is plotted in
+\figref{fig:z_function_expansions} (right), where the improved convergence is
+clearly visible. At $12$\textsuperscript{th} order the expression is almost
+exact, and it reaches the full result at $15$\textsuperscript{th} order. Above
+this order the remainder of the series' coefficients are all zero.
