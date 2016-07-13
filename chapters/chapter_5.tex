@@ -538,8 +538,9 @@ linked cluster contribution has a small effect on the convergence, and that it
 agrees with the results from the simulations.
 
 \begin{figure}
-  {\centering
-    \includegraphics[width=.65\textwidth]{nb_convergence_cluster_Z2}\par}
+  \begin{center}
+    \includegraphics[width=.65\textwidth]{nb_convergence_cluster_Z2}
+  \end{center}
   \caption{Convergence of LCE carried out on the LO effective theory
     $\mathcal{Z}_2$, compared to numerical data for the same parameters.}
   \label{fig:convergence_cluster_Z2}
@@ -1128,8 +1129,9 @@ accessing the denser systems more difficult. This is a manifestation of fermion
 saturation on the lattice, as was discussed in \secref{sec:saturation}.
 
 \begin{figure}[t]
-  {\centering
-    \includegraphics[width=.65\textwidth]{nb_of_a_mu0999}\par}
+  \begin{center}
+    \includegraphics[width=.65\textwidth]{nb_of_a_mu0999}
+  \end{center} \vskip -.5cm
   \caption{Convergence of the baryon number density at smaller and smaller
     lattice spacings. Shows similar limitations to the extrapolation plot of the
   $\mathcal{Z}_2$ theory in \protect\figref{fig:continuum_extrapolation} (left).}\vskip -.2cm
@@ -1146,7 +1148,7 @@ saturation on the lattice, as was discussed in \secref{sec:saturation}.
   \caption{Order by order convergence as a function of the meson mass of the
     system exposing the heavy quark limits of the system. Left plot at $T = 20\:
     \mathrm{MeV}$ and $a = 0.2\:\mathrm{fm}$, right plot at at $T = 10\:
-    \mathrm{MeV}$ and $a = 0.1\:\mathrm{fm}$}.
+    \mathrm{MeV}$ and $a = 0.1\:\mathrm{fm}$.}
   \label{fig:convergence_mpi}
 \end{figure}
 
@@ -1382,7 +1384,7 @@ appear in three combinations (as in \meqref{eq:pmpmpm_pairing})
 The first term has three open ends, the second has two open ends (including cyclic
 permutations), while the final term has no open ends. An extension of the chain
 is obtained by inserting a new pair in between an already existing open end.
-Instead of the quark then hopping forth and directly back again, it will take a
+Instead of the quark hopping forth and then directly back again, it will take a
 detour through this new position
 %
 % TODO: Check notation consistency (positions)
@@ -1509,7 +1511,7 @@ meaning that the effecitve hopping matrices take the form
 where we have shortened the $K^+$ notation for the brevity. Colour indices are
 denoted by Roman characters, while the Driac indices are symbolised by Greek
 letters. We also saw in \secref{sec:dirac_indices} that the Dirac trace is
-somewhat trivial. The colour matrix content to enter the integrals is thus
+somewhat trivial. The colour matrix content that enters the integrals is thus
 %
 \begin{equation}
   K^{ac}_{\vec{x}}(t_y,t_x) U^{cb}_{\vec{x},i}, \hskip.5cm\text{and}\hskip.5cm
@@ -1589,7 +1591,7 @@ given by a consecutive, paired hop
     ]
       ([yshift=-.2cm]trace.south west) -- ([yshift=-.2cm]trace.south east)
       node[midway,below=5pt] {$\frac{1}{2} W_{11}(\vec{x}_{n+1})$};
-  \end{tikzpicture} \,.
+  \end{tikzpicture} \,. \label{eq:g1_integrated}
 \end{align}
 %
 Recursively inserting the expressions for the $G_{m}$ matrices we obtain a final
@@ -1986,6 +1988,189 @@ However this particular subset of cluster resummations synergise well with the
 already developed chain resummation.
 
 \subsection{Ladder resummation} \label{sec:ladder_resummation}
+
+The last of the resummation schemes addressed in this thesis is a \emph{ladder
+resummation}, which simply is a renormalisation scheme for the nearest neighbour
+coupling constant. The idea behind the ladder resummation is, similar to the
+chain resummation, simple, albeit mathematically complicated. The general
+principle is sketched in \figref{fig:ladder_schematic}, in
+which all the details are suppressed. The full ladder is given by the nearest
+neighbour kinetic determinant
+%
+\begin{equation}
+  \prod_i \det (1 - \kappa^2 P_i M_i) \equiv \det (1 - \kappa^2 \mathcal{M}_{C_2}),
+\end{equation}
+%
+which represents a different ordering scheme of the spatial hopping expansion.
+It is possible to express the full static determinant in this path ordering
+scheme, which is equivalent to the hopping scheme we have used so far. We adopt
+the same notation as in \citep{Rindlisbacher:2015pea}
+%
+\begin{equation}
+  \det \qkin = \prod_{n} \prod_{\{C_n\}} \det(1 - \kappa^n \mathcal{M}_{C_n}),
+\end{equation}
+%
+in which $C_s$ symbolises a spatial path of length $s$ and the product goes over
+all such paths. The path ordered determinants can then be expanded in traces
+using the \emph{Faddeev-LeVerrier algorithm}, which truncates at the dimension
+of the matrix. This formalism does however in no way simplify the computation of
+the effective theory as the combinatorics of the spatial gauge integrals, which
+presents the higher obstacle, remain.
+
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[scale=1.65]{ladder_resummation_schematic}
+  \end{center}
+  \caption{The ladder resummation graphic, illustrating the general principle.}
+  \label{fig:ladder_schematic}
+\end{figure}
+
+Expanding the nearest neighbour path determinant gives
+%
+\begin{multline}
+  \det(1 - \kappa^2 \mathcal{M}_{C_2}) = 1 - \kappa^2 \tr(\mathcal{M}_{C_2})
+  -\frac{1}{2} \kappa^4 \big( \tr(\mathcal{M}_{C_2}^2) - \big(\tr(\mathcal{M}_{C_2})\big)^2 \big) \\
+  -\frac{1}{6} \kappa^6 \big( \big(\tr(\mathcal{M}_{C_2})\big)^3 - 3 \tr
+  (\mathcal{M}_{C_2}) \tr (\mathcal{M}_{C_2}^2) + 2 \tr (\mathcal{M}_{C_2}^3)
+  \big) + \dots
+\end{multline}
+%
+which grants some insight into the terms that will appear in the ladder. It is
+however impossible to compute the full ladder, and we will have to settle for a
+computable subset of all graphs. One possible subset is the single trace terms
+%
+\begin{equation}
+  \sum_i \tr ( P_i M_i P_i M_i P_i M_i \cdots )
+\end{equation}
+%
+which will include both high order coupled terms as well as close packed
+embeddings of longer chains. For example the chains of the previous expansion
+will be one such term, where the chain has been folded onto a nearest neighbour
+pair. On top of being restricted by combinatorics, we are also restricted by
+integrability of the linked cluster integrals. The chain had the advantage that
+no new integrals ($z$-functions) are needed, while in a nearest neighbour
+resummation, new integrals will inevitably appear. We therefore turn to an even
+smaller subset of all nearest neighbour graphs, namely
+%
+\begin{equation}
+  \tr( \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
+    {1 \& 1 \& 2 \& 2 \& 3 \& 3 \& 4 \& 4 \& 5 \& 5 \& \dots \& n \& n\\};).
+\end{equation}
+%
+By earlier analysis we know that these diagrams have $n$ open ends and thus
+represent the set of \emph{star graphs}
+%
+\begin{equation}
+  \begin{tikzpicture}[graph style,node distance=.4]
+    \node[regular polygon, regular polygon sides=4, minimum size=1cm] (gon1) at (0,0) {};
+    \node[skeleton node] (n11) at (gon1.north) {};
+    \node[skeleton node] (n12) at (gon1.south) {}
+      edge[skeleton bond] (n11);
+
+    \node[regular polygon, regular polygon sides=4, minimum size=1cm] (gon2) at (2cm,0) {};
+    \node[skeleton node] (n20) at (gon2.center) {};
+    \node[skeleton node] (n21) at (gon2.corner 1) {}
+      edge[skeleton bond] (n20);
+    \node[skeleton node] (n22) at (gon2.corner 3) {}
+      edge[skeleton bond] (n20);
+
+    \foreach \s in {3,...,6} {
+      \node[regular polygon, regular polygon sides=\s, minimum size=1cm] (gon\s) at ($(-2cm,0) + (2cm*\s,0)$) {};
+      \node[skeleton node] (n\s0) at (gon\s.center) {};
+      \foreach \i in {1,...,\s} {
+        \node[skeleton node] (n\s\i) at (gon\s.corner \i) {}
+          edge[skeleton bond] (n\s0);
+      }
+    }
+    \node at (11.25cm, 0) {$\cdots$};
+  \end{tikzpicture}
+\end{equation}
+%
+The structure is the same as a consecutive set of $G_1$ matrices from earlier
+%
+\begin{equation}
+  \mathcal{A}_n = 
+  \tr( \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
+    {1 \& 1 \& 2 \& 2 \& \dots \& n \& n\\};) =
+  \begin{tikzpicture}[baseline={([yshift=-.5ex] trace.center)}]
+    \node[inner sep=0pt] (trace) {%
+      $\tr( G_1 G_1 \cdots G_1)$};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+      transform canvas={yshift=-.2cm},
+    ]
+      (trace.south west) -- (trace.south east)
+      node[midway,below=5pt] {$n$ times};
+  \end{tikzpicture} \,
+\end{equation}
+%
+which gives
+%
+\begin{equation}
+  \mathcal{A}_n = \frac{1}{n} \bigg(\frac{2 \kappa^2}{N_c} \bigg)^{\mathrlap{n}}
+  \:\sum_{\{t_i\}}
+    \tr (K_{\vec{x}} (t_1, t_2) K_{\vec{x}} (t_2, t_3) \cdots K_{\vec{x}}(t_n, t_1))
+      \prod_{i=1}^n \sum_{\{\vec{x}_i\}} \textstyle\frac{1}{2} W_{11}(\vec{x}_i)
+\end{equation}
+%
+after inserting the integrated expression for $G_1$ from
+\meqref{eq:g1_integrated}. The positions $\vec{x}_i = \vec{x} + \hat{i}$ are all
+nearest neighbours to the root potision.  Finally one has to evaluate the colour
+trace of all possible partitions of the set of temporal variables $\{t_i\}$. For
+example the three star term gives
+%
+\begin{multline}
+  \mathcal{A}_3 = \frac{1}{3} \bigg(\frac{2\kappa^2}{N_c}\bigg)^3
+  \sum_{\mathclap{t_1,t_2,t_3}} \tr (K_{\vec{x}} (t_1,t_2) K_{\vec{x}} (t_2, t_3)
+    K_{\vec{x}} (t_3, t_1))
+    \prod_{i=1}^{3} \sum_{\{\vec{x}_i\}}{\textstyle\frac{1}{2}} W_{11}(\vec{x}_i) \\
+  = \frac{1}{3} h_2^3 \big( {\textstyle\frac{1}{2}} W_{31} -
+    {\textstyle\frac{1}{2}} W_{32} \big)
+    \prod_{i=1}^{3} \sum_{\{\vec{x}_i\}} W_{11}(\vec{x}_i),
+\end{multline}
+%
+and the four star one results in
+%
+\begin{equation}
+  \mathcal{A}_4 
+  = \frac{1}{4} h_2^4 \big( {\textstyle\frac{1}{4}} W_{41} -
+    {\textstyle\frac{1}{2}} W_{42} + {\textstyle\frac{1}{4}} W_{43}  \big)
+    \prod_{i=1}^{4} \sum_{\{\vec{x}_i\}} W_{11}(\vec{x}_i).
+\end{equation}
+%
+The partitioning of the temporal sums is currently not known, but the general
+structure is on the form
+%
+\begin{equation}
+  \mathcal{A}_n = h_2^n \sum_{m=1}^{n-1} p_{nm} W_{nm} \prod_{i=1}^n
+  \sum_{\{\vec{x}_i\}} W_{11}(\vec{x}_i).
+\end{equation}
+%
+The motivation for choosing this specific set of terms come from integrability
+of the solution. We choose a ladder embedding, meaning that we choose $\vec{x}_i
+= \vec{x}_1$, and embed the star so that all of its ends lie on the same lattice
+point. We compute the sum over $n$ for this embedding, assuming that $p_{nm}$ is
+$n$ independent, for a fixed $m$
+%
+\begin{multline}
+  \sum_{n=1}^{\infty} \mathcal{A}_{nm}^*
+    = (2d) \sum_{n=1}^{\infty} h_2^n \tr W_{nm} W_{11}^n \\
+    = (2d) \tr \bigg( (h_1 W)^m \sum_{n=1}^{\infty} \frac{h_2^n W_{11}^n}{(1 + h_1 W)^n} \bigg) \\
+    = (2d) h_2 W_{11} \tr\bigg( \frac{(h_1 W)^m}{1 - W_{11} + h_1 W} \bigg).
+\end{multline}
+%
+So whereas the $W_{nm}$ and $W_{11}^n$ by themselves are in principle not
+integrable in general, the sum is. The assumption that $p_{nm}$ is $n$
+independent is yet unknown and is something that needs to be studied. If it is
+inversely proportional to $n$, the sum would result in a logarithm for instance.
+The sum over $m$ might also prove beneficial.
+
 
 
 \subsection{Results}

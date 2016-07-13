@@ -487,10 +487,11 @@ anti-fermions. The four combinations of the lowest order $\tr(PM)$ term is shown
 \figref{fig:lowest-order-fermionic}.
 
 \begin{figure}
-  {\centering
-    \includegraphics[width=.75\textwidth]{pure_fermion_lowest}\par}
+  \begin{center}
+    \includegraphics[width=.75\textwidth]{pure_fermion_lowest}
+  \end{center}
   \caption{The four contributions from the lowest order spatial hopping
-    expansion.\hskip1em The principal path is indicated in \ColHlIText{} and the
+    expansion. The principal path is indicated in \ColHlIText{} and the
     additional windings in \ColBaseText{}}
   \label{fig:lowest-order-fermionic}
 \end{figure}
@@ -605,8 +606,9 @@ lattice. Examples of these contributions are sketched in
 \figref{fig:next-order-fermionic}.
 
 \begin{figure}
-  {\centering
-    \includegraphics[width=.75\textwidth]{pure_fermion_next_order_examples}\par}
+  \begin{center}
+    \includegraphics[width=.75\textwidth]{pure_fermion_next_order_examples}
+  \end{center}
   \caption{Examples of next to leading order contributions to the kinematic
     determinant. Left: single fermion hopping twice between nearest neighbouring
     sites. Middle: two separate fermions hopping between the same nearest
@@ -712,7 +714,8 @@ The first corrections to consider are those to the static determinant. They
 consist of making detours in the spatial directions, filling the surface with
 plaquettes
 %
-\begin{multline} \setlength{\medmuskip}{2mu} \setlength{\thickmuskip}{5mu}
+%\begin{multline} \setlength{\medmuskip}{2mu} \setlength{\thickmuskip}{5mu}
+\begin{equation}
   \label{eq:static-loop-gauge-corr}
   \qstat^{N_t}e^{-\mathcal{S}_g} = 
   \begin{tikzpicture}[baseline=.25em, scale=0.75]
@@ -735,8 +738,8 @@ plaquettes
     \draw[plaquette,xshift=2cm] (1\deltaskip,0) -- ++(1cm - 3\deltaskip,0) --
       ++(0,1cm - 2\deltaskip) -- ++(3\deltaskip - 1cm,0) -- cycle;
   \end{tikzpicture}
-  + \mathcal{O}(\kappa^4 \beta,\kappa^2 \beta^3).
-\end{multline}
+  + \dots \,.
+\end{equation}
 %
 These types of diagrams also result in Polyakov loops after spatial gauge
 integration%
