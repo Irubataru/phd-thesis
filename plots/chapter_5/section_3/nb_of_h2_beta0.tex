@@ -8,8 +8,8 @@
 \usepackage{xcolor}
 \usepackage{pgfplots}
 
-\input{../../definitions/colour.tex}
-\input{../../definitions/plot_styles.tex}
+\input{../../../definitions/colour.tex}
+\input{../../../definitions/plot_styles.tex}
 \usetikzlibrary{plotmarks,positioning}
 
 \pagestyle{empty}
@@ -28,8 +28,8 @@
     \begin{axis}[
       xlabel={$h_2$},
       ylabel={$a^3 n_B$},
-      xmin=0.0, xmax=0.05,
-      ymin=0.7, ymax=1.9,
+      xmin=0.0, xmax=0.2,
+      %ymin=0.7, ymax=1.9,
       scaled ticks=false,
       ticklabel style={
         scale=0.7,
@@ -47,8 +47,8 @@
       minor tick num=3,
       label shift=-.1cm,
       legend style={
-        at={(0.05,0.05)},
-        anchor=south west,
+        at={(0.1,0.95)},
+        anchor=north west,
         cells={anchor=west, font=\normalsize},
         scale=2,
         nodraw legend,
@@ -59,25 +59,35 @@
     \addlegendimage{empty legend}
     \addlegendentry{\hskip -.75cm \scalebox{0.8}{$\mathcal{Z}_8$ LCE}} 
 
-    \addlegendimage{empty legend}
-    \addlegendentry{\vphantom{x}} 
+    %\addlegendimage{empty legend}
+    %\addlegendentry{\vphantom{x}} 
 
-    \addplot[no marks, node style 1, line width=1.8pt] table [x index=0, y index=1] {data/nb_of_h2_beta6.table};
+    \addplot[no marks, node style 1, line width=1.8pt] table [x index=0, y index=1] {data/nb_of_h2_beta0_h08.table};
     \addlegendentry{$\kappa^2$}
 
-    \addplot[no marks, node style 2, line width=1.8pt] table [x index=0, y index=2] {data/nb_of_h2_beta6.table};
+    \addplot[no marks, node style 2, line width=1.8pt] table [x index=0, y index=2] {data/nb_of_h2_beta0_h08.table};
     \addlegendentry{$\kappa^4$}
 
-    \addplot[no marks, node style 3, line width=1.8pt] table [x index=0, y index=3] {data/nb_of_h2_beta6.table};
+    \addplot[no marks, node style 3, line width=1.8pt] table [x index=0, y index=3] {data/nb_of_h2_beta0_h08.table};
     \addlegendentry{$\kappa^6$}
 
-    \addplot[no marks, node style 4, line width=1.8pt] table [x index=0, y index=4] {data/nb_of_h2_beta6.table};
+    \addplot[no marks, node style 4, line width=1.8pt] table [x index=0, y index=4] {data/nb_of_h2_beta0_h08.table};
     \addlegendentry{$\kappa^8$}
 
+    \addplot[
+      only marks, node style data,
+      error bars/y dir=both, error bars/y explicit,
+      legend image post style={sharp plot,|-|,thick},
+    ] table [
+      x index=0,
+      y index=3,
+      y error index=4
+    ] {data/k8_numeric.table};
+    \label{pgfplots:data}
 
   \end{axis}
 
-  \node[scale=0.75,inner sep=0pt] [right=.5cm of thelegend.south east, anchor=south west,yshift=.25cm] {
+  \node[scale=0.75,inner sep=0pt] [right=.5cm of thelegend.north east, anchor=north west] {
   %at (rel axis cs: 0.28,0) {
     \begin{minipage}{2cm}%
       \setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}%
@@ -85,9 +95,14 @@
       \begin{align*}
         h_1 &= 0.8 \\
         N_t &= 50 \\
-        \beta &= 6.0
+        \beta &= 0.0
       \end{align*}%
     \end{minipage}};
 
+  \node[anchor=south west] at (rel axis cs: 0.1, 0.15) {
+    \shortstack[l]{
+      \scalebox{0.8}{Simulations} \\
+      \ref{pgfplots:data} \, \scalebox{0.8}{Data}
+    }};
 \end{tikzpicture}%
-\end{document}
+\end{document} 

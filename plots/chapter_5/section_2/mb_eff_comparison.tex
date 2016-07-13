@@ -8,14 +8,14 @@
 \usepackage{xcolor}
 \usepackage{pgfplots}
 
-\input{../../definitions/colour.tex}
-\input{../../definitions/plot_styles.tex}
+\input{../../../definitions/colour.tex}
+\input{../../../definitions/plot_styles.tex}
 \usetikzlibrary{plotmarks,positioning}
 
 \pagestyle{empty}
 \usepackage[active,tightpage]{preview}
 \PreviewEnvironment{tikzpicture}
-\setlength\PreviewBorder{0mm}
+\setlength\PreviewBorder{1mm}
 
 \pgfplotsset{
   compat=1.12,
@@ -31,22 +31,42 @@
 
 \begin{tikzpicture}
     \begin{axis}[
-      xlabel={$\beta$},
-      ylabel={$a\hskip .1cm [\mathrm{fm}]$},
-      xmin=5.7, xmax=6.92,
+      xlabel={$\kappa$},
+      ylabel={$a m_B$},
+      xmin=0, xmax=0.25,
+      ymin=0, ymax=15,
       ticklabel style={
         scale=0.7,
       },
-      yticklabel style={
+      xticklabel style={
         /pgf/number format/precision=2,
         /pgf/number format/fixed,
         /pgf/number format/fixed zerofill,
       },
       minor tick num=3,
       label shift=-.1cm,
-      y post scale=0.85
+      legend style={
+        at={(0.95,0.95)},
+        anchor=north east,
+        cells={anchor=west, font=\normalsize},
+        scale=2,
+        nodraw legend,
+      },
+      y post scale=0.65
     ]
-    \addplot[no marks, node style 1, line width=1.8pt] table [x index=0, y index=1] {data/a_of_beta.table};
+    \addplot[no marks, node style 1, line width=1.2pt] table [x index=0, y index=1] {data/mb_eff.table};
+    \addlegendentry{$m_B$}
+
+    \addplot[no marks, node style 2, line width=1.2pt] table [x index=0, y index=2] {data/mb_eff.table};
+    \addlegendentry{$m_{B,\text{eff}}$}
+
+    %\addplot+[only marks, node style 2] table [
+      %x index=0,
+      %y index=3,
+      %y error index=4
+    %] {data/k4_numeric.table};
+    %\addlegendentry{$\kappa^4$}
+
   \end{axis}
 
 \end{tikzpicture}%

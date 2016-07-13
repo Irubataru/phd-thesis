@@ -9,7 +9,8 @@ FIGTEX   := $(wildcard $(FIGDIR)/chapter_*/*.tex)
 FIGPDF   := $(FIGTEX:.tex=.pdf)
 
 PLOTDIR  := plots
-PLOTTEX  := $(wildcard $(PLOTDIR)/chapter_*/*.tex) $(wildcard $(PLOTDIR)/appendix_*/*.tex)
+PLOTTEX  := $(wildcard $(PLOTDIR)/chapter_*/*.tex) $(wildcard $(PLOTDIR)/appendix_*/*.tex) \
+	          $(wildcard $(PLOTDIR)/chapter_*/section_*/*.tex)
 PLOTPDF  := $(PLOTTEX:.tex=.pdf)
 
 STYLETEX := definitions/colour.tex definitions/lattice_styles.tex
