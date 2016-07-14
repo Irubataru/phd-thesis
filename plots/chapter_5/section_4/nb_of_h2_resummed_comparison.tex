@@ -1,0 +1,151 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../../definitions/colour.tex}
+\input{../../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$h_2$},
+      ylabel={$a^3 n_B$},
+      xmin=0.0, xmax=0.2,
+      ymin=-0.5, ymax=3.0,
+      scaled ticks=false,
+      ticklabel style={
+        scale=0.7,
+      },
+      xticklabel style={
+        /pgf/number format/precision=2,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      yticklabel style={
+        /pgf/number format/precision=1,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      y post scale=0.85
+    ]
+
+    \addplot[
+      no marks,
+      line style 1, line width=1.8pt,
+    ] table [
+      x index=0, y index=1
+    ] {data/nb_of_h2_beta0_h08_resummed.table};
+    \label{resum:k2}
+
+    \addplot[
+      no marks,
+      line style 2, line width=1.8pt,
+    ] table [
+      x index=0, y index=2
+    ] {data/nb_of_h2_beta0_h08_resummed.table};
+    \label{resum:k4}
+
+    \addplot[
+      no marks,
+      line style 3, line width=1.8pt,
+    ] table [
+      x index=0, y index=3
+    ] {data/nb_of_h2_beta0_h08_resummed.table};
+    \label{resum:k6}
+
+    \addplot[
+      no marks,
+      line style 4, line width=1.8pt,
+    ] table [
+      x index=0, y index=4
+    ] {data/nb_of_h2_beta0_h08_resummed.table};
+    \label{resum:k8}
+  
+    % -------- %
+    % Unsummed %
+    % -------- %
+
+    \addplot[
+      no marks, dashed,
+      line style 1, line width=1.4pt,
+    ] table [
+      x index=0, y index=1
+    ] {data/nb_of_h2_beta0_h08.table};
+    \label{lce:k2}
+
+    \addplot[
+      no marks, dashed,
+      line style 2, line width=1.4pt,
+    ] table [
+      x index=0, y index=2
+    ] {data/nb_of_h2_beta0_h08.table};
+    \label{lce:k4}
+
+    \addplot[
+      no marks, dashed,
+      line style 3, line width=1.4pt,
+    ] table [
+      x index=0, y index=3
+    ] {data/nb_of_h2_beta0_h08.table};
+    \label{lce:k6}
+
+    \addplot[
+      no marks, dashed,
+      line style 4, line width=1.4pt,
+    ] table [
+      x index=0, y index=4
+    ] {data/nb_of_h2_beta0_h08.table};
+    \label{lce:k8}
+
+    \node[anchor=north west,scale=0.9] at (rel axis cs: 0.05, 0.975) {
+      \shortstack[l] {%
+        \scalebox{0.8}{Resummed}\\
+        \ref{resum:k2} \, $\mathcal{O}(\kappa^2)$\\
+        \ref{resum:k4} \, $\mathcal{O}(\kappa^4)$\\
+        \ref{resum:k6} \, $\mathcal{O}(\kappa^6)$\\
+        \ref{resum:k8} \, $\mathcal{O}(\kappa^8)$}};
+
+    \node[anchor=south west,scale=0.9] (leg2) at (rel axis cs: 0.05, 0.025) {
+      \shortstack[l] {%
+        \scalebox{0.8}{Linked cluster}\\
+        \ref{lce:k2} \, $\mathcal{O}(\kappa^2)$\\
+        \ref{lce:k4} \, $\mathcal{O}(\kappa^4)$\\
+        \ref{lce:k6} \, $\mathcal{O}(\kappa^6)$\\
+        \ref{lce:k8} \, $\mathcal{O}(\kappa^8)$}};
+
+    \node[scale=0.8] [right=.1cm of leg2.south east, anchor=south west] {
+      $\begin{aligned}
+        h_1 &= 0.8\\
+        \beta &= 0.0
+      \end{aligned}$};
+
+  \end{axis}
+
+  %\node[anchor=south west] at (rel axis cs: 0.1, 0.15) {
+    %\shortstack[l]{
+      %\scalebox{0.8}{Simulations} \\
+      %\ref{pgfplots:data} \, \scalebox{0.8}{Data}
+    %}};
+\end{tikzpicture}%
+\end{document} 
+

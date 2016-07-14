@@ -460,11 +460,11 @@ which have the form
 \end{equation}
 %
 and need to be rewritten in terms of the characters. There are multiple ways to
-work with these quantities. First of all, they can be studied
-directly though its series expansion
+work with these quantities. First of all, they can be studied directly though
+their series expansion
 %
 \begin{equation}
-  W_{nm} = \tr (h_1 W)^m \sum_{i=0}^{\infty} (-1)^i \binom{n}{i} W^i,
+  W_{nm} = \tr \Big( (h_1 W)^m \sum_{k=0}^{\infty} \binom{k + n - 1}{k} (-h_1 W)^k \Big)
 \end{equation}
 %
 which is useful for some particular identites. Alternately one can rewrite it in
@@ -481,7 +481,7 @@ functional can conveniently be constructed using the expression for the static
 determinant
 %
 \begin{equation}
-  G(\alpha,\beta) = \det ( \alpha + \beta h_1 W ),
+  G(\alpha,\beta) = \log \det ( \alpha + \beta h_1 W ),
 \end{equation}
 %
 where we can write

@@ -1082,7 +1082,7 @@ the additional polymer interaction and their geometry. For example the four bond
 LCE on a square lattice gives $17$ graphs, while our effective theory has $243$
 graphs at the four bond level.
 
-\subsection{Results}
+\subsection{Results} \label{sec:cluster_results}
 
 We are now in a position to evaluate thermodynamic functions completely
 analytically. Using the LCE we have computed the grand canonical partition
@@ -2175,8 +2175,40 @@ over $m$ might also prove beneficial.
 
 With the resummation schemes in place, we are in a position to assess their
 effectiveness by comparing to our previous results. On top of this we will
-present 
+expand upon the analysis of the thermodynamic functions which we started in 
+\secref{sec:cluster_results}.
 
+We first check the convergence of the new results. This is plotted in
+\figref{fig:resummed_convergence_check}, where we once plot the strong coupling
+baryon number density as a function of the effective coupling constant. In the
+left plot we see that we have extended the region of convergence significantly
+compared to the unsummed result. Comparing the plot to the equivalent Pad\'e
+plot in \figref{fig:pade_results} (left), we see a comparable increase in
+convergence. This is both expected and reassuring as both schemes produce
+rational expressions for the grand canonical partition function, and the
+slightly superior convergence of the Pad\'e is also understood as it is not
+restricted to a particular set of diagrams and might therefore predict higher
+order behaviour. The resummed result on the other hand has the advantage of
+being rigorous as well as providing insight into the underlying theory. In the
+right hand side of \figref{fig:resummed_convergence_check} we see the
+convergence behaviour after onset for the resummed and unsummed expressions. We
+see that the resummation is even more effective at these extreme positions,
+where convergence is not significantly weakened as is the case for its unsummed
+counterpart.
+
+\begin{figure}
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics{section_4/nb_of_h2_resummed_comparison}
+      \includegraphics{section_4/nb_of_h2_resummed_comparison_h1}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{Convergence test of the chain- and cluster resummed effective theory
+    compared to the previous cluster results. Left: At $h_1 = 0.8$. Right: At
+    $h_1 = 1.0$ (resummed $\kappa^2$ curve directly behind the $\kappa^4$
+    equivalent).}
+  \label{fig:resummed_convergence_check}
+\end{figure}
 
 \section{Large \texorpdfstring{$N_c$}{Nc} limit} \label{sec:large_nc_study}
 \section{Yang Lee Zeros} \label{sec:yang_lee_zeros}
