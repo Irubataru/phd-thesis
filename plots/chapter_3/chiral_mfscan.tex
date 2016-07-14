@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\DeclareMathOperator{\real}{Re}
+
+\input{../../definitions/colour.tex}
+\input{../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{0mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$m$},
+      ylabel={$\real\langle \bar{\eta} \eta \rangle / N$},
+      xmin=0.0, xmax=1.8,
+      ymin=-1.0, ymax=2.0,
+      scaled ticks=false,
+      ticklabel style={
+        scale=0.7,
+      },
+      %xticklabel style={
+        %/pgf/number format/precision=2,
+        %/pgf/number format/fixed,
+        %/pgf/number format/fixed zerofill,
+      %},
+      yticklabel style={
+        /pgf/number format/precision=1,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      ytick={-1,-0.5,...,2},
+      reverse legend,
+      legend style={
+        at={(0.95,0.1)},
+        anchor= south east,
+        cells={anchor=west, font=\normalsize},
+        scale=2,
+        nodraw legend,
+      },
+      clip mode=individual,
+      y post scale=0.85
+    ]
+
+    \addplot[no marks, node style 3, line width=1.8pt] table [x index=0, y index=1] {data/chiral_mu1_pq.table};
+    \addlegendentry{\scalebox{0.8}{Phase Quenched}}
+
+    \addplot[no marks, node style 2, line width=1.8pt] table [x index=0, y index=1] {data/chiral_mu1_analytic.table};
+    \addlegendentry{\scalebox{0.8}{Analytic}}
+
+    \addplot[
+      only marks, node style 1,
+      error bars/y dir=both, error bars/y explicit,
+      legend image post style={sharp plot,|-|,thick},
+      error bars/error bar style={
+        line width=1.2pt,
+      },
+      error bars/error mark options={
+        rotate=90,
+        mark size=2.5pt,
+        line width=1.2pt,
+      }
+    ] table [
+      x index=0,
+      y index=1,
+      y error index=2
+    ] {data/chiral_mu1_data.table};
+    \addlegendentry{\scalebox{0.8}{Complex Langevin}}
+
+
+
+  \end{axis}
+
+  \node[scale=0.8] [above=.1cm of thelegend.north east, anchor=south east] {
+    $\begin{aligned}
+      \mu &= 1.0\\
+      N &= 48\\
+      \Delta t &= 10^{-5}
+    \end{aligned}$};
+
+\end{tikzpicture}%
+\end{document} 

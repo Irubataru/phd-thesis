@@ -68,7 +68,7 @@ average positions of atoms in a crystal and the molecular composition of
 solutions. We refer to this defining physical physical quantity as the
 \emph{order parameter} of the phase.  The transition between two or more phases
 are known as \emph{phase transitions}, and due to the very nature of phases,
-happen through the induction of mathematical singularities. 
+happens through the induction of mathematical singularities. 
 
 The order of a phase transition is exactly described by which derivative of the
 free energy with respect to the order parameter of choice diverge. First order
@@ -78,8 +78,8 @@ derivatives diverge for second order transitions.
 However, if the order parameter tends towards zero, but never quite reaches it,
 one can define a pseudo-phase transition, known as a \emph{crossover}, to be the
 point of the most rapid change. While this is not a real phase transition,
-following its trajectory in a phase diagram will result in one if one exists,
-linking the two concepts.
+following its trajectory in a phase diagram will result in one, if a transition
+exists, linking the two concepts.
 
 Phase transitions is an inherently macroscopic concept, and does not know about
 the microscopic details of the theory. Theories with different microscopic
@@ -192,9 +192,10 @@ number of temporal lattice sites, $N_t$,
   T = \frac{1}{a N_t}.
 \end{equation}
 %
-Therefore, when going to continuum physics we only want to take the proper
-infinite volume limit for the spatial direction, and in the time direction send
-$a\to0$ and $N_t\to\infty$ in such a way that $a N_t$ remains finite.
+Therefore, when analysing continuum physics it is important to take a proper
+infinite volume limit for spatial coordinates, while for the Euclidean temporal
+extent one sends $a\to0$ and $N_t\to\infty$ in such a way that $a N_t$ remains
+finite.
 
 At a first glance it might seem as if when integrating lattice theories we can
 only vary the temperature in finite increments, seeing as $N_t$ has to be an integer.
@@ -224,6 +225,7 @@ integrals we get
     = \frac{1}{\mathcal{Z}} \int \prod_i \mathrm{d} \phi_i \, 
     \bigg( \frac{\partial\mathcal{S}}{\partial \beta} \bigg) e^{-\mathcal{S}}
     \equiv \bigg\langle \frac{\partial\mathcal{S}}{\partial \beta} \bigg\rangle
+    \,.
 \end{equation}
 %
 However, there is still a problem in defining the derivative with respect to
@@ -253,13 +255,13 @@ previously introduced Monte Carlo methods to estimate their values.
 
 \section{Finite density simulations} \label{sec:finite-density-lattice}
 
-To carry out simulations of systems with non zero quark number density we
-introduce the quark chemical potential. Unfortunately, a naive discretisation 
-of the quark number operator from \meqref{eq:quark-number-density-op} leads to
-divergences in the thermodynamic quantities in the continuum limit
-\citep{Hasenfratz:1983ba,Kogut:1983ia}. This is due to the lack of an implicit
-gauge invariance of the lattice action needed for the right continuum
-cancellations to take place.
+To carry out simulations of systems with non zero quark number density we saw
+that we have to introduce a quark chemical potential. Unfortunately, a naive
+discretisation of the quark number operator from
+\meqref{eq:quark-number-density-op} leads to divergences in the thermodynamic
+quantities in the continuum limit \citep{Hasenfratz:1983ba,Kogut:1983ia}. This
+is due to the lack of an implicit gauge invariance of the lattice action needed
+for the right continuum cancellations to take place.
 
 The correct way to introduce quark chemical potential to the lattice action is
 by weighing the appropriate gauge links with the correct single step fugacity
@@ -269,15 +271,17 @@ by weighing the appropriate gauge links with the correct single step fugacity
     U_0^{\dagger}(x).
 \end{equation}
 %
-This gives us the final form of the Wilson fermion matrix that we will make use
-of for the work in this thesis
+Adding this change to the Wilson fermion matrix from \meqref{eq:wilson_action},
+we get
 %
-\begin{align}
-  Q_{yx} \hskip1ex&=\hskip1ex \big(m + {\textstyle\frac{4 r}{a}}\big) \delta_{y,x}
-  \hskip1ex-\hskip1ex \frac{1}{2a} \sum_{\mu=\pm 1}^{\pm 3} (r + \gamma^{\mu}) U_{\mu}(x) \delta_{y- \hat{\mu},x} \nonumber\\
-   &\hskip1ex - \frac{1}{2a} \big(\, e^{a\mu} (r+\gamma^0) U_0(x) \delta_{y-\hat{0},x}
-   + e^{-a\mu}(r-\gamma^0) U_0^{\dagger}(x-\hat{0}) \delta_{y+\hat{0},x} \big).
-\end{align}
+\begin{multline}
+  Q_{yx} \hskip1ex=\hskip1ex \big(m + {\textstyle\frac{4 r}{a}}\big) \delta_{y,x}
+  \hskip1ex-\hskip1ex \frac{1}{2a} \sum_{\mu=\pm 1}^{\pm 3} (r + \gamma^{\mu}) U_{\mu}(x) \delta_{y- \hat{\mu},x} \\
+   \hskip1ex - \frac{1}{2a} \big(\, e^{a\mu} (r+\gamma^0) U_0(x) \delta_{y-\hat{0},x}
+   + e^{-a\mu}(r-\gamma^0) U_0^{\dagger}(x-\hat{0}) \delta_{y+\hat{0},x} \big)\,,
+\end{multline}
+%
+which is also the final form of the lattice action we will study in this thesis.
 
 % TODO: Write about lattice saturation
 % \label{sec:saturation}
@@ -314,8 +318,10 @@ The problem is most easily illustrated with a sketch. In
 symmetric function with a complex phase, $f(x) e^{i \theta(x)}$. The real part
 integrates to something finite that is exponentially suppressed by by the phase,
 while the imaginary part integrates to zero. However, this subtlety is hard to
-reproduce numerically, and the number of operations needed to keep the errors
-down grow exponentially with the system size.
+reproduce numerically, just as it is hard to see with the bare eye that one of
+the two figures should give zero, while the other should give something finite.
+The number of operations needed to keep the errors down grow exponentially with
+the system size, making continuum studies impossible.
 %
 \begin{figure}
   \begin{center}
@@ -345,7 +351,7 @@ methods, and refer to \citep{deForcrand:2010ys} for a more thorough review.
 
 \subsection{Reweighting}
 
-Reweighting is a refactoring scheme used to great effect where one takes the
+Reweighting is a refactoring scheme used to great effect, where one takes the
 phase of the fermion determinant as part of the observation rather than the
 probability weight. Factoring out the phase
 %
@@ -383,11 +389,12 @@ was determined to be $f(\theta) = |\cos\theta|$.
 
 The sign problem comes into play when the average phase drastically deviates
 from $0$, in which case the ensemble we sample is far from the ensemble we
-want to measure, drastically increasing the statistics needed. The issue is
+want to measure, drastically increasing the required statistics. The issue is
 sketched in \figref{fig:reweighting-overlap} where we see the overlap between
 the full and reweighted ensembles. Because the reweighted ensemble deviates
 significantly from the full ensemble at high chemical potentials, most of the
-sampled configurations will be discarded.
+sampled configurations will be discarded, often referred to as the \emph{overlap
+  problem}.
 
 \begin{figure}
   \begin{center}
@@ -421,12 +428,13 @@ which one can see a trend as one cross into the region of real chemical
 potential.
 
 On top of being a useful method of extrapolating to real chemical potentials,
-one can also study the interesting phase structure of the region of imaginary
+one can also study the interesting phase structure in the region of imaginary
 chemical potentials. Because the imaginary chemical potentials introduce a pure
 phase, the partition function is periodic under centre transformations of the
 group. This is known as the Roberge-Weiss symmetry, and the periodicity leads to
-a phase transition of the same name [citation]. This has been extensively studied in
-[citation].
+a phase transition of the same name \citep{Roberge:1986mm}.
+This has been extensively studied in
+\citep{Wu:2013bfa,Cuteri:2015qkq,Philipsen:2016hkv}.
 
 \subsection{Taylor series}
 
@@ -446,7 +454,7 @@ the region of finite $\mu$. The convergence region is however governed by the
 partition function's behaviour at imaginary chemical potential, and the
 Roberge-Weiss transition is to our knowledge the bound for any extrapolation
 from zero chemical potential. There is therefore a strict limit to how far this
-expansion is valid, which was the study of \citep{Osborn:2008eg}.
+expansion is valid, which was the study of \citep{Osborn:2008eg}. [+citation?]
 
 \subsection{Stochastic quantisation}
 
@@ -480,19 +488,73 @@ where the noise average is defined as
       \mathrm{d}^4 x\, \eta(x)^2}}\;.
 \end{equation}
 %
-This equality can be rigorously proven for real actions \citep{Huffel:2003hf},
-however one can nevertheless apply the method to complex actions. Although using
-a complex action induces imaginary contributions to the noise average, these are
-expected to average out in the limit for physical observables. This is not
-always the case as the complex Langevin sometimes diverges towards unphysical
-solutions \citep{Ambjorn:1985iw}, the reason for which is still an open question.
+This equality can be rigorously proven for real actions
+\citep{Damgaard:1987rr,Huffel:2003hf}, however one can nevertheless apply the
+method to complex actions. Although using a complex action induces imaginary
+contributions to the noise average, these are expected to average out in the
+limit for physical observables. This is not always the case as the complex
+Langevin sometimes diverges towards unphysical solutions \citep{Ambjorn:1985iw},
+the reason for which is still an open question.
 
 The sign problem itself manifests itself in the complex flow of the fields. For
 large values of the chemical potential, the field configurations will spend a
 considerable amount of time in the complex phase, resulting in the need for
 longer flow times before the imaginary contributions average out. This can to
 some extent be remedied by the introduction of gauge cooling
-\citep{Seiler:2012wz}, however this places a restriction of the coupling
-strengths for which the method is applicable. Recently a comparison between the
-reach of reweighting techniques to those of stochastic quantisation, showing
-comparable results \citep{Fodor:2015doa}.
+\citep{Seiler:2012wz}, which are invariant transformations on the variables that
+push them closer to the real field values. For QCD it has been shown that this
+this places a restriction of the coupling strengths for which the method is
+applicable. Recently a comparison between the reach of reweighting techniques to
+those of stochastic quantisation, showing comparable results
+\citep{Fodor:2015doa}. Newest developments can be found in
+\citep{Aarts:2016qrv}.
+
+\begin{figure}
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics{baryon_muscan}
+      \includegraphics{chiral_mfscan}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{Left: Baryon number density of the Stephanov model measured by
+    complex langevin compared to full and phase quenched analytical results at
+    fixed $m = 0.0$.  Right: Same comparison for the chiral condensate at fixed
+    $\mu=1.0$.}
+  \label{fig:rmt_cl}
+\end{figure}
+
+To demonstrate a case in which we can clearly see that the Langevin flow
+converging to the wrong theory, we can study a \emph{Random Matrix Theory}
+(RMT), which is a simpler model that also suffers from a strong sign problem.
+One such RMT is the Stephanov model \citep{Stephanov:1996ki}, whose partition
+function is
+%
+\begin{equation}
+  \mathcal{Z}_{\mathrm{S}} = \int [\mathrm{d} W] e^{-N \Sigma^2 \tr W^{\dagger} W}
+    \det{}^{N_f} 
+      \begin{pmatrix}
+        M & i W + \mu \\
+        i W^{\dagger} + \mu & M
+      \end{pmatrix} \,,
+\end{equation}
+%
+where the degrees of freedom are random matrices $W \in M_{\mathbb{C}}(N,N)$.
+The mass matrix $M$, chemical potential matrix $\mu$, and flavour number $N_f$,
+are introduced to mimic the parameters of QCD. This model has the advantage that
+it is analytically solvable both at finite $\mu$, as well as in the phase
+quenched \citep{Stephanov:1996ki,Halasz:1997he}. The results from simulating
+this theory using the unimproved complex langevin algorithm is shown in
+\figref{fig:rmt_cl}. In the same plots the full analytic result is plotted in
+red, and the phase quenched result in green. It should be noted that the phase
+quenched is only accessible in the thermodynamic limit, $N \to \infty$, however
+$48$ is close enough to this limit that we expect few discrepancies from finite
+volume effects. We see that the complex langevin results clearly converges to
+the phase quenched theory even though the full theory is used as input. Further
+analysis is yet to be made regarding improvement of this case. This includes the
+aforementioned gauge cooling method, which was studied in
+\citep{Nagata:2016alq,Nagata:2016vkn} for a different RMT, namely
+the Osborn model, and proved to be effective with the right choice for the
+required \emph{cooling norm}. Another alternative comes from the theory of
+Lefschetz thimbles, where one can use the thimbles to weigh the probability
+distributions at the stochastic step \citep{DiRenzo:2015foa}.
+

@@ -20,7 +20,7 @@
 \begin{tikzpicture}[domain=-2:2,samples=1000]
   \draw[->,thin,ColourDark] (-2.5,0) -- (2.5,0);
   \draw[->,thin,ColourDark] (-2,-1.75) -- (-2,1.75);
-  \draw[ColourBase,thick] plot (\x, { 1.5 * (1 - (\x / 2)^2)  * cos(10*\x r)});
+  \draw[ColourBase,thick] plot (\x, { 1.5 * (1 - (\x / 2)^2)  * cos(20*\x r)});
   \draw[ColourHl1,thick] plot[samples=100] (\x, { 1.5 * (1 - (\x / 2)^2)});
   \node[align=right,anchor=east,scale=0.75] at (2.5,1.25) {\color{ColourDark}$\operatorname{Re} f(x)$};
 \end{tikzpicture}

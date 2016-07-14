@@ -1,20 +1,17 @@
-% TODO Change title to illustrate that fermions are considered
-
 \chapter{Gauge Theories and Lattice Gauge Theories}
 
 In this chapter we will formally introduce the quantum field theory describing
 fermions invariant under local group transformations and introduce the Yang
-Mills Lagrangian. This is covered in \secref{sec:continuum_gauge}. We follow
-this up in \secref{sec:group_intro} with a brief overview of basic group theory,
-introducing the concepts and tools necessary for the thesis. In
+Mills Lagrangian. This is covered in \secref{sec:continuum_gauge}, which we
+follow up in \secref{sec:group_intro} with a brief overview of basic group
+theory, introducing the concepts and tools necessary for the thesis. In
 \secref{sec:symmetries} we investigate the defining symmetry properties of our
 quantum field theory. After this introduction to continuum physics, in
 \secref{sec:lattice_intro} we discretise space-time and put our theory on a
-lattice. In the \secrefs{sec:fermion_doubling,sec:scale_setting}
-we review the similarities and differences between the lattice and the
-continuum, and stress where additional care has to be taken. Finally we give a
-very quick introduction to numerical evaluation of lattice theories in
-\secref{sec:numerical_eval}.
+lattice. In the \secrefs{sec:fermion_doubling,sec:scale_setting} we review the
+similarities and differences between the lattice and the continuum, and stress
+where additional care has to be taken. Finally we give a very quick introduction
+to numerical evaluation of lattice theories in \secref{sec:numerical_eval}.
 
 For the introduction, standard texts on the subject matter has been consulted.
 Such as introductory volumes on quantum field theory
@@ -26,8 +23,8 @@ Such as introductory volumes on quantum field theory
 
 The undoubtaly most important quantity in Quantum Field Theory (\emph{QFT}) and
 Statistical Mechanics (\emph{SM}) is $\mathcal{Z}$, named the generating
-functional and the partition function in the two theories respectively. It is in
-SM defined as
+functional and the partition function, in the two theories respectively. It is
+in SM defined as
 %
 \begin{equation} \label{eq:partition}
   \mathcal{Z}_E = \int \prod_i \mathrm{d} \phi_i e^{-\mathcal{S}_E[\phi_i]},
@@ -45,7 +42,7 @@ The action, $\mathcal{S}$, is in turn defined by the Lagrangian density
   \mathcal{S}[\phi_i] = \int \mathrm{d}^4 x\, \mathcal{L}[\phi_i(x)],
 \end{equation}
 %
-and our theories are therefore uniquely defined through $\mathcal{L}$ and the
+and our theories are therefore uniquely defined through $\mathcal{L}$, and the
 properties of the fields $\phi_i$.
 
 Of physical interest are expectation values of Hermitian operators $O$, defined
@@ -53,13 +50,11 @@ as
 %
 \begin{equation} \label{eq:expectation_value}
   \big\langle O[\phi_i] \big\rangle = \frac{1}{\mathcal{Z}_E} 
-    \int \prod_i \mathrm{d} \phi_i \, O[\phi_i]\, e^{-\mathcal{S}_E[\phi_i]}
+    \int \prod_i \mathrm{d} \phi_i \, O[\phi_i]\, e^{-\mathcal{S}_E[\phi_i]},
 \end{equation}
 %
 which correspond to physical observables. These can for example be accessed by
-the introduction of source terms
-%
-% TODO Consider whether I need this
+the introduction of source terms to the action
 %
 \begin{equation}
   \mathcal{Z}_E [\,J_i\,] = \int \prod_i \mathrm{d} \phi_i \,
@@ -98,14 +93,15 @@ them in the group known as Grassmann numbers
 \end{align}
 
 This Lagrangian describe the dynamics of a set of free, massive fermions, which
-is not very exciting. There are a multitude of ways to add interactions while
-still maintaining the desired symmetry properties (which we will discuss later).
-One is to add a self interaction term, e.g. a four point term, $g
-\big(\bar{\psi}\psi\big)^2$, which results in the NJL model
-\citep{Nambu:1961tp}. Another option is to introduce more fields and
-interactions. Finally one can localise the symmetries of the fields and induce
-new fields and couplings. For this procedure we need a short overview of group
-theory which we will tackle next.
+by itself, is not very exciting. There are however a multitude of ways to add
+interactions while still maintaining the desired symmetry properties (which we
+will discuss later). Depending on the system one is interested in describing,
+these include the addition of a self interaction term for the fermions, e.g. a
+four point term, $g \big(\bar{\psi}\psi\big)^2$, which results in the NJL model
+\citep{Nambu:1961tp}, the introduction of new fields and interactions, and the
+localisation of group symmetries which organically induce new fields and
+couplings. For the latter approach we need a short overview of group theory,
+which we will tackle next.
 
 \section{A group theory perspective} \label{sec:group_intro}
 
@@ -114,7 +110,7 @@ a new element also in the set
 %
 \begin{equation}
   \text{For every} \hskip1ex f, g \in G, \hskip1ex\text{then}\hskip1ex
-    h = fg \in G
+    h = fg \in G \,,
 \end{equation}
 %
 this assignment is called the group product. The group product is associative,
@@ -123,7 +119,7 @@ that
 %
 \begin{equation}
   \forall\hskip.5ex f \in G, \hskip1ex\exists\hskip.5ex f^{-1}
-    \hskip1ex:\hskip1ex f^{-1} f = f f^{-1} = e
+    \hskip1ex:\hskip1ex f^{-1} f = f f^{-1} = e \,.
 \end{equation}
 %
 A representation of a group $G$ on a complex vector space $V$ is a homomorphism
@@ -172,7 +168,7 @@ group multiplication law. They are also referred to as the \emph{algebra} of the
 group, $\mathfrak{g}$. The generators and the group algebra will come into play
 when we later introduce continuous symmetries of our quantum theory of fields.
 Using the Jacobi identity, it is possible to see that the structure constants
-themselves follow the multiplication law. We can therefore use the structure
+themselves comply wiht the multiplication law. We can therefore use the structure
 constants as a representation of the algebra $\mathfrak{g}$ called the
 \emph{adjoint representation}
 %
@@ -192,8 +188,8 @@ One defines the character of a representation as
 %
 The characters appear frequently in field theory due to the cyclic properties of
 the trace and its ability to facilitate the creation of invariant objects. On
-top of this the characters span a basis of functions that share this cyclic
-properties, i.e. any function $\rho(f g f^{-1}) = \rho(g)$. Hence
+top of this, the characters span a basis of functions that share this cyclic
+property, i.e. any function $\rho(f g f^{-1}) = \rho(g)$. Hence
 %
 \begin{equation}
   \rho(g) = \sum_r \rho_r \chi_r(g),
@@ -259,17 +255,18 @@ has been used, and extensive details are provided in
 With the necessary formalism in place, we can discuss the symmetries of the
 Lagrangian we introduced in \meqref{eq:ldirac}. We will first look at the
 symmetries that come by construction before delving into possible ways of
-extending the theory to be both globally and locally symmetric.
+extending the theory to be both globally and locally symmetric under additional
+transformations.
 
 \subsection{Symmetries by construction}
 
 Every quantum field theory is constructed to be symmetric under the full
-Poincar\'{e} group, namely the group of space-time translations plus the Lorentz
+Poincar\'e group, namely the group of space-time translations plus the Lorentz
 transformations. 
 
 To see the other symmetries of the Dirac Lagrangian we have to decompose the
 fields into its spinorial components. Every element of $\psi_i$ in
-\meqref{eq:ldirac} is a $4$ component spinor, and the $\gamma$'s $4 \times 4$
+\meqref{eq:ldirac} is a $4$ component spinor, and the $\gamma$'s, $4 \times 4$
 matrices. In the standard representation they take for form
 %
 \begin{equation}
@@ -280,7 +277,7 @@ matrices. In the standard representation they take for form
 %
 The fields $\psi_{R,L}$ are two component fields that transform under two
 distinct representations of the Lorentz group, $(\frac{1}{2}, 0)$ and $(0,
-\frac{1}{2})$ respectively. With this basis the Dirac Lagrangian reads
+\frac{1}{2})$ respectively. With this choice of basis the Dirac Lagrangian reads
 %
 \begin{equation}
   \mathcal{L} = i \bar{\psi}_R \gamma^{\mu}\partial_{\mu} \psi_R
@@ -297,11 +294,13 @@ transformation
 %
 if and only if the mass term is set to zero. Invariance of the independent
 transformations of the left- and right handed fields is called \emph{chiral}
-symmetry, and signal the existence of helicity eigenstates. The mass term breaks
-the symmetry into a single U($1$) symmetry, where $\alpha_R = \alpha_L$.
+symmetry, and signal the existence of helicity eigenstates. The existence of the
+mass term explicitly breaks the symmetry into a single U($1$) symmetry, where
+$\alpha_R = \alpha_L$.
 
 The global symmetry group of $\psi$ can be trivially extended to admit any Lie
-group by making the field live in the vector space the representation acts on 
+group by making the field live in the vector space the representation of choice
+acts on, and carry out transformations in the following way
 %
 \begin{equation} \label{eq:global_trafo}
   \psi \to D_R(g) \psi, \hskip1em \bar{\psi} \to \bar{\psi} D_R^{\dagger}(g),
@@ -312,7 +311,7 @@ This symmetry has an associated conserved Noether current for every generator of
 the group $G$
 %
 \begin{equation}
-  j^{\mu}_i = \bar{\psi} \gamma^{\mu} T_i \psi, \hskip1ex\text{where}\hskip1ex
+  j^{\mu}_i = \bar{\psi} \gamma^{\mu} T_i \psi, \hskip .5cm\text{where}\hskip .5cm
     \partial_{\mu}j^{\mu}_i = 0,
 \end{equation}
 %
@@ -375,18 +374,19 @@ under \meqref{eq:local_trafo}. Naively calculating this difference is
 nonsensical as one is allowed to choose the basis of the representation of the
 different points independently, meaning that $\psi(x)$ and $\psi(y)$ can be
 members of different vector spaces. We therefore introduce the parallel
-transporters, $\Lambda(y,x)$, which transforms between the points $x$ and $y$ in
-a smooth way \citep{Wu:1975es}. We define the \emph{covariant derivative} as
+transporters, $\Lambda(y,x)$, which transforms between the vector spaces of the
+fields at the points $x$ and $y$ in a smooth way \citep{Wu:1975es}. We define
+the \emph{covariant derivative} as
 %
 \begin{equation}
   \eta^{\mu} D_{\mu} \psi(x) = \lim_{\delta \to 0} \frac{1}{\delta} \big(
     \psi(x + \delta\eta) - \Lambda(x+\delta\eta,x)\psi(x) \big).
 \end{equation}
 %
-where the transporter $\Lambda$ make sure we only compare elements of the same
-vector space. These transformations are nothing but coordinate transformations
-of the vector spaces, and must therefore itself be a member of the
-representations on G. From this it follows that it transforms as
+where the transporter $\Lambda$ make sure we subtract quantities which are
+defined on the same vector space. These transformations are nothing but
+coordinate transformations of the vector spaces, and must therefore itself be a
+member of the representations on G. From this it follows that it transforms as
 %
 \begin{equation}
   \Lambda(y,x) \to U(y) \Lambda(y,x) U^{\dagger}(x).
@@ -413,10 +413,10 @@ where the $A^i_{\mu}$ have to transform as
 %
 \begin{equation}
   A^i_{\mu} \to A^i_{\mu} + \partial_{\mu} \alpha^i - g f^{ijk} \alpha^j A^k_{\mu}
-    + \mathcal{O}(\alpha^2)
+    + \mathcal{O}(\alpha^2),
 \end{equation}
 %
-completely independent of the representation. The local symmetric Dirac
+which is independent of the representation. The local symmetric Dirac
 Lagrangian therefore reads
 %
 \begin{equation}
@@ -425,12 +425,13 @@ Lagrangian therefore reads
 %
 Unfortunately, without a kinetic term for the newly introduced fields
 $A^i_{\mu}$, the theory would permit violently oscillating fields with no cost
-in energy. This would make our theory non-renormalisiable, which we want to
-avoid.  We therefore need to find a kinetic term for the fields that admits all
-of our restrictions. To construct such a term it is natural to once more turn to
-the parallel transporters, being the main ingredient in adjusting the kinetic
-term of the fermions. Using the gauge transformation of $\Lambda$, it is easy to
-see that the geometric plaquette could create such a term
+in energy \citep{tHooft:2002zz}. This would make our theory non-renormalisiable,
+which we want to avoid.  We therefore need to find a kinetic term for the fields
+that admits all of our restrictions. To construct such a term it is natural to
+once more turn to the parallel transporters, being the main ingredient in
+adjusting the kinetic term of the fermions. Using the gauge transformation of
+$\Lambda$, it is easy to see that the geometric plaquette could create such a
+term
 %
 \begin{align} \label{eq:transport_plaquette}
   U_{\mu\nu}(x) =& \Lambda(x, x + \hat{\nu} \delta)
@@ -466,8 +467,48 @@ reads
 %
 \begin{equation} \label{eq:gauge_lagrangian}
   \mathcal{L} = \bar{\psi}\big(i \gamma^{\mu} D_{\mu} - m\big)\psi 
-    - \frac{1}{4} F^i_{\mu\nu} F^{i\hskip.2ex\mu\nu}
+    - \frac{1}{4} F^i_{\mu\nu} F^{i\hskip.2ex\mu\nu} \,.
 \end{equation}
+%
+There are higher order combinations of these ingredients which are invariant
+under the symmetries discussed so far, such as the dual field strength
+%
+\begin{equation}
+  \mathcal{L}_{\mathrm{D}} = g_{\mathrm{D}} \varepsilon^{\alpha\beta\mu\nu}
+    F^i_{\alpha\beta} F^i_{\mu\nu}\,,
+\end{equation}
+%
+and magnetic dipole interactions
+%
+\begin{equation}
+  \mathcal{L}_{\mathrm{MD}} = g_{\mathrm{MD}} \bar{\psi} \sigma^{\mu\nu} F^i_{\mu\nu} \psi\,.
+\end{equation}
+%
+These we ignore in the current study as they break other symmetries or
+systematics that are of interest, CP symmetry and renormalisability
+respectively.
+
+\section{Quantum Chromodynamics}
+
+The theory of quarks, gluons and how they interact is called \emph{Quantum
+Chromodynamics} (QCD), and is identical to the previously introduced gauge
+theory with gauge group SU($3$). The quarks transform under the fundamental
+representation of SU($3$), and thus have three different \emph{colour} states.
+There are predictably eight gluons, corresponding to the number of generators.
+There are six quark \emph{flavours}, up ($u$), down ($d$), strange ($s$), charm
+($c$), bottom ($b$) and top ($t$). QCD interactions do not discriminate between
+the flavours, and this assortment of quarks are thus in a sense trivial in QCD
+studies.
+
+The natural scale of QCD dynamics and the self-interactiveness of the gauge
+fields gives the theory rich and interesting structure. Under non-extreme
+conditions the quarks and gluons combine and create confined bound states,
+namely the mesons and baryons. However, it was later discovered that the theory
+displays \emph{asymptotic freedom}, namely the fact that within the radius of
+these bound states, the force is in fact weak. This behaviour is also accessible
+at extreme conditions, such as the ones found in heavy ion collisions, in the
+early universe, in neutron star collapse, and in the theorised existence of
+quark stars.
 
 \section{Lattice discretisation} \label{sec:lattice_intro}
 
@@ -499,7 +540,7 @@ physical units to encompass the scales we are interested in studying.
 Having introduced the lattice, we see that the partition function of the
 discretised theory is simplified compared to the continuum. The simplification
 is not obvious as it quietly changes the number of integrals from being infinite
-to being a finite, albeit still large number.
+to being a finite, albeit still large, number.
 
 In this and the following sections we will first construct a Lagrangian to put
 on the lattice and analyse its new symmetry properties. We will then briefly
@@ -519,12 +560,12 @@ care, the continuum theory will not be as it first appears.
 
 In the previous section we introduced the parallel transporters to define how to
 associate two different points in space that can belong to different vector
-spaces. This procedure fits nicely only the lattice as the only modification we
-have to make to the definition of the covariant derivative on the lattice is to
+spaces. This procedure complies nicely with the lattice approach, as the only modification we
+have to make to the definition of the covariant derivative is to
 replace $\delta$ by $a$, and not take the limit. We will exclusively use the
 transporter between nearest neighbour lattice sites, and therefore make the
 abbreviation $U(x + a \eta_\mu, x) = U_{\mu}(x) =
-U_{-\mu}^{\dagger}(x+a\eta_{\mu})$. With this the fermion contribution to the
+U_{-\mu}^{\dagger}(x+a\eta_{\mu})$. Hence, the fermion contribution to the
 lattice action with a symmetrised derivative reads
 %
 \begin{equation} \label{eq:naive_fermions}
@@ -556,10 +597,11 @@ for the integral over the fermion fields, which can be evaluated exactly
 %
 with $Q$ commonly referred to as the \emph{fermion matrix}, and $\det Q$ the
 \emph{fermion determinant}. The matrix can either be represented as a higher
-dimensional tensor or with super index describing all degrees of freedom.
+dimensional tensor or with a super index describing, all degrees of freedom.
 
-Having introduced the plaquette transporter in \meqref{eq:transport_plaquette},
-constructing a lattice gauge action is straightforward
+Having introduced the \emph{plaquette} transporter in
+\meqref{eq:transport_plaquette}, constructing a lattice gauge action is
+straightforward
 %
 \begin{equation}
   \mathcal{S}_g = \beta_R a^4 \sum_x \sum_{\mu < \nu} \Big( 1 -
@@ -634,7 +676,7 @@ appropriately named the \emph{Wilson term}, is one order higher in $a$, and ther
 disappears in the continuum. After some shuffling of the terms, adding the
 Wilson term to the Lagrangian gives us
 %
-\begin{equation}
+\begin{equation} \label{eq:wilson_action}
   \mathcal{S}_{f,w} = a^4 \sum_{x} \bigg(
   \big(m + {\textstyle\frac{4 r}{a}}\big) \bar{\psi}(x) \psi(x)
   - \frac{1}{2a} \sum_{\mu = \pm 0}^{\pm 3} \bar{\psi}(x+\hat{\mu}) (r +
@@ -655,10 +697,10 @@ unwanted doublers, meaning that they properly decouple from the theory in the
 continuum where their masses diverge. 
 
 %TODO: Rewrite
-However, including the Wilson term does not come without a cost. By
-introducing the Wilson term we explicitly break chiral symmetry, meaning that
-even with $m=0$, the transformation \eqref{eq:chiral_transformation} is no
-longer a symmetry of the system. 
+However, including the Wilson term does not come without a cost. By introducing
+the Wilson term we explicitly break chiral symmetry, meaning that even for the
+choice $m=0$, the transformation \eqref{eq:chiral_transformation} is no longer a
+symmetry of the system. 
 
 There is in fact a theorem by Nielsen and Ninomiya
 \citep{Nielsen:1980rz,Nielsen:1981xu} which states that one cannot have a lattice
@@ -695,7 +737,7 @@ with the scale
   g_{\text{phys}} = \lim_{a \to 0} g_{\text{bare}}(a).
 \end{equation}
 %
-The dependence of your parameters on the scale can be summarised by the
+The scale dependence of the theory's parameters is summarised by the
 Callan-Symanzik equations, which can be computed for any physical observable
 $O_{\text{phys}}$
 %
@@ -740,10 +782,11 @@ One can solve the differential equation in \meqref{eq:beta_eq} and get
 \end{equation}
 %
 We see that although $g$ was initially dimensionless, we have generated an
-energy scale $\Lambda$ through the renormalisation group. We also see that the
-lattice spacing $a$ goes to zero as $g$ goes to zero (and the lattice coupling
-$\beta$ goes to infinity). This is the \emph{true} continuum limit, where one, as
-opposed to the naive limit, takes the change of the parameters into account.
+energy scale $\Lambda$ through the renormalisation group, a phenomenon known as
+\emph{dimensional transmutation}. We also see that the lattice spacing $a$ goes
+to zero as $g$ goes to zero (and the lattice coupling $\beta$ goes to infinity).
+This is the \emph{true} continuum limit, where one, as opposed to the naive
+limit, takes the change of the parameters into account.
 
 \section{Numerical evaluation of lattice gauge theories}
 \label{sec:numerical_eval}
@@ -757,10 +800,11 @@ $d_{\text{adj}}$ degrees of freedom. Even though the fermion fields can be
 integrated out exactly \eqref{eq:fermion-integral}, this still leaves a highly
 dimensional integral if one wants to look at anything but miniscule volumes.
 
-The only feasible way to handle these types of integrals is by way of Monte
-Carlo integration. This is a stochastic method that instead of summing over all
+The only feasible way to handle these types of integrals is by using approximate
+integration schemes, many of which are stochastic in nature. One such algorithm
+is \emph{Monte Carlo integration}, which instead of summing over all
 values the degrees of freedom can take, as one does in standard numerical
-integration, only sample a small number of these configurations. The value of
+integration, only samples a small number of these configurations. The value of
 the integral is then reconstructed using this (small) number of configurations.
 
 For this to work well one has to sample the configuration space in an
@@ -773,8 +817,8 @@ space, in the case of the partition function
   P\big([\psi,\bar{\psi}, U_{\mu}]\big) \propto e^{-\mathcal{S}[\psi,\bar{\psi}, U_{\mu}]}.
 \end{equation}
 %
-This is only a viable interpretation as long as the right hand side is a real
-number. We evaluate the fermion integrals according to
+This is only a viable interpretation as long as the right hand side is real and
+positive. We evaluate the fermion integrals according to
 \meqref{eq:fermion-integral}, giving us
 %
 \begin{equation}
