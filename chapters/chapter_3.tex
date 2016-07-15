@@ -283,8 +283,42 @@ we get
 %
 which is also the final form of the lattice action we will study in this thesis.
 
-% TODO: Write about lattice saturation
-% \label{sec:saturation}
+\subsection{Dense systems and lattice saturation}
+\label{sec:saturation}
+
+Lattice studies of systems at finite chemical potential is limited in the very
+dense limit by lattice saturation. This is a mere lattice artefact arising from
+the Pauli exclusion principle, which tells us that two fermion degrees of
+freedom cannot occupy the same quantum state. Due to the discretised nature
+of it, a lattice cannot accommodate more than $2 N_f N_c N_t N_s^3$ fermions.
+
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[width=.7\textwidth]{saturation_sketch}
+  \end{center} \vskip -.4cm
+  \caption{Sketch of the average number of quarks per lattice site as a function of baryon
+  chemical potential on the lattice, $N_f = 2, N_c = 3$. Starts in the silver blaze state, moves
+  into onset, reaches half filling then saturates at $2 N_f N_c$.}
+  \label{fig:saturation_sketch}
+\end{figure}
+
+This limitation is sketched in \figref{fig:saturation_sketch} where a typical
+lattice curve has been plotted. At small and intermediate values of the chemical
+potential, we see the \emph{Silver Blaze} property. Coined by
+\cite{Cohen:2003kd}, is the phenomena that at any chemical potentials smaller
+than the smallest mass of the theory, the eigenvalues of the Dirac operator are
+$\mu$ independent. Slightly before $\mu = m$ er have onset, which signals the
+beginning of the nuclear condensation phase change. After which the system will
+eventually reach half-filling, where half of the states on the lattice are
+occupied. One should generally ignore results beyond this point as lattice
+artefacts become dominant. This was the study of \citep{Rindlisbacher:2015pea},
+in which the authors discovered a particle-hole symmetry around half-filling,
+similar to electron-hole symmetries in solid state systems. As the lattice
+continues to fill up we eventually reach saturation, at which point the lattice
+states are all occupied, dynamics stop, and no more quarks can be added to the
+system. As we see in the sketch, this happens when every lattice site is
+populated by $2 N_f N_c$ fermions.
+
 
 \section{The sign problem} \label{sec:sign-problem}
 
@@ -408,11 +442,9 @@ sampled configurations will be discarded, often referred to as the \emph{overlap
   \label{fig:reweighting-overlap}
 \end{figure}
 
-\subsection{Analytic extrapolation}
+\subsection{Imaginary chemical potentials}
 
-% TODO Get imaginary chemical potential citations for Owe
 % TODO Introduce the Columbia plot
-% TODO Rename to imaginary chemical potential?
 
 Another method that has seen much attention recently is simulating at purely
 imaginary chemical potentials, and then analytically continue from the negative
