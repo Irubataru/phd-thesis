@@ -54,7 +54,7 @@
         nodraw legend,
       },
       clip mode=individual,
-      y post scale=0.65
+      y post scale=0.85
     ]
 
     \addlegendimage{empty legend}
@@ -64,20 +64,21 @@
       %x index=0,
       %y index=1,
       %y error index=2,
-    %] {data/nb_of_a_mu1001.table};
+    %] {data/nb_of_a_mu1001_r.table};
     %\addlegendentry{$\kappa^4$}
+
     \addplot[error 3] table [
       x index=0,
       y index=3,
       y error index=4,
-    ] {data/nb_of_a_mu1001.table};
+    ] {data/nb_of_a_mu1001_r.table};
     \addlegendentry{$\kappa^6$}
 
     \addplot[error 4] table [
       x index=0,
       y index=5,
       y error index=6,
-    ] {data/nb_of_a_mu1001.table};
+    ] {data/nb_of_a_mu1001_r.table};
     \addlegendentry{$\kappa^8$}
 
 
@@ -90,21 +91,21 @@
       %x index=0,
       %y index=1,
       %y error index=2,
-    %] {data/nb_of_a_mu0999.table};
+    %] {data/nb_of_a_mu0999_r.table};
     %\addlegendentry{$\kappa^4$}
 
     \addplot[error 1] table [
       x index=0,
       y index=3,
       y error index=4,
-    ] {data/nb_of_a_mu0999.table};
+    ] {data/nb_of_a_mu0999_r.table};
     \addlegendentry{$\kappa^6$}
 
     \addplot[error 2] table [
       x index=0,
       y index=5,
       y error index=6,
-    ] {data/nb_of_a_mu0999.table};
+    ] {data/nb_of_a_mu0999_r.table};
     \addlegendentry{$\kappa^8$}
 
   \end{axis}

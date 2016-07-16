@@ -11,11 +11,11 @@
 \newlength{\cubeskip}
 \setlength{\cubeskip}{1mm}
 
-\begin{tikzpicture}[scale=0.5, every node/.style={scale=0.5}]
+\begin{tikzpicture}
   
   % 1-hop
   % ----------------------------------------------------------------------------
-  \begin{scope}
+  \begin{scope}[scale=0.5, every node/.style={scale=0.5}]
     % Grid
     % --------------------------------------------------
     \draw[lattice] (-.25,-.25) grid[ystep=0.5,xstep=1] (1.25,5.25);
@@ -41,7 +41,7 @@
 
   % 2-hop
   % ----------------------------------------------------------------------------
-  \begin{scope}[xshift=2cm]
+  \begin{scope}[xshift=1.5cm,scale=0.5, every node/.style={scale=0.5}]
     % Grid
     % --------------------------------------------------
     \draw[lattice] (-.25,-.25) grid[ystep=0.5,xstep=1] (1.25,5.25);
@@ -68,7 +68,7 @@
 
   % 3-hop
   % ----------------------------------------------------------------------------
-  \begin{scope}[xshift=4cm]
+  \begin{scope}[xshift=3cm,scale=0.5, every node/.style={scale=0.5}]
     % Grid
     % --------------------------------------------------
     \draw[lattice] (-.25,-.25) grid[ystep=0.5,xstep=1] (1.25,5.25);
@@ -96,7 +96,7 @@
 
   % 4-hop
   % ----------------------------------------------------------------------------
-  \begin{scope}[xshift=6cm]
+  \begin{scope}[xshift=4.5cm,scale=0.5, every node/.style={scale=0.5}]
     % Grid
     % --------------------------------------------------
     \draw[lattice] (-.25,-.25) grid[ystep=0.5,xstep=1] (1.25,5.25);
@@ -125,7 +125,7 @@
 
   % 5-hop
   % ----------------------------------------------------------------------------
-  \begin{scope}[xshift=8cm]
+  \begin{scope}[xshift=6cm,scale=0.5, every node/.style={scale=0.5}]
     % Grid
     % --------------------------------------------------
     \draw[lattice] (-.25,-.25) grid[ystep=0.5,xstep=1] (1.25,5.25);

@@ -1,0 +1,128 @@
+\documentclass[11pt,tikz]{standalone}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage{amsmath}
+\usepackage{pgfplots,pgfplotstable}
+
+\input{../../../definitions/colour.tex}
+\input{../../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning,calc,intersections}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+  data style/.style={
+    only marks, mark=o,
+    line width=1pt,
+    mark size=2,
+    legend image post style={sharp plot,|-|},
+    error bars/y dir=both, error bars/y explicit,
+    error bars/error bar style={
+      line width=1.0pt,
+    },
+    error bars/error mark options={
+      rotate=90,
+      mark size=3pt,
+      line width=1.0pt,
+    },
+  },
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$(\mu_B / m_B)^{3/2}$},
+      ylabel={$n_B / m_B^3$},
+      xmin=0.994, xmax=1.0015,
+      ymin=-0.001, ymax=0.01,
+      scaled ticks=false,
+      ticklabel style={
+        scale=0.7,
+      },
+      xticklabel style={
+        /pgf/number format/precision=3,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      yticklabel style={
+        /pgf/number format/precision=3,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      legend style={
+        at={(0.05,0.95)},
+        anchor=north west,
+        cells={anchor=west, font=\normalsize},
+        scale=2,
+        nodraw legend,
+        row sep=0.5pt,
+      },
+      clip mode=individual,
+      y post scale=0.85,
+    ]
+
+    \draw[ultra thin, name path=xzero]
+      (axis cs:\pgfkeysvalueof{/pgfplots/xmin},0) -- (axis cs:\pgfkeysvalueof{/pgfplots/xmax},0);
+
+    \addplot[
+      ColourBase,
+      data style,
+      restrict x to domain=0.993:0.998,
+    ] table [
+      x index=0,
+      y index=1,
+      y error index=2
+    ] {data/nb_of_mu_scaled.table};
+    \addlegendentry{\scalebox{0.8}{Continuum}}
+
+    \addplot[
+      data style,
+      ColourHl1,
+      skip coords between index={0}{14},
+    ] table [
+      x index=0,
+      y index=1,
+      y error index=2,
+    ] {data/nb_of_mu_scaled.table};
+    \addlegendentry{\scalebox{0.8}{Fit points}}
+
+    \addplot[
+      ColourDark,
+      line width=1.4pt,
+      name path global=fitline,
+      domain=0.9965:\pgfkeysvalueof{/pgfplots/xmax},
+    ] {1.7776*(x-0.99734)}
+      coordinate [pos=0.31] (A)
+      coordinate [pos=0.49] (B);
+    \addlegendentry{\scalebox{0.8}{Linear fit}}
+
+
+    \draw[thick] (A) -| (B) node [pos=0.75,anchor=west, scale=0.75, xshift=.1cm] {$1.7776(195)$};
+
+    \fill[
+      ColourHl2,
+      name intersections={of={xzero and fitline}}
+    ]
+      (intersection-1) circle (2.5pt);
+
+    \addlegendimage{
+      legend image code/.code={
+        \fill[ColourHl2] (0.3cm,0pt) circle (2.5pt);
+      }
+    }
+    \addlegendentry{\scalebox{0.8}{$\mu_{Bc} = 0.9982 m_B$}}
+
+  \end{axis}
+
+  \node[scale=0.8] [below=0.3cm of thelegend.south west, anchor=north west] {
+    $\begin{aligned}
+      T  &= 10 \mathrm{MeV}\\
+      m_B &= 30 \mathrm{GeV}
+    \end{aligned}$};
+
+
+\end{tikzpicture}%
+\end{document} 

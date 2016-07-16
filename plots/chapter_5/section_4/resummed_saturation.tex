@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp,tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+\input{../../../definitions/colour.tex}
+\input{../../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pagestyle{empty}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+  every axis plot/.append style={
+    only marks,
+    error bars/y dir=both, error bars/y explicit,
+    legend image post style={sharp plot,|-|},
+    error bars/error bar style={
+      line width=0.6pt,
+    },
+    error bars/error mark options={
+      rotate=90,
+      mark size=2pt,
+      line width=0.6pt,
+    },
+    every mark/.append style={line width=1pt},
+  }
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$\mu_B / m_B$},
+      ylabel={$n_B / m_B^3$},
+      xmin=0.997, xmax=1.003,
+      ymin=-0.00025, ymax=0.00355,
+      scaled ticks=false,
+      ticklabel style={
+        scale=0.7,
+      },
+      ytick={0.,0.0005,...,0.0040},
+      xticklabel style={
+        /pgf/number format/precision=3,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      yticklabel style={
+        /pgf/number format/precision=4,
+        /pgf/number format/fixed,
+        /pgf/number format/fixed zerofill,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      reverse legend,
+      legend style={
+        at={(0.05,0.95)},
+        anchor=north west,
+        cells={anchor=west, font=\footnotesize},
+        scale=2,
+        nodraw legend,
+        row sep=0.5pt,
+      },
+      clip mode=individual,
+      y post scale=0.85
+    ]
+
+    \draw[ultra thin] (axis cs:\pgfkeysvalueof{/pgfplots/xmin},0) -- (axis cs:\pgfkeysvalueof{/pgfplots/xmax},0);
+
+    \addplot[
+      ColourBase,
+      mark=*,
+      mark options={
+        fill=ColourBase,
+        scale=0.5,
+      },
+    ] table [
+      x index=0,
+      y index=1,
+      y error index=2,
+    ] {data/saturation_a12_a11.table};
+    \addlegendentry{$a = 0.12 \:\mathrm{fm}$}
+
+    \addplot[
+      ColourHl1,
+      mark size=1.5,
+      mark=square,
+    ] table [
+      x index=0,
+      y index=3,
+      y error index=4,
+    ] {data/saturation_a12_a11.table};
+    \addlegendentry{$a = 0.11 \:\mathrm{fm}$}
+
+    \addplot[
+      ColourHl2,
+      mark size=2,
+      mark=triangle,
+    ] table [
+      x index=0,
+      y index=1,
+      y error index=2,
+    ] {data/saturation_a10_a09.table};
+    \addlegendentry{$a = 0.10 \:\mathrm{fm}$}
+
+    \addplot[
+      ColourHl3,
+      mark size=2,
+      mark=diamond,
+    ] table [
+      x index=0,
+      y index=3,
+      y error index=4,
+    ] {data/saturation_a10_a09.table};
+    \addlegendentry{$a = 0.09 \:\mathrm{fm}$}
+
+    \addplot[
+      ColourDark2,
+      mark size=2,
+      mark=triangle,
+      every mark/.append style={line width=1pt,rotate=180},
+    ] table [
+      x index=0,
+      y index=1,
+      y error index=2,
+    ] {data/saturation_a08_a07.table};
+    \addlegendentry{$a = 0.08 \:\mathrm{fm}$}
+
+    \addplot[
+      data w error,
+      ColourBase,
+      mark size=2,
+      mark=pentagon,
+    ] table [
+      x index=0,
+      y index=3,
+      y error index=4,
+    ] {data/saturation_a08_a07.table};
+    \addlegendentry{$a = 0.07 \:\mathrm{fm}$}
+
+  \end{axis}
+
+  \node[scale=0.8] [right=.1cm of thelegend.north east, anchor=north west] {
+    $\begin{aligned}
+      T  &= 10 \mathrm{MeV}\\
+      m_B &= 30 \mathrm{GeV}
+    \end{aligned}$};
+\end{tikzpicture}%
+\end{document} 

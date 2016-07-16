@@ -1979,7 +1979,7 @@ is therefore summarised as the replacement
 \begin{multline}
   z_{(11)} \hskip .2cm\to\hskip .2cm z_{(11)} \sum_{n=0}^{\infty} 
     \sum_{m=0}^{n} \binom{n}{m} (-(2d)h_2)^{n+m}\, z_{(21)}^n\, (N_f z_{(11)^2})^m \\
-  = \frac{z_{(11)}}{1 + 2 (2d) h_2 N_f\, z_{(11)^2} + (2d) h_2\, z_{(21)}}.
+  = \frac{z_{(11)}}{1 + 2 N_f (2d) h_2\, z_{(11)^2} + (2d) h_2\, z_{(21)}}.
 \end{multline}
 %
 As this is only a fraction of the full LCE resummation scheme, further
@@ -2019,7 +2019,7 @@ presents the higher obstacle, remain.
 
 \begin{figure}[t]
   \begin{center}
-    \includegraphics[scale=1.65]{ladder_resummation_schematic}
+    \includegraphics[scale=1.5]{ladder_resummation_schematic}
   \end{center}
   \caption{The ladder resummation graphic, illustrating the general principle.}
   \label{fig:ladder_schematic}
@@ -2178,6 +2178,22 @@ effectiveness by comparing to our previous results. On top of this we will
 expand upon the analysis of the thermodynamic functions which we started in 
 \secref{sec:cluster_results}.
 
+\begin{figure}
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics{section_4/nb_of_h2_resummed_comparison}
+      \includegraphics{section_4/nb_of_h2_resummed_comparison_h1}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{Convergence test of the chain- and cluster resummed effective theory
+    compared to the previous cluster results. Left: At $h_1 = 0.8$. Right: At
+    $h_1 = 1.0$ (resummed $\kappa^2$ curve directly behind the $\kappa^4$
+    equivalent).}
+  \label{fig:resummed_convergence_check}
+\end{figure}
+
+\subsubsection{Convergence}
+
 We first check the convergence of the new results. This is plotted in
 \figref{fig:resummed_convergence_check}, where we once plot the strong coupling
 baryon number density as a function of the effective coupling constant. In the
@@ -2192,22 +2208,159 @@ order behaviour. The resummed result on the other hand has the advantage of
 being rigorous as well as providing insight into the underlying theory. In the
 right hand side of \figref{fig:resummed_convergence_check} we see the
 convergence behaviour after onset for the resummed and unsummed expressions. We
-see that the resummation is even more effective at these extreme positions,
-where convergence is not significantly weakened as is the case for its unsummed
-counterpart.
+see that the resummation is even more effective at these extreme parameter
+ranges, where convergence is not significantly weakened as is the case for its
+unsummed counterpart.
 
 \begin{figure}
   \begin{center}
     \begin{adjustbox}{max width=\textwidth}
-      \includegraphics{section_4/nb_of_h2_resummed_comparison}
-      \includegraphics{section_4/nb_of_h2_resummed_comparison_h1}
+      \includegraphics{section_4/nb_of_mpi_a01_r}
+      \includegraphics{section_4/nb_of_a_diffmu_r}
     \end{adjustbox}
   \end{center} \vskip -.5cm
-  \caption{Convergence test of the chain- and cluster resummed effective theory
-    compared to the previous cluster results. Left: At $h_1 = 0.8$. Right: At
-    $h_1 = 1.0$ (resummed $\kappa^2$ curve directly behind the $\kappa^4$
-    equivalent).}
-  \label{fig:resummed_convergence_check}
+  \caption{Left: Convergence properties of the resummed theory towards lighter
+    quarks. Right: Continuum extrapolation properties of the resummed theory.}
+  \label{fig:resummed_continuum_check}
+\end{figure}
+
+We continue the resummation analysis by checking convergence of physical values
+as we move towards lighter quarks and finer lattices. The scan in meson mass is
+plotted in \figref{fig:resummed_continuum_check} (left), in which we see
+significant improvement over the previous results, \figref{fig:convergence_mpi}
+(right) (notice the difference in scale). The scan in lattice spacing, which is
+important for the continuum limit extrapolation, is shown in
+\figref{fig:resummed_continuum_check} (right), where we once more see a definite,
+however smaller, improvement. It is clear from these studies that the
+resummation schemes provide a much greater improvement to the convergence of the
+results than additional orders in the expansion, and moving forward, one should
+focus one's efforts on structural improvements rather than systematics.
+
+\subsubsection{Saturation}
+
+\begin{figure}[t]
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics{section_4/resummed_saturation}
+      \includegraphics{section_4/resummed_nb_continuum}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{Left: Baryon number density as a function of chemical potential for smaller
+  and smaller lattice sizes. Right: The continuum extrapolation of the same
+  quantity.}
+  \label{fig:resummed_saturation}
+\end{figure}
+
+Next we want to analyse the issue of lattice saturation discussed in
+\secref{sec:saturation}. Most importantly, we want to verify that this problem
+vanish in the continuum, which it has to if our theory is supposed to describe
+physical systems. In \figref{fig:resummed_saturation} we plot the baryon number
+density as a function of the chemical potential for finer and finer lattices. At
+smaller lattice sizes the baryon number density increase, specially in the onset
+and half-filling regions. It is therefore clear that we resolve this particular
+lattice artefact as we move towards the continuum. For instance the line at
+$a = 0.12\:\mathrm{fm}$ saturates both quick than, and at lower densities than
+the same system at $a = 0.07 \:\mathrm{fm}$. Another interesting observation one
+can make about the difficulty of studying the dense regime is by looking at the
+$a$-scaling of the curves at increasing values of $\mu$. We see that they split
+further and further apart as we crank up $\mu$ due to saturation, which in turn
+make the continuum extrapolation more and more challenging. This is also
+reflected in \figref{fig:resummed_continuum_check} (right), where we see that
+the curve at higher chemical potential has a much steeper slope. On the right
+hand side of \figref{fig:resummed_saturation} we see the continuum extrapolated
+results for the baryon number density, and we see that this quantity does not
+saturate.
+
+\subsubsection{Equation of state}
+
+
+\begin{figure}[t]
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics[width=0.65\textwidth]{section_4/nb_of_press_scaled}
+      %\includegraphics{section_4/dof_of_a}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{Equation of state for the heavy quark effective theory in the at two
+    different lattice spacings, and in the continuum. Also plotted, a linear fit
+    of the polytropic EoS (black), as well as the saturation asymptotes for the
+    finite lattice spacing curves (\ColHlIText{} and \ColHlIIText{}).}
+  \label{fig:eos_plots}
+\end{figure}
+
+We finally turn our attention to the study of the \emph{Equation of State} (EoS)
+for heavy, dense and cold QCD. In \figref{fig:eos_plots} the path traced out in
+a pressure vs density plot as one varies chemical potential has been plotted.
+The finite lattice spacing paths are plotted in \ColHlIText{} and
+\ColHlIIText{}, and one sees that they eventually curve upwards. This is because
+of saturation, and as one continues to increase chemical potential above
+saturation, the density will stay constant, while the pressure will continue to
+rise. The expected asymptotes are also shown in the same plot, in matching
+colours to their corresponding plot points, which is given by
+%
+\begin{equation}
+  n_{B}(\text{saturation}) \big/ m_B^3 = 2 N_f \big/ (a m_B)^3 \,.
+\end{equation}
+%
+We see that this curvature disappears in the continuum extrapolation, and we get
+a straight curve
+%
+\begin{equation}
+  \frac{P}{m_B^4} \propto 0.04929(29) \, \bigg(\frac{n_B}{m_B^3}\bigg)^{5/3}.
+\end{equation}
+%
+This scaling is the same as for a free gas of non-relativistic fermions, which
+is remarkable given the fact that we based the computations on a theory of
+quarks and gluons expanded around the strong coupling regime. The emergence of
+a system of baryonic degrees of freedom interacting weakly is fully dynamical,
+and a result of the computation. 
+
+Digging deeper we can compare the slope to that of the EoS for non-relativistic
+fermions, which should give some information of which degrees of freedom
+contribute to the dynamics. The fermionic EoS is
+%
+\begin{equation}
+  \frac{P_f}{m_f^4} = \frac{1}{5} \bigg(\frac{6 \pi^2}{g_f} \bigg)^{2/3}
+  \bigg(\frac{n_f}{m_f^3} \bigg)^{5/3} \,,
+\end{equation}
+%
+where $g_f$ is the number of degrees of freedom. Extracting this number from the
+fit would give a staggering $g_f = 484(4)$, which is around five times as large
+as what might be expected from the static theory. The static theory for $N_f =
+2$, $N_c=3$ describes a system of $91$ "baryons", which includes fully
+degenerate nucleons, as well as every other higher excitation, which are all
+equally weighted as there is no mechanism that favours any particular quark
+combination. This means that we not only have three quark baryons, but also
+combination such as hexaquarks, enneaquarks and dodecaquarks. We note that six
+and twelve quark combinations are bosonic in nature, which might have an effect
+on the dense dynamics below half-filling, in which the system only see the quark
+degrees of freedom.
+
+To further study this we plot the density and the pressure separately as a
+function of chemical potential, and compare their scaling to the predictions of
+non-interacting fermions. In \figref{fig:nb_press_scaled} (left) we see that the
+density also scale similar to the fermionic case, but the degrees of freedom
+from this approach gives $g_f(nb) = 37$. Finally, \figref{fig:nb_press_scaled}
+(right) shows the pressure scaling, and gives $g_f(P) = 0.02$. This shows that
+the degrees of freedom is still not properly understood. One possible
+explanation is that the bosonic baryons condense, and therefore do not
+contribute to the pressure in the cold and dense, however they would still add
+to the baryon number. There are still open questions to be answered regarding
+this topic, and future studies, such as variations of $N_c$, might prove
+enlightening.
+
+\begin{figure}[t]
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics{section_4/nb_of_mu_scaled} \hskip .5cm
+      \includegraphics{section_4/press_of_mu_scaled}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{Left: Continuum extrapolated baryon number density as a function of
+    $(\mu_B / m_B)^{3/2}$ together with accompanying linear fits of the onset
+    region. Right: Similar plot for the continuum extrapolated pressure as a
+    function of $(\mu_B / m_B)^{5/2}$.}
+  \label{fig:nb_press_scaled}
 \end{figure}
 
 \section{Large \texorpdfstring{$N_c$}{Nc} limit} \label{sec:large_nc_study}
