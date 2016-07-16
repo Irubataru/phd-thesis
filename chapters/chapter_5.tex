@@ -2273,11 +2273,10 @@ saturate.
 
 \subsubsection{Equation of state}
 
-
 \begin{figure}[t]
   \begin{center}
     \begin{adjustbox}{max width=\textwidth}
-      \includegraphics[width=0.65\textwidth]{section_4/nb_of_press_scaled}
+      \includegraphics[width=0.75\textwidth]{section_4/nb_of_press_scaled}
       %\includegraphics{section_4/dof_of_a}
     \end{adjustbox}
   \end{center} \vskip -.5cm
@@ -2363,5 +2362,65 @@ enlightening.
   \label{fig:nb_press_scaled}
 \end{figure}
 
-\section{Large \texorpdfstring{$N_c$}{Nc} limit} \label{sec:large_nc_study}
+\section{Large-\texorpdfstring{$N_c$}{Nc} limit} \label{sec:large_nc_study}
+
+Another topic of great interest is the behaviour of gauge theories with
+fermions as one modifies the number of colours, $N_c$. This was first explored
+by \cite{'tHooft:1973jz}, in which he discovered that simplification arises in
+the large-$N_c$ limit, and that $1/N_c$ could work as a hidden candidate for a
+possible expansion parameter. More specifically, in this limit the mesons and
+pure glue states dominate, and are free (in the vacuum). This was further
+explored by \cite{Witten:1979kh}, in which he further developed the mathematical
+structure of this limit, and its possible implications for QCD. In a sense QCD
+sits at the worst possible value for $N_c$, with SU($2$) being much simpler than
+QCD, as well as not possessing a strong sign problem. On the other side we have
+SU($4$), SU($5$), ..., which are closer to the large-$N_c$ limit, and can thus
+benefit from the simplifications that arise. There is great interest in higher
+$N_c$ from the supersymmetry community, as there exists a line in the $N_f \big/
+N_c$ plane that separates conformal and non-conformal field theories, this is
+known as the \emph{conformal window} \citep{Dietrich:2006cm}. An introduction to
+lattice studies of large-$N_c$ can be found in \citep{Lucini:2013qja}.
+
+We already pointed out the reduced numerical cost of simulating the effective
+theory at higher $N_c$ in \secref{sec:numerical_evaluation}, as compared to a
+full scale lattice gauge theory implementation. Furthermore, the graphs that
+enter analytic computation does not change as we increase $N_c$. This means that
+in the strong coupling limit, all we have to do is recompute the $z$-functions
+using the methods outlined in the appendices for every $N_c$. This plot is shown
+in \figref{fig:diff_nc_plots}. We see that at higher and higher values of $N_c$,
+the transition becomes steeper and steeper. We have defined $n_B$ by dividing
+out a factor of $N_c$ from the quark number density, as one at least needs $N_c$
+quarks to create a colour neutral state. The behaviour at increasing $N_c$ can
+be easily seen from the static determinants in \tabref{tab:static-determinant}.
+The static determinant will always have a fugacity coefficient that at highest
+order is to the power $N_c$. This means that the onset is exponentially
+suppressed by $N_c$, and the saturation exponentially enhanced. In the limit
+this gives a natural transition which matches physical intuition. As one
+increase the number of quarks needed to form a baryon, it becomes more and more
+expensive energetically to create one. The silver blaze phenomenon is therefore
+strengthened, and in the actual limit, one will always have a first order
+transition to nuclear matter, independent of the temperature. It would be very
+interesting to use the effective theory to find the liquid gas endpoint as a
+function function of $N_c$, $\kappa$ and $T$. Similar to the fact that such an
+endpoint exist at a critical temperature depending on the quark mass, it also
+exist for any temperature and $\kappa$ at a critical $N_c$. However, this can
+only be seen if one includes gauge corrections, as the transition point is
+defined by an interplay between the fermion-gauge interactions. We already
+see that our effective coupling $h_2 \propto N_c^{-1}$, and will thus become
+small. The gauge sector on the other hand has graphs that does not suffer from
+this suppression, and will therefore compete with the quarks.
+
+\begin{figure}[t]
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics[width=0.6\textwidth]{section_5/nb_of_mu_diff_nc}
+      %\includegraphics{section_4/dof_of_a}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{"Baryon" number density as a function of chemical potential at
+    different values of $N_c$ computed with the effective theory. Expected
+    $N_c = \infty$ in black.}
+  \label{fig:diff_nc_plots}
+\end{figure}
+
 \section{Yang Lee Zeros} \label{sec:yang_lee_zeros}
