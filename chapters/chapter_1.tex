@@ -22,3 +22,115 @@ and their anti-particles into symmetry groups. This theory describes three of
 the four established fundamental forces as a quantum theory of fields, and is
 the most successful theory to date, predicting experimental values with
 astonishing accuracy.
+
+The subset of the Standard Model that describes the interaction between quarks
+and gluons is called \emph{Quantum Chromodynamics} (QCD). The advent of QCD came
+in the 1960's, in a period where a great number of "fundamental" particles were 
+discovered. Both \cite{GellMann:1962xb} and \cite{Ne'eman:1961cd} found
+structure and symmetry in this zoo of new particles, and to explain this
+phenomenon, the existence of the quarks were suggested \citep{GellMann:1964nj}.
+Due to the fermionic nature of the quarks, an additional quantum number was
+needed to allow for the quarks inside the baryons to occupy the required spin
+and flavour quantum states. This new quantum number was named \emph{colour},
+hence \emph{chromo}dynamics, from ancient greek χρῶμα \citep{Greenberg:1964pe}.
+
+QCD has an extremely rich structure, being confining at low energies, while also
+possessing \emph{asymptotic freedom}. It has an internal energy scale,
+$\Lambda_{\mathrm{QCD}} \approx 200 \:\mathrm{MeV}$, which arise from
+dimensional transmutation, and gives the defining length scales of the theory.
+It also possess non trivial topological structure, resulting in instanton
+configurations in the vacuum \citep{'tHooft:1976up}.
+
+\begin{figure}[t]
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \raisebox{.135cm}{\includegraphics{qcd_phase_diag}} \hskip .2cm
+      \includegraphics{columbia_plot}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{Left: A simplified, conjectured phase diagram of QCD with path
+    symbolising the scan lines of various current and future experiments. Right:
+    The Columbia plot, showing the deconfinement transition order for various
+    quark masses.}
+  \label{fig:phase_diags}
+\end{figure}
+
+Of particular interest is the phase diagram of QCD in the temperature-chemical
+potential plane, sketched in \figref{fig:phase_diags} (left). At low
+temperatures and densities, QCD is confining, and thus the effective degrees of
+freedom are the bound states, baryons an mesons. Moving along the temperature
+axis, one eventually pass into the quark-gluon-plasma state, a state in which
+the thermodynamic energies are high enough that the quarks and gluons deconfine.
+In this state the quarks and gluons move around semi-freely, weakly interacting
+with each other within the bulk of the plasma. This \emph{deconfinement
+  transition} is in fact not a phase transition at all, but has been shown to be
+a crossover transition, with a pseudo-critical temperature $T_c \approx 150-170
+\:\mathrm{MeV}$ \citep{Aoki:2006we}. It is still an open question whether moving
+along this line of crossover transitions eventually will result in a phase
+transition and an accompanying critical endpoint. The nature of the crossover
+transition depends on the constituent quark masses and the number of quark
+flavours, degenerate or otherwise. This dependence is often represented in a
+\emph{Columbia} plot, \figref{fig:phase_diags} (right). Although the point of
+physical quark masses lie in the crossover area, whether a critical end-point
+exist depends on whether the lower $Z(2)$ line shrinks or expands as one
+increase chemical potential. It is also an open question whether this critical
+line actually touch the chiral axis in the left or not
+\citep{Philipsen:2016hkv}.
+
+Back to the $T$-$\mu$ phase diagram, moving along the chemical potential axis at
+zero temperature one finds a first order liquid-gas phase transition at chemical
+potentials around the proton mass.  Following this transition curve to higher
+temperature, it will eventually end in a critical endpoint. Continuing to even
+higher chemical potentials, Cooper's theorem tells us that we should find
+various colour superconducting phases. This has been shown for asymptotically
+large densities, however no first principle proof for intermediate values
+exists. Due to the nature of QCD, and the enlarged number of quantum numbers,
+there exists multiple superconducting phases. These phases differ in which
+quantum numbers are fixed to create the Cooper pairs. One has the $2$-flavour
+superconducting phase and the colour-flavour-locked superconducting phase, where
+the colour index play different roles in the two cases. For a discussion on the
+phase structure of QCD see e.g.  \citep{Rajagopal:2000wf,Rischke:2003mt}.
+
+The goal of this thesis is to attempt a study of QCD at low temperatures and
+high densities, close to the liquid-gas phase transition. Due to the confining
+nature of QCD, such a study cannot be carried out with the use of perturbation
+theory. A normal approach to this is a study using low energy effective models
+for QCD, such as hadron gas resonant models, and meson models. We will aim
+higher, and will undertake to perform a first principle study through the medium
+of lattice gauge theories. As we will see in the introductory chapters, the
+lattice formalism is ill-suited to carrying out simulations in the cold and
+dense regime of QCD due to the sign problem, which we will overcome by the use
+of an effective lattice theory that has matching series coefficients to full QCD
+in a specific parameter region.
+
+The outline of the thesis will be as follows. We introduce the necessary
+formalism in \chapref{chap2}. This will include the quantum field theoretical
+description of a special type of quantified local symmetries, and a short
+introduction to the group theory of continuous groups. We then introduce lattice
+gauge theory through the discretisation of space-time, and finally an overview
+of important lattice concepts.
+
+In \chapref{chap3} we follow this up by the necessary formalism to transition
+our quantum field theory, and with it lattice gauge theory, into the realm of
+thermodynamics and statistical mechanics. In this section we take great care to
+properly define difficulties that arise in high density lattice simulations,
+namely the sign problem. We also present a handful of "remedies", and discuss
+their applicability.
+
+This is followed by \chapref{chap4} in which we introduce our method of choice
+for dealing with the sign problem. This is a systematic series expansion
+approach around the dynamics of heavy quarks ($m_q \to \infty$) and strong
+coupling ($g \to \infty$). The derivation of the effective theory is carried out
+in great detail, and various important steps for convergence is discussed. We
+round off the chapter with a discussion on the numerical evaluation of this
+simplified lattice theory.
+
+The thesis ultimately culminates in the purely analytical treatment of this
+effective lattice theory. \hyperref[chap5]{\mbox{\textsc{Chapter} \ref*{chap5}}}
+begins with the introduction of the linked cluster expansion, which works as a
+bedrock for the remained of the analysis, and is the preferred method to study
+thermodynamics through series expansions. We then develop a generalisation to
+the cluster expansion for more intricate theories, and name it the \emph{polymer
+  linked cluster expansion}. We then introduce powerful resummation schemes to
+extend the region of relevance of our theory further. Finally, the equation of
+state for cold and dense, heavy QCD is studied and discussed.

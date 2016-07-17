@@ -1,0 +1,51 @@
+\documentclass[11pt,tikz]{standalone}
+\usepackage{eulervm}
+\usepackage{libertine}
+%\usepackage{amsmath}
+
+\input{../../definitions/colour.tex}
+
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{arrows.meta}
+
+
+\begin{document}
+\begin{tikzpicture}
+
+  \fill[ColourHl1!15] (0,0) rectangle (5cm,5cm);
+
+  \begin{scope}
+    \clip (0,0) rectangle (5cm,5cm);
+    \fill[ColourBase!50] (0,5cm) -- (0,3cm) .. controls +(0,-2cm) and +(0,1.5cm) .. (1.75cm,0) -- (0,0) -- cycle;
+    \fill[ColourBase!50]  (3.75cm,5cm) .. controls +(0,-1cm) and +(-1cm,0) .. (5cm,3.6cm) -- (5cm,5cm) -- cycle;
+
+    \draw[ColourDark] (0,0) -- (5cm,5cm)
+      node [midway,sloped,scale=0.6,fill=ColourDark!10,rounded corners] {$N_f = 3$};
+
+    \draw[ColourBase,line width=2pt]  (0,5cm) -- (0,3cm) .. controls +(0,-2cm) and +(0,1.5cm) .. (1.75cm,0)
+      node [sloped,pos=.8,above,scale=0.75,ColourBase!50!ColourDark] {$\mathbf{Z(2)}$};
+    \draw[ColourBase,line width=2pt]  (3.75cm,5cm) .. controls +(0,-1cm) and +(-1cm,0) .. (5cm,3.6cm)
+      node [sloped,pos=.8,below,scale=0.75,ColourBase!50!ColourDark] {$\mathbf{Z(2)}$};
+  \end{scope}
+
+  \draw[ColourDark,thick] (0,0) -- (5cm,0) -- (5cm,5cm) -- (0,5cm) -- cycle;
+
+  \node[scale=0.6,fill=ColourDark!10,rounded corners] at (1cm,5cm) {$N_f = 2$};
+  \node[scale=0.6,fill=ColourDark!10,rounded corners,rotate=90] at (5cm,1cm) {$N_f = 1$};
+
+  \node[anchor=north,scale=1.0] at (2.5cm, -.2cm) {$m_{u,d}$};
+  \node[anchor=east,scale=1.0] at (-.2cm, 2.5cm) {$m_s$};
+  \node[white,anchor=west,scale=0.6] at (5.2cm, 2.5cm) {$m_s$};
+  \node[white,anchor=south,scale=0.6] at (2.5cm, 5.2cm) {$m_{u,d}$};
+
+  \node[scale=0.8,ColourHl1,font=\bfseries] at (3.5cm,1.5cm) {crossover};
+  \node[scale=0.75,ColourBase!50!ColourDark] at (0.5cm, 1cm) {$\mathbf{1^{\mathrm{st}}}$};
+  \node[scale=0.75,ColourBase!50!ColourDark] at (4.7cm, 4.2cm) {$\mathbf{1^{\mathrm{st}}}$};
+
+  \node[scale=1.0,anchor=north east] at (0,0) {0};
+  \node[scale=1.0,anchor=south west] at (5cm,5cm) {$\infty$};
+
+\end{tikzpicture}
+\end{document}
+
+
