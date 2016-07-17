@@ -1533,6 +1533,38 @@ sites. Corrections to this will appear at NLO in $N_t^{-1}$. The gauge
 corrections are therefore given by replacing $h_2 \to h_2(\beta)$ as given by
 \meqref{eq:h2_gauge_corrections}.
 
+\subsection{Application region of the large-$N_t$ approximation}
+
+Although there is no questioning the dense approximation for its region of
+applicability when studying the cold and dense due to its exponential nature,
+one might ask the validity of the expansion around $N_t^{-1} \to 0$. The lowest
+order correction to this limit comes at order $\kappa^4 N_t$. If we choose a
+somewhat extreme scenario for our parameters, $h_2 = 0.15$ and $N_t = 50$, we
+see that the $\kappa^4 N_t$ and $h_2^4$ have about the same order of magnitude,
+meaning that the next order in $N_t^{-1}$ should contribute about the same as
+the $\kappa^8$ terms do. To analyse this effect we plot the ratio of the baryon
+number density computed at fixed $h_1$ and $h_2$ using the $\mathcal{O}(h_2^4)$
+action with and without the $\mathcal{O}(\kappa^4 N_t)$ terms, shown in
+\figref{fig:nb_of_nt_comparison}. Although the prefactor of the expansion
+coefficients are around the same order of magnitude, it is clear that the
+contributions from these higher order terms give small corrections to the final
+result. Already at $N_t \leq 13$ the contribution is less than $5 \%$, which is
+insignificant compared to the contribution from the $\mathcal{O}(h_2^4)$ term at
+these extreme parameter choices. We thus conclude that the large-$N_t$ limit is
+well under control for the physical region we are studying.
+
+\begin{figure}[t]
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics[width=0.6\textwidth]{nb_of_nt_comparison}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{Ratio of baryon number density at $\mathcal{O}(h_2^4, \kappa^4 N_t)$
+    and at $\mathcal{O}(h_2^4)$ for fixed $h_1$ and $h_2$ in the strong coupling
+    limit. Computed with the analytic treatment of \protect\chapref{chap5}.}
+  \label{fig:nb_of_nt_comparison}
+\end{figure}
+
 
 \section{Numerical evaluation} \label{sec:numerical_evaluation}
 
@@ -1658,4 +1690,3 @@ effective theory.
 We will leave the numeric evaluation for now and will shift our focus to a
 purely analytical treatment of the effective 3D theory using graphical methods
 borrowed from the linked cluster formalism.
-

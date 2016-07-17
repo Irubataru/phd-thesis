@@ -1,0 +1,58 @@
+\documentclass[11pt,tikz]{standalone}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage{amsmath,amssymb}
+\usepackage{pgfplots}
+
+\input{../../definitions/colour.tex}
+%\input{../../definitions/plot_styles.tex}
+\usetikzlibrary{plotmarks,positioning}
+
+\pgfdeclarelayer{background}% determine background layer
+\pgfsetlayers{background,main}% order of layers
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$N_t$},
+      ylabel={$n_B(\kappa^4 N_t) \,\big/\, n_B(h_2^4)$},
+      xmin=2, xmax=50,
+      ymin=0.975, ymax=1.2,
+      scaled ticks=false,
+      xtick={5,10,...,50},
+      ytick={1.00,1.05,...,1.25},
+      ticklabel style={
+        scale=0.7,
+      },
+      minor tick num=3,
+      ylabel shift=-.1cm,
+      y post scale=0.65
+    ]
+
+    \draw[thin,ColourHl1] (axis cs:\pgfkeysvalueof{/pgfplots/xmin},1) -- (axis cs:\pgfkeysvalueof{/pgfplots/xmax},1);
+
+    \addplot[
+      no marks,
+      ColourBase,
+      line width=1.6pt,
+    ] table {data/nb_diff_of_nt.table};
+
+
+    \node[scale=0.8, anchor=north east] at (rel axis cs:0.9,0.9) {
+      $\begin{aligned}
+        h_1 &= 0.80\\
+        h_2 &= 0.15 \\
+        \beta &= 0.00
+      \end{aligned}$};
+  \end{axis}
+
+\end{tikzpicture}%
+\end{document} 
+
+

@@ -1,0 +1,53 @@
+\documentclass[11pt,tikz]{standalone}
+\usepackage{eulervm}
+\usepackage{libertine}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+
+\input{../../../definitions/colour.tex}
+
+\pgfplotsset{
+  compat=1.12,
+  width=10cm,
+}
+
+\begin{document}
+
+  \begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$\real z$},
+      ylabel={$\imag z$},
+      xmin=-5, xmax=5,
+      ymin=-5, ymax=5,
+      scaled ticks=false,
+      ticklabel style={
+        scale=0.7,
+      },
+      minor tick num=3,
+      label shift=-.1cm,
+      y post scale=0.65
+    ]
+
+    \draw[dotted] (axis cs:\pgfkeysvalueof{/pgfplots/xmin},0) -- (axis cs:\pgfkeysvalueof{/pgfplots/xmax},0);
+    \draw[dotted] (axis cs:0,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:0,\pgfkeysvalueof{/pgfplots/ymax});
+
+      \addplot[
+        mark=*,
+        mark size=0.75,
+        ColourBase,
+        only marks,
+      ] table {data/zeros_222.table};
+
+    \node[scale=0.8, anchor=north west] at (rel axis cs:0.05, 0.95)  {
+      $\begin{aligned}
+        N_s^3 &= 2\times{}2\times{}2\\
+        N_t  &= 1
+      \end{aligned}$};
+
+    \end{axis}
+  \end{tikzpicture}
+
+\end{document}

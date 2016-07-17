@@ -2362,7 +2362,18 @@ enlightening.
   \label{fig:nb_press_scaled}
 \end{figure}
 
-\section{Large-\texorpdfstring{$N_c$}{Nc} limit} \label{sec:large_nc_study}
+\section{Further applications}
+
+Finally, in this section we will review two further applications of the analytic
+treatment of the effective theories where the numerics would be less adequate.
+We will first summarise the implementation of different continuous groups,
+especially higher $N_c$, in \secref{sec:large_nc_study}. Subsequently, in
+\secref{sec:yang_lee_zeros} we will round off this chapter with a look at the
+extraction of the Yang Lee zeros, which were introduced in
+\secref{sec:yang_lee_zeros_intro}. Both of these topics are in progress, and
+remain as avenues of future research.
+
+\subsection{Large-\texorpdfstring{$N_c$}{Nc} limit} \label{sec:large_nc_study}
 
 Another topic of great interest is the behaviour of gauge theories with
 fermions as one modifies the number of colours, $N_c$. This was first explored
@@ -2423,4 +2434,54 @@ this suppression, and will therefore compete with the quarks.
   \label{fig:diff_nc_plots}
 \end{figure}
 
-\section{Yang Lee Zeros} \label{sec:yang_lee_zeros}
+\subsection{Yang Lee zeros} \label{sec:yang_lee_zeros}
+
+Finally we will discuss another future prospect of the effective theory, namely
+the evaluation of its complex Yang Lee zeros. An advantage of the Yang Lee zeros
+is that it outlines a clear cut systematic procedure for how to approach
+non-analyticities from a series expansion. Previous studies of zeros of gauge
+theory partition functions have proven to be fruitful
+\citep{Barbour:1992qc,Barbour:1992rh}, as well as being successfully applied to
+random matrix theories \citep{Halasz:1996jg}, motivating a similar study of the
+effective theory. Having a fully analytic framework at our disposal is also
+beneficial for these kinds of studies.
+
+We start away from the thermodynamic limit, using the logarithmically resummed
+$\mathcal{Z}_2$ effective action
+%
+\begin{equation} \label{eq:zeros_partition_function}
+  \mathcal{Z}_2 = \int_{U_0} \det \qstat \prod_{\langle \vec{x},\vec{y} \rangle}
+    \Big(1 - \frac{\kappa^2}{N_c} 
+    \big( W_{11}(\vec{x}) - \xoverline{W}_{11}(\vec{x}) \big)
+    \big( W_{11}(\vec{y}) - \xoverline{W}_{11}(\vec{y}) \big) \Big)^{N_t} \,.
+\end{equation}
+%
+As one increase the volume, moving in the direction of the thermodynamic limit,
+the partition function will be a higher and higher degree polynomial in fugacity,
+and thus have more and more complex zeros. Similarly, increasing $N_t$ will also
+alter the degree of the polynomial, showing a more intricate structure as one
+moves towards continuum physics.
+
+\begin{figure}[t]
+  \begin{center}
+    \begin{adjustbox}{max width=\textwidth}
+      \includegraphics[width=0.6\textwidth]{section_6/yang_lee_zeros_222}
+    \end{adjustbox}
+  \end{center} \vskip -.5cm
+  \caption{Complex zeros of the $\mathcal{Z}_2$ partition function on a
+    $2\times{}2\times{}2$ cube with periodic boundaries.}
+  \label{fig:yang_lee_zeros}
+\end{figure}
+
+The zeros of the $\mathcal{Z}_2$ partition function on a $2\times{}2\times{}2$
+lattice with periodic spatial directions and a temporal extent of $1$ is plotted
+in \figref{fig:yang_lee_zeros}. Already at these small lattices we see
+interesting structure, such as the three-fold symmetry of SU($3$). However, due
+to the
+need for exact analytic expression when evaluating the zeros, the
+integral in \meqref{eq:zeros_partition_function} becomes exceedingly expensive
+in its evaluation, and the number of terms to evaluate in a naive approach
+scales as $2^{6 N_t N_s^3}$. So even for a $1\times{}2^3$ lattice, the number of
+terms for the integral would be $\sim 2.8 \cdot 10^{14}$. Most of the terms are
+of course the same, and we therefore see the need for methods of extracting the
+zeros that take advantage of these symmetries.
