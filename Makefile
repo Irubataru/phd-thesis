@@ -8,6 +8,9 @@ FIGDIR   := figures
 FIGTEX   := $(wildcard $(FIGDIR)/chapter_*/*.tex)
 FIGPDF   := $(FIGTEX:.tex=.pdf)
 
+BACKMTR  := $(wildcard other/*/*.tex)
+BMTRPDF  := $(BACKMTR:.tex=.pdf)
+
 PLOTDIR  := plots
 PLOTTEX  := $(wildcard $(PLOTDIR)/chapter_*/*.tex) $(wildcard $(PLOTDIR)/appendix_*/*.tex) \
 	          $(wildcard $(PLOTDIR)/chapter_*/section_*/*.tex)
@@ -21,7 +24,7 @@ cd_and_clean = cd $(dir $(realpath $(1))); $(LATEXMK) -C $(notdir $(1))
 
 .PHONY: clean cleanthesis
 
-$(MAINPDF) : $(AUXTEX) $(MAINTEX) $(FIGPDF) $(PLOTPDF)
+$(MAINPDF) : $(AUXTEX) $(MAINTEX) $(FIGPDF) $(PLOTPDF) $(BMTRPDF)
 	$(LATEXMK) -pdf $(MAINTEX)
 
 $(FIGPDF): %.pdf: %.tex | $(STYLETEX)
@@ -32,6 +35,10 @@ $(PLOTPDF): %.pdf: %.tex | $(STYLETEX)
 	cd $(dir $<); \
 	$(LATEXMK) -C $(notdir $<); \
 	$(LATEXMK) -pdf $(notdir $<)
+
+$(BMTRPDF): %.pdf: %.tex
+	cd $(dir $<); \
+	$(LATEX) $(notdir $<)
 
 clean: $(MAINTEX) $(FIGTEX)
 	$(foreach file, $^, $(call cd_and_clean,$(file));)

@@ -20,7 +20,49 @@
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+
+  \vspace*{\fill}
+
+  \begin{center} \sffamily\Huge\bfseries
+    Heavy Quark QCD at Finite Temperature and Density Using an Effective Theory
+  \end{center}
+
+  \vspace*{1cm}
+
+  \begin{center} \sffamily\large
+    Dissertation\\
+    zur Erlangung des Doktorgrades\\
+    der Naturwissenschaften
+  \end{center}
+
+  \vspace*{1cm}
+
+  \begin{center} \sffamily\large
+    vorgelegt beim Fachbereich Physik\\
+    der Johann Wolfang Goethe-Universit\"at\\
+    in Frankfurt am Main
+  \end{center}
+
+  \vspace*{1cm}
+
+  \begin{center} \sffamily\large
+    von\\
+    Jonas Rylund Glesaaen\\
+    aus Oslo, Norwegen
+  \end{center}
+
+  \vspace*{1cm}
+
+  \begin{center} \sffamily\large
+    Frankfurt am Main 2016\\
+    D30
+  \end{center}
+
+  \vspace*{\fill}
+
+  
+\end{titlepage}
 
 \cleardoublepage
 \pagenumbering{roman}
@@ -32,19 +74,27 @@
 
 \cleardoublepage
 \addcontentsline{toc}{chapter}{Deutsche Zusammenfassung}
+\markboth{Deutsche Zusammenfassung}{Deutsche Zusammenfassung}
 \include{chapters/german_summary}
 
 \cleardoublepage
 \pagenumbering{arabic}
 
-\part{Introduction}
+% ------------------------ %
+%       Introduction       %
+% ------------------------ %
 
+\part{Introduction}
 \cleardoublepage
 \include{chapters/chapter_1}
 \cleardoublepage
 \include{chapters/chapter_2}
 \cleardoublepage
 \include{chapters/chapter_3}
+
+% ------------------------ %
+%   The Effective Theory   %
+% ------------------------ %
 
 \cleardoublepage
 \part{The Effective Theory}
@@ -53,12 +103,20 @@
 \cleardoublepage
 \include{chapters/chapter_5}
 
+% ------------------------ %
+%  Discussion and outlook  %
+% ------------------------ %
+
 \cleardoublepage
 \part{Discussion and Outlook}
 \cleardoublepage
 \include{chapters/chapter_6}
 \cleardoublepage
 \include{chapters/chapter_7}
+
+% ------------------------ %
+%         Appendix         %
+% ------------------------ %
 
 \cleardoublepage
 \appendix
@@ -68,10 +126,16 @@
 \cleardoublepage
 \include{chapters/appendix_b}
 
+% ----------------------- %
+%       Back matter       %
+% ----------------------- %
+
 \cleardoublepage
 \bibliographystyle{plainnat}
 \addcontentsline{toc}{chapter}{bibliography}
 \bibliography{references/refs,references/books}
 
+\cleardoublepage
+\includepdf[pages=-]{other/curriculum_vitae/curriculum_vitae.pdf}
 
 \end{document}

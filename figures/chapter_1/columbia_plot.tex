@@ -12,12 +12,12 @@
 \begin{document}
 \begin{tikzpicture}
 
-  \fill[ColourHl1!15] (0,0) rectangle (5cm,5cm);
+  \fill[ColourHl1!10] (0,0) rectangle (5cm,5cm);
 
   \begin{scope}
     \clip (0,0) rectangle (5cm,5cm);
-    \fill[ColourBase!50] (0,5cm) -- (0,3cm) .. controls +(0,-2cm) and +(0,1.5cm) .. (1.75cm,0) -- (0,0) -- cycle;
-    \fill[ColourBase!50]  (3.75cm,5cm) .. controls +(0,-1cm) and +(-1cm,0) .. (5cm,3.6cm) -- (5cm,5cm) -- cycle;
+    \fill[ColourBase!25] (0,5cm) -- (0,3cm) .. controls +(0,-2cm) and +(0,1.5cm) .. (1.75cm,0) -- (0,0) -- cycle;
+    \fill[ColourBase!25]  (3.75cm,5cm) .. controls +(0,-1cm) and +(-1cm,0) .. (5cm,3.6cm) -- (5cm,5cm) -- cycle;
 
     \draw[ColourDark] (0,0) -- (5cm,5cm)
       node [midway,sloped,scale=0.6,fill=ColourDark!10,rounded corners] {$N_f = 3$};

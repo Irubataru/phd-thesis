@@ -10,13 +10,13 @@ convergence is slow and other approaches should be considered.
 
 It was observed in one of the previous studies of the effective theory
 \citep{Langelage:2014vpa} that it is possible to treat the effective theory
-purely analytical which provides a plethora of useful methods which we will
+purely analytical, which provides a plethora of useful methods which we will
 explore in this chapter. First and foremost it lends insight into the
 mathematical and physical structure of the effective theory and serves as a
 cross check for the numerical methods. In \secref{sec:cluster_expansion} we will
 present the linked cluster expansion which will provide the building blocks for
 a systematic study of the analytic evaluation. We will see how one can translate
-between the language of spin statistics and nearest neighbour systems and the
+between the language of spin statistics and nearest neighbour systems; and the
 strong coupling, heavy quark formalism. In \secref{sec:analytic_resummation} we
 will introduce a new resummation scheme to the analytic evaluation which is
 inaccessible to numerical methods. To do this we will exploit the care we put
@@ -29,16 +29,16 @@ numerical results, studying lattice artefacts and more.
 Finally in \secrefs{sec:large_nc_study,sec:yang_lee_zeros} we carry out two
 exploratory studies in which the analytic evaluation is paramount. Although
 these still pose a lot of open questions, we will build foundations on which
-future studies can be performed.
+future studies can be built.
 
 \section{Linked cluster expansion} \label{sec:cluster_expansion}
 
 We start once more on a more fundamental level by introducing the linked cluster
 formalism for scalar fields with nearest neighbour interactions. Although the
-following section to a sense should be complete, we refer to introductory texts
-on the subject for more details, e.g. \citep{Wortis:1980zb,Reisz:1995ag}, and
+following section should be complete, we refer to introductory texts
+on the subject for more details; e.g. \citep{Wortis:1980zb,Reisz:1995ag}, and
 \citep{Domb:1980zb,Martin:1980zb} for a physics focused presentation of simple
-graph theoretical practices. After the fundamentals are out of the way we study
+graph theoretical practices. After the fundamentals are out of the way. we study
 how one can expand the formalism to also include $n$-point interactions with
 finite spatial extent, a system in which the effective theory can then be
 expressed.
@@ -53,7 +53,7 @@ To introduce the framework we consider a scalar field with a $2$-point coupling
     \phi(x) v(x,y) \phi(y)},
 \end{equation}
 %
-where function $v(x,y)$ encodes the coupling information.We will assume that the
+where the function $v(x,y)$ encodes the coupling information. We will assume that the
 coupling strength is small enough to justify an expansion around the free
 theory. To facilitate the expansion we introduce source fields $J(x)$ and define
 the generating functional
@@ -63,8 +63,8 @@ the generating functional
 \end{equation}
 %
 Since our goal is to study thermodynamic quantities, we shift our attention to
-the computation of the grand canonical potential $\mathcal{W}$, or the generating functional
-of connected correlation functions
+the computation of the grand canonical potential $\mathcal{W}$, also known as
+the generating functional of connected correlation functions
 %
 \begin{equation}
   \mathcal{W}[J,v] = \log \mathcal{Z}[J,v].
@@ -137,8 +137,8 @@ where the Kronecker deltas naturally arise in the free theory
 \end{equation}
 %
 We can easily see from the deltas that the cluster expansion constitutes an
-expansion in connected graphs as everything disconnected would give vanishing
-contributions. We can rewrite the second order derivative in $v$ in 
+expansion in connected graphs as everything disconnected graphs would give
+vanishing contributions. We can rewrite the second order derivative in $v$ in
 \meqref{eq:linked_cluster_2nd_order} in terms of derivatives w.r.t. the sources,
 and thus the free $n$-point functions, which gives
 %
@@ -254,16 +254,16 @@ potential simplifies further
 where $q$ is the $2 d$ for a $d$-dimensional square lattice. This factor is
 called the embedding number\footnote{Also referred to as the \emph{lattice
     constant} in the lattice community} of a graph onto the lattice, and will
-differ from lattice to lattice. For every graph in with a uniform nearest
-neighbour interaction the sum over the symbols / coordinates will result in $N$,
-the number of lattice sites, times the embedding number of the graph. Although
-it might seem wrong to include all possible embeddings as e.g. the $q^2$ in the
-$M_1^2 M_2$ term will natually include the embedding corresponding to the
-$M_2^2$ term. This is however not a problem as the $M_n$ factors are given in
-terms of commutators and applying the methods of moments and cumulants from
-\secref{sec:moments_cumulants} we see that the system resolves these issues
-automatically. The embedding number is dependent on the lattice, so that e.g.
-the three bond graph
+differ from lattice to lattice. For every graph arising from an action with a
+uniform two point interaction, the sum over the symbols / coordinates will
+result in $N$, the number of lattice sites, times the embedding number of the
+graph. It might seem wrong at first to include all possible embeddings as e.g.
+the $q^2$ in the $M_1^2 M_2$ term will natually include the embedding
+corresponding to the $M_2^2$ term. This is however not a problem as the $M_n$
+factors are given in terms of source derivatives, and applying the methods of
+moments and cumulants from \secref{sec:moments_cumulants} we see that the system
+resolves these issues automatically. The embedding number is dependent on the
+lattice, so that e.g.  the three bond graph
 %
 \begin{equation}
   \begin{tikzpicture}[graph style]
@@ -279,16 +279,17 @@ the three bond graph
 has an embedding number of zero on a square lattice as there is no way to
 resolve the nearest neighbour requirement of \ruleref{rule:free_energy}. On a
 triangular lattice on the other hand it would have a non-zero embedding number.
-A table of the four bond graphs with symmetry factors and embeddings on a square
-lattice can be found in \tabref{tab:graphs_embeddings}. When we later
-extrapolate the graphical methods to the effective theory we will see that these
-are all graphs needed to carry out a computation to order $\kappa^8$.
+A table of all four bond graphs, as well as their symmetry factors and
+embeddings on a square lattice can be found in \tabref{tab:graphs_embeddings}.
+When we later extrapolate the graphical methods to the effective theory, we will
+see that these are all graphs needed to carry out a computation to order
+$\kappa^8$.
 
 \begin{table}[ht]
   \begin{center}
     \includegraphics{embedding_and_symmetry}
   \end{center}
-  \caption{Graphs with up to four bonds with symmetry factor and the embeddings
+  \caption{Graphs with up to four bonds with symmetry factor and embeddings
   on a $d$ dimensional square lattice.}
   \label{tab:graphs_embeddings}
 \end{table}
@@ -308,7 +309,7 @@ is
   h_2 N_f \sum_{\langle x,y \rangle} W_{11} (x) W_{11} (y) \bigg),
 \end{equation}
 %
-as we showed in \chapref{chap4}. Comparing the above equation with the scalar
+as we showed in \chapref{chap4}. Comparing the above equation to the scalar
 field partition function we used to introduce the LCE,
 \meqref{eq:scalar_field_Z}, we see that there is a close to one-to-one
 correspondence between the two systems
@@ -379,7 +380,7 @@ given by
   \frac{z_{(11)^2}^2}{z_0^2} + 12 \frac{z_{(11)^2} z_{(11)}^2}{z_0^3} - 6 \frac{z_{(11)}^4}{z_0^4}.
 \end{align} 
 \end{subequations}
-%
+
 With the full analytic result for the $\mathcal{Z}_2$ partition function at hand
 we can start comparing with results from the numerical evaluation. However,
 first we need to establish the observables.
@@ -399,14 +400,14 @@ limit, which means that the pressure is given simply as
 \end{equation}
 %
 Similarly, taking the derivative with respect to fugacity is also straight
-forward, we can simplify it further using
+forward. We simplify it further using
 %
 \begin{equation}
   z\, \frac{\partial}{\partial z} \bigg|_{T\mathrlap{,V}} = h_1
   \frac{\partial}{\partial h_1} \bigg|_{T,V}
 \end{equation}
 %
-which means we can define the baryon number density as
+which means that the baryon number density is defined as
 %
 \begin{equation}
   n_B = \frac{1}{3} n_q = h_1 \frac{1}{3} \bigg( \frac{\partial}{\partial h_1} \frac{\mathcal{W}}{V} \bigg)_{T,V}.
@@ -470,7 +471,7 @@ derivative in $\beta$ through the use of implicit functions
   \frac{\partial a m_B}{\partial \kappa}.
 \end{equation}
 %
-Assuming strong coupling for now we see that the energy density is given in
+Assuming strong coupling for now, we observe that the energy density is given in
 terms of the two parameters of the theory
 %
 \begin{equation} \label{eq:energy_dens_mid_calc}
@@ -500,7 +501,7 @@ to see that the first part of \meqref{eq:energy_dens_mid_calc} is
 \end{equation}
 %
 after inserting the definition of $n_B$. Using that to first order in $\kappa$
-that $\frac{\partial \kappa}{\partial a} \sim \minus{}\kappa \frac{m_B}{3}$ we see that
+that $\frac{\partial \kappa}{\partial a} \sim \minus{}\kappa \frac{m_B}{3}$ we notice that
 this first term is somehow related to the rest energy of the system. We subtract
 the energy density by this shift, the resulting quantity should give a good estimate for the
 binding energy of the system at low temperatures where thermal fluctuations are
@@ -572,21 +573,21 @@ expansion result of the effective theory at a given order.
 
 Finally we plot the binding energy ratio $\epsilon$ as a function of the
 chemical potential for various values of $\kappa$ in
-\figref{fig:binding_energy_Z2}. We see that the binding energy decrease the
-constituent quark masses (increase $\kappa$), which is what one would expect.
-The plot on the left is to leading order in $h_2$, while the plot on the right
-shows the fourth order, $h_2^4$, of the expansion. As one can see higher order
-solution develops some interesting behaviour at the higher values of $\kappa$ as
-we pass the $\mu_B / m_B = 1$ line. It is however beyond convergence, and we
-need more orders in the effective theory before we can say anything about the
-behaviour at higher chemical potential.
+\figref{fig:binding_energy_Z2}. We see that the binding energy decrease together
+with the constituent quark masses (increase $\kappa$), which is what one would
+expect.  The plot on the left is to leading order in $h_2$, while the plot on
+the right shows the fourth order, $h_2^4$, of the expansion. As one can see
+higher order solution develops some interesting behaviour at the higher values
+of $\kappa$ as we pass the $\mu_B / m_B = 1$ line. It is however beyond
+convergence, and we need more orders in the effective theory before we can say
+anything about the behaviour at higher chemical potential.
 
 \subsection{Scale setting and the continuum limit}
 
 Up to now we have only considered observables at finite lattice spacing, and
 these observables have always been computed as dimensionless ratios of these
 so far unspecified lattice spacings. However for us to be able to make any
-connections to other fields we first have to determine the physical scale of the
+connections to other fields, we first have to determine the physical scale of the
 problem. As we outlined in \secref{sec:scale_setting} we need to determine the
 scale generated by the regulator, $a$. One way to do this is to analyse the
 static potential and link the curvature of this potential to the characteristic
@@ -618,15 +619,16 @@ is plotted in \figref{fig:a_of_beta} (left).
   \label{fig:a_of_beta}
 \end{figure}
 
-For the continuum limit it is important to vary the variables in such a way that
-the physical system remains unchanged. Analogous to how we defined the energy
-density by taking the $a$ derivative in such a way that $m_B$ remained constant,
-we choose to vary the parameters $\kappa(a), \beta(a), N_t(a)$ in such a way
-that $\partial_a m_B = 0$ and $\partial_a T = 0$. Some of the values at
-different lattice spacings are shown in \tabref{tab:parameter_values} where we
-have fixed the baryon mass to be $30 \: \mathrm{GeV}$. We observe that moving
-towards the continuum limit not only decreases the constituent quark masses, but
-also increase the number of temporal slices needed to fix temperature. These two
+With respect to the continuum limit, it is important to alter the variables in
+such a way that the physical system remains unchanged, in other words move along
+curves of constant physics. Analogous to how we defined the energy density by
+taking the $a$ derivative in such a way that $m_B$ remained constant, we choose
+to vary the parameters $\kappa(a), \beta(a), N_t(a)$ in such a way that
+$\partial_a m_B = 0$ and $\partial_a T = 0$. Some of the values at different
+lattice spacings are shown in \tabref{tab:parameter_values} where we have fixed
+the baryon mass to be $30 \: \mathrm{GeV}$. We observe that moving towards the
+continuum limit not only decreases the constituent quark masses, but also
+increase the number of temporal slices needed to fix temperature. These two
 effects combine when computing the effective coupling constant $h_2 = \kappa^2
 N_t / N_c$, as is clearly demonstrated in \figref{fig:a_of_beta} (right).
 
@@ -659,7 +661,7 @@ N_t / N_c$, as is clearly demonstrated in \figref{fig:a_of_beta} (right).
 Finally we demonstrate how the continuum limit is approached. We first compute
 the desired observable at multiple values for $\beta$, whose upper limit is
 determined my the convergence limit of our theory. E.g. the convergence plot
-\figref{fig:numerical_convergence} (right) shows us that $h_2 \lesssim 0.04$ for
+\figref{fig:numerical_convergence} (right) tells us that $h_2 \lesssim 0.04$ for
 $\mathcal{Z}_2$ if we require no more than $10 \%$ deviation. If we then fix
 $m_B = 30 \:\mathrm{GeV}$ and $T = 10 \:\mathrm{MeV}$ we find an upper limit for
 $\beta \lesssim 6.02$. We then analyse the scaling of the observable with
@@ -677,7 +679,7 @@ the observable to this function and extract the continuum limit result from
 this. The fit is carried out with two sets of data points, which are chosen
 depending on the observable and the value for $\mu$. A common choice here is
 $\Delta \beta = 0.01$ and then use the final $10$ and $6$ points respectively
-for the two fits. One then averages over the two values and take the difference
+for the two fits. One then averages over the two values, and take the difference
 as an error estimate for the systematic error. The difference in the observable
 at a fixed lattice spacing for two consecutive orders in the expansion is taken
 as an error estimate which is included in the fit. The fitting procedure is
@@ -761,14 +763,15 @@ $\mathcal{O}(v^2, u)$ (two bonds) we get
   + \frac{1}{2} \sum u_{ijk}(x,y,y) M_i(x) M_{jk}(y) + \dots
 \end{multline}}%
 %
-where the sums have been shortened for the sake of brevity and we have assumed
-that the 3-point coupling is cyclic. Just as with the 2-point LCE one can
-systematically carry out the lin\}ked cluster expansion, rewriting the derivatives
+where the sums have been shortened for the sake of brevity, and we have assumed
+that the 3-point coupling is cyclic. Just as with the 2-point LCE, one can
+systematically carry out the linked cluster expansion, rewriting the derivatives
 in the couplings $\{v, u, \dots\}$ order by order and evaluate $\mathcal{W}$.
 However a graphical method is desired as it would greatly benefit the
 expansion. To do this we need to further specify the geometry of the 3-point
-interaction. One natural choice that is compatible with the nearest neighbour
-interaction $v$ is a set of two nearest neighbour interactions
+interaction. One natural choice that is compatible with the already defined
+nearest neighbour interaction $v$, is a set of two nearest neighbour
+interactions
 %
 \begin{equation} \label{eq:udef_wedge}
   u(x,y,z) = 
@@ -837,11 +840,12 @@ Graphically we can represent the above expression as
   + \dots \,.
 \end{equation}
 %
-Where the $u$ bonds are coloured \ColBaseText{}, the $v$ bond pair is coloured
-\ColHlIText{} the nodes are coloured based on the number of fields from which
-interaction touches it. This is needed to distinguish e.g. the nodes in the
-final term.  An alternative three point coupling could be a triangular nearest
-neighbour coupling
+Where the $v$ bonds are coloured \ColBaseText{}, the $u$ bond pair is coloured
+\ColHlIText{}. The nodes are represented by concentric circles, where every
+additional node from a base diagram adds an additional circle of the appropriate
+colour.  This is necessary to distinguish e.g. the nodes in the final term.  An
+alternative three point coupling could be a triangular nearest neighbour
+coupling
 %
 \begin{equation}
   u(x,y,z) = 
@@ -982,7 +986,7 @@ This can be done in four different ways
   \end{tikzpicture}
 \end{equation}
 %
-where the first two are isomorphic and can be collected to one term. Hence there
+where the first two are isomorphic and can be collected in one term. Hence there
 are three unique embeddings of this combination onto the skeleton graph in
 question, where one of the embeddings has a non-unit embedding number, and thus
 a modified symmetry factor. With these two ingredients we present the
@@ -1002,7 +1006,7 @@ full three bond free energy
   \label{fig:cluster_num_terms}
 \end{figure}
 
-Once more we will compare the effective theory partition function to the one of
+Once more, we will compare the effective theory partition function to the one of
 the LCE and create a correspondence. We will increase the order of the effective
 theory by one, working with $\mathcal{Z}_4$. The method is however easily
 generalisable, and the $\mathcal{Z}_8$ effective theory partition function has
@@ -1084,7 +1088,7 @@ graphs at the four bond level.
 
 \subsection{Results} \label{sec:cluster_results}
 
-We are now in a position to evaluate thermodynamic functions completely
+We are now in a position to evaluate thermodynamic functions fully
 analytically. Using the LCE we have computed the grand canonical partition
 function in the thermodynamic limit though $\kappa^8 u^5$ to first order in
 $N_t^{-1}$. We first compare the convergence of the theory in the two parameters
@@ -1097,9 +1101,9 @@ In \figref{fig:analytic_convergeance} (right) we see the corresponding
 convergence plot in the strong coupling parameter $\beta$. We see that the
 analytic computation underestimates the strong coupling contributions. One
 should however note the axis scales and note that the finite coupling
-corrections are much smaller than the corrections in $\kappa$ and that the main
-contribution of finite $\beta$ comes indirectly through a rescaling of the
-system.
+corrections are much smaller than the corrections in $\kappa$, and that the main
+contribution of finite $\beta$ ultimately appears indirectly through a rescaling
+of the system.
 
 \begin{figure}
   \begin{center}
@@ -1117,9 +1121,9 @@ system.
 Next we explore the convergence properties of the theory as we move towards
 lighter quarks and smaller lattice sizes. In \figref{fig:convergence_in_spacing}
 we plot the baryon number density at lower and lower lattice sizes. The error
-bars are estimates of the systematic error given as the difference between two
-subsequent orders in the expansion. The first observation is that at
-conservative quark masses of $\sim 10 \:\mathrm{GeV}$ we see that the continuum
+bars are estimates of the systematic error, computed as the difference between
+two subsequent orders in the expansion. The first observation is that at
+conservative quark masses of $\sim 10 \:\mathrm{GeV}$, we see that the continuum
 extrapolation is limited by extrapolation from data taken at $\sim 0.07
 \:\mathrm{fm}$. However, we note that in all cases the convergence improves at
 higher orders of the expansion, demonstrating the stability of the expansion.
@@ -1184,7 +1188,7 @@ they tend to show better convergence properties than their corresponding
 Maclaurin series. If one considers a long enough series it is also possible to
 use the Pad\'{e} formulation to analyse critical points and non analyticities of
 the theory. However one should be careful as the Pad\'{e} series will pick up
-both the real physical singularities as well as artefact singularities due to
+both the real physical singularities as well as artificial singularities due to
 the fractional nature of the expression. To resolve this one can e.g. study the
 different Pad\'e approximants as the $L$-$M$ ratio is a sliding scale. It is
 however known that the diagonals ($[L/L]$ and $[L-1/L]$) possess various
@@ -1192,7 +1196,7 @@ favourable properties
 \citep[and references therein]{Gaunt:1980zb,Guttmann:1989zb}.
 
 In our case the Pad\'e variable is $h_2$, and the highest order is $L+M = 4$.
-After discarding the approximants with artificial singularities we can
+After discarding the approximants with artificial singularities, we can
 compare the convergence to that of the Maclaurin series. This is shown in
 \figref{fig:pade_results} (left) where we once more have used the baryon number
 density to investigate convergence. We see that the order by order convergence
@@ -1223,7 +1227,7 @@ the quantitative convergence breaks down shortly after the onset transition near
 $\mu_B \approx m_B$, we see new qualitative behaviour. In the higher orders we
 see that the binding has a minimum and reaches a positive value at growing
 chemical potential as is expected from nuclear physics. This means that we have
-a qualitative bulk nuclear density, whose qualitative value is still unsettled
+a qualitative bulk nuclear density, whose quantitative value is still unsettled
 by the present study.
 
 We will refrain from analysing any more results until we have introduced a final
@@ -1337,7 +1341,7 @@ terms in the $\kappa^8$ action, e.g.
   \end{tikzpicture} \Bigg),
 \end{equation}
 %
-all follow the this pattern. The conjecture is then that every singly connected
+all follow this pattern. The conjecture is then that every singly connected
 node, namely every factor $W_{11}$, can be extended to a chain of arbitrary
 length, and that these terms will appear in a predictable form at higher orders.
 The chain resummation can schematically be represented as
@@ -1365,12 +1369,13 @@ of the resummation, and its origin.
 
 We already introduced the combinatorics of the cold and dense regime in
 \secref{sec:combinatorics}, which we will build upon in this section. The first
-observation we need to make is the types of terms before the spatial gauge link
-integrals that contribute to the chain. We will simply state the general pattern
-here and prove it later. We define an \emph{open end} to consist of two
-consecutive hops that form a pair, such as $1 \, 1$. When we introduced the
-pairing notation we used the sixth order single trace as an example, which can
-appear in three combinations (as in \meqref{eq:pmpmpm_pairing})
+observation we need to make is the types of terms, analysed before the spatial
+gauge link integrals, which contribute to the chain. We will simply state the
+general pattern here and prove it later. We define an \emph{open end} to consist
+of two consecutive hops that form a pair, such as $1 \, 1$. When we earlier
+introduced the pairing notation, we used the sixth order single trace as an
+example, which can appear in three combinations (as in
+\meqref{eq:pmpmpm_pairing})
 %
 \begin{equation}
   \tr \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
@@ -1496,10 +1501,11 @@ structure it is natural to define the matrices $G_n$ so that
   \end{tikzpicture}\; .
 \end{equation}
 %
-The matrix $G_n$ is then defined in terms of $G_{n-1}$. In
-\secref{sec:combinatorics} we saw that the static propagator in the cold dense
-limit had the approximate expression \meqref{eq:leading_order_static_prop},
-meaning that the effecitve hopping matrices take the form
+The matrix $G_n$ is then defined in terms of $G_{n-1}$, which is defined in
+terms of $G_{n-2}$, and so on. In \secref{sec:combinatorics} we saw that the
+static propagator in the cold dense limit had the approximate expression
+\meqref{eq:leading_order_static_prop}, meaning that the effective hopping
+matrices take the form
 %
 \begin{alignat}{99}
   P^{ab}_{\alpha\beta}(y,x) &= \kappa \Big(\frac{1+\gamma_0}{2}\Big)_{\alpha\gamma} K^{ac}_{\vec{x}}(t_y,t_x)
@@ -1608,7 +1614,7 @@ result for the full chain matrix
     W_{11}(\vec{x}_{n+1}) \prod_{k=2}^{n} \big(-W_{21}(\vec{x}_k)\big)\;. \label{eq:full_gn}
 \end{multline}
 %
-The sums over the temporal variables could be trivially evaluated as the
+The sums over the temporal variables could be trivially evaluated because the
 $W_{nm}$ factors are independent of their time argument.
 
 To tie it all together let us consider a generic contribution which has $N$ open
@@ -1623,7 +1629,7 @@ ends
 %
 where the matrices $M_i$ are the rest of the term, comparable to the left hand
 side of \meqref{eq:chain_schematic}. We have only considered a single trace term
-here, however the analysis can be easily extended to multi trace terms as a
+here, however the analysis can be easily extended to multi trace terms, as a
 chain can only reside within one fermion trace. Inserting the expression for
 $G_1$ gives
 %
@@ -1808,8 +1814,8 @@ primitive objects of the theory, for which the embedding factor is correct. One
 might then study the amplitude of the corrections appearing at the same orders
 as the chain elements. In \figref{fig:resummation_demonstration} (right) we plot
 the value of three cumulants as a function of of their primary variable, $h_1$.
-We see that the free value is for all values of $h_1$ at least one order of
-magnitude higher than its overlapping counterparts. This behaviour is due to the
+We see that the free value is, for all values of $h_1$, at least one order of
+magnitude larger than its overlapping counterparts. This behaviour is due to the
 fact that the integrals
 %
 \begin{equation}
@@ -1981,7 +1987,7 @@ is therefore summarised as the replacement
     \sum_{m=0}^{n} \binom{n}{m} (-(2d)h_2)^{n+m}\, z_{(21)}^n\, (N_f z_{(11)^2})^m \\
   = \frac{z_{(11)}}{1 + 2 N_f (2d) h_2\, z_{(11)^2} + (2d) h_2\, z_{(21)}}.
 \end{multline}
-%
+
 As this is only a fraction of the full LCE resummation scheme, further
 improvements are expected to appear as one eventually crancks the machinery.
 However this particular subset of cluster resummations synergise well with the
@@ -1994,7 +2000,7 @@ resummation}, which simply is a renormalisation scheme for the nearest neighbour
 coupling constant. The idea behind the ladder resummation is, similar to the
 chain resummation, simple, albeit mathematically complicated. The general
 principle is sketched in \figref{fig:ladder_schematic}, in
-which all the details are suppressed. The full ladder is given by the nearest
+which all details are suppressed. The full ladder is given by the nearest
 neighbour kinetic determinant
 %
 \begin{equation}
@@ -2044,7 +2050,7 @@ computable subset of all graphs. One possible subset is the single trace terms
 \end{equation}
 %
 which will include both high order coupled terms as well as close packed
-embeddings of longer chains. For example the chains of the previous expansion
+embeddings of longer chains. For example all chains of the previous expansion
 will be one such term, where the chain has been folded onto a nearest neighbour
 pair. On top of being restricted by combinatorics, we are also restricted by
 integrability of the linked cluster integrals. The chain had the advantage that
@@ -2171,7 +2177,7 @@ independent is yet unknown and is something that needs to be studied. If it is
 inversely proportional to $n$, the sum would result in a logarithm. The sum
 over $m$ might also prove beneficial.
 
-\subsection{Results}
+\subsection{Results} \label{sec:evaluation}
 
 With the resummation schemes in place, we are in a position to assess their
 effectiveness by comparing to our previous results. On top of this we will
@@ -2195,14 +2201,14 @@ expand upon the analysis of the thermodynamic functions which we started in
 \subsubsection{Convergence}
 
 We first check the convergence of the new results. This is plotted in
-\figref{fig:resummed_convergence_check}, where we once plot the strong coupling
-baryon number density as a function of the effective coupling constant. In the
-left plot we see that we have extended the region of convergence significantly
-compared to the unsummed result. Comparing the plot to the equivalent Pad\'e
-plot in \figref{fig:pade_results} (left), we see a comparable increase in
-convergence. This is both expected and reassuring as both schemes produce
-rational expressions for the grand canonical partition function, and the
-slightly superior convergence of the Pad\'e is also understood as it is not
+\figref{fig:resummed_convergence_check}, where we once more plot the strong
+coupling baryon number density as a function of the effective coupling constant.
+In the left plot we see that we have extended the region of convergence
+significantly compared to the unsummed result. Comparing the plot to the
+equivalent Pad\'e plot in \figref{fig:pade_results} (left), we see a comparable
+increase in convergence. This is both expected and reassuring as both schemes
+produce rational expressions for the grand canonical partition function, and the
+slightly superior convergence of the Pad\'e is also understood, as it is not
 restricted to a particular set of diagrams and might therefore predict higher
 order behaviour. The resummed result on the other hand has the advantage of
 being rigorous as well as providing insight into the underlying theory. In the
@@ -2331,9 +2337,10 @@ degenerate nucleons, as well as every other higher excitation, which are all
 equally weighted as there is no mechanism that favours any particular quark
 combination. This means that we not only have three quark baryons, but also
 combination such as hexaquarks (dibaryon), enneaquarks (tribaryon) and
-dodecaquarks (tetrabaryon). We note that six and twelve quark combinations are
+dodecaquarks (tetrabaryon). We note that the hexaquarks and dodecaquarks are
 bosonic in nature, which might have an effect on the dense dynamics below
-half-filling, in which the system only see the quark degrees of freedom.
+half-filling, after which the system only see the quark degrees of freedom, and
+the statistics of combinations becomes irrelevant.
 
 To further study this we plot the density and the pressure separately as a
 function of chemical potential, and compare their scaling to the predictions of
@@ -2375,22 +2382,23 @@ remain as avenues of future research.
 
 \subsection{Large-\texorpdfstring{$N_c$}{Nc} limit} \label{sec:large_nc_study}
 
-Another topic of great interest is the behaviour of gauge theories with
+A topic of great interest is the behaviour of gauge theories with
 fermions as one modifies the number of colours, $N_c$. This was first explored
 by \cite{'tHooft:1973jz}, in which he discovered that simplification arises in
 the large-$N_c$ limit, and that $1/N_c$ could work as a hidden candidate for a
 possible expansion parameter. More specifically, in this limit the mesons and
 pure glue states dominate, and are free (in the vacuum). This was further
-explored by \cite{Witten:1979kh}, in which he further developed the mathematical
-structure of this limit, and its possible implications for QCD. In a sense QCD
-sits at the worst possible value for $N_c$, with SU($2$) being much simpler than
-QCD, as well as not possessing a strong sign problem. On the other side we have
-SU($4$), SU($5$), ..., which are closer to the large-$N_c$ limit, and can thus
-benefit from the simplifications that arise. There is great interest in higher
-$N_c$ from the supersymmetry community, as there exists a line in the $N_f \big/
-N_c$ plane that separates conformal and non-conformal field theories, this is
-known as the \emph{conformal window} \citep{Dietrich:2006cm}. An introduction to
-lattice studies of large-$N_c$ can be found in \citep{Lucini:2013qja}.
+explored by \cite{Witten:1979kh}, in which he hastened the development of this
+limits mathematical structures, and its possible implications for QCD. In a
+sense QCD sits at the worst possible value for $N_c$, with SU($2$) being much
+simpler than QCD, as well as not possessing a strong sign problem. On the other
+side we have SU($4$), SU($5$), ..., which are closer to the large-$N_c$ limit,
+and can thus benefit from the simplifications that arise. There is great
+interest in higher $N_c$ from the supersymmetry community, as there exists a
+line in the $N_f \big/ N_c$ plane that separates conformal and non-conformal
+field theories, this is known as the \emph{conformal window}
+\citep{Dietrich:2006cm}. An introduction to lattice studies of large-$N_c$ can
+be found in \citep{Lucini:2013qja}.
 
 We already pointed out the reduced numerical cost of simulating the effective
 theory at higher $N_c$ in \secref{sec:numerical_evaluation}, as compared to a

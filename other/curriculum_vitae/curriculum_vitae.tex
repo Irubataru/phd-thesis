@@ -1,0 +1,183 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.2 (25/3/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same 
+% directory as this .tex file. These files provide the resume style and themes 
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv}
+
+\moderncvstyle{casual}
+\moderncvcolor{red}
+
+\usepackage[
+  scale=0.75,
+  bmargin=20mm,
+  tmargin=30mm,
+]{geometry}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Jonas Rylund}
+\familyname{Glesaaen}
+
+\title{Curriculum Vitae}
+\address{Haakon Tveters Vei 26 d}{0682, Oslo, Norway}
+\mobile{+47 95 29 99 82}
+\phone{+49 171 1814 329}
+\email{jonas@glesaaen.com}
+%\homepage{github.com/irubataru}{github.com/irubataru}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\makecvtitle % Print the CV title
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\cventry{\scalebox{0.9}{08.2013-present}}{Ph.D.-Student}%
+  {Johann Wolfgang Goethe-Universit\"et}{Frankfurt am Main}{}{%
+    Phase diagram of QCD, lattice QCD, analytic methods, cold and dense, heavy
+    QCD, \\hopping parameter expansion, strong coupling expansion, graph theory.
+  }
+\cventry{\scalebox{0.9}{08.2009-05.2015}}{Master student}%
+  {Norwegian University of Science and Technology (NTNU)}{\hskip 1cmTrondheim}{Graduate of excellence}{%
+    Phase diagram of QCD, effective models, quark extended linear sigma model,\\
+    the renormalisation group.}
+
+\section{Theses}
+
+\cventry{\scalebox{0.9}{Ph.D.-Thesis}}{%
+    Heavy Quark QCD at Finite Temperature and Density Using an Effective Theory%
+  }{%
+    Supervisors: Prof. Dr. Owe Philipsen, and Prof. Dr.  Dirk-Hermann Rischke
+  }{}{}{%
+    In this work I used an effective theory approach to study the cold and dense
+    limit of heavy QCD from first principles. I developed both computational and
+    graphical tools and methods for carrying out the necessary mathematics to
+    high order. Much of the work is also dedicated to the methods of resummation
+    and their advantages.
+  }
+
+\cventry{\scalebox{0.9}{Master Thesis}}{%
+    The Chiral Phase Transition in QCD: Mean-Field Versus the Functional Renormalisation Group%
+  }{%
+    Supervisor: Prof. Jens Oluf Andersen
+  }{}{}{%
+    For my masters work I made use of low energy effective theories, more
+    specifically the quark extended linear sigma model, to analyse the
+    properties of the breaking of chiral symmetry in QCD, and the emerging phase
+    diagram. Also made use of the functional renormalisation group to extract
+    the correct low energy properties of the quantum field theory.
+  }
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+
+\subsection{Teaching, Goethe Universit\"et}
+
+\cventry{10.2015}{Introductory Course to the C++ Programming Language}{}{}{}{%
+  Taught a full week intensive course on the C++ programming language, which is a
+  prerequisite for the students who wish to attend the numerical physics course
+  taught by Prof. Lindenstruth}
+
+\cventry{SS15}{Quantum Field Theory II}{Jun Prof. Dr. Marc Wagner}{}{}{}
+\cventry{WS14}{Statistical Physics}{Prof. Dr. Owe Philipsen}{}{}{}
+\cventry{SS14}{Introductory Quantum Mechanics}{Prof. Dr. Owe Philipsen}{}{}{}
+\cventry{WS13}{Programming For Physicists}{Jun Prof. Dr. Marc Wagner}{}{}{}
+
+
+\subsection{Teaching, NTNU}
+
+\cventry{autumn 2012}{Statistical Physics}{Prof. Kåre Olaussen}{}{}{}
+\cventry{spring 2012}{Computational Physics}{Prof. Alex Hansen}{}{}{%
+  Created and published solutions to the homework and lectured Once a week.}
+\cventry{autumn 2011, autumn 2012}{Quantum Mechanics II}{Prof. Jan Myrheim}{}{}{}
+
+%\newpage
+\cventry{autumn 2010}{Wave Physics}{Prof. Jon Andreas Støvneng}{}{}{}
+\cventry{spring 2010}{Vector Calculus}{Førsteamenuensis Heidi Dahl}{}{}{}
+\cventry{spring 2010}{Electricity and Magnetism}{Prof. Jon Andreas Støvneng}{}{}{}
+\cventry{autumn 2009}{Mechanical Physics}{Prof. Arne Mikkelsen}{}{}{}
+
+\subsection{Other}
+
+\cventry{summer 2011, summer 2012, winter 2012}{Service desk administrator}%
+  {Petroleum Geo-Services}{Oslo, Norway}{}{%
+    Management and administration of user databases, PC repair, general support
+    tasks.%
+  }
+
+\cventry{summer 2010}{Internship, material science}%
+  {National Institute of Material Science (NIMS)}{Tsukuba, Japan}{Supervision of Prof. Kenji Sakurai}{%
+    Carried our x-ray diffraction laboratory work on thin film materials
+    sputtered with ytterbium crystals. Held and took courses on various material
+    science related subjects. Observed synchrotron experiments at the KEK Photon
+    Factory synchrotron.
+  }
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Skills}
+
+\cvitem{C++}{Experienced in OO programming, Template Meta Programming, MPI, the C++14 standard,
+  boost, GSL, and other scientific libraries}
+\cvitem{Other}{Mathematica, JavaScript, Python, LISP}
+\cvitem{Typography}{\LaTeX{}, HTML, CSS}
+\cvitem{Tools}{Vim, Gnuplot, GDB}
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Languages}
+
+\cvitemwithcomment{Norwegian}{Mother tongue}{}
+\cvitemwithcomment{English}{Excellent}{IELTS 8.5}
+\cvitemwithcomment{Japanese}{Basic}{Basic communication, reading and writing skills}
+
+\section{Publications}
+
+\cvitem{}{%
+  J. Glesaaen, M. Neuman, O. Philipsen, Heavy dense QCD from a 3D effective
+  lattice theory. In {\itshape Proceedings, 33rd International Symposium on
+    Lattice Field Theory (Lattice 2015)}, 2015, arXiv: 1511.00967
+  }
+
+\cvitem{}{%
+  J. Glesaaen, M. Neuman, O. Philipsen, Equation of state for cold and dense
+  heavy QCD. {\itshape JHEP}, 03:100, 2016, doi: 10.1007/JHEP03(2016)100
+  }
+
+\end{document}
