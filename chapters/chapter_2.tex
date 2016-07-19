@@ -27,14 +27,16 @@ functional and the partition function, in the two theories respectively. It is
 in SM defined as
 %
 \begin{equation} \label{eq:partition}
-  \mathcal{Z}_E = \int \prod_i \mathrm{d} \phi_i e^{-\mathcal{S}_E[\phi_i]},
+  \mathcal{Z}_E = \tr e^{-\beta H}
+    = \int \prod_i \mathrm{d} \phi_i e^{-\mathcal{S}_E[\phi_i]},
 \end{equation}
 %
-where we have represented the field parameters by $\phi_i$. There is an analogue
-between the two theories and one can convert between them by Wick rotating the
-time coordinate $x^0_E = -i x^0_M$. Whenever the possibility for confusion
-exists we use an $M$ to symbolise Minkowski space, the world of QFT, and an $E$
-to symbolise Euclidean space, the world of SM.
+where we have chosen to represent the trace over the Hamiltonian matrix by an
+integral over a continuous system, described by a set of field parameters,
+$\phi_i$. There is an analogue between the two theories and one can convert
+between them by Wick rotating the time coordinate $x^0_E = -i x^0_M$. Whenever
+the possibility for confusion exists we use an $M$ to symbolise Minkowski space,
+the world of QFT, and an $E$ to symbolise Euclidean space, the world of SM.
 
 The action, $\mathcal{S}$, is in turn defined by the Lagrangian density
 %
@@ -45,16 +47,18 @@ The action, $\mathcal{S}$, is in turn defined by the Lagrangian density
 and our theories are therefore uniquely defined through $\mathcal{L}$, and the
 properties of the fields $\phi_i$.
 
-Of physical interest are expectation values of Hermitian operators $O$, defined
-as
+Of physical interest are expectation values of Hermitian operators $\widehat{O}$,
+which in the path integral formalism can be computed using the partition
+function
 %
 \begin{equation} \label{eq:expectation_value}
-  \big\langle O[\phi_i] \big\rangle = \frac{1}{\mathcal{Z}_E} 
+  \big\langle \widehat{O}[\phi_i] \big\rangle = \frac{1}{\mathcal{Z}_E} 
     \int \prod_i \mathrm{d} \phi_i \, O[\phi_i]\, e^{-\mathcal{S}_E[\phi_i]},
 \end{equation}
 %
-which correspond to physical observables. These can for example be accessed by
-the introduction of source terms to the action
+It is the set of Hermitian operators that represents physical observables.
+These can for example be accessed by the introduction of source terms to the
+action
 %
 \begin{equation}
   \mathcal{Z}_E [\,J_i\,] = \int \prod_i \mathrm{d} \phi_i \,
@@ -81,8 +85,8 @@ The most basic starting point for us will be the Dirac Lagrangian, which reads
 \end{equation}
 %
 where we have introduced the fermionic fields $\psi_i$. To get the right
-statistics, these fields have to obey the anti-commutation relations, placing
-them in the group known as Grassmann numbers
+statistics, these fields have to obey the anti-commutation relations, and
+therefore they have to obey the \emph{Grassmann algebra}
 %
 \begin{align}
   \big\{ \psi_i, \psi_j \big\} &\equiv \psi_i \psi_j + \psi_j \psi_i = 0,\\
@@ -93,7 +97,7 @@ them in the group known as Grassmann numbers
 \end{align}
 
 This Lagrangian describe the dynamics of a set of free, massive fermions, which
-by itself, is not very exciting. There are however a multitude of ways to add
+by itself, is not very exciting. There are however different ways to add
 interactions while still maintaining the desired symmetry properties (which we
 will discuss later). Depending on the system one is interested in describing,
 these include the addition of a self interaction term for the fermions, e.g. a
@@ -294,7 +298,7 @@ transformation
 %
 if and only if the mass term is set to zero. Invariance of the independent
 transformations of the left- and right handed fields is called \emph{chiral}
-symmetry, and signal the existence of helicity eigenstates. The existence of the
+symmetry, and signals the existence of helicity eigenstates. The existence of the
 mass term explicitly breaks the symmetry into a single U($1$) symmetry, where
 $\alpha_R = \alpha_L$.
 
@@ -340,7 +344,7 @@ needs to adjust scales to compare two separate points. Weyl then showed that
 these vector fields need to follow Maxwell's equations, and postulated that
 these gauge fields were in fact nothing else than Maxwell's electromagnetic
 potentials \citep{Weyl:1918ib}. It was later discovered that classically scale
-invariant theories looses this symmetry due to a quantum effect sometimes
+invariant theories loose this symmetry due to a quantum effect sometimes
 referred to as the \emph{Weyl anomaly}. In fact, it is this very effect that is
 responsible for the bulk contribution to the hadron masses in QCD. So, although
 Weyl's ideas does not describe how the world actually works, it served as a
@@ -484,9 +488,9 @@ and magnetic dipole interactions
   \mathcal{L}_{\mathrm{MD}} = g_{\mathrm{MD}} \bar{\psi} \sigma^{\mu\nu} F^i_{\mu\nu} \psi\,.
 \end{equation}
 %
-These we ignore in the current study as they break other symmetries or
-systematics that are of interest, CP symmetry and renormalisability
-respectively.
+These we ignore in the current study as they contribute to the breaking of other
+symmetries and or systematics, some of which we are interested in conserving at
+the scope of this thesis, such as CP symmetry and renormalisability,
 
 \section{Lattice discretisation} \label{sec:lattice_intro}
 
@@ -534,7 +538,7 @@ applications of lattice gauge theories will be given.
 Constructing a \emph{good} discretised Lagrangian is both a subject and an art
 of itself. Naively one would think that any Lagrangian that reduces to the
 continuum Lagrangian \eqref{eq:gauge_lagrangian} when we send $a \to 0$ would
-suffice. Or broader, Lagrangians that at most introduce total derivates with 
+suffice. Or broader, Lagrangians that at most introduce total derivatives with 
 vanishing borders when $a \to 0$. Though this is to some extent true, we will
 see that as always, the devil are in the details, and if one does not take great
 care, the continuum theory will not be as it first appears.
@@ -556,11 +560,12 @@ lattice action with a symmetrised derivative reads
     \bar{\psi}(x+\hat{\mu})\gamma^{\mu}U_{\mu}(x) \psi(x) \bigg),
 \end{equation}
 %
-where the sum goes over the discrete points on the lattice. We have also
-switched to Euclidean space, which is a conscious choice that will benefit us
-later, and used the shorthand definition $\gamma^{-\mu} \equiv -\gamma^{\mu}$.
-It is common to factor the fields out of the definition and write the action in
-terms of a vector-matrix product
+where the sum goes over the discrete points on the lattice, and we have used the
+shorthand definition $\gamma^{-\mu} \equiv -\gamma^{\mu}$. We have also switched
+to Euclidean space, which is a conscious choice that will benefit us later in
+the stochastic evaluation of the path integral. It is common to factor the
+fields out of the definition and write the action in terms of a vector-matrix
+product
 %
 \begin{equation}
   \mathcal{S}_f = a^4 \bar{\psi}_y Q_{yx} \psi_x, \hskip1em 
@@ -576,9 +581,10 @@ for the integral over the fermion fields, which can be evaluated exactly
    = \det Q,
 \end{equation}
 %
-with $Q$ commonly referred to as the \emph{fermion matrix}, and $\det Q$ the
-\emph{fermion determinant}. The matrix can either be represented as a higher
-dimensional tensor or with a super index describing, all degrees of freedom.
+with $Q$ commonly referred to as the \emph{Dirac operator} or the \emph{fermion
+  matrix}, and $\det Q$ the \emph{fermion determinant}. The matrix can either be
+represented as a higher dimensional tensor or with a super index describing, all
+degrees of freedom.
 
 Having introduced the \emph{plaquette} transporter in
 \meqref{eq:transport_plaquette}, constructing a lattice gauge action is
@@ -599,8 +605,8 @@ coupling constant, and by comparison with the continuum field strength tensor
 
 \section{Fermion doubling and chiral symmetry} \label{sec:fermion_doubling}
 
-Although the Lagrangian \meqref{eq:naive_fermions} have the desired
-transformation property, and reproduce the Dirac Lagrangian in the continuum, it
+Although the Lagrangian \meqref{eq:naive_fermions} has the desired
+transformation property, and reproduces the Dirac Lagrangian in the continuum, it
 suffers from a degeneracy in its energy eigenvalues. The easiest way to see this
 is by choosing the trivial representation of the gauge fields and writing down
 the fermion Hamiltonian
@@ -647,7 +653,8 @@ unwanted, fermions in the theory whenever we put $1$ in. These \emph{doublers}
 come from the corners of the Brillouin zone, and therefore disappear as we go
 to the continuum limit. That is however of little comfort as they would give
 incalculable effects to loop diagrams at finite volumes which cannot easily be
-factored out.
+factored out. In four dimensional space-time an additional set of $8$ energy
+eigenstates appear from doublings in the additional temporal Brillion corners.
 
 \subsection{Wilson fermions}
 
@@ -685,14 +692,16 @@ whether we choose $m=0$ for the bare mass parameter, the transformation
 There is in fact a theorem by \citeauthor{Nielsen:1980rz}
 [\citeyear{Nielsen:1980rz,Nielsen:1981xu}] which states that one cannot have a
 lattice theory both chirally symmetric and free of doublers at the same time
-with a Dirac Lagrangian that is also local.
+with a Dirac Lagrangian that is also local and possessing the correct continuum
+limit.
 
 Yet all hope is not lost as Ginsparg and Wilson shortly after stated a modified
 equation the fermion propagator has to fulfil to give a chiral theory in the
 continuum \citep{Ginsparg:1981bj}. Although Wilson fermions do not meet these
 requirements, solutions to these equations have since been found. Two notable
-discretisation schemes being \emph{domain wall fermions} \citep{Kaplan:1992bt} and 
-\emph{overlap fermions} \citep{Neuberger:1997fp,Neuberger:1998wv}.
+discretisation schemes being \emph{overlap fermions} \citep{Neuberger:1997fp,Neuberger:1998wv},
+\emph{domain wall fermions} \citep{Kaplan:1992bt} (which heed the equation in a
+special limit of its internals).
 
 \section{Scale setting and the continuum limit} \label{sec:scale_setting}
 
@@ -709,7 +718,7 @@ them to experimental values
 %
 Simply sending $a$ to $0$ is considered to be the \emph{naive} continuum limit,
 as one fails to take into account the parameters' dependence on the scale. The
-parameters that enter our theory is called \emph{bare}, as they vary together
+parameters that enter our theory are called \emph{bare}, as they vary together
 with the scale
 %
 \begin{equation}
@@ -723,15 +732,16 @@ $O_{\text{phys}}$
 %
 \begin{equation}
   a \frac{\mathrm{d}}{\mathrm{d} a} O_{\text{phys}}
-    = \Big( \frac{\partial}{\partial a} 
+    = \Big( a \frac{\partial}{\partial a} 
       - \beta \frac{\partial}{\partial g}
       - \gamma \frac{\partial}{\partial m}
     \Big) O_{\text{phys}} = 0.
 \end{equation}
 %
 The $\beta$-function describes how much the coupling changes as a function of
-the lattice spacing, and can for instance be calculated through perturbation
-theory. To lowest order in the coupling we get
+the lattice spacing, while the anomalous dimension $\gamma$ gives the field
+strength scaling. To lowest order in perturbation theory, the $\beta$-function
+is
 %
 \begin{align}
   \beta(g) = - a \frac{\partial g}{\partial a} &= - \frac{g^3}{(4\pi)^2}
@@ -805,18 +815,18 @@ positive. We evaluate the fermion integrals according to
   P\big([U_{\mu}]\big) \propto \det Q[U_{\mu}] \, e^{-\mathcal{S}_g[U_{\mu}]}.
 \end{equation}
 %
-The exponent of the gauge action is clearly both real and complex. The fermion
-determinant can be shown to be real by using the fact that it is
-$\gamma^5$-hermitian
+The exponent of the gauge action is clearly both real and positive. The fermion
+determinant can be shown for Wilson fermions to be real by using the fact that
+it is $\gamma^5$-hermitian
 %
 \begin{equation}
   \gamma^5 Q \gamma^5 = Q^{\dagger}.
 \end{equation}
 %
 It is however not guaranteed to be positive. We can fix this by studying systems
-of even number of degenerate quarks. The QCD action does not mix the different
-quark species, and we therefore get a separate fermion matrix for every quark
-flavour
+with an even number of pairwise degenerate quarks. The QCD action does not mix
+the different quark species, and we therefore get a separate fermion matrix for
+every quark flavour
 %
 \begin{equation}
   \det Q = \prod_f \det Q_f
@@ -872,7 +882,7 @@ This information is encoded in the \emph{autocorrelation function}
 \end{equation}
 %
 which quantize how correlated consecutive measurements are. Since the $n+1$'th
-configuration depend on the $n$'s configuration through the Markov chain,
+configuration depend on the $n$'th configuration through the Markov chain,
 $C_O(m) \neq 0$ for $m > 0$. But it is how quickly this function decreases that
 determine how good the estimate for the average is. An important quantity for
 this is the \emph{integrated autocorrelation time}

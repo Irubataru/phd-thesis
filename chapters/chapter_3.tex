@@ -9,7 +9,7 @@ in \secrefs{sec:finite-density-lattice,sec:sign-problem} with a
 thorough discussion of simulations of finite density systems, and the hurdles
 that need to be overcome.
 
-Several volumes of the standard literature has been consulted with respect to
+Several volumes of the standard literature havc been consulted with respect to
 the contents of this chapter. These include, but are not limited to,
 \cite{landau2013statistical,pathria2011statistical} for introductions to
 statistical mechanics, \cite{kapusta2006finite} with an introduction to Thermal
@@ -65,8 +65,8 @@ pressure, average energy and average particle number respectively.
 The phase of a system is linked to the characteristic behaviour of one or more
 of its physical quantities, such as the magnetisation of spin glasses, the
 average positions of atoms in a crystal and the molecular composition of
-solutions. We refer to this defining physical physical quantity as the
-\emph{order parameter} of the phase.  The transition between two or more phases
+solutions. We refer to this defining physical quantity as the
+\emph{order parameter} of the phase.  The transitions between two or more phases
 are known as \emph{phase transitions}, and due to the very nature of phases,
 happens through the induction of mathematical singularities. 
 
@@ -77,11 +77,11 @@ derivatives diverge for second order transitions.
 
 However, if the order parameter tends towards zero, but never quite reaches it,
 one can define a pseudo-phase transition, known as a \emph{crossover}, to be the
-point of the most rapid change. While this is not a real phase transition,
-following its trajectory in a phase diagram will result in one, if a transition
-exists, linking the two concepts.
+point of the most rapid change of the order parameter (the inflection point).
+While this is not a real phase transition, following its trajectory in a phase
+diagram will result in one, if a transition exists, linking the two concepts.
 
-Phase transitions is an inherently macroscopic concept, and does not know about
+Phase transitions are an inherently macroscopic concept, and do not know about
 the microscopic details of the theory. Theories with different microscopic
 details might therefore still behave alike on the macroscopic level. These
 categorise into \emph{universality classes}, catalogued by the singular
@@ -98,8 +98,7 @@ the critical exponents by
 \end{align}
 %
 Systems which have the same critical exponents fall into the same universality
-class. A notable example is the $4D$ Ising model whose critical exponents are
-$\alpha = 0$, $\beta = 1/2$, and $\gamma = 1$.
+class. 
 
 \subsection{Yang Lee zeros} \label{sec:yang_lee_zeros_intro}
 
@@ -109,13 +108,13 @@ can analyse the properties of the thermodynamic functions around a transition by
 studying the zeros of the grand canonical partition function in the complex
 fugacity-plane.
 
-Seeing as the partition function can be interpreted as the normalisation of a
-statistical probability function, it can never be zero for real and positive
-values of $z$. However, as one increases the volume of the system, the number of
-zeros increases, and tends to a continuous curve in the thermodynamic limit,
-$V\to\infty$. As this curve forms, zeros on the positive and negative imaginary
-axis could tend towards coinciding at the real axis, signalling the onset of a
-phase transition.
+Seeing as the partition function is per definition the normalisation factor of a
+statistical system, it can never be zero for real and positive values of $z$.
+The Yang Lee zeros thus lie in the complex plane.  However, as one increases the
+volume of the system, the number of zeros increases, and tends to a continuous
+curve in the thermodynamic limit, $V\to\infty$. As this curve forms, zeros on
+the positive and negative imaginary axis could coincide at the real axis,
+signalling the onset of a phase transition.
 
 \section{Thermal field theory} \label{sec:thermal-field-theory}
 
@@ -348,7 +347,7 @@ the source of the issue itself.
 The problem is most easily illustrated with a sketch. In
 \figref{fig:sign-problem} we have plotted the real and imaginary part of a
 symmetric function with a complex phase, $f(x) e^{i \theta(x)}$. The real part
-integrates to something finite that is exponentially suppressed by by the phase,
+integrates to something finite that is exponentially suppressed by the phase,
 while the imaginary part integrates to zero. However, this subtlety is hard to
 reproduce numerically, just as it is hard to see with the bare eye that one of
 the two figures should give zero, while the other should give something finite.
@@ -371,7 +370,7 @@ There are multiple workarounds devised to allow for evaluating finite density
 systems using Monte Carlo methods. Such methods include reweighting, Taylor
 expansions, analytic continuation from imaginary chemical potential and  the
 method of stochastic quantisation. Although none of these methods actually
-tackle the essence of the sign problem, with sufficiently powerful computers 
+tackles the essence of the sign problem, with sufficiently powerful computers 
 results with reasonable accuracy can be obtained. However one should take great
 care to sample correctly if one wants sensible results, as was demonstrated in
 \citep{Osborn:2008eg}.
@@ -418,7 +417,7 @@ This was explored in \citep{deForcrand:2002pa}, and an optimal choice for $f$
 was determined to be $f(\theta) = |\cos\theta|$.
 
 The sign problem comes into play when the average phase drastically deviates
-from $0$, in which case the ensemble we sample is far from the ensemble we
+from $1$, in which case the ensemble we sample is far from the ensemble we
 want to measure, drastically increasing the required statistics. The issue is
 sketched in \figref{fig:reweighting-overlap} where we see the overlap between
 the full and reweighted ensembles. Because the reweighted ensemble deviates
@@ -449,9 +448,10 @@ becomes a real, positive quantity, which can be seen from
   \det Q^{\dagger} (\mu) = \det Q(-\mu^*).
 \end{equation}
 %
-This has been used to study the critical surfaces of the Columbia plot from
-which one can see a trend as one cross into the region of real chemical
-potential.
+This has been used to study the critical surfaces of the Columbia plot
+(\figref{fig:phase_diags} right) from which one can see a trend as one crosses
+into the region of real chemical potential
+\citep{deForcrand:2002hgr,D'Elia:2002gd}.
 
 On top of being a useful method of extrapolating to real chemical potentials,
 one can also study the interesting phase structure in the region of imaginary
@@ -459,7 +459,7 @@ chemical potentials. Because the imaginary chemical potentials introduce a pure
 phase, the partition function is periodic under centre transformations of the
 group. This is known as the Roberge-Weiss symmetry, and the periodicity leads to
 a phase transition of the same name \citep{Roberge:1986mm}.
-This has been extensively studied in
+Never developments in the field can be found in e.g.
 \citep{Wu:2013bfa,Cuteri:2015qkq,Philipsen:2016hkv}.
 
 \subsection{Taylor series}
@@ -476,11 +476,12 @@ leading to the expansion
 \end{equation}
 %
 This has been used to try and follow the trajectory of the phase transition into
-the region of finite $\mu$. The convergence region is however governed by the
-partition function's behaviour at imaginary chemical potential, and the
-Roberge-Weiss transition is to our knowledge the bound for any extrapolation
-from zero chemical potential. There is therefore a strict limit to how far this
-expansion is valid, which was the study of \citep{Osborn:2008eg}. [+citation?]
+the region of finite $\mu$ \citep{Allton:2003vx}. The convergence region is
+however governed by the partition function's behaviour at imaginary chemical
+potential, and the Roberge-Weiss transition is to our knowledge the bound for
+any extrapolation from zero chemical potential. There is therefore a strict
+limit to how far this expansion is valid, which was the study of
+\citep{Osborn:2008eg}.
 
 \subsection{Stochastic quantisation}
 
@@ -488,7 +489,7 @@ The final method we will cover is the use of stochastic quantisation. This
 approach is different from the others as it doesn't use Monte Carlo methods at
 all, rather, one uses a different stochastic process to estimate the partition
 function integral, the Langevin equations \citep{Parisi:1980ys}. One introduces
-an additional continuous parameter of the fields, $\alpha$, and then evolve the
+an additional continuous parameter of the fields, $\alpha$, and then evolves the
 system in this new parameter following the stochastic differential equation
 %
 \begin{equation}
@@ -498,7 +499,8 @@ system in this new parameter following the stochastic differential equation
 %
 where $\eta$ is a Gaussian white noise. The method then relies on the fact that
 in the $\alpha \to \infty$ limit, expectation value of observables with respect
-to the $\eta$ distribution is identical to the true expectation value
+to the $\eta$ distribution is identical to the true expectation value evaluated
+via the path integral
 %
 \begin{equation}
   \lim_{\alpha_i\to\infty} \big\langle O [\phi(x,\alpha)]_i \big\rangle_{\eta}
@@ -528,7 +530,7 @@ considerable amount of time in the complex phase, resulting in the need for
 longer flow times before the imaginary contributions average out. This can to
 some extent be remedied by the introduction of gauge cooling
 \citep{Seiler:2012wz}, which are invariant transformations on the variables that
-push them closer to the real field values. For QCD it has been shown that this
+push them closer to the real field values. For QCD it has been shown that
 this places a restriction of the coupling strengths for which the method is
 applicable. Recently a comparison between the reach of reweighting techniques to
 those of stochastic quantisation, showing comparable results
@@ -544,12 +546,12 @@ those of stochastic quantisation, showing comparable results
   \end{center} \vskip -.5cm
   \caption{Left: Baryon number density of the Stephanov model measured by
     complex langevin compared to full and phase quenched analytical results at
-    fixed $m = 0.0$.  Right: Same comparison for the chiral condensate at fixed
-    $\mu=1.0$.}
+    fixed $m = 0.0$. Phase quenched computed using a mean field approach. Right:
+    Same comparison for the chiral condensate at fixed $\mu=1.0$.}
   \label{fig:rmt_cl}
 \end{figure}
 
-To demonstrate a case in which we can clearly see that the Langevin flow
+To demonstrate a case in which we can clearly see that the Langevin flow is
 converging to the wrong theory, we can study a \emph{Random Matrix Theory}
 (RMT), which is a simpler model that also suffers from a strong sign problem.
 One such RMT is the Stephanov model \citep{Stephanov:1996ki}, whose partition
@@ -568,7 +570,7 @@ where the degrees of freedom are random matrices $W \in M_{\mathbb{C}}(N,N)$.
 The mass matrix $M$, chemical potential matrix $\mu$, and flavour number $N_f$,
 are introduced to mimic the parameters of QCD. This model has the advantage that
 it is analytically solvable both at finite $\mu$, as well as in the phase
-quenched \citep{Stephanov:1996ki,Halasz:1997he}. The results from simulating
+quenched limit \citep{Stephanov:1996ki,Halasz:1997he}. The results from simulating
 this theory using the unimproved complex langevin algorithm is shown in
 \figref{fig:rmt_cl}. In the same plots the full analytic result is plotted in
 red, and the phase quenched result in green. It should be noted that the phase
