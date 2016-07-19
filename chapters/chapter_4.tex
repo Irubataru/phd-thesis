@@ -78,7 +78,7 @@ The lowest order character expansion coefficient, namely that of the fundamental
 representation, has for SU$(3)$ been calculated to high orders
 %
 \begin{align}
-  u_f(\beta) &= \frac{1}{N_c} \frac{\int \mathrm{d} g\, \tr g\, e^{-\frac{\beta}{2 N_c}
+  u_F(\beta) &= \frac{1}{N_c} \frac{\int \mathrm{d} g\, \tr g\, e^{-\frac{\beta}{2 N_c}
     ( \tr g + \tr g^{\dagger})}}{\int \mathrm{d} g\: e^{-\frac{\beta}{2 N_c}
     ( \tr g + \tr g^{\dagger})}} \nonumber\\
   &\hskip1em= \frac{
@@ -88,8 +88,8 @@ representation, has for SU$(3)$ been calculated to high orders
   }, \hskip2ex x=\frac{\beta}{2 N_c}.
 \end{align}
 %
-To leading order $u_f(\beta) \approx \frac{\beta}{2 N_c^2}$, and we
-therefore use $u_f$ as our expansion parameter rather than $\beta$.
+To leading order $u_F(\beta) \approx \frac{\beta}{2 N_c^2}$, and we
+therefore use $u_F$ as our expansion parameter rather than $\beta$.
 The characters are in fact always smaller than, or equal to $1$, and therefore
 does an excellent job as an expansion parameter.  The character expansion only
 permits a single plaquette from any representation to be placed at every
@@ -190,8 +190,8 @@ Integrating out the spatial links of the strip of plaquettes leaves two
 disconnected loops at the neighbouring spatial lattice sites
 %
 \begin{equation}
-  e^{-\mathcal{S}_{\text{eff}}} = 1 + \sum_{\langle \vec{x}, \vec{y} \rangle} u_f^{N_t}
-  \big( L_{\vec{x}} L^*_{\vec{y}} + L^*_{\vec{x}} L_{\vec{y}} \big) + \mathcal{O}(u_f^{N_t+4})
+  e^{-\mathcal{S}_{\text{eff}}} = 1 + \sum_{\langle \vec{x}, \vec{y} \rangle} u_F^{N_t}
+  \big( L_{\vec{x}} L^*_{\vec{y}} + L^*_{\vec{x}} L_{\vec{y}} \big) + \mathcal{O}(u_F^{N_t+4})
 \end{equation}
 %
 where $L$ is the so-called \emph{Polyakov loop}
@@ -215,7 +215,7 @@ where $\sqrt{\det U_0}$ is the reduced Haar measure of the group, the calculatio
 which will be covered in \apxref{sec:haar_measure}. As one can see the effective
 theory is a three dimensional theory of Polyakov loop interactions. At first
 order we have a nearest neightbour spin system with an effective coupling
-$u_f^{N_t}$.
+$u_F^{N_t}$.
 
 At higher orders in $\beta$ new effects are introducted through interactions
 between loops at higher order representations, next to nearest neighbour
@@ -223,7 +223,7 @@ interactions as well as corrections to the nearerst neighbour coupling between
 fundamental Polyakov loops. The effects of higher order representations in
 Polyakov loop effective theories was studied in \citep{Wozar:2007tz}. The
 corrections to the fundamental nearest neighbour coupling was calculated to 
-$\mathcal{O}(u_f^{N_t + 10})$ in \citep{Langelage:2010yr} while the effects of
+$\mathcal{O}(u_F^{N_t + 10})$ in \citep{Langelage:2010yr} while the effects of
 long range interactions was examined in \citep{Bergner:2015rza}.
 
 We will leave the topic of pure gauge effective theories for now as the work in
@@ -302,9 +302,40 @@ by factoring out the temporal hopping matrix
 %
 \begin{equation}
   \det (Q) = \det (1 - \kappa T - \kappa S)
-   = \det\underbrace{(1 - \kappa T)}_{\qstat} \,
-   \det \underbrace{\Big(1 - \frac{\kappa S}{1 - \kappa
-       T}\Big)}_{\qkin}.
+   = \det
+  \begin{tikzpicture}[baseline={(trace.base)}]
+    \node[inner sep=0pt] (trace) {%
+      $(1 - \kappa T)$};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+      transform canvas={yshift=-.2cm},
+    ]
+      (trace.south west) -- (trace.south east)
+      node[midway,below=5pt] {$\qstat$};
+  \end{tikzpicture} \,
+    \det
+  \begin{tikzpicture}[baseline={(trace.base)}]
+    \node[inner sep=0pt] (trace) {%
+      $\Big(1 - \displaystyle\frac{\kappa S}{1 - \kappa T}\Big)$};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+      transform canvas={yshift=-.2cm},
+    ]
+      (trace.south west) -- (trace.south east)
+      node[midway,below=5pt] {$\qkin$};
+  \end{tikzpicture}\,.
 \end{equation}
 
 \subsection{Static determinant}
@@ -437,11 +468,18 @@ which on component form simplifies to
 We have introduced the gauge transporter $U_0(t_x \!\to\! t_y)$, which is
 %
 \begin{equation}
-  U_0(t_x \!\to\! t_y) =  \left\{ \renewcommand{\arraystretch}{1.75}
-  \begin{array}{@{}l@{\quad}l@{}}
-    \prod_{t = t_x}^{t_y-1} U_0(t) & \text{if} \hspace{.75em} t_x < t_y,\\
-    \prod_{t = t_y}^{t_x-1} U_0^{\dagger}(t) & \text{if} \hspace{.75em} t_x > t_y.
-  \end{array}\right.\kern-\nulldelimiterspace
+  U_0(t_x \!\to\! t_y) =  
+  \begin{tikzpicture}[baseline={([yshift=-.55ex] aligned.center)}]
+    \node (aligned) {%
+      $\begin{aligned}
+        \textstyle\prod_{t = t_x}^{t_y-1} U_0(t) & \hskip.5cm \text{if} \hskip.5cm  t_x < t_y,\\[2pt]
+        \textstyle\prod_{t = t_y}^{t_x-1} U_0^{\dagger}(t) & \hskip.5cm \text{if} \hskip.5cm  t_x > t_y.
+      \end{aligned}$};
+    \draw [
+      decorate, line width=1.4pt,
+      decoration={ brace, mirror, amplitude=5pt },
+    ] (aligned.north west) -- (aligned.south west);
+  \end{tikzpicture}
 \end{equation}
 %
 The full static propagator therefore reads
@@ -587,9 +625,9 @@ short hand
 %
 \begin{equation}
   W_{nm}(\vec{x}) = \tr_c \frac{(h_1 W_{\vec{x}})^m}{(1 + h_1 W_{\vec{x}})^n}, 
-  \hskip1ex\text{and}\hskip1ex
+  \hskip2ex\text{and}\hskip2ex
   \xoverline{W}_{nm}(\vec{x}) = \tr_c
-    \frac{(\bar{h}_1 W^{\dagger}_{\vec{x}})^m}{(1 + \bar{h}_1 W^{\dagger}_{\vec{x}})^n}
+    \frac{(\bar{h}_1 W^{\dagger}_{\vec{x}})^m}{(1 + \bar{h}_1 W^{\dagger}_{\vec{x}})^n}\,,
 \end{equation}
 %
 and this the lowest order spatial hopping contribution to the effective action
@@ -916,10 +954,17 @@ that
 %
 \begin{equation}
   \moment[X_1, \dots, X_n] =
-  \begin{cases}
-    1, & \text{if every $X_i$, $X_j$ is disconnected} \\
-    0, & \text{otherwise}
-  \end{cases}
+  \begin{tikzpicture}[baseline={([yshift=-.55ex] aligned.center)}]
+    \node (aligned) {%
+      $\begin{aligned}
+        1, &\hskip .5cm \text{if every $X_i$, $X_j$ is disconnected} \\
+        0, &\hskip .5cm \text{otherwise}
+      \end{aligned}$};
+    \draw [
+      decorate, line width=1.4pt,
+      decoration={ brace, mirror, amplitude=5pt },
+    ] (aligned.north west) -- (aligned.south west);
+  \end{tikzpicture}
 \end{equation}
 %
 with which we can easily express the effective action
@@ -1049,9 +1094,6 @@ exist an $N_t$ for which
 \end{equation}
 %
 and the more complicated overlapping diagrams can be neglected.
-
-% TODO: Include some sort of plot to give a better handle on this region
-% TODO: Maybe I should find somewhere to talk about the next order Nt corrections
 
 \subsection{Combinatorics} \label{sec:combinatorics}
 
@@ -1339,7 +1381,23 @@ simply the dimension of the system, in this case $4$. The spin trace of the
 large $N_t$ limit can thus be considered trivial
 %
 \begin{equation}
-  \tr_s(X'_s) = \tr ( \underbrace{g_0 g_i g_0 \bar{g}_j \cdots}_{n \text{ pairs}})
+  \tr_s(X'_s) = \tr ( 
+  \begin{tikzpicture}[baseline={(trace.base)}]
+    \node[inner sep=0pt] (trace) {%
+      $g_0 g_i g_0 \bar{g}_j \cdots$};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+      transform canvas={yshift=-.2cm},
+    ]
+      (trace.south west) -- (trace.south east)
+      node[midway,below=5pt,scale=0.9] {$n$ pairs};
+  \end{tikzpicture} )
    = 2^{n-1} \tr(g_0 g_i) = 2^{n+1}.
 \end{equation}
 
@@ -1363,8 +1421,6 @@ $\mathcal{O}(\kappa^4)$ terms give contributions proportional to $N_t^2$. It is
 possible to shift the quark hops on the slices by inserting plaquettes as can be
 seen in the two other graphs in \figref{fig:nontrivial-gauge}, and would give a
 correction to the formula above
-%
-% TODO: Inconsistent \kappa ordering, P and M contain \kappa
 %
 \begin{equation}
   \kappa^4 u \bigg(1 + 2 \frac{u \kappa^2 - (u\kappa^2)^{N_t}}{1 - u\kappa^2} \bigg)^4 (1 + 4 u^5)
@@ -1661,8 +1717,6 @@ simulation.
   \label{fig:numerical_convergence}
 \end{figure}
 %
-\footnotetext{Siumulation data courtesy of Mathias Neuman}
-%
 The simulations were carried out using both algorithms, MC with reweighting and
 CL, and the results were cross checked. Both methods give compatible results
 within the parameter range the effective theory is well defined for. Our first
@@ -1686,6 +1740,8 @@ exceed the $\kappa$-values employed in the figures, convergence in $u(\beta)$
 appears to be faster.  The gain in convergence region by the additional orders
 in the effective action can be exploited to study the systematics of our
 effective theory.
+%
+\footnotetext{Siumulation data courtesy of Mathias Neuman}
 
 We will leave the numeric evaluation for now and will shift our focus to a
 purely analytical treatment of the effective 3D theory using graphical methods

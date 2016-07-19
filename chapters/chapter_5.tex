@@ -234,10 +234,17 @@ coupling
 %
 \begin{equation}
   v(x,y) = 
-    \begin{cases}
-      \hskip .1cm v & \text{ if $x$ and $y$ are nearest neighbours}\\
-      \hskip .1cm 0 & \text{ else}.
-    \end{cases}
+  \begin{tikzpicture}[baseline={([yshift=-.55ex] aligned.center)}]
+    \node (aligned) {%
+      $\begin{aligned}
+        v & \hskip .5cm \text{ if $x$ and $y$ are nearest neighbours}\\
+        0 & \hskip .5cm \text{ else}.
+      \end{aligned}$};
+    \draw [
+      decorate, line width=1.4pt,
+      decoration={ brace, mirror, amplitude=5pt },
+    ] (aligned.north west) -- (aligned.south west);
+  \end{tikzpicture}
 \end{equation}
 %
 We have chosen nearest neighbour interactions here, although it has been shown
@@ -774,13 +781,20 @@ nearest neighbour interaction $v$, is a set of two nearest neighbour
 interactions
 %
 \begin{equation} \label{eq:udef_wedge}
-  u(x,y,z) = 
-    \begin{cases}
-      \hskip .1cm u & \text{ if $\langle x, y \rangle$ and $\langle y, z \rangle$ are nearest neighbours},\\
-      \hskip .1cm u & \text{ if $\langle x, y \rangle$ and $\langle x, z \rangle$ are nearest neighbours},\\
-      \hskip .1cm u & \text{ if $\langle x, z \rangle$ and $\langle y, z \rangle$ are nearest neighbours},\\
-      \hskip .1cm 0 & \text{ else},
-    \end{cases}
+  u(x,y,z) = \:
+  \begin{tikzpicture}[baseline={([yshift=-.55ex] aligned.center)}]
+    \node (aligned) {%
+      $\begin{aligned}
+      u & \hskip .5cm \text{ if $\langle x, y \rangle$ and $\langle y, z \rangle$ are nearest neighbours},\\
+      u & \hskip .5cm \text{ if $\langle x, y \rangle$ and $\langle x, z \rangle$ are nearest neighbours},\\
+      u & \hskip .5cm \text{ if $\langle x, z \rangle$ and $\langle y, z \rangle$ are nearest neighbours},\\
+      0 & \hskip .5cm \text{ else},
+      \end{aligned}$};
+    \draw [
+      decorate, line width=1.4pt,
+      decoration={ brace, mirror, amplitude=5pt },
+    ] (aligned.north west) -- (aligned.south west);
+  \end{tikzpicture}
 \end{equation}
 %
 where we have reverted to the one-components fields for simplicity. Using this
@@ -848,12 +862,19 @@ alternative three point coupling could be a triangular nearest neighbour
 coupling
 %
 \begin{equation}
-  u(x,y,z) = 
-    \begin{cases}
-      \hskip .1cm u & \text{ if $\langle x, y \rangle$, $\langle y, z \rangle$,
-                      and $\langle x, z \rangle$ are nearest neighbours},\\
-      \hskip .1cm 0 & \text{ else},
-    \end{cases}
+  u(x,y,z) =  \:
+  \begin{tikzpicture}[baseline={([yshift=-.55ex] aligned.center)}]
+    \node (aligned) {%
+      $\begin{aligned}
+          u & \hskip .5cm \text{ if $\langle x, y \rangle$, $\langle y, z \rangle$,
+                                and $\langle x, z \rangle$ are nearest neighbours},\\
+          0 & \hskip .5cm \text{ else},
+      \end{aligned}$};
+    \draw [
+      decorate, line width=1.4pt,
+      decoration={ brace, mirror, amplitude=5pt },
+    ] (aligned.north west) -- (aligned.south west);
+  \end{tikzpicture}
 \end{equation}
 %
 in which case the final term in \meqref{eq:lce_uv_nn} would be excluded as it is
@@ -1078,13 +1099,13 @@ $\mathcal{Z}_{\mathrm{QCD}}$ at a given order in our expansion scheme is plotted
 in \figref{fig:cluster_num_terms}, and once more we see that the number of terms
 grow exponentially as one increase the order. This necessitates the development
 of software to carry out graphical combinatorics to push this to higher orders.
-This would e.g. be similar to the work of L\"{u}scher and Weisz in the
-groundbreaking work on the $\lambda \phi^4$ lattice theory \citep{Luscher:1988gk,Luscher:1988uq}
-where they carried out a LCE to $14$\textsuperscript{th} order to show the
-triviality of the theory. One should however note the added difficulty due to
-the additional polymer interaction and their geometry. For example the four bond
-LCE on a square lattice gives $17$ graphs, while our effective theory has $243$
-graphs at the four bond level.
+This would e.g. be a similar task to the one undertaken by L\"{u}scher and Weisz
+in their groundbreaking  on the $\lambda \phi^4$ lattice theory
+\citep{Luscher:1988gk,Luscher:1988uq} where they carried out a LCE to
+$14$\textsuperscript{th} order to show the triviality of the theory. One should
+however note the added difficulty due to the additional polymer interaction and
+their geometry. For example the four bond LCE on a square lattice gives $17$
+graphs, while our effective theory has $243$ graphs at the four bond level.
 
 \subsection{Results} \label{sec:cluster_results}
 
@@ -1392,7 +1413,6 @@ is obtained by inserting a new pair in between an already existing open end.
 Instead of the quark hopping forth and then directly back again, it will take a
 detour through this new position
 %
-% TODO: Check notation consistency (positions)
 \begin{subequations}
   \begin{align}
     \dots
@@ -1438,13 +1458,14 @@ $n$ links is
   \frac{1}{g'} = \frac{1}{g} \binom{N - 1 + n}{n}\;.
 \end{equation}
 %
-% TODO: Reformulate
 This is also only true if we consider a \emph{root graph}, which is any graph
-that does not appear as an extension to any other lower order graph. This is
-however not a problem as long as we carry out the resummation on an order by
-order basis. With this in place we will carry out the gauge integrals
-recursively on a chain matrix to show that the above mentioned expression does
-indeed appear. As argued, the chain can be expressed as
+that does not appear as an extension to any other lower order graph.
+However, as long as we carry out the resummation on an order by order basis, it
+does not pose a problem.
+
+With all the ingredients in place, we are ready to carry out the gauge integrals
+for a chain matrix, and show that the above mentioned expression does indeed
+appear.  As argued, the chain can be express as
 %
 \begin{equation}
   \tikz[baseline=-3pt]
@@ -1460,7 +1481,7 @@ additional open ends, and or chains. Since the expression has a recursive
 structure it is natural to define the matrices $G_n$ so that
 %
 \begin{equation}
-  \begin{tikzpicture}[baseline={([yshift=-.65ex] nodes.center)}]
+  \begin{tikzpicture}[baseline={(nodes.base)}]
     \matrix (nodes) [
       matrix of math nodes,
       inner sep=1.5pt,
@@ -1555,7 +1576,7 @@ We insert the expression for $G_{n-1}$ into the one for $G_n$, and get
       \sum_{t_3,t_4} \sum_{i_0,i_1} K_{\vec{x}_0}^{af}(t_1,t_2)
       \tr_c \big[ G_{n-2}(t_3,t_4;\vec{x}_2) K_{\vec{x}_2}(t_4,t_3) \big] \\
   \times
-  \begin{tikzpicture}[baseline={([yshift=-.5ex] trace.center)}]
+  \begin{tikzpicture}[baseline={(trace.base)}]
     \node[inner sep=0pt] (trace) {%
       $\tr_c \big[ K_{\vec{x}_1}(t_2,t_3) K_{\vec{x}_1}(t_3,t_2)\big]$};
     \draw [
@@ -1583,7 +1604,7 @@ given by a consecutive, paired hop
     U_{\vec{x}_n,i_n}^{bc}(t_2) K^{cd}_{\vec{x}_{n+1}}(t_2,t_2)
     U_{\vec{x}_n,i_n}^{\dagger,de}(t_2) \nonumber \\
   &= \frac{2 \kappa^2}{N_c} \sum_{i_n}K^{ae}_{\vec{x}_n}(t_1,t_2)
-  \begin{tikzpicture}[baseline={([yshift=-.5ex] trace.center)}]
+  \begin{tikzpicture}[baseline={(trace.base)}]
     \node[inner sep=0pt] (trace) {%
       $\tr_c \big[ K_{\vec{x}_{n+1}}(t_2,t_2) \big]$};
     \draw [
@@ -1807,8 +1828,9 @@ the nature of the method of moments and cumulants this results in a slight
 overcounting of the number of terms as the embedding factor $(2d)^n$ will
 naturally include geometries that overlap with itself. One possible way to
 rectify this is to change the embedding factor to the correct one, given by the
-theory of the \emph{Self-Avoiding Walk} see e.g. \citep{Rensburg:2009jpa} for a
-review. This is however not the preferred aproach as it would spoil the nice
+theory of the \emph{Self-Avoiding Walk} \citep[see e.g.][for a
+ review]{Rensburg:2009jpa}. This is however not the preferred aproach as it would
+spoil the nice
 properties of the cluster expansion. We rather regard the cumulants as the
 primitive objects of the theory, for which the embedding factor is correct. One
 might then study the amplitude of the corrections appearing at the same orders
@@ -2098,7 +2120,7 @@ The structure is the same as a consecutive set of $G_1$ matrices from earlier
   \mathcal{A}_n = 
   \tr( \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
     {1 \& 1 \& 2 \& 2 \& \dots \& n \& n\\};) =
-  \begin{tikzpicture}[baseline={([yshift=-.5ex] trace.center)}]
+  \begin{tikzpicture}[baseline={(trace.base)}]
     \node[inner sep=0pt] (trace) {%
       $\tr( G_1 G_1 \cdots G_1)$};
     \draw [

@@ -12,6 +12,9 @@
 *.dvi
 thesis.pdf
 
+# Corrections
+corrections/*
+
 # Beamer files
 *.snm
 *.vrb

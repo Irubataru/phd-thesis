@@ -68,8 +68,24 @@ Since we are mostly concerned with the integrals over the eigenvalues only, one
 can integrate out the $w_i$, and get the invariant measure
 %
 \begin{equation}
-  \mathrm{d} U = \underbrace{\prod_{i>j} \big| e^{i\theta_i} - e^{i\theta_j} \big|^2}_{H(U)} \prod_i
-  \mathrm{d} \theta_i,
+  \mathrm{d} U = 
+  \begin{tikzpicture}[baseline={(trace.base)}]
+    \node[inner sep=0pt] (trace) {%
+      $\displaystyle\prod_{i>j} \big| e^{i\theta_i} - e^{i\theta_j} \big|^2$};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+      %transform canvas={yshift=-.2cm},
+    ]
+      ([yshift=-.2cm]trace.south west) -- ([yshift=-.2cm]trace.south east)
+      node[midway,below=5pt] {$H(U)$};
+  \end{tikzpicture}
+  \prod_i \mathrm{d} \theta_i,
 \end{equation}
 %
 where we have identified the Haar measure, $H(U)$. Although this relation is
@@ -154,11 +170,17 @@ These can be most easily calculated through their trigonometric decomposition,
 using the fact that
 %
 \begin{equation}
-  \left. \renewcommand{\arraystretch}{1.75}
-  \begin{array}{c}
-    \chi(U) = {\textstyle\sum_{\alpha=1}^N} e^{i \theta_\alpha} \\
-    \chi(U^{\dagger}) = {\textstyle\sum_{\alpha=1}^N} e^{- i \theta_\alpha}
-  \end{array}\right\}\kern-\nulldelimiterspace
+  \begin{tikzpicture}[baseline={([yshift=-.55ex] aligned.center)}]
+    \node (aligned) {%
+      $\begin{aligned}
+        \chi(U) &= {\textstyle\sum_{\alpha=1}^N} e^{i \theta_\alpha} \\
+        \chi(U^{\dagger}) &= {\textstyle\sum_{\alpha=1}^N} e^{- i \theta_\alpha}
+      \end{aligned}$};
+    \draw [
+      decorate, line width=1.4pt,
+      decoration={ brace, mirror, amplitude=5pt },
+    ] (aligned.south east) -- (aligned.north east);
+  \end{tikzpicture}
   \hskip1em {\textstyle\sum_{\alpha=1}^N} \theta_{\alpha} = 0 \bmod 2\pi
 \end{equation}
 %
@@ -320,7 +342,7 @@ matrix representations of the SU$(N)$ members. Namely integrals of the form
 \end{equation}
 %
 Although there are multiple ways to approach this, we will closely follow the
-paper of \citep{Creutz:1977yy,Creutz:1978ub}. First we introduce the generating
+paper of \citeauthor{Creutz:1977yy} [\citeyear{Creutz:1977yy,Creutz:1978ub}]. First we introduce the generating
 functional
 %
 \begin{equation}
@@ -350,7 +372,22 @@ With this we can factor out the dependence of $K$ on the generating function
 %
 \begin{equation}
   \mathcal{W}(J,K) = \exp\bigg( \tr \Big( K \cof \frac{\delta}{\delta J} \Big) \bigg)
-    \underbrace{\,\int \mathrm{d} U \, \exp \big( \tr (JU) \big)\,}_{\mathcal{W}(J)}.
+  \begin{tikzpicture}[baseline={(trace.base)}]
+    \node[inner sep=0pt] (trace) {%
+      $\displaystyle\int \mathrm{d} U \, \exp \big( \tr (JU) \big)$};
+    \draw [
+      decorate,
+      line width=1.4pt,
+      decoration={
+        brace,
+        mirror,
+        amplitude=5pt
+      },
+      %transform canvas={yshift=-.2cm},
+    ]
+      ([yshift=-.2cm]trace.south west) -- ([yshift=-.2cm]trace.south east)
+      node[midway,below=5pt] {$\mathcal{W}(J)$};
+  \end{tikzpicture}\,.
 \end{equation}
 %
 Using a determinant expansion of $\mathcal{W}(J)$, which is allowed due to the fact that

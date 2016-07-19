@@ -510,10 +510,13 @@ commonly named $a$. The coordinates are thus restricted to
 \end{equation}
 %
 On top of having a shortest distance, which works as a natural regulariser for
-this approach, we also have a finite volume $\Omega = a^4 N^4$. Therefore, to
-recover physical results, we need to take the continuum limit, $a \to 0$, and the
-infinite volume limit, $N \to 0$, in such a way that $\Omega$ is large enough in
-physical units to encompass the scales we are interested in studying.
+this approach, we also have a finite volume $\Omega = a^4 N^4$ \footnote{We
+  later distinguish between spatial and temporal lattice directions, and denote
+  the total number of lattice points in one such direction by $N_s$ and $N_t$.}.
+Therefore, to recover physical results, we need to take the continuum limit,
+$a \to 0$, and the infinite volume limit, $N \to 0$, in such a way that $\Omega$
+is large enough in physical units to encompass the scales we are interested in
+studying.
 
 Having introduced the lattice, we see that the partition function of the
 discretised theory is simplified compared to the continuum. The simplification
@@ -674,16 +677,15 @@ The addition of the Wilson term has given an additional mass of $n r/a$ to the
 unwanted doublers, meaning that they properly decouple from the theory in the
 continuum where their masses diverge. 
 
-%TODO: Rewrite
 However, including the Wilson term does not come without a cost. By introducing
-the Wilson term we explicitly break chiral symmetry, meaning that even for the
-choice $m=0$, the transformation \eqref{eq:chiral_transformation} is no longer a
-symmetry of the system. 
+the Wilson term, we explicitly break chiral symmetry. As a result, regardless of
+whether we choose $m=0$ for the bare mass parameter, the transformation
+\eqref{eq:chiral_transformation} is no longer a symmetry of the system. 
 
-There is in fact a theorem by Nielsen and Ninomiya
-\citep{Nielsen:1980rz,Nielsen:1981xu} which states that one cannot have a lattice
-theory both chirally symmetric and free of doublers at the same time with a
-Dirac Lagrangian that is also local.
+There is in fact a theorem by \citeauthor{Nielsen:1980rz}
+[\citeyear{Nielsen:1980rz,Nielsen:1981xu}] which states that one cannot have a
+lattice theory both chirally symmetric and free of doublers at the same time
+with a Dirac Lagrangian that is also local.
 
 Yet all hope is not lost as Ginsparg and Wilson shortly after stated a modified
 equation the fermion propagator has to fulfil to give a chiral theory in the
@@ -819,8 +821,6 @@ flavour
 \begin{equation}
   \det Q = \prod_f \det Q_f
 \end{equation}
-
-% TODO Rewrite connection
 
 Since direct sampling from the distribution is not possible in practice,
 one usually constructs a chain of samples, each being related to the previous
