@@ -1,30 +1,30 @@
 \chapter{Gauge Theories and Lattice Gauge Theories} \label{chap2}
 
-In this chapter we will formally introduce the quantum field theory describing
-fermions invariant under local group transformations and introduce the Yang
-Mills Lagrangian. This is covered in \secref{sec:continuum_gauge}, which we
-follow up in \secref{sec:group_intro} with a brief overview of basic group
+In this chapter we formally introduce the quantum field theory describing
+fermions invariant under local group transformations, and introduce the Yang
+Mills Lagrangian in \secref{sec:continuum_gauge}.
+\Secref{sec:group_intro} gives a brief overview of basic group
 theory, introducing the concepts and tools necessary for the thesis. In
 \secref{sec:symmetries} we investigate the defining symmetry properties of our
-quantum field theory. After this introduction to continuum physics, in
-\secref{sec:lattice_intro} we discretise space-time and put our theory on a
-lattice. In the \secrefs{sec:fermion_doubling,sec:scale_setting} we review the
+quantum field theory. After this introduction to continuum physics,
+\secref{sec:lattice_intro} discretises space-time and puts our theory on a
+lattice. In \secrefs{sec:fermion_doubling,sec:scale_setting}, we review the
 similarities and differences between the lattice and the continuum, and stress
-where additional care has to be taken. Finally we give a very quick introduction
+where additional care has to be taken. Finally, we give a very quick introduction
 to numerical evaluation of lattice theories in \secref{sec:numerical_eval}.
 
-For the introduction, standard texts on the subject matter has been consulted.
-Such as introductory volumes on quantum field theory
+For the introduction, standard texts on the subject matter have been consulted.
+Among these are introductory volumes on quantum field theory
 \citep[e.g.][]{peskin1995introduction,maggiore2004modern}, lattice gauge theory
 \citep[e.g.][]{montvay1997quantum,gattringer2009quantum} and group theory
 \citep[e.g.][]{georgi1999lie,fulton2013representation}.
 
 \section{The free Dirac Lagrangian} \label{sec:continuum_gauge}
 
-The undoubtaly most important quantity in Quantum Field Theory (\emph{QFT}) and
-Statistical Mechanics (\emph{SM}) is $\mathcal{Z}$, named the generating
-functional and the partition function, in the two theories respectively. It is
-in SM defined as
+The undoubtedly most important quantity in Quantum Field Theory (\emph{QFT}) and
+Statistical Mechanics (\emph{SM}) are the generating functional, named
+$\mathcal{Z}$, and the partition function, for the two theories respectively.
+In SM, it is defined as
 %
 \begin{equation} \label{eq:partition}
   \mathcal{Z}_E = \tr e^{-\beta H}
@@ -33,10 +33,11 @@ in SM defined as
 %
 where we have chosen to represent the trace over the Hamiltonian matrix by an
 integral over a continuous system, described by a set of field parameters,
-$\phi_i$. There is an analogue between the two theories and one can convert
-between them by Wick rotating the time coordinate $x^0_E = -i x^0_M$. Whenever
-the possibility for confusion exists we use an $M$ to symbolise Minkowski space,
-the world of QFT, and an $E$ to symbolise Euclidean space, the world of SM.
+$\phi_i$. There is an analogue between the two theories and one can convert from
+one to the other by Wick rotating the time coordinate $x^0_E = -i x^0_M$.
+Whenever the possibility for confusion exists we use an $M$ to symbolise
+Minkowski space, the world of QFT, and an $E$ to symbolise Euclidean space, the
+world of SM.
 
 The action, $\mathcal{S}$, is in turn defined by the Lagrangian density
 %
@@ -44,7 +45,7 @@ The action, $\mathcal{S}$, is in turn defined by the Lagrangian density
   \mathcal{S}[\phi_i] = \int \mathrm{d}^4 x\, \mathcal{L}[\phi_i(x)],
 \end{equation}
 %
-and our theories are therefore uniquely defined through $\mathcal{L}$, and the
+and our theories are uniquely defined by $\mathcal{L}$ and the
 properties of the fields $\phi_i$.
 
 Of physical interest are expectation values of Hermitian operators $\widehat{O}$,
@@ -77,14 +78,14 @@ hence the name generating functional.
 
 \subsection{The Dirac Lagrangian}
 
-The most basic starting point for us will be the Dirac Lagrangian, which reads
+Our starting point will be the Dirac Lagrangian, which reads
 %
 \begin{equation}
   \mathcal{L} = \bar{\psi}_i \big(i\gamma^{\mu} \partial_{\mu} - m_i\big)
   \psi_i. \label{eq:ldirac}
 \end{equation}
 %
-where we have introduced the fermionic fields $\psi_i$. To get the right
+Here we have introduced the fermionic fields $\psi_i$. To get the right
 statistics, these fields have to obey the anti-commutation relations, and
 therefore they have to obey the \emph{Grassmann algebra}
 %
@@ -96,8 +97,8 @@ therefore they have to obey the \emph{Grassmann algebra}
     \bar{\psi}_i = \delta_{ij}.
 \end{align}
 
-This Lagrangian describe the dynamics of a set of free, massive fermions, which
-by itself, is not very exciting. There are however different ways to add
+This Lagrangian describes the dynamics of a set of free, massive fermions, which
+by itself is not very exciting. There are however different ways to add
 interactions while still maintaining the desired symmetry properties (which we
 will discuss later). Depending on the system one is interested in describing,
 these include the addition of a self interaction term for the fermions, e.g. a
@@ -105,7 +106,7 @@ four point term, $g \big(\bar{\psi}\psi\big)^2$, which results in the NJL model
 \citep{Nambu:1961tp}, the introduction of new fields and interactions, and the
 localisation of group symmetries which organically induce new fields and
 couplings. For the latter approach we need a short overview of group theory,
-which we will tackle next.
+which we will present next.
 
 \section{A group theory perspective} \label{sec:group_intro}
 
@@ -118,7 +119,7 @@ a new element also in the set
 \end{equation}
 %
 this assignment is called the group product. The group product is associative,
-and in every group a unit element exists ($e$). Every element also has an inverse so
+and in every group a unit element ($e$) exists. Every element also has an inverse so
 that
 %
 \begin{equation}
@@ -146,10 +147,10 @@ $\text{GL}(V) := M_{\mathbb{C}}(n,n)$.
 
 \subsection{Lie groups}
 
-If the elements of a group $G$ depend smoothly on some set of parameters,
+If the elements of a group $G$ depends smoothly on some set of parameters,
 $g(\alpha_i) \in G$, we call that group a Lie group. Lie groups make up the
 theory of continuous transformations, and are therefore of special interest to
-physics. The continuous nature of the Lie groups create a sense of closeness
+physics. The continuous nature of the Lie groups creates a sense of closeness
 where two elements that are close to each other can be represented through
 differentials. For example
 %
@@ -184,7 +185,7 @@ which fulfils \meqref{eq:group_algebra}.
 
 \subsection{Character and character expansion}
 
-One defines the character of a representation as
+The character of a representation is defined as
 %
 \begin{equation}
   \chi_R(g) = \tr D_R(g).
@@ -204,7 +205,7 @@ with
   \rho_r = \int_{\mathrlap{g \in G}\hskip1.5ex} \mathrm{d}g \, \chi_r^*(g) \rho(g).
 \end{equation}
 %
-It is normal to factor out both the trivial representation ($D_0(g) = 1$), as
+It is common to factor out both the trivial representation ($D_0(g) = 1$), as
 well as the dimension of the representation, and write
 %
 \begin{equation}
@@ -216,7 +217,7 @@ which we will refer to as the character expansion. We will make use of this in
 
 \subsection{Group integrals}
 
-Finally we need to define the integrals over the continuous groups. We introduce
+Lastly we need to define integrals over continuous groups. We introduce
 the Haar integration measure, which has the following properties
 %
 \begin{equation}
@@ -230,7 +231,7 @@ and the normalisation
   \int \mathrm{d}g = 1.
 \end{equation}
 %
-During the derivation of the effective theory, we will encounter polynomial
+Throughout the derivation of the effective theory, we will encounter polynomial
 integrals on the form
 %
 \begin{equation}
@@ -244,19 +245,20 @@ or more commonly, with a representation
     D_R(g)_{i_1j_1} \cdots D_R(g)_{i_nj_n} D_R(g^{-1})_{k_1l_1} \cdots D_R(g^{-1})_{k_ml_m}.
 \end{equation}
 %
-There are multiple ways of tackling these integrals depending on the Lie group
+There are multiple ways of handling these integrals, depending on the Lie group
 one is interested in. For SU($N$) one can for instance decompose the integral
 into generalised Euler angles \citep[as described in][]{Tilma:2004kp}, construct
-generating functionals for the integrals $I_{i_1,j_1,...,i_n,j_n}^{k_1,l_1,...,k_m,l_m}$
-\citep[details in][]{Creutz:1978ub}, or one can use tensor product
-decompositions to write the integrals in terms of Young projectors
-\citep{Myers:2014dia}. In this work a combination of the first two approaches
-has been used, and extensive details are provided in
+generating functionals for the integrals
+$I_{i_1,j_1,...,i_n,j_n}^{k_1,l_1,...,k_m,l_m}$ \citep[details
+in][]{Creutz:1978ub}, or one can use tensor product decompositions to write the
+integrals in terms of Young projectors \citep{Myers:2014dia}. In the present
+work, a combination of the first two approaches is used, and extensive details
+are provided in
 \apxrefs{sec:haar_measure,sec:character_integrals,sec:sun_integrals}.
 
 \section{Symmetries of the Lagrangian} \label{sec:symmetries}
 
-With the necessary formalism in place, we can discuss the symmetries of the
+With the necessary formalism in place, we can now discuss the symmetries of the
 Lagrangian we introduced in \meqref{eq:ldirac}. We will first look at the
 symmetries that come by construction before delving into possible ways of
 extending the theory to be both globally and locally symmetric under additional
@@ -270,8 +272,8 @@ transformations.
 
 To see the other symmetries of the Dirac Lagrangian we have to decompose the
 fields into its spinorial components. Every element of $\psi_i$ in
-\meqref{eq:ldirac} is a $4$ component spinor, and the $\gamma$'s, $4 \times 4$
-matrices. In the standard representation they take for form
+\meqref{eq:ldirac} is a four-component spinor, and the $\gamma$'s, $4 \times 4$
+matrices. In the standard representation they take the form
 %
 \begin{equation}
   \psi = \frac{1}{\sqrt{2}} \begin{pmatrix} \psi_R + \psi_L \\ \psi_R - \psi_L \end{pmatrix}, \hskip1cm
@@ -297,8 +299,8 @@ transformation
 \end{equation}
 %
 if and only if the mass term is set to zero. Invariance of the independent
-transformations of the left- and right handed fields is called \emph{chiral}
-symmetry, and signals the existence of helicity eigenstates. The existence of the
+transformations of the left- and right-handed fields is called \emph{chiral}
+symmetry, and signals the existence of helicity eigenstates. The presence of the
 mass term explicitly breaks the symmetry into a single U($1$) symmetry, where
 $\alpha_R = \alpha_L$.
 
@@ -328,7 +330,7 @@ which gives the associated charge
 \subsection{Gauge symmetries}
 
 We just saw that the Lagrangian can be trivially extended to be invariant under
-global symmetry transformations. However, we also want to promote them to local
+global symmetry transformations. Next, we want to promote them to local
 symmetries. This is motivated post facto by QED, which exhibits a local U($1$)
 symmetry.
 
@@ -342,7 +344,7 @@ transformations to the metric
 which prompted the need for an additional vector field to gauge how much one
 needs to adjust scales to compare two separate points. Weyl then showed that
 these vector fields need to follow Maxwell's equations, and postulated that
-these gauge fields were in fact nothing else than Maxwell's electromagnetic
+the vector fields were in fact nothing else than Maxwell's electromagnetic
 potentials \citep{Weyl:1918ib}. It was later discovered that classically scale
 invariant theories loose this symmetry due to a quantum effect sometimes
 referred to as the \emph{Weyl anomaly}. In fact, it is this very effect that is
@@ -355,8 +357,8 @@ group transformations to vector spaces that live on top of space-time.
 We define a local group element by a Lie group whose parameters are space-time
 dependent $g(\alpha_i(x))$. We will use the short hand notation $U(x) =
 D_R\big(g(\alpha_i(x))\big)$ for representations of such group elements. We
-suppress the representation $R$ wherever it is not needed. The transformations
-of the fields at a single coordinate follow trivially from
+suppress the representation $R$-subscript wherever it is not needed. The
+transformations of the fields at a single coordinate follow trivially from
 \meqref{eq:global_trafo}
 %
 \begin{equation} \label{eq:local_trafo}
@@ -405,8 +407,8 @@ derivative
 %
 ensuring that terms of the form $\bar{\psi} D_{\mu} \psi$ remain invariant under
 local symmetry transformations. As $\Lambda$ is a representation of $G$, we can
-express it in terms of the generators of the group. This is on infinitesimal
-form
+express it in terms of the generators of the group. On infinitesimal
+form, this is
 %
 \begin{equation}
   \Lambda(x + \delta\eta,x) = 1 + i g \delta \eta^{\mu} A^i_{\mu}(x) T_i +
@@ -421,7 +423,7 @@ where the $A^i_{\mu}$ have to transform as
 \end{equation}
 %
 which is independent of the representation. The local symmetric Dirac
-Lagrangian therefore reads
+Lagrangian thus reads
 %
 \begin{equation}
   \mathcal{L} = \bar{\psi}\big(i \gamma^{\mu} D_{\mu} - m\big) \psi.
@@ -429,13 +431,13 @@ Lagrangian therefore reads
 %
 Unfortunately, without a kinetic term for the newly introduced fields
 $A^i_{\mu}$, the theory would permit violently oscillating fields with no cost
-in energy \citep{tHooft:2002zz}. This would make our theory non-renormalisiable,
-which we want to avoid.  We therefore need to find a kinetic term for the fields
-that admits all of our restrictions. To construct such a term it is natural to
-once more turn to the parallel transporters, being the main ingredient in
-adjusting the kinetic term of the fermions. Using the gauge transformation of
-$\Lambda$, it is easy to see that the geometric plaquette could create such a
-term
+in energy \citep{tHooft:2002zz}. This would make our theory non-renormalisable,
+which we obviously want to avoid.  We therefore need to find a kinetic term for
+the fields that admits all of our restrictions. When constructing such a term,
+it is natural to once more turn to the parallel transporters, it being the main
+ingredient in adjusting the kinetic term of the fermions. Using the gauge
+transformation of $\Lambda$, it is easy to see that the geometric plaquette
+could create such a term
 %
 \begin{align} \label{eq:transport_plaquette}
   U_{\mu\nu}(x) =& \Lambda(x, x + \hat{\nu} \delta)
@@ -447,10 +449,10 @@ term
 which transforms as
 %
 \begin{equation}
-  U_{\mu\nu}(x) \to U(x) U_{\mu\nu}(x) U^{\dagger}(x)
+  U_{\mu\nu}(x) \to U(x) U_{\mu\nu}(x) U^{\dagger}(x) \,,
 \end{equation}
 %
-and therefore $\tr U_{\mu\nu}(x)$ is invariant under local group
+and hence $\tr U_{\mu\nu}(x)$ is invariant under local group
 transformations. Expanding $U_{\mu\nu}$ in the fields $A^i_{\mu}$, we get
 %
 \begin{equation}
@@ -462,11 +464,11 @@ from which we extract the term
 %
 \begin{equation} \label{eq:field_strength}
   F_{\mu\nu}^i = \partial_{\mu} A^i_{\nu} - \partial_{\nu}
-    A^i_{\mu} + g f^{ijk} A^j_{\mu} A^k_{\nu}
+    A^i_{\mu} + g f^{ijk} A^j_{\mu} A^k_{\nu} \,,
 \end{equation}
 %
 which is both invariant under the gauge transformations as well as being the
-kinetic term we were looking for. The full gauge extended Lagrangian therefore
+kinetic term we were looking for. The full gauge extended Lagrangian thus
 reads
 %
 \begin{equation} \label{eq:gauge_lagrangian}
@@ -488,7 +490,7 @@ and magnetic dipole interactions
   \mathcal{L}_{\mathrm{MD}} = g_{\mathrm{MD}} \bar{\psi} \sigma^{\mu\nu} F^i_{\mu\nu} \psi\,.
 \end{equation}
 %
-These we ignore in the current study as they contribute to the breaking of other
+We ignore there in the present study as they contribute to the breaking of other
 symmetries and or systematics, some of which we are interested in conserving at
 the scope of this thesis, such as CP symmetry and renormalisability,
 
@@ -502,8 +504,8 @@ apply perturbation theory and systematically solve the integral order by order.
 This is however not the case for the theories we plan to study, and we must
 resort to other means.
 
-In the lattice approach one discretise space-time into a grid, or lattice,
-restricting the fields and variables only to exist at these points. We thus
+In the lattice approach one discretises space-time into a grid, or lattice,
+restricting the fields and variables to exist only at these points. We thus
 introduce a shortest distance, namely the spacing between these grid points,
 commonly named $a$. The coordinates are thus restricted to
 %
@@ -513,24 +515,24 @@ commonly named $a$. The coordinates are thus restricted to
     \raisebox{.1ex}{\scalebox{0.9}{$\big\{0, 1, ..., N-1\big\}^4$}}.
 \end{equation}
 %
-On top of having a shortest distance, which works as a natural regulariser for
-this approach, we also have a finite volume $\Omega = a^4 N^4$ \footnote{We
+In addition to having a shortest distance, which works as a natural regulariser
+for this approach, we also have a finite volume $\Omega = a^4 N^4$ \footnote{We
   later distinguish between spatial and temporal lattice directions, and denote
   the total number of lattice points in one such direction by $N_s$ and $N_t$.}.
-Therefore, to recover physical results, we need to take the continuum limit,
-$a \to 0$, and the infinite volume limit, $N \to 0$, in such a way that $\Omega$
-is large enough in physical units to encompass the scales we are interested in
+Therefore, to recover physical results, we need to take the continuum limit, $a
+\to 0$, and the infinite volume limit, $N \to 0$, in such a way that $\Omega$ is
+large enough in physical units to encompass the scales we are interested in
 studying.
 
 Having introduced the lattice, we see that the partition function of the
 discretised theory is simplified compared to the continuum. The simplification
 is not obvious as it quietly changes the number of integrals from being infinite
-to being a finite, albeit still large, number.
+to being an albeit still large, but number.
 
-In this and the following sections we will first construct a Lagrangian to put
-on the lattice and analyse its new symmetry properties. We will then briefly
-discuss how to determine the lattice scale and compare lattice results with
-continuum physics. Finally a brief overview of the real world computations and
+In the following sections we will first construct a Lagrangian to put on the
+lattice and analyse its new symmetry properties. We will then briefly discuss
+how to determine the lattice scale and compare lattice results with continuum
+physics. Finally a brief overview of the real world computations and
 applications of lattice gauge theories will be given.
 
 \subsection{The lattice gauge theory Lagrangian}
@@ -560,7 +562,7 @@ lattice action with a symmetrised derivative reads
     \bar{\psi}(x+\hat{\mu})\gamma^{\mu}U_{\mu}(x) \psi(x) \bigg),
 \end{equation}
 %
-where the sum goes over the discrete points on the lattice, and we have used the
+where the sum is over the discrete points on the lattice, and we have used the
 shorthand definition $\gamma^{-\mu} \equiv -\gamma^{\mu}$. We have also switched
 to Euclidean space, which is a conscious choice that will benefit us later in
 the stochastic evaluation of the path integral. It is common to factor the
@@ -583,7 +585,7 @@ for the integral over the fermion fields, which can be evaluated exactly
 %
 with $Q$ commonly referred to as the \emph{Dirac operator} or the \emph{fermion
   matrix}, and $\det Q$ the \emph{fermion determinant}. The matrix can either be
-represented as a higher dimensional tensor or with a super index describing, all
+represented as a higher dimensional tensor or with a super index describing all
 degrees of freedom.
 
 Having introduced the \emph{plaquette} transporter in
@@ -600,13 +602,13 @@ coupling constant, and by comparison with the continuum field strength tensor
 \eqref{eq:field_strength}, we find
 %
 \begin{equation}
-  \beta_R = \frac{2 d_R}{g^2}
+  \beta_R = \frac{2 d_R}{g^2} \,.
 \end{equation}
 
 \section{Fermion doubling and chiral symmetry} \label{sec:fermion_doubling}
 
 Although the Lagrangian \meqref{eq:naive_fermions} has the desired
-transformation property, and reproduces the Dirac Lagrangian in the continuum, it
+transformation properties, and reproduces the Dirac Lagrangian in the continuum, it
 suffers from a degeneracy in its energy eigenvalues. The easiest way to see this
 is by choosing the trivial representation of the gauge fields and writing down
 the fermion Hamiltonian
@@ -634,7 +636,7 @@ where the possible values of $\vec{p}$ are restricted to the Brillouin zones
     \frac{L}{2} \big\} \hskip1ex\Rightarrow\hskip1ex p_i \in \big(\minus\pi, \pi\,\big].
 \end{equation}
 %
-After the Fourier transform the Hamiltonian is
+After a Fourier transformation the Hamiltonian is
 %
 \begin{equation}
   \mathcal{H}_f = \frac{1}{(aN)^3}\sum_{\vec{p}} \tilde{\bar{\psi}}(\vec{p})
@@ -649,7 +651,7 @@ It can easily be seen that it has eigenvalues
 %
 which for every momentum $\vec{p}$ is $8$-fold degenerate, owing to the
 periodicity of the sine function. This implies that we have $7$ additional,
-unwanted, fermions in the theory whenever we put $1$ in. These \emph{doublers}
+unwanted fermions in the theory whenever we put one in. These \emph{doublers}
 come from the corners of the Brillouin zone, and therefore disappear as we go
 to the continuum limit. That is however of little comfort as they would give
 incalculable effects to loop diagrams at finite volumes which cannot easily be
@@ -658,11 +660,11 @@ eigenstates appear from doublings in the additional temporal Brillion corners.
 
 \subsection{Wilson fermions}
 
-In a quest to resolve this issue Wilson introduced an additional term to the
+In an attempt to resolve this issue, Wilson introduced an additional term to the
 Lagrangian in the form of a second order derivative. This new term,
-appropriately named the \emph{Wilson term}, is one order higher in $a$, and therefore
-disappears in the continuum. After some shuffling of the terms, adding the
-Wilson term to the Lagrangian gives us
+appropriately named the \emph{Wilson term}, is one order higher in $a$, and
+therefore disappears in the continuum limit. After reordering the terms, adding
+the Wilson term to the Lagrangian gives us
 %
 \begin{equation} \label{eq:wilson_action}
   \mathcal{S}_{f,w} = a^4 \sum_{x} \bigg(
@@ -673,7 +675,7 @@ Wilson term to the Lagrangian gives us
 %
 We have introduced the \emph{Wilson parameter} $r$, which has to be in the
 interval $(0, 1]$, and is commonly chosen to be $1$. From this one can calculate
-the Hamiltonian's eigenvalues, and show that they have been modified to be
+the Hamiltonian's eigenvalues, and show that they are modified to
 %
 \begin{equation}
   H_{\vec{p}} = \pm \sqrt{\bigg(m + \frac{r}{a}\sum_{k=1}^3 (1 - \cos (a p_k) ) \bigg)^2
@@ -698,8 +700,8 @@ limit.
 Yet all hope is not lost as Ginsparg and Wilson shortly after stated a modified
 equation the fermion propagator has to fulfil to give a chiral theory in the
 continuum \citep{Ginsparg:1981bj}. Although Wilson fermions do not meet these
-requirements, solutions to these equations have since been found. Two notable
-discretisation schemes being \emph{overlap fermions} \citep{Neuberger:1997fp,Neuberger:1998wv},
+requirements, solutions to the equations have since been found. Two notable
+discretisation schemes are \emph{overlap fermions} \citep{Neuberger:1997fp,Neuberger:1998wv},
 \emph{domain wall fermions} \citep{Kaplan:1992bt} (which heed the equation in a
 special limit of its internals).
 
@@ -717,7 +719,7 @@ them to experimental values
 \end{equation}
 %
 Simply sending $a$ to $0$ is considered to be the \emph{naive} continuum limit,
-as one fails to take into account the parameters' dependence on the scale. The
+as it fails to take into account the parameters' dependence on the scale. The
 parameters that enter our theory are called \emph{bare}, as they vary together
 with the scale
 %
@@ -749,7 +751,7 @@ is
   &\equiv - \beta_0 g^3 + \mathcal{O}(g^5) \label{eq:beta_eq}
 \end{align}
 %
-Here we encounter the group's Casmir operators, $C_R$ and $C_{R\hskip.2ex 2}$. They are
+Here we encounter the group's Casmir operators, $C_R$ and $C_{\text{adj}\hskip.2ex 2}$. They are
 defined as
 %
 \begin{equation}
@@ -783,7 +785,7 @@ limit, takes the change of the parameters into account.
 
 Although the lattice discretisation has decreased the number of integrals in the
 definition of $\mathcal{Z}$ from infinity to something finite, the number of free
-variables is still too great for it to be evaluated, even numerically. The
+variables is still too large for it to be evaluated, even numerically. The
 fermion fields have $2 N_f d_R$ independent degrees of freedom at every
 position. The gauge field is a four vector at every space-time point with
 $d_{\text{adj}}$ degrees of freedom. Even though the fermion fields can be
@@ -852,16 +854,16 @@ detailed balance equation
     P\big([\,]_{n\hphantom{-1}} \big| [\,]_{n-1}\big)
   }{%
     P\big([\,]_{n-1} \big| [\,]_{n\hphantom{-1}}\big)
-  } = e^{\mathcal{S}[\,]_{n-1} - \mathcal{S}[\,]_n} \,.
+  } = e^{\mathcal{S}[\,]_{n-1} - \mathcal{S}[\,]_n} \,,
 \end{equation}
 %
-Which will converge to the correct distribution as long as the chain is
+which will converge to the correct distribution as long as the chain is
 \emph{ergodic}, i.e. will reach any field configuration in finite (albeit
-arbitrary long) time.
+arbitrarily long) time.
 
 \subsection{Observables}
 
-Using this process to select a finite set of configurations, one can use this to
+Using this process to select a finite set of configurations, one can
 obtain an estimate for the expectation value of observables. 
 Commonly named the \emph{ensemble average}, it is given by
 %
@@ -869,11 +871,11 @@ Commonly named the \emph{ensemble average}, it is given by
   \bar{O}\big[\psi, \bar{\psi}, U_{\mu}\big] = \frac{1}{N} \sum_{n = 1}^N O\big( [\,]_n \big).
 \end{equation}
 %
-If the set of configurations behave as described in the previous section, it
+If the set of configurations behaves as described in the previous section, it
 converges to the true average, \meqref{eq:expectation_value}, when $N \to
 \infty$.
 
-For any realisable number of configurations we want an estimate for the error.
+We want an estimate of the error for any realisable number of configurations.
 This information is encoded in the \emph{autocorrelation function}
 %
 \begin{equation}
@@ -881,8 +883,8 @@ This information is encoded in the \emph{autocorrelation function}
     - \big\langle O\big([\,]_n\big)\big\rangle_n^2\,,
 \end{equation}
 %
-which quantize how correlated consecutive measurements are. Since the $n+1$'th
-configuration depend on the $n$'th configuration through the Markov chain,
+which quantizes how correlated consecutive measurements are. Since the $n+1$'th
+configuration depends on the $n$'th configuration through the Markov chain,
 $C_O(m) \neq 0$ for $m > 0$. But it is how quickly this function decreases that
 determine how good the estimate for the average is. An important quantity for
 this is the \emph{integrated autocorrelation time}
@@ -892,6 +894,6 @@ this is the \emph{integrated autocorrelation time}
 \end{equation}
 %
 One can show that approximately $2 \tau_O$ of the consecutive measurements will
-be correlated, meaning that it would be advantageous to only sample the
+be correlated, meaning that it is advantageous to sample only the
 observable at this interval instead of for every new configuration
 \citep[sect. 7.1.3]{montvay1997quantum}.

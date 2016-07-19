@@ -1,7 +1,7 @@
 \chapter{Statistical Mechanics and Phase Transitions} \label{chap3}
 
-In this chapter we will give a short overview of some aspects of statistical
-mechanics that are important to the present work in \secref{sec:stat-mech}.
+This chapter will give a short overview of some aspects of statistical mechanics
+that are important in the present work. This is done in \secref{sec:stat-mech}.
 Then the field theoretical equivalent is given in
 \secref{sec:thermal-field-theory}, before we once more study the discretised
 theory in \secref{sec:thermal-lattice-theory}. We tie up the chapter 
@@ -9,7 +9,7 @@ in \secrefs{sec:finite-density-lattice,sec:sign-problem} with a
 thorough discussion of simulations of finite density systems, and the hurdles
 that need to be overcome.
 
-Several volumes of the standard literature havc been consulted with respect to
+Several volumes of the standard literature have consulted with respect to
 the contents of this chapter. These include, but are not limited to,
 \cite{landau2013statistical,pathria2011statistical} for introductions to
 statistical mechanics, \cite{kapusta2006finite} with an introduction to Thermal
@@ -18,34 +18,34 @@ the lattice formulation of finite temperature theory.
 
 \section{Statistical mechanics} \label{sec:stat-mech}
 
-Every quantity of interest to anyone studying equilibrium thermodynamics is
-encoded into the previously mentioned partition function
+Every quantity of interest in the study of equilibrium thermodynamics is
+contained in the previously mentioned partition function
 %
 \begin{equation} \label{eq:sm-partition-function} \mathcal{Z} = \sum_i
   \mathcal{Z}_i = \sum_i e^{-\beta E_i} \,.  \end{equation}
 %
-The sum goes over all states of the degrees of freedom of the system with $E_i$
-being the energy cost of the configuration, and $\beta = 1/T$ is the reciprocal
+The sum is over all states of the degrees of freedom of the system, $E_i$
+being the energy cost of the configuration, and $\beta = 1/T$ the reciprocal
 temperature\footnote{This should not be confused with the lattice gauge
   coupling, which was introduced in the previous chapter. $\beta$ will
-  exclusively be used to indicate $1/T$ in this chapter only}. How one chooses
+  be used to indicate $1/T$ in this chapter only.}. How one chooses
 to define the scope of these \emph{states} depends on the physics one is
-interested in obtaining, as all choices should in the end be independent,
+interested in, as all choices should in the end be independent,
 although different physical quantities are easier to extract in some rather than
-others. Three common descriptions are the \emph{microcanonical}-,
-\emph{canonical}- and \emph{grand canonical} ensembles.  They differ in their
+others. Three common descriptions are the \emph{microcanonical},
+\emph{canonical} and \emph{grand canonical} ensembles.  They differ in their
 scope as the microcanonical ensemble includes systems at a fixed energy shell,
 the canonical ensemble a system of fixed temperature and particle number while
-the grand canonical ensemble also allows for fluctuations in particle numbers.
+the grand canonical ensemble also allows for fluctuations in particle number.
 
-Both the canonical- and grand canonical ensembles have associated partition
-functions, and the two can be related through a simple relation
+Both the canonical and grand canonical ensembles have associated partition
+functions, and the two are related through
 %
 \begin{equation}
   \mathcal{Z}_{\text{GC}}(z, V, T) = \sum_{N=0}^{\infty} z^N \mathcal{Z}_{\text{C}}(N, V, T),
 \end{equation}
 %
-where $z = e^{\beta \mu}$ is the fugacity, $\mu$ being the chemical
+where $z = e^{\beta \mu}$ is the fugacity and $\mu$the chemical
 potential. The partition function can in turn be used to calculate a multitude
 of thermodynamic quantities
 %
@@ -65,25 +65,26 @@ pressure, average energy and average particle number respectively.
 The phase of a system is linked to the characteristic behaviour of one or more
 of its physical quantities, such as the magnetisation of spin glasses, the
 average positions of atoms in a crystal and the molecular composition of
-solutions. We refer to this defining physical quantity as the
-\emph{order parameter} of the phase.  The transitions between two or more phases
-are known as \emph{phase transitions}, and due to the very nature of phases,
+solutions. We refer to these defining physical quantities as the
+\emph{order parameters} of the phase.  The transitions between two or more phases
+is known as a \emph{phase transition}, and due to the very nature of phases,
 happens through the induction of mathematical singularities. 
 
 The order of a phase transition is exactly described by which derivative of the
-free energy with respect to the order parameter of choice diverge. First order
+free energy with respect to the order parameter of choice diverges. First order
 transitions have discontinuous first derivatives, while only higher order
 derivatives diverge for second order transitions.
 
-However, if the order parameter tends towards zero, but never quite reaches it,
+However, if the order parameter approaches zero, without ever reaching it,
 one can define a pseudo-phase transition, known as a \emph{crossover}, to be the
 point of the most rapid change of the order parameter (the inflection point).
 While this is not a real phase transition, following its trajectory in a phase
-diagram will result in one, if a transition exists, linking the two concepts.
+diagram will result in one, if a transition exists, and thus linking the two
+concepts.
 
 Phase transitions are an inherently macroscopic concept, and do not know about
 the microscopic details of the theory. Theories with different microscopic
-details might therefore still behave alike on the macroscopic level. These
+properties might therefore still behave alike on the macroscopic level. These
 categorise into \emph{universality classes}, catalogued by the singular
 behaviour of their physical quantities close to the transition. If we denote the
 order parameter by $m$, and the ordering field by $h$\footnote{a characteristic
@@ -106,7 +107,7 @@ An alternative approach to a rigorous study of the phase transitions was
 proposed by \citeauthor{Yang:1952be} [\citeyear{Yang:1952be,Lee:1952ig}]. They suggested that one
 can analyse the properties of the thermodynamic functions around a transition by
 studying the zeros of the grand canonical partition function in the complex
-fugacity-plane.
+fugacity plane.
 
 Seeing as the partition function is per definition the normalisation factor of a
 statistical system, it can never be zero for real and positive values of $z$.
@@ -118,7 +119,7 @@ signalling the onset of a phase transition.
 
 \section{Thermal field theory} \label{sec:thermal-field-theory}
 
-The quantum partition function is defined similar to the classical one, but with
+The quantum partition function is defined similarly to the classical one, but with
 the energy and particle numbers promoted to operators
 %
 \begin{equation}
@@ -133,7 +134,7 @@ fields $\pi_i$.
 
 Focussing on the canonical ensemble, there are two amendments which need to be
 made to the Euclidean action in \meqref{eq:action-def}. First the Euclidean time
-$\tau_E$ have to be integrated over the half open interval $[0, \beta)$
+$\tau_E$ has to be integrated over the half open interval $[0, \beta)$
 %
 \begin{equation}
   \mathcal{S}_E[\phi_i] = \int_{\mathrlap{0}}^{\mathrlap{\beta}} \mathrm{d} \tau_E \int \mathrm{d}^3 x \,
@@ -175,7 +176,7 @@ symmetry of a two flavour system (the third Pauli matrix)
 %
 which for QCD gives the up and down quarks chemical potentials that only differ
 in sign. By tuning the value of $\mu_I$, one can study the effects of a $u/d$
-asymmetry, while adjusting $\mu_f$ induces a particle/anti particle imbalance.
+asymmetry, while adjusting $\mu_f$ induces a particle/antiparticle imbalance.
 
 \section{Thermal fields on the lattice} \label{sec:thermal-lattice-theory}
 
@@ -197,7 +198,7 @@ finite.
 At a first glance it might seem as if when integrating lattice theories we can
 only vary the temperature in finite increments, seeing as $N_t$ has to be an integer.
 It is however much more common to keep $N_t$ fixed while varying $a$, which one
-varies by tuning the gauge coupling $g$, as we saw in \secref{sec:scale_setting}.
+does by tuning the gauge coupling $g$, as in \secref{sec:scale_setting}.
 
 Other than imposing the proper boundary conditions for the variables, no other
 amendments need to be made for the finite temperature simulations. These follow
@@ -212,7 +213,7 @@ directly from \meqref{eq:boundary-conditions}
 
 In \secref{sec:stat-mech} we stated the thermodynamic quantities $\mathcal{P}$,
 $\mathcal{E}$ and $\mathcal{N}$ in terms of derivatives of the partition
-function. However one cannot sample the partition function through Monte Carlo
+function. However, one cannot sample the partition function through Monte Carlo
 simulations, and we therefore have to device a different scheme to calculate
 these quantities. By interchanging the order of the derivatives and the
 integrals we get 
@@ -229,7 +230,7 @@ However, there is still a problem in defining the derivative with respect to
 $\beta$. As we wish to keep $N_t$ fixed, we have to vary $\beta$ by varying $a$,
 but we only want to vary the lattice spacing in the temporal direction, not the
 spatial ones. By naively varying $a$, we would not only change the temperature,
-but also the volume, which is supposed to stay fixed in the definition of
+but also the volume, which must stay fixed in the definition of
 $\mathcal{E}$.
 
 To rectify this we have to introduce an anisotropic lattice, one in which the
@@ -252,15 +253,15 @@ previously introduced Monte Carlo methods to estimate their values.
 
 \section{Finite density simulations} \label{sec:finite-density-lattice}
 
-To carry out simulations of systems with non zero quark number density we saw
-that we have to introduce a quark chemical potential. Unfortunately, a naive
-discretisation of the quark number operator from
+In order to carry out simulations of systems with non zero quark number density
+we saw that we have to introduce a quark chemical potential. Unfortunately, a
+naive discretisation of the quark number operator from
 \meqref{eq:quark-number-density-op} leads to divergences in the thermodynamic
 quantities in the continuum limit \citep{Hasenfratz:1983ba,Kogut:1983ia}. This
 is due to the lack of an implicit gauge invariance of the lattice action needed
 for the right continuum cancellations to take place.
 
-The correct way to introduce quark chemical potential to the lattice action is
+The correct way to introduce a quark chemical potential to the lattice action is
 by weighing the appropriate gauge links with the correct single step fugacity
 %
 \begin{equation}
@@ -268,8 +269,8 @@ by weighing the appropriate gauge links with the correct single step fugacity
     U_0^{\dagger}(x).
 \end{equation}
 %
-Adding this change to the Wilson fermion matrix from \meqref{eq:wilson_action},
-we get
+Adding this change to the Wilson fermion matrix from \meqref{eq:wilson_action}
+yields
 %
 \begin{multline}
   Q_{yx} \hskip1ex=\hskip1ex \big(m + {\textstyle\frac{4 r}{a}}\big) \delta_{y,x}
@@ -284,7 +285,7 @@ which is also the final form of the lattice action we will study in this thesis.
 \label{sec:saturation}
 
 Lattice studies of systems at finite chemical potential is limited in the very
-dense limit by lattice saturation. This is a mere lattice artefact arising from
+dense regime by lattice saturation. This is a mere lattice artefact arising from
 the Pauli exclusion principle, which tells us that two fermion degrees of
 freedom cannot occupy the same quantum state. Due to the discretised nature
 of it, a lattice cannot accommodate more than $2 N_f N_c N_t N_s^3$ fermions.
@@ -302,12 +303,12 @@ of it, a lattice cannot accommodate more than $2 N_f N_c N_t N_s^3$ fermions.
 This limitation is sketched in \figref{fig:saturation_sketch} where a typical
 lattice curve has been plotted. At small and intermediate values of the chemical
 potential, we see the \emph{Silver Blaze} property. Coined by
-\cite{Cohen:2003kd}, is the phenomena that at any chemical potentials smaller
+\cite{Cohen:2003kd}, is the phenomenon that at any chemical potentials smaller
 than the smallest mass of the theory, the eigenvalues of the Dirac operator are
 $\mu$ independent. Slightly before $\mu = m$ er have onset, which signals the
-beginning of the nuclear condensation phase change. After which the system will
+beginning of the nuclear condensation phase change, after which the system will
 eventually reach half-filling, where half of the states on the lattice are
-occupied. One should generally ignore results beyond this point as lattice
+occupied. One should generally ignore results beyond this point, as lattice
 artefacts become dominant. This was the study of \citep{Rindlisbacher:2015pea},
 in which the authors discovered a particle-hole symmetry around half-filling,
 similar to electron-hole symmetries in solid state systems. As the lattice
@@ -320,7 +321,7 @@ populated by $2 N_f N_c$ fermions.
 \section{The sign problem} \label{sec:sign-problem}
 
 An issue arises when trying to numerically evaluate the partition function
-integrals through Monte Carlo methods. We saw that we use the probability
+integrals through Monte Carlo methods. We saw that we can use the probability
 density
 %
 \begin{equation}
@@ -328,31 +329,31 @@ density
 \end{equation}
 %
 to evaluate the integrals numerically. This requires that the fermion
-determinant is positive definite, something we guaranteed by the fact that the
-matrix was $\gamma^5$-hermitian. Unfortunately, this property is spoiled when a
+determinant be positive definite, something we can guarantee from the fact that the
+matrix is $\gamma^5$-hermitian. Unfortunately, this property is lost when a
 chemical potential is introduced. When digging deeper we find that this
 conceptual issue is just the tip of the iceberg, and that there is a more
 fundamental issue at play.
 
-The partition function has to be a real positive quantity, and therefore we know
-that if we carry out the integral properly, that all the imaginary contributions
-have to cancel out in the end. It is getting these exact cancellations out of
-inexact numerical methods that is the underlying complication. This is what is
-referred to as the \emph{sign problem}, and the problem is not exclusive to
-lattice studies of finite density fermions. Being categorised as an NP-hard
-problem it is unlikely that we will ever find a generic solution to the problem,
-and it needs to be tackled in an intelligent way through deep understanding of
-the source of the issue itself.
+The partition function has to be a real positive quantity, and so we know that
+if we carry out the integral properly, all the imaginary contributions have to
+cancel out in the end. It is getting these exact cancellations out of inexact
+numerical methods that is the underlying complication. This is what is referred
+to as the \emph{sign problem}, and the problem is not exclusive to lattice
+studies of finite density fermions. Being categorised as an NP-hard problem
+\citep{Troyer:2004ge}, it is unlikely that we will ever find a generic solution
+to it, and it needs to be tackled through deep understanding of the source of
+the issue itself.
 
-The problem is most easily illustrated with a sketch. In
+The problem is most easily illustrated using a sketch. In
 \figref{fig:sign-problem} we have plotted the real and imaginary part of a
 symmetric function with a complex phase, $f(x) e^{i \theta(x)}$. The real part
 integrates to something finite that is exponentially suppressed by the phase,
 while the imaginary part integrates to zero. However, this subtlety is hard to
 reproduce numerically, just as it is hard to see with the bare eye that one of
-the two figures should give zero, while the other should give something finite.
-The number of operations needed to keep the errors down grow exponentially with
-the system size, making continuum studies impossible.
+the two plots integrate to zero, while the other something finite.  The number
+of operations needed to keep the errors down grow exponentially with the system
+size, making continuum studies impossible.
 %
 \begin{figure}
   \begin{center}
@@ -371,16 +372,16 @@ systems using Monte Carlo methods. Such methods include reweighting, Taylor
 expansions, analytic continuation from imaginary chemical potential and  the
 method of stochastic quantisation. Although none of these methods actually
 tackles the essence of the sign problem, with sufficiently powerful computers 
-results with reasonable accuracy can be obtained. However one should take great
+results with reasonable accuracy can be obtained. However, one should take great
 care to sample correctly if one wants sensible results, as was demonstrated in
 \citep{Osborn:2008eg}.
 
-For the remainder of this chapter we will cover the basics ideas of these
+The remainder of this chapter is dedicated to covering the basic ideas of these
 methods, and refer to \citep{deForcrand:2010ys} for a more thorough review.
 
 \subsection{Reweighting}
 
-Reweighting is a refactoring scheme used to great effect, where one takes the
+Reweighting is a highly effective refactoring scheme, where one takes the
 phase of the fermion determinant as part of the observation rather than the
 probability weight. Factoring out the phase
 %
@@ -403,7 +404,7 @@ one can rewrite the expectation value of an observable as
 \end{align}
 %
 The \emph{phase quenched} ensembles, where the phase is kept constant, only have
-real weights, and one can therefore utilise Monte Carlo techniques. It is
+real weights, and one can therefore use Monte Carlo techniques. It is
 possible to introduce a positive function of the phase, $f(\theta)$, to lessen
 the difference between the true ensemble and the phase quenched one
 %
@@ -439,27 +440,27 @@ sampled configurations will be discarded, often referred to as the \emph{overlap
 
 \subsection{Imaginary chemical potentials}
 
-Another method that has seen much attention recently is simulating at purely
-imaginary chemical potentials, and then analytically continue from the negative
-$\mu^2$ parameter region to the positive. At purely imaginary $\mu$ the measure
-becomes a real, positive quantity, which can be seen from
+Another method that has been given attention recently is simulating at purely
+imaginary chemical potentials, and then using analytic continuation from the
+negative $\mu^2$ parameter region to the positive. At purely imaginary $\mu$ the
+measure becomes a real, positive quantity, which can be seen from
 %
 \begin{equation}
   \det Q^{\dagger} (\mu) = \det Q(-\mu^*).
 \end{equation}
 %
 This has been used to study the critical surfaces of the Columbia plot
-(\figref{fig:phase_diags} right) from which one can see a trend as one crosses
+(\figref{fig:phase_diags} right), where one sees a trend as upon crossing
 into the region of real chemical potential
 \citep{deForcrand:2002hgr,D'Elia:2002gd}.
 
-On top of being a useful method of extrapolating to real chemical potentials,
-one can also study the interesting phase structure in the region of imaginary
-chemical potentials. Because the imaginary chemical potentials introduce a pure
-phase, the partition function is periodic under centre transformations of the
-group. This is known as the Roberge-Weiss symmetry, and the periodicity leads to
-a phase transition of the same name \citep{Roberge:1986mm}.
-Never developments in the field can be found in e.g.
+In addition to being a useful method of extrapolating to real chemical
+potentials, the interesting phase structure in the region of imaginary chemical
+potentials can be studied. Because the imaginary chemical potentials introduce a
+pure phase, the partition function is periodic under centre transformations of
+the group. This is known as the Roberge-Weiss symmetry, and the periodicity
+leads to a phase transition of the same name \citep{Roberge:1986mm}.  Never
+developments in the field can be found in e.g.
 \citep{Wu:2013bfa,Cuteri:2015qkq,Philipsen:2016hkv}.
 
 \subsection{Taylor series}
@@ -480,14 +481,14 @@ the region of finite $\mu$ \citep{Allton:2003vx}. The convergence region is
 however governed by the partition function's behaviour at imaginary chemical
 potential, and the Roberge-Weiss transition is to our knowledge the bound for
 any extrapolation from zero chemical potential. There is therefore a strict
-limit to how far this expansion is valid, which was the study of
+limit on how far this expansion is valid, which was the study of
 \citep{Osborn:2008eg}.
 
 \subsection{Stochastic quantisation}
 
 The final method we will cover is the use of stochastic quantisation. This
 approach is different from the others as it doesn't use Monte Carlo methods at
-all, rather, one uses a different stochastic process to estimate the partition
+all. Instead, one uses a different stochastic process to estimate the partition
 function integral, the Langevin equations \citep{Parisi:1980ys}. One introduces
 an additional continuous parameter of the fields, $\alpha$, and then evolves the
 system in this new parameter following the stochastic differential equation
@@ -497,8 +498,8 @@ system in this new parameter following the stochastic differential equation
     \mathcal{S}}{\delta \phi} + \eta(x,\alpha)
 \end{equation}
 %
-where $\eta$ is a Gaussian white noise. The method then relies on the fact that
-in the $\alpha \to \infty$ limit, expectation value of observables with respect
+where $\eta$ is Gaussian white noise. The method then relies on the fact that
+in the $\alpha \to \infty$ limit, the expectation value of observables with respect
 to the $\eta$ distribution is identical to the true expectation value evaluated
 via the path integral
 %
@@ -517,25 +518,24 @@ where the noise average is defined as
 \end{equation}
 %
 This equality can be rigorously proven for real actions
-\citep{Damgaard:1987rr,Huffel:2003hf}, however one can nevertheless apply the
+\citep{Damgaard:1987rr,Huffel:2003hf}. One can nevertheless apply the
 method to complex actions. Although using a complex action induces imaginary
 contributions to the noise average, these are expected to average out in the
-limit for physical observables. This is not always the case as the complex
+limit for physical observables. This is not always the case, as the complex
 Langevin sometimes diverges towards unphysical solutions \citep{Ambjorn:1985iw},
 the reason for which is still an open question.
 
-The sign problem itself manifests itself in the complex flow of the fields. For
+The sign problem manifests itself in the complex flow of the fields. For
 large values of the chemical potential, the field configurations will spend a
 considerable amount of time in the complex phase, resulting in the need for
 longer flow times before the imaginary contributions average out. This can to
 some extent be remedied by the introduction of gauge cooling
 \citep{Seiler:2012wz}, which are invariant transformations on the variables that
-push them closer to the real field values. For QCD it has been shown that
-this places a restriction of the coupling strengths for which the method is
-applicable. Recently a comparison between the reach of reweighting techniques to
-those of stochastic quantisation, showing comparable results
-\citep{Fodor:2015doa}. Newest developments can be found in
-\citep{Aarts:2016qrv}.
+push them closer to the real field values. For QCD it has been shown that this
+places a restriction on the coupling strengths for which the method is
+applicable.  A recent comparison made between the reach of reweighting to that
+of stochastic quantisation shows that they are comparable \citep{Fodor:2015doa}.
+The newest developments can be found in \citep{Aarts:2016qrv}.
 
 \begin{figure}
   \begin{center}
@@ -545,17 +545,16 @@ those of stochastic quantisation, showing comparable results
     \end{adjustbox}
   \end{center} \vskip -.5cm
   \caption{Left: Baryon number density of the Stephanov model measured by
-    complex langevin compared to full and phase quenched analytical results at
+    complex Langevin compared to full and phase quenched analytical results at
     fixed $m = 0.0$. Phase quenched computed using a mean field approach. Right:
     Same comparison for the chiral condensate at fixed $\mu=1.0$.}
   \label{fig:rmt_cl}
 \end{figure}
 
-To demonstrate a case in which we can clearly see that the Langevin flow is
-converging to the wrong theory, we can study a \emph{Random Matrix Theory}
-(RMT), which is a simpler model that also suffers from a strong sign problem.
-One such RMT is the Stephanov model \citep{Stephanov:1996ki}, whose partition
-function is
+To demonstrate a case in which we can clearly see the Langevin flow converging
+to the wrong theory, we can study a \emph{Random Matrix Theory} (RMT), which is
+a simple model also suffering from a strong sign problem.  One such RMT is the
+Stephanov model \citep{Stephanov:1996ki}, whose partition function is
 %
 \begin{equation}
   \mathcal{Z}_{\mathrm{S}} = \int [\mathrm{d} W] e^{-N \Sigma^2 \tr W^{\dagger} W}
@@ -571,12 +570,12 @@ The mass matrix $M$, chemical potential matrix $\mu$, and flavour number $N_f$,
 are introduced to mimic the parameters of QCD. This model has the advantage that
 it is analytically solvable both at finite $\mu$, as well as in the phase
 quenched limit \citep{Stephanov:1996ki,Halasz:1997he}. The results from simulating
-this theory using the unimproved complex langevin algorithm is shown in
+this theory using the unimproved complex Langevin algorithm is shown in
 \figref{fig:rmt_cl}. In the same plots the full analytic result is plotted in
 red, and the phase quenched result in green. It should be noted that the phase
-quenched is only accessible in the thermodynamic limit, $N \to \infty$, however
-$48$ is close enough to this limit that we expect few discrepancies from finite
-volume effects. We see that the complex langevin results clearly converges to
+quenched is only accessible in the thermodynamic limit, $N \to \infty$, though
+$48$ is close enough to this limit to expect only few discrepancies from finite
+volume effects. We see that the complex Langevin results clearly converge to
 the phase quenched theory even though the full theory is used as input. Further
 analysis is yet to be made regarding improvement of this case. This includes the
 aforementioned gauge cooling method, which was studied in
