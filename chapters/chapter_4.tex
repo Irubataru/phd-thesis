@@ -2,29 +2,29 @@
 
 Having presented the challenges and difficulties in simulating strongly
 interacting fermions, especially in the dense regime, we will introduce an
-effective theory that tackles some of these problems, while reproducing the full
+effective theory that handles some of these problems, while reproducing the full
 theory in a certain parameter region. We will see that although simulations of
 the effective theory still suffer from the side effects of the sign problem
-(complex actions), the essence of the sign problem is weak enough that
+(e.g. complex actions), the essence of the sign problem is weak enough that
 reweighting can be readily applied.
 
 The work in this thesis builds on previous work with the effective theory while
 pushing the derivation further and introducing analytic tools, which we will
 cover in the next chapter.
 
-In this chapter we will first introduce the effective theory before we introduce
-two expansion schemes that facilitate the computation of the theory. These are
-namely the \emph{character expansion}, mentioned in \secref{sec:group_intro},
-the second is the \emph{hopping parameter expansion} for heavy fermions. We
-round off the chapter with a discussion on the numerical evaluation of the
-effective theory.
+In the present chapter we will first introduce the effective theory before
+introducing two expansion schemes that facilitate the computation of the theory.
+These are namely the \emph{character expansion}, mentioned in
+\secref{sec:group_intro}, and the \emph{hopping parameter expansion} for heavy
+fermions. We round off the chapter with a discussion on the numerical evaluation
+of the effective theory.
 
 \section{The effective theory - \texorpdfstring{\itshape Introduction}{Introduction}}
 
 The essence of the derivation of the effective theory is to integrate out some
-of the degrees of freedom analytically. This will both lessen the burden for the
+of the degrees of freedom analytically. This will both lessen the burden of the
 numerical evaluation, having fewer degrees of freedom left to vary, as well as
-lessen the sign problem. The sign problem being milder due to the fact that
+lessening the sign problem. The sign problem will be milder due to the fact that
 many, or as we will see, most, of the fluctuations cancel exactly, as they
 should. In this we will integrate the spatial gauge links of the partition
 function
@@ -46,7 +46,7 @@ which defines the effective action to be
 The integrals over the spatial gauge links $U_i(x)$ is unfortunately not
 something we can evaluate analytically without the aid of approximations. We
 will therefore introduce two expansion schemes and work towards deriving the
-effective theory such that it reproduce the exact expansion coefficients of the
+effective theory such that it reproduces the exact expansion coefficients of the
 full lattice gauge theory in the end.
 
 \section{The character expansion} \label{sec:char_exp}
@@ -55,8 +55,8 @@ The first expansion we will apply is the character expansion introduced in
 \secref{sec:group_intro}. In the form of an exact equality, it is not of much
 help. Nevertheless, from the character expansion of the single plaquette gauge
 contribution
-\footnote{We will from this point forward assume that the gauge group is SU$(N_c)$
-  and that the fermions transform under the fundamental representation unless
+\footnote{We will from this point onward assume that the gauge group is SU$(N_c)$
+  and that the fermions transform under the fundamental representation, unless
   stated otherwise.}
 %
 \begin{equation}
@@ -67,12 +67,12 @@ contribution
 we see that the character expansion coefficients are dependent on the lattice
 gauge coupling $\beta$. It can be easily seen that the higher dimensional
 representations come with a higher power of this coupling. A natural ordering
-therefore arises if one expands around the infinite coupling limit, $g\to\infty$,
-$\beta\to0$. This expansion scheme is aptly named the \emph{strong coupling
-  expansion}, and has been the focus of numerous studies for the past decades,
-also having picked up in recent years by groups studying conformal field
-theories. Introductions to the field can be found in \cite{Drouffe:1983fv} and
-\cite{montvay1997quantum}.
+therefore arises if one expands around the infinite coupling limit,
+$g\to\infty$, $\beta\to0$. This expansion scheme is aptly named the \emph{strong
+  coupling expansion}, and has been the focus of numerous studies for the past
+decades, also having been picked up in recent years by groups studying conformal
+field theories. Introductions to the field can be found in \cite{Drouffe:1983fv}
+and \cite{montvay1997quantum}.
 
 The lowest order character expansion coefficient, namely that of the fundamental
 representation, has for SU$(3)$ been calculated to high orders
@@ -90,9 +90,9 @@ representation, has for SU$(3)$ been calculated to high orders
 %
 To leading order $u_F(\beta) \approx \frac{\beta}{2 N_c^2}$, and we
 therefore use $u_F$ as our expansion parameter rather than $\beta$.
-The characters are in fact always smaller than, or equal to $1$, and therefore
+The characters are in fact always smaller than or equal to $1$, and therefore
 does an excellent job as an expansion parameter.  The character expansion only
-permits a single plaquette from any representation to be placed at every
+permits a single plaquette from any representation to be placed at each
 position, making order counting easier than a standard Taylor expansion of the
 gauge action.
 
@@ -104,7 +104,7 @@ effective action is
 %
 \begin{equation}
   e^{-\mathcal{S}_{\text{eff}}} = \int \big[ \mathrm{d} U \big]_i \, \prod_p
-    \bigg(1 + \sum_{r \neq 0} d_r u_r(\beta) \chi_r (U_p) \bigg).
+    \bigg(1 + \sum_{r \neq 0} d_r u_r(\beta) \chi_r (U_p) \bigg),
 \end{equation}
 %
 where we have introduced the shorthand integration measure $\big[ \mathrm{d} U
@@ -140,14 +140,14 @@ restricts the graphs created from plaquette combinations to ones that have no
 boundaries. On an infinite lattice the lowest order contribution would therefore
 come from combining six fundamental plaquettes into a cube.
 
-For finite lattices the periodic boundary can be utilised to create closed
-surfaces. In fact, only graphs periodic in the temporal direction give
-contribution to the finite temperature as the non-periodic ones can be
-normalised out. Since we only integrate spatial links the contributing graphs
+For finite lattices, the periodic boundary can be utilised to create closed
+surfaces. In fact, only graphs periodic in the temporal direction
+contribute to the finite temperature as the non-periodic ones can be
+normalised out. Since we only integrate spatial links, the contributing graphs
 need only have closed surfaces in the spatial directions. The lowest order
 contribution to the effective action comes from a strip of plaquettes spanning
 the temporal direction as shown in \figref{fig:plaquette-strip}. Since only two
-links meet at all the spatial sites we only need the integral
+links meet at all the spatial sites we need only the integral
 %
 \begin{equation}
   \int \mathrm{d} U \: \chi_r(V U) \: \chi_s(W U^{-1})
@@ -200,9 +200,9 @@ where $L$ is the so-called \emph{Polyakov loop}
   L_{\vec{x}} = \tr \prod_{\mathclap{t=0}}^{\mathclap{N_t-1}} U_0(\vec{x},t) .
 \end{equation}
 %
-We see that the explicit time dependence of the links have disappeared, as the
+We see that the explicit time dependence of the links has disappeared, as the
 only degrees of freedom left are full windings. The integral over the effective
-action therefore simplify to
+action thus simplifies to
 %
 \begin{equation}
   \mathcal{Z}_{\text{eff}} = \int \big[\mathrm{d} U\big]_0 \,
@@ -212,12 +212,12 @@ action therefore simplify to
 \end{equation}
 %
 where $\sqrt{\det U_0}$ is the reduced Haar measure of the group, the calculation of
-which will be covered in \apxref{sec:haar_measure}. As one can see the effective
-theory is a three dimensional theory of Polyakov loop interactions. At first
+which is covered in \apxref{sec:haar_measure}. As one can see, the effective
+theory is a three dimensional theory of Polyakov loop interactions. To first
 order we have a nearest neightbour spin system with an effective coupling
 $u_F^{N_t}$.
 
-At higher orders in $\beta$ new effects are introducted through interactions
+At higher orders in $\beta$, new effects are introducted through interactions
 between loops at higher order representations, next to nearest neighbour
 interactions as well as corrections to the nearerst neighbour coupling between
 fundamental Polyakov loops. The effects of higher order representations in
@@ -260,7 +260,7 @@ $\kappa$ resulting in
 \end{equation}
 %
 Since every factor of $H$ comes with a $\delta_{y+\hat{\mu},x}$, they symbolise
-a single discrete hop on the lattice. And the full fermion propagator is
+a single discrete hop on the lattice. The full fermion propagator is
 therefore the sum of all fermion lines starting at $x$ and ending at $y$. Due to
 the accompanying spin factor, and the fact that $(1 - \gamma^{\mu}) (1 +
 \gamma^{\mu}) = 0$, it is restricted to lines with no backtracking.  If the
@@ -341,7 +341,7 @@ by factoring out the temporal hopping matrix
 \subsection{Static determinant}
 
 For the derivation of the effective theory we need the full static propagator
-and static determinant. Since every hop in the temporal direction come with a
+and static determinant. Since every hop in the temporal direction comes with a
 fugacity factor, the true temporal hopping expansion parameter is $e^{\pm a\mu}
 \kappa$, which is not a small parameter for sufficiently dense systems. 
 
@@ -369,7 +369,7 @@ winds the lattice $n$ times in the positive direction has the mathematical form
   &\hskip3cm= \frac{1}{2} N_t (-1)^n (2 e^{a\mu} \kappa)^{n N_t} (1+\gamma^0) W^n(\vec{x}),
 \end{align}
 %
-where $W(\vec{x})$ is the untraced Polyakov loop, the minus sign originate from
+where $W(\vec{x})$ is the untraced Polyakov loop, the minus sign originates from
 fermion anti-periodicity , and we have used the fact that $(1\pm\gamma^{\mu})^2
 = 2 (1\pm\gamma^{\mu})$. The positive static determinant therefore simplifies to
 %
@@ -389,8 +389,8 @@ Polyakov loops. We state the result for SU$(3)$
   \det(1 + h_1 W) = 1 + h_1 L + h_1^2 L^* + h_1^3
 \end{equation}
 %
-and refer to \apxref{sec:evaluating-fermion-determinants} for the more generic
-approach. The full static determinant is therefore
+and refer to \apxref{sec:evaluating-fermion-determinants} for the more general
+approach. The full static determinant is
 %
 \begin{equation}
   \det(1 - \kappa T) = \prod_{\vec{x}} (1 + h_1 L_{\vec{x}} + h_1^2 L^*_{\vec{x}} + h_1^3)^2
@@ -412,7 +412,7 @@ pieces
     T^-} -1,
 \end{equation}
 %
-and we are therefore content calculating one of these. The matrix in temporal
+and we are content calculating one of these. The matrix in temporal
 indices has a simple pseudo upper triangular shape, except for one term from the
 periodic boundary condition
 %
@@ -482,7 +482,7 @@ We have introduced the gauge transporter $U_0(t_x \!\to\! t_y)$, which is
   \end{tikzpicture}
 \end{equation}
 %
-The full static propagator therefore reads
+The full static propagator reads
 %
 \begin{equation} \label{eq:qstat-full}
   (\qstat^{-1})_{t_y,t_x} = \delta_{t_y,t_x}
@@ -514,7 +514,7 @@ simply
 and since $P$ and $M$ both come with a single power of $\kappa$, we can expand
 around these two being $0$. The determinant is described by all closed fermion
 lines, and thus we need an equal number of positive and negative hops (ignoring
-finite size boundaries). The next to leading order contribution is therefore
+finite size boundaries). The next to leading order contribution is
 %
 \begin{equation}
   \det \qkin = \exp \Big( - \tr(PM) - \tr(PPMM) -
@@ -538,7 +538,7 @@ anti-fermions. The four combinations of the lowest order $\tr(PM)$ term is shown
 
 To be able to calculate the spatial gauge integrals, it is necessary to expand
 the exponential. The lowest non trivial order contribution to the partition
-function is therefore
+function is
 %
 \begin{equation} \label{eq:single_hop_partition}
   \mathcal{Z}_2 = \int \big[ \mathrm{d} U \big]_{\mu} \det \qstat \, e^{-\tr(PM)}
@@ -557,10 +557,10 @@ spatial links only, the integral to be solved is
 \end{multline}
 %
 Using one of the simplest gauge integral selection rules
-\meqref{eq:integral-selection-rule}, we see that this integral is only non zero
-if the two links overlap, namely if $t_1 = t_2$. The implications of which
-manifest itself in the temporal indices only. We therefore divide the evaluation
-of the trace into its three remaining indices: spin, colour and temporal.
+\meqref{eq:integral-selection-rule}, we see that this integral is non zero only
+if the two links overlap, i.e. if $t_1 = t_2$, the implication of which
+manifests itself in the temporal indices only. We therefore divide the evaluation
+of the trace into its three remaining indices; spin, colour and temporal.
 
 The spin indices are unrelated to the group integral and can be evaluated
 immediately. Inserting the expression for $\qstat^{-1}$, \meqref{eq:qstat-full},
@@ -622,7 +622,7 @@ expression we see that due to the fact that there is no colour mixing between
 sites, the lowest order contribution to the spatial hopping expansion of the
 kinetic determinant is simply a nearest neighbour interaction between Polyakov
 loop dependent objects. We will see later that is is useful to introduce the
-short hand
+short hand notation
 %
 \begin{equation}
   W_{nm}(\vec{x}) = \tr_c \frac{(h_1 W_{\vec{x}})^m}{(1 + h_1 W_{\vec{x}})^n}, 
@@ -631,7 +631,7 @@ short hand
     \frac{(\bar{h}_1 W^{\dagger}_{\vec{x}})^m}{(1 + \bar{h}_1 W^{\dagger}_{\vec{x}})^n}\,,
 \end{equation}
 %
-and this the lowest order spatial hopping contribution to the effective action
+and thus the lowest order spatial hopping contribution to the effective action
 can be written as
 %
 \begin{equation} \label{eq:lowest_order_ea_unsummed}
@@ -641,7 +641,7 @@ can be written as
     \big( W_{11}(\vec{y}) - \xoverline{W}_{11}(\vec{y}) \big) + \mathcal{O}(u, \kappa^4) \,.
 \end{equation}
 %
-At the next to leading order in $\kappa$ we get new terms both to the nearest
+At next to leading order in $\kappa$ we get new terms both in the nearest
 neighbour contribution as well as non local terms spanning further on the
 lattice. Examples of these contributions are sketched in
 \figref{fig:next-order-fermionic}.
@@ -651,9 +651,9 @@ lattice. Examples of these contributions are sketched in
     \includegraphics[width=.75\textwidth]{pure_fermion_next_order_examples}
   \end{center}
   \caption{Examples of next to leading order contributions to the kinematic
-    determinant. Left: single fermion hopping twice between nearest neighbouring
-    sites. Middle: two separate fermions hopping between the same nearest
-    neighbouring sites. Right: single fermion visiting a next to nearest
+    determinant. Left: Single fermion hopping twice between nearest neighbouring
+    sites. Middle: Two separate fermions hopping between the same nearest
+    neighbouring sites. Right: Single fermion visiting a next to nearest
     neighbour.}
   \label{fig:next-order-fermionic}
 \end{figure}
@@ -661,9 +661,9 @@ lattice. Examples of these contributions are sketched in
 
 \subsection{Multiple fermion flavours}
 
-The introduction of multiple fermion flavours is in theory trivial. As we have
+The introduction of multiple fermion flavours is in principle trivial. As we have
 no flavour changing processes, the different flavours decouple into separate
-terms. The effective theory at $N_f$ different fermion flavours is simply
+terms, and the effective theory at $N_f$ different fermion flavours is simply
 %
 \begin{equation}
   \mathcal{Z} = \int [\mathrm{d} U]_{\mu} \prod_{f=1}^{N_f} \det
@@ -672,7 +672,7 @@ terms. The effective theory at $N_f$ different fermion flavours is simply
 \end{equation}
 %
 The only difference between different fermionic flavours in QCD is their masses,
-and thus the flavour dependence of the $P_f$ and $M_f$ matrices enter through
+and thus the flavour dependence of the $P_f$ and $M_f$ matrices enters through
 $\kappa_f$ only. For degenerate flavours the situation is even simpler, in that
 case $N_f$ enters as a simple number in the equations
 %
@@ -682,14 +682,14 @@ case $N_f$ enters as a simple number in the equations
   \frac{1}{n} \tr (P_f + M_f)^n \bigg).
 \end{equation}
 %
-This falls through the computation easily, and the power of $N_f$ in any
-effective theory term is determined by the number of fermion traces the term
-originates from.
+This factor easily carries through in the computation, and the correct
+prefactors are determined simply by the number of fermion traces from which the
+term originates.
 
 \section{Mixed contributions and gauge corrections}
 
 So far we have only considered either pure gluonic contributions or pure
-fermionic contributions, no mix between the two. In \secref{sec:pure-gauge-theory}
+fermionic contributions, and no mix between the two. In \secref{sec:pure-gauge-theory}
 we considered an expansion in $\beta$, ignoring corrections from $\kappa$, while
 in \secref{sec:pure-fermion-eff-theory} we carried out an expansion in $\kappa$
 only. In this section we will see how these two expansions affect each other,
@@ -698,8 +698,8 @@ constants.
 
 \subsection{Fermionic corrections}
 
-The simplest fermionic correction one can imagine is to replace any gauge
-plaquette by a fermionic loop, given that they have the same group structure
+The simplest fermionic correction imaginable is one where any gauge plaquette is
+replaced by a fermionic loop, given that they have the same group structure
 %
 \begin{equation}
   \begin{tikzpicture}[baseline=0.4121cm]
@@ -713,8 +713,8 @@ plaquette by a fermionic loop, given that they have the same group structure
   \end{tikzpicture}\;.
 \end{equation}
 %
-We get a contribution from every fermionic flavour, and this results in a shift
-in $\beta$
+We get a contribution from every fermionic flavour, which results in a shift in
+$\beta$
 %
 \begin{equation}
   \beta_R \to \beta_R +  16 d_R {\textstyle\sum_f}\kappa_f^4.
@@ -737,7 +737,7 @@ fermion hops
   \end{tikzpicture}\;,
 \end{equation}
 %
-which only give the same result after link integration due to
+which only gives the same result after link integration due to
 \meqref{eq:gauge-link-integral-graphic}.  Higher order corrections can be
 constructed in a similar manner. We will see that this means that most of the
 finite $\beta$ corrections to the effective theory can also be implemented in
@@ -751,11 +751,10 @@ reproduced by fermionic loops we turn our attention to finding these. We will
 focus on corrections to the pure fermionic effective theory, ignoring the pure
 gauge theory as it is subdominant in the cold and dense regime.
 
-The first corrections to consider are modifications of the static determinant. They
+The first corrections to consider are modifications to the static determinant. They
 consist of making detours in the spatial directions, filling the surface with
 plaquettes
 %
-%\begin{multline} \setlength{\medmuskip}{2mu} \setlength{\thickmuskip}{5mu}
 \begin{equation}
   \label{eq:static-loop-gauge-corr}
   \qstat^{N_t}e^{-\mathcal{S}_g} = 
@@ -785,7 +784,7 @@ plaquettes
 These types of diagrams also result in Polyakov loops after spatial gauge
 integration%
 \footnote{As long as their extended boundary is not in contact with other links
-  or Polyakov loops at the point of integration},
+  or Polyakov loops at the point of integration.},
 and can therefore be absorbed into a redefinition of the invariant parameters of
 the static determinant, namely the loop weight $h_1(z,\kappa)$. The shift in
 $h_1$ has been calculated to higher orders in the expansion parameters,
@@ -833,8 +832,8 @@ which will appear frequently in later calculations.
 
 One of the more powerful tools available to improve convergence is the process
 of resumming an infinite series of terms into a closed analytic expression. This
-has already been utilised in the expression for $h_1$, \meqref{eq:h1_corrections}.
-We will however go though the exponensiation of the effective action in more
+has already been done in the expression for $h_1$, \meqref{eq:h1_corrections}.
+We will however go through the exponensiation of the effective action in great
 detail as it is an integral part of the linked cluster expansion which will be
 introduced in \chapref{chap5}.
 
@@ -843,13 +842,13 @@ Expanding the single hop partition function,
 %
 \begin{equation}
   \mathcal{Z}_2 = \int \big[ \mathrm{d} U \big]_{\mu} \det \qstat \,
-    \sum_{n=0}^{\infty} \frac{(-1)^n}{n!} \big( \tr_{xsc}(PM) \big)^n
+    \sum_{n=0}^{\infty} \frac{(-1)^n}{n!} \big( \tr_{xsc}(PM) \big)^n ,
 \end{equation}
 %
 where every power carries an independent sum over the spatial degrees of
 freedom. These traces will contain both terms in which the $PM$ matrices have
 overlapping spatial links as well as terms where they are separate. In the
-latter case the integrals themselves separates, and to lowest order we have
+latter case the integrals themselves separate, and to lowest order we have
 %
 \begin{align}
   \mathcal{Z}_2 
@@ -861,8 +860,8 @@ latter case the integrals themselves separates, and to lowest order we have
     \mathcal{O}(\kappa^4)&.
 \end{align}
 %
-We see that since the effective action originate from an exponential, it
-naturally also resums to one, with corrections due to overlapping terms can be
+We see that since the effective action stems from an exponential, it
+naturally also resums to one, where corrections due to overlapping terms can be
 taken into account order by order in a systematic way. This resummation gives a
 more satisfactory expression for $S_{\text{eff}}$ which we gave to first order
 in \meqref{eq:lowest_order_ea_unsummed}
@@ -881,7 +880,7 @@ facilitate this we introduce the method of moments and cumulants.
 \subsection{Method of moments and cumulants} \label{sec:moments_cumulants}
 
 The method of moments and cumulants is an elegant mathematical formalism which
-can be utilised to extract the correct infinite volume limit for thermodynamic
+can be used to extract the correct infinite volume limit for thermodynamic
 physics \citep{Rushbrooke:1980zb,Munster:1980iv}, and will be an integral
 part in the linked cluster expansion of \chapref{chap5}.
 
@@ -899,13 +898,13 @@ is defined by
     \moment[\gamma, \dots, \epsilon]_2
 \end{equation}
 %
-where the sum is over all partitions of the symbols $\alpha, \dots, \beta$ into
+where the sum is over all partitions of the symbols $\alpha, \dots, \beta$ in
 two sets. The \emph{cumulant}, $\cumulant$, of the moment $\moment$ is defined
 through the $\otimes$ exponential
 %
 \begin{equation}
   \exp_{\otimes} \cumulant = 1 + \sum_{n=1}^{\infty} \frac{1}{n!} \cumulant^{\otimes n}
-    \equiv 1 + \moment,
+    \equiv 1 + \moment .
 \end{equation}
 %
 The moments and the cumulants can then be defined in terms of the other using
@@ -929,7 +928,7 @@ indexed variables, $x_{\alpha}$ for $\alpha$ in the set of symbols
 \end{equation}
 %
 with an analogous definition for $f_{\cumulant}(\{x_\alpha\})$. The main theorem
-of the method of moments and cumulants then tell us
+of the method of moments and cumulants then tells us
 %
 \begin{equation} \label{eq:moment_cumulant_theorem}
   \exp f_{\cumulant}(\{x_{\alpha}\}) = 1 + f_{\moment}(\{x_{\alpha}\})
@@ -937,7 +936,7 @@ of the method of moments and cumulants then tell us
 %
 which can be easily proven through induction.
 
-Next we want to apply this method to the so far computed effective theory so
+Next, we want to apply this method to the so far computed effective theory so
 that we can generalise the exponentiation procedure. We want to compute the
 effective action which is defined by \meqref{eq:eff_action_def}. Let us for now
 consider the strong coupling limit of this expression
@@ -992,7 +991,7 @@ of the moments
   \cumulant[X_1,\dots,X_n] \neq 0 \iff X_1 \cup \dots \cup X_n \text{ is connected}.
 \end{equation}
 %
-We can therefore conclude that the effective action properly exponentiates if
+We can thus conclude that the effective action properly exponentiates if
 one considers connected polymers only, and their combinatorial prefactors are
 given by the cumulants. It should be noted that this is only true in the
 infinite volume limit, but corrections can easily be carried out in an order by
@@ -1008,19 +1007,19 @@ does not provide as much numerical benefit to the heavy quark effective theory
 as it does for the pure gauge theory, we will see that it will prove to be a
 useful tool when we turn to analytic evaluation.
 
-We will focus on the lowest order order term in the effective action before
+We will focus on the lowest order term in the effective action before
 integration, the previously mentioned $\mathcal{Z}_2$. We want to study the
 expression one obtains when all the nearest neighbour interactions lie on the
 same spatial link
 %
 \begin{equation}
-  S_{\text{eff}} = - \sum_{n=1}^{\infty} \sum_X \frac{1}{n!} \cumulant[X, ..., X] \, I(X)^n + \mathcal{O}(\kappa^4)
+  S_{\text{eff}} = - \sum_{n=1}^{\infty} \sum_X \frac{1}{n!} \cumulant[X, ..., X] \, I(X)^n + \mathcal{O}(\kappa^4) \,,
 \end{equation}
 %
 where $X = \tr_{xsc}(PM)$. In the earlier calculations we saw that $\sum_X = N_t
 \sum_{\langle x,y \rangle}$ and the single link cumulant is
 $\cumulant[X, \dots, X] = (-1)^{n-1} (n-1)!$. The $\mathcal{Z}_2$ effective
-action therefore gives
+action thus yields
 %
 \begin{align}
   S_{\text{eff}} &= - N_t \sum_{\langle x,y \rangle} \sum_{n=1}^{\infty}
@@ -1028,7 +1027,7 @@ action therefore gives
     &= \hphantom{-} N_t \sum_{\langle x,y \rangle} \log \big( - I(X) \big) + \mathcal{O}(\kappa^4)
 \end{align}
 %
-and the full $\mathcal{Z}_2$ is therefore
+and the full $\mathcal{Z}_2$ is
 %
 \begin{equation}
   \mathcal{Z}_2 \approx \int_{U_0} \det \qstat \prod_{\langle \vec{x},\vec{y} \rangle}
@@ -1043,39 +1042,39 @@ Lee zeros, which we will analyse in  \secref{sec:yang_lee_zeros}.
 
 \section{The cold and dense}
 
-Although we have built the foundations for the calculation of the effective 3D
+Although we have built the foundations for calculating the effective 3D
 theory, we have still not presented any results beyond leading order in the
-hopping expansion beyond the discussions on resummation. In
+hopping expansion apart from the discussions on resummation. In
 \citep{Langelage:2014vpa} the effective theory was computed to
 $\mathcal{O}(\kappa^4)$, and a detailed computation of the appearing terms, as
 well as gauge corrections can be found in \citep{Neuman:2015zb}. In the same
-publications an observation was made that the effective action greatly simplify
+publication an observation was made that the effective action greatly simplifies
 in the cold and dense limit, an area of QCD which is of great interest. The two
-limits aid our computations in two ways. In the dense limit the thermodynamics
-is dominated by quarks, not anti-quarks, and we can therefore neglect any such
-terms involving anti-quarks. Mathematically this would be an expansion to
+limits aid our computations in two ways: In the dense limit the thermodynamics
+is dominated by quarks, not anti-quarks, and we can therefore neglect any
+terms involving anti-quarks. Mathematically, this would be an expansion to
 zeroth order in $\bar{h}_1$. The simplifications coming from the cold limit, the
-limit in which $N_t \to \infty$ are more subtle and is easiest to see with an
-example.
+limit in which $N_t \to \infty$, are more subtle and easier understood through
+an example.
 
 \begin{figure}
   {\centering
     \includegraphics[width=.75\textwidth]{cold_pmpm_hops}\par}
   \caption{The different spatial and temporal occupation of the $\tr(PMPM)$ term
-    appearing at the NLO of the hopping parameter expansion. The last figure in
-    which all spatial hops occupy the same spatial link vanish in the cold
-    limit.}
+    appearing at the NLO of the hopping parameter expansion. The last figure
+    shows all spatial hops occupying the same spatial link, meaning that they
+    will vanish in the large-$N_t$ limit.}
   \label{fig:pmpm-hop-variants}
 \end{figure}
 
 Consider the term $\tr(PMPM)$ appearing at NLO of the hopping parameter
-expansion. The term has four spatial hops which has to pair up for the gauge
+expansion. The term has four spatial hops which have to pair up for the gauge
 integral to give something non-zero. There are three fundamental scenarios
 which fulfil this criterion, these are depicted in \figref{fig:pmpm-hop-variants}.
-In the leftmost graph the two pair of hops occupy different spatial positions
-and can therefore never overlap. The temporal sum in which case gives a factor
+In the leftmost graph the two pairs of hops occupy different spatial positions
+and can therefore never overlap. The temporal sum in this case gives a factor
 $N_t^2$ as the two hops can independently choose a temporal slice. When the two
-hops occupy the same nearest neighbour pair we have two situations. There are
+hops occupy the same nearest neighbour pair, we have two situations. There are
 $N_t(N_t-1)$ copies in which they occupy different time slices and $N_t$ copies
 in which they overlap. Since
 %
@@ -1084,7 +1083,7 @@ in which they overlap. Since
   \bigg(\int \mathrm{d} U\, U U^{\dagger} \bigg)^2
 \end{equation}
 %
-they naturally give different results, all of which is accounted for by the
+they naturally give different results, all of which are accounted for by the
 method of moments and cumulants. However, the integrals and spin traces are
 independent of the number of temporal lattice sites, and there therefore has to
 exist an $N_t$ for which
@@ -1128,11 +1127,12 @@ contraction
 which can trivially be extended to the contraction of more elements. We see that
 the contraction fixes a single temporal index as well as fully fixes the
 spatial position and orientation of every matrix but one. One can also contract
-more than one matrix as can be seen in \tabref{tab:pmpmpm-contractions} showing
-all non-vanishing contractions of the NNLO term $\tr(PMPMPM)$. Due to the fact
-that every contraction fixes a temporal index in all matrices involved we see
-that the degrees of freedom naturally decrease. The various contractions of
-\tabref{tab:pmpmpm-contractions} can be categorised into three distinct groups
+more than one matrix, as shown in \tabref{tab:pmpmpm-contractions} which
+contains all non-vanishing contractions of the NNLO term $\tr(PMPMPM)$. Due to
+the fact that every contraction fixes a temporal index in all matrices involved
+we see that the degrees of freedom naturally decrease. The various contractions
+of \tabref{tab:pmpmpm-contractions} can be categorised into three distinct
+groups
 %
 \begin{subequations}
   \tikzset{
@@ -1188,7 +1188,7 @@ that the degrees of freedom naturally decrease. The various contractions of
 \end{subequations}
 %
 Generally the power of $N_t$ is the same as the number of independent
-contractions. This is only true when $N_t$ is large, as the number of free
+contractions. This is true only when $N_t$ is large, as the number of free
 temporal slices must be large enough for the contractions to be separate. Since
 we are interested in the $N_t \gg 1$ range, we will disregard contributions from
 contractions not consisting of a single $PM$ pair.
@@ -1203,10 +1203,10 @@ contractions not consisting of a single $PM$ pair.
 \end{table}
 
 At this stage in the computation we will disperse with the notion that hops in
-positive and negative spatial direction are distinguishable. In contrast to the
+positive and negative spatial directions are distinguishable. In contrast to the
 temporal hops, which get boosted by baryon chemical potential, there is no
 asymmetry between positive and negative spatial hops. We therefore switch to a
-notation which focus on the dominant pairings
+notation which focusses on the dominant pairings
 %
 {%
 \begin{equation}
@@ -1236,11 +1236,12 @@ notation which focus on the dominant pairings
 \end{equation}%
 }%
 %
-in which $X$ and $Y$ symbolise the rest of the term, and is disallowed from
-having spatial hops overlapping with the $i$\textsuperscript{th} pairing. Every
-contracted $PM$ pair is labelled by an arbitrary symbol $i$, and is invariant
-under relabelling. Of the terms in \tabref{tab:pmpmpm-contractions}, the six
-terms which consists of pairings only can in this notation be reduced to three
+in which $X$ and $Y$ symbolise the remainder of the matrix, and are disallowed
+from having spatial hops overlapping with the $i$\textsuperscript{th} pairing.
+Every contracted $PM$ pair is labelled by an arbitrary symbol $i$, and is
+invariant under relabelling. Of the terms in \tabref{tab:pmpmpm-contractions},
+the six terms which consists of pairings only can in this notation be reduced to
+three
 %
 \begin{equation} \label{eq:pmpmpm_pairing}
   \tr \tikz[baseline=-3pt] \matrix [matrix of math nodes,inner sep=1.5pt,ampersand replacement=\&]
@@ -1268,16 +1269,16 @@ which would give
     \mathcal{O}(\kappa^6, N_t^{-1}).
 \end{multline}
 %
-This latter expression of course only contains non-zero terms while this is yet
-to be done with the $P$ and $M$ notation. When counting terms one has to be
-careful not to over count. E.g. the final term can be expanded into four terms
-in the $PM$ notation
+The pairing notation might seem lengthier, but it contains more information than
+the previous $PM$ notation. When counting terms one has to be careful not to
+over count. E.g. the final term can be expanded into four terms in the $PM$
+notation
 %
 \begin{equation}
   \tr(PMPM), \hskip.5em \tr(PMMP), \hskip.5em \tr(MPPM), \hskip.5em \tr(MPMP),
 \end{equation}
 %
-however one should note that the third term is identical to the second under
+one should however note that the third term is identical to the second under
 cyclic permutations and relabelling, and should therefore be discarded. The
 separate traces are however distinct, and the invariant relabelling must be
 considered on a trace by trace basis. The combinatorial prefactors $1/g$ can be
@@ -1368,7 +1369,7 @@ We can expand the first product
 %
 The Dirac matrices $\gamma_0$ and $\gamma_i$ anti-commute. Using this fact
 together with $\gamma_0 g_0 = \gamma_0(1+\gamma_0) = (\gamma_0+1) = g_0$, we see
-that the above expression simplifies
+that the above expression simplifies to
 %
 \begin{equation}
   \tr_s(g_0 \cdots) + \tr_s( g_0 \cdots )
@@ -1408,7 +1409,7 @@ Before we finally state the N\textsuperscript{3}LO effective action for the cold
 and dense we need to examine a final set of apparently low order graphs which
 have yet to be discussed. They are the result of new geometries only possible to
 construct with the insertion of plaquettes. The first of these appear at
-$\mathcal{O}(\kappa^4 u)$ and is depicted to the far left of
+$\mathcal{O}(\kappa^4 u)$ and is depicted to the far left in
 \figref{fig:nontrivial-gauge}. This particular contribution arises in the
 following integral
 %
@@ -1417,7 +1418,7 @@ following integral
 \end{equation}
 %
 This however restricts the four quark hops to occupy the same temporal slice and
-therefore only gives a single factor of $N_t$ while the dominating
+therefore only gives a single factor of $N_t$, while the dominating
 $\mathcal{O}(\kappa^4)$ terms give contributions proportional to $N_t^2$. It is
 possible to shift the quark hops on the slices by inserting plaquettes as can be
 seen in the two other graphs in \figref{fig:nontrivial-gauge}, and would give a
@@ -1444,27 +1445,27 @@ links arbitrarily in the temporal coordinate.
 \subsection{The \texorpdfstring{$\mathcal{O}(\kappa^8)$}{O(k8)} effective action}
 
 We finally turn our attention to the higher order contributions to the effective
-theory. Although the groundwork has been laid the combinatorics still has to be
-carried out. As the number of terms grow exponentially, as well as their
-complexity, there is little chance of a straight forward computation ever
-getting all the prefactors correct. A computer program has therefore been
-developed as part of this work to compute the effective theory in the limit of
-cold QCD \citep{jonas_rylund_glesaaen_2016_56319}.
+theory. Although the groundwork has been laid, the combinatorics still have to
+be carried out. As the number of terms grow exponentially, so does their
+complexity, there is little chance for a straightforward computation ever to get
+all the prefactors correct. Due to this, a computer program has been developed
+as part of the present work. The aim is to compute the effective theory in the
+limit of cold QCD \citep{jonas_rylund_glesaaen_2016_56319}.
 
 The software computes the effective theory terms in a series of easily
 understandable steps
 %
 \begin{enumerate}
-  \item Compute all permutations of $P$ and $M$ that can enter a trace to a
+  \item Computes all permutations of $P$ and $M$ that can enter a trace to a
     given order.
-  \item Finds and collects all terms that are identical.
+  \item Finds and collects all identical terms.
   \item Computes all combinations of traces of lower orders which give a
-    contribution to the given order
-  \item Compute all contractions of $P$'s and $M$'s which can be realised
+    contribution to the given order.
+  \item Computes all contractions of $P$'s and $M$'s which can be realised
     spatially.
-  \item Compute all spatial realisations of ambiguous multi trace contractions.
-  \item Apply colour deltas from the spatial gauge integrals.
-  \item Sum over all temporal permutations for every link.
+  \item Computes all spatial realisations of ambiguous multi trace contractions.
+  \item Applies colour deltas from the spatial gauge integrals.
+  \item Sums over all temporal permutations for every link.
 \end{enumerate}
 \begin{figure}
   {\centering
@@ -1475,7 +1476,7 @@ understandable steps
 \end{figure}
 %
 The first three steps are essentially expanding the exponential as shown in
-\meqref{eq:expanded_pm_notation}. Whereas steps four and five loosely translates
+\meqref{eq:expanded_pm_notation}, while steps four and five loosely translate
 to switching from the $PM$ notation to the contracted notation, as was
 introduced in \secref{sec:combinatorics}. The fourth step can be amended by
 placing a constriction on the contractions requiring an equal number of $P$ and
@@ -1493,13 +1494,13 @@ starting point. For example
       \node (four) [right=0pt of three] {$M$};
       \path[contraction] (one.north) edge [skip loop=4pt] (three.north);
       \path[contraction] (two.north) edge [skip loop=8pt] (four.north);
-    \end{tikzpicture},
+    \end{tikzpicture}
 \end{equation}
 %
 is an impossible contraction as the contracted $P$ and $M$ matrices can never
 overlap. Contractions across multiple traces are more complicated as the traces
 can be translated and rotated with respect to each other. An example of the
-disambiguates can be seen in the $\mathcal{O}(\kappa^8)$ term
+disambiguities can be seen in the $\mathcal{O}(\kappa^8)$ term
 %
 \begin{equation} \label{eq:special-spatial-contraction}
   \tikzset{
@@ -1533,26 +1534,26 @@ which has two possibilities for the spatial extent
 \end{equation}
 %
 The graphical representation of the two choices are depicted in
-\figref{fig:spatial-multitrace}. Applying the deltas in colour due to the
-integral over the gauge link is simple, as we only need a single integral in the
-cold and dense regime, namely the integral from \meqref{eq:uub-integral}
+\figref{fig:spatial-multitrace}. Summing over the colour indices from the gauge
+link integral is simple, as we need only a single integral in the cold and dense
+regime, namely the integral from \meqref{eq:uub-integral}
 %
 \begin{equation}
   I_{ij}^{kl} = \int \mathrm{d} U \, U_{ij} U^{\dagger}_{kl} = \frac{1}{N_c}
   \delta_{il} \delta_{jk}.
 \end{equation}
 %
-After the computation has been carried out, and equal terms have been collected,
+After the computation has been carried out and equal terms have been collected,
 we get the full effective action to a given order in $\kappa$ as output. The
 number of terms at a given order is plotted in \figref{fig:number_of_terms}, in
-which we see that it explodes as we increase the expansion order. This is a
-roadblock for the numerical evaluation as the number of operation one has to do
-to compute the Monte Carlo weight / Complex Langevin force at some point will
-overtake even that of computing the fermion determinant in full. The number of
-terms can be reduced by around one order of magnitude by switching between the two
-representations presented earlier and summing up equal terms, however this is
-only a simplification for analytic evaluations as the numerical work stays
-constant.
+which we see that it grows exponentially as we increase the expansion order.
+This is a roadblock for the numerical evaluation as the number of operation one
+has to do to compute the Monte Carlo weight / Complex Langevin force at some
+point will overtake even that of computing the fermion determinant in full. The
+number of terms can be reduced by around one order of magnitude by switching
+between the two representations presented earlier and summing up equal terms,
+but this is only a simplification for analytic evaluations as the numerical
+work stays constant.
 
 \begin{figure}
   {\centering
@@ -1563,13 +1564,13 @@ constant.
 \end{figure}
 
 In \citep{Glesaaen:2015aaw,Glesaaen:2015vtp}, as well as in this thesis we work
-with the effective action up to $\mathcal{O}(\kappa^8u^5)$. Due to the lengthy
-expression we will give the effective action in a graphical representation. This
-will also serve as a convenient notation for the analytic evaluation which we
-will tackle in the next session. The full expression will be given in
-\apxref{apx:full_k8_action}. We symbolise factors of $W_{n,m}(\vec{x})$ by
-vertices where $n$ is the number of bonds entering a vertex and $m$ is the
-number indicated on the node. Furthermore, vertices which are connected by one
+with the effective action up to $\mathcal{O}(\kappa^8u^5)$.  Since the analytic
+expression is rather lengthy, we give the effective action in a graphical
+representation. This will also serve as a convenient notation for the analytic
+evaluation, which we will tackle in the next session. The full expression will be
+given in \apxref{apx:full_k8_action}. We symbolise factors of $W_{n,m}(\vec{x})$
+by vertices where $n$ is the number of bonds entering a vertex and $m$ is the
+number indicated on the node. Furthermore, vertices connected by one
 or more nodes are nearest neighbours on the lattice
 %
 %\input{input/chapter_4/kapp8_graphical.tex}
@@ -1577,14 +1578,14 @@ or more nodes are nearest neighbours on the lattice
   \tikz \node[anchor=base, baseline, minimum width=.9\textwidth, draw, minimum height=2cm, ColourHl1,thick] {Dummy equation}; 
 \end{equation}
 %
-The sums over "degrees of freedom" represents the remaining spatial trace, which
+The sums over "degrees of freedom" represent the remaining spatial trace, which
 remains to be carried out either for analytic computations or during numerical
-evaluation. We see that all the higher order interactions appears with a coupling
-constant equal to a power of the nearest neighbour coupling constant $h_2$. This
+evaluation. We see that all the higher order interactions appear with a coupling
+constant equal to some power of the nearest neighbour coupling constant $h_2$. This
 is not very hard to see mathematically, as every new spatial link contributes a
 combinatorial factor of $N_t$, a hopping factor of $\kappa^2$ and the gauge
-integration results in a factor of $N_c^{-1}$ for every integrated link. Due to
-the fact that no spatial link ever overlap we can apply gauge corrections on a
+integration results in a factor of $N_c^{-1}$ for every integrated link.
+Since no spatial links ever overlap, we can apply gauge corrections on a
 link by link basis regardless of whether they connect the same nearest neighbour
 sites. Corrections to this will appear at NLO in $N_t^{-1}$. The gauge
 corrections are therefore given by replacing $h_2 \to h_2(\beta)$ as given by
@@ -1606,9 +1607,9 @@ action with and without the $\mathcal{O}(\kappa^4 N_t)$ terms, shown in
 coefficients are around the same order of magnitude, it is clear that the
 contributions from these higher order terms give small corrections to the final
 result. Already at $N_t \leq 13$ the contribution is less than $5 \%$, which is
-insignificant compared to the contribution from the $\mathcal{O}(h_2^4)$ term at
-these extreme parameter choices. We thus conclude that the large-$N_t$ limit is
-well under control for the physical region we are studying.
+insignificant when compared to the contribution from the $\mathcal{O}(h_2^4)$
+term at these extreme parameter choices. We thus conclude that the large-$N_t$
+limit is well under control for the physical region we are studying.
 
 \begin{figure}[t]
   \begin{center}
@@ -1629,22 +1630,22 @@ Although the focus of this thesis is the analytic evaluation of the effective
 theory, a couple of remarks on the numerical evaluation is still in order.  At
 the beginning of this chapter we stated the nefarious sign problem as a
 motivation for developing the effective 3D theory. And although the effective
-theory still suffer a conceptual sign problem in the sense that the action take
-complex values, we are in a regime where methods such as reweighting work well.
-A thorough review of the theory's numerical properties can be found in
+theory still suffers from a conceptual sign problem in the sense that the action
+take complex values, we are in a regime where methods such as reweighting work
+well.  A thorough review of the theory's numerical properties can be found in
 \citep{Neuman:2015zb}.
 
-The effective theory offer multiple advantages for numerical evaluation over
+The effective theory offers multiple advantages for numerical evaluation over
 full lattice calculations besides the apparent resolution of the sign problem.
 %
 \begin{itemize}
   \item First and foremost we have replaced the very expensive fermion
     determinant with a discrete sum over the volume and a handful of terms, an
     overall much cheaper computation.
-  \item Second the temporal direction has been integrated out and its remnant is
+  \item Second, the temporal direction has been integrated out and its remnant is
     encoded in $N_t$, which is a parameter. It is therefore possible to sample
     observables at multiple temperatures in a single simulation.
-  \item Finally the remaining field variables are traces of group elements of
+  \item Finally, the remaining field variables are traces of group elements of
     SU($3$) which can be represented by two real angles in comparison to the
     eight generators needed to represent a gauge link in full lattice QCD.
 \end{itemize}
@@ -1690,12 +1691,12 @@ measure and give the definition for the new Polyakov loop variable
     \sum_{n=1}^{N_c-1} \theta_n (\vec{x})}.
 \end{equation}
 %
-We see that an effective theory using gauge group SU($N_c$) has $N_s^3(N_c-1)$
-degrees of freedom as compared to the $4 N_s^3 N_t (N_c^2 - 1)$ degrees of
-freedom one would have in a full lattice gauge theory simulation. Therefore, on
-top of the reduced computation cost the theory also scales linearly in
-complexity with the number of colours as compared to quadratic in a full
-simulation.
+We see that an effective theory using the gauge group SU($N_c$) has
+$N_s^3(N_c-1)$ degrees of freedom as compared to the $4 N_s^3 N_t (N_c^2 - 1)$
+degrees of freedom one would have in a full lattice gauge theory simulation.
+Therefore, on top of the reduced computation cost the theory also scales
+linearly in complexity with the number of colours as compared to quadratic in a
+full simulation.
 
 \begin{figure}
   \begin{center}
@@ -1720,7 +1721,7 @@ simulation.
 %
 The simulations were carried out using both algorithms, MC with reweighting and
 CL, and the results were cross checked. Both methods give compatible results
-within the parameter range the effective theory is well defined for. Our first
+within the parameter range for which the effective theory is well defined. Our first
 task is to assess the range of validity of the strong coupling, heavy quark
 action. One expects the additional orders in $\kappa$ to extend the convergence
 region, within which the description of thermodynamic functions by the effective
@@ -1729,8 +1730,8 @@ values of the coupling $h_1$ and $N_{\tau}$.  Varying $\kappa$ then allows us to
 assess the convergence of the expansion of the kinetic quark determinant.
 \figref{fig:numerical_convergence} (left) shows the results obtained with
 effective actions of increasing order in $\kappa$. One clearly observes how two
-adjacent orders stay together for larger values of $h_2(\kappa)$ as the order is
-increased, thus extending the range where our effective action is reliable.
+adjacent orders stay together for larger values of $h_2(\kappa)$ as the order
+increase, thus extending the range where our effective action is reliable.
 \figref{fig:numerical_convergence} (right) shows the same exercise for the
 largest $\kappa$ considered in this work, this time increasing the orders of the
 character expansion. We observe good convergence up to $\beta\sim 6$, which is a
