@@ -1529,33 +1529,33 @@ static propagator in the cold dense limit had the approximate expression
 matrices take the form
 %
 \begin{alignat}{99}
-  P^{ab}_{\alpha\beta}(y,x) &= \kappa \Big(\frac{1+\gamma_0}{2}\Big)_{\alpha\gamma} K^{ac}_{\vec{x}}(t_y,t_x)
+  P^{ab}_{\alpha\beta}(y,x) &= \kappa \Big(\frac{1+\gamma_0}{2}\Big)_{\alpha\gamma} \bmat{}^{ac}_{\vec{x}}(t_y,t_x)
     \sum_{i=1}^3  (1+\gamma_i)_{\gamma\beta} U_{\vec{x},i}^{cb} &&\delta_{\vec{y},\vec{x}+i} \\
-  M^{ab}_{\alpha\beta}(y,x) &= \kappa \Big(\frac{1+\gamma_0}{2}\Big)_{\alpha\gamma} K^{ac}_{\vec{x}}(t_y,t_x)
+  M^{ab}_{\alpha\beta}(y,x) &= \kappa \Big(\frac{1+\gamma_0}{2}\Big)_{\alpha\gamma} \bmat{}^{ac}_{\vec{x}}(t_y,t_x)
     \sum_{i=1}^3  (1-\gamma_i)_{\gamma\beta} U^{\dagger,cb}_{\vec{x},i} &&\delta_{\vec{y},\vec{x}-i}
 \end{alignat}
 %
-where we have shortened the $K^+$ notation for the brevity. Colour indices are
+where we have shortened the $\bmat{}^+$ notation for the brevity. Colour indices are
 denoted by Roman characters, while the Driac indices are symbolised by Greek
 letters. We also saw in \secref{sec:dirac_indices} that the Dirac trace is
 somewhat trivial. The colour matrix content that enters the integrals is thus
 %
 \begin{equation}
-  K^{ac}_{\vec{x}}(t_y,t_x) U^{cb}_{\vec{x},i}, \hskip.5cm\text{and}\hskip.5cm
-  K^{ac}_{\vec{x}}(t_y,t_x) U^{\dagger{}, cb}_{\vec{x},i}.
+  \bmat{}^{ac}_{\vec{x}}(t_y,t_x) U^{cb}_{\vec{x},i}, \hskip.5cm\text{and}\hskip.5cm
+  \bmat{}^{ac}_{\vec{x}}(t_y,t_x) U^{\dagger{}, cb}_{\vec{x},i}.
 \end{equation}
 %
 We are now ready to evaluate the colour integrals over the matrix $G_n$
 %
 \begin{align}
   G_{n}^{af}(t_1,t_2;\vec{x}_0) &= 2 \kappa^2 \sum_{i_0,t_3} \int \mathrm{d} U_{\vec{x}_0,i_0}(t_2) \;
-    K_{\vec{x}_0}^{ab}(t_1,t_2)U_{\vec{x}_0,i_0}^{bc}(t_2) \nonumber \\
-    &\hspace{3cm}\times G_{n-1}^{cd}(t_2,t_3;\vec{x}_0+i_0) K^{de}_{\vec{x}_0+i_0}(t_3,t_2)
+  \bmat{}_{\vec{x}_0}^{ab}(t_1,t_2)U_{\vec{x}_0,i_0}^{bc}(t_2) \nonumber \\
+    &\hspace{3cm}\times G_{n-1}^{cd}(t_2,t_3;\vec{x}_0+i_0) \bmat{}^{de}_{\vec{x}_0+i_0}(t_3,t_2)
     U_{\vec{x}_0,i_0}^{\dagger,ef}(t_2) \nonumber\\
-  &= \frac{2 \kappa^2}{N_c} \sum_{i_0,t_3} K_{\vec{x}_0}^{ab}(t_1,t_2) G_{n-1}^{cd}(t_2,t_3;\vec{x}_0+i)
-    K^{de}_{\vec{x}_0+i}(t_3,t_2) \delta_{ce}\delta_{bf} \nonumber\\
-  &= \frac{2 \kappa^2}{N_c} \sum_{i_0,t_3} K_{\vec{x}_0}^{af}(t_1,t_2) \tr_c \big[ G_{n-1}(t_2,t_3;\vec{x}_0+i)
-    K_{\vec{x}_0+i}(t_3,t_2) \big] \;.\label{eq:chain_integral}
+  &= \frac{2 \kappa^2}{N_c} \sum_{i_0,t_3} \bmat{}_{\vec{x}_0}^{ab}(t_1,t_2) G_{n-1}^{cd}(t_2,t_3;\vec{x}_0+i)
+  \bmat{}^{de}_{\vec{x}_0+i}(t_3,t_2) \delta_{ce}\delta_{bf} \nonumber\\
+  &= \frac{2 \kappa^2}{N_c} \sum_{i_0,t_3} \bmat{}_{\vec{x}_0}^{af}(t_1,t_2) \tr_c \big[ G_{n-1}(t_2,t_3;\vec{x}_0+i)
+  \bmat{}_{\vec{x}_0+i}(t_3,t_2) \big] \;.\label{eq:chain_integral}
 \end{align}
 %
 The coordinate $\vec{x}_0$ is the coordinate of the beginning of the chain, and
@@ -1564,8 +1564,8 @@ on the chain $\vec{x}_{m+1} = \vec{x}_m + i_m$. We use the above equation to
 define $G_{n-1}$ in terms of $G_{n-2}$
 %
 \begin{equation}
-  G_{n-1}^{ab}(t_2,t_3;\vec{x}_1) = \frac{2 \kappa^2}{N_c} \sum_{i_1,t_4} K_{\vec{x}_1}^{ab}(t_2,t_3)
-    \tr_c \big[ G_{n-2}(t_3,t_4;\vec{x}_2) K_{\vec{x}_2}(t_4,t_3) \big]\;.
+  G_{n-1}^{ab}(t_2,t_3;\vec{x}_1) = \frac{2 \kappa^2}{N_c} \sum_{i_1,t_4} \bmat{}_{\vec{x}_1}^{ab}(t_2,t_3)
+    \tr_c \big[ G_{n-2}(t_3,t_4;\vec{x}_2) \bmat{}_{\vec{x}_2}(t_4,t_3) \big]\;.
 \end{equation}
 %
 We insert the expression for $G_{n-1}$ into the one for $G_n$, and get
@@ -1573,12 +1573,12 @@ We insert the expression for $G_{n-1}$ into the one for $G_n$, and get
 \begin{multline}
   G_{n}^{af}(t_1,t_2;\vec{x}_0)
     = \bigg(\frac{2 \kappa^2}{N_c}\bigg)^2
-      \sum_{t_3,t_4} \sum_{i_0,i_1} K_{\vec{x}_0}^{af}(t_1,t_2)
-      \tr_c \big[ G_{n-2}(t_3,t_4;\vec{x}_2) K_{\vec{x}_2}(t_4,t_3) \big] \\
+      \sum_{t_3,t_4} \sum_{i_0,i_1} \bmat{}_{\vec{x}_0}^{af}(t_1,t_2)
+      \tr_c \big[ G_{n-2}(t_3,t_4;\vec{x}_2) \bmat{}_{\vec{x}_2}(t_4,t_3) \big] \\
   \times
   \begin{tikzpicture}[baseline={(trace.base)}]
     \node[inner sep=0pt] (trace) {%
-      $\tr_c \big[ K_{\vec{x}_1}(t_2,t_3) K_{\vec{x}_1}(t_3,t_2)\big]$};
+      $\tr_c \big[ \bmat{}_{\vec{x}_1}(t_2,t_3) \bmat{}_{\vec{x}_1}(t_3,t_2)\big]$};
     \draw [
       decorate,
       line width=1.4pt,
@@ -1600,13 +1600,13 @@ given by a consecutive, paired hop
 %
 \begin{align}
   G_{1}^{ae}(\tau_1,\tau_2;\vec{x}_n) &=
-    2 \kappa^2 \sum_{i_n} \int \mathrm{d} \vec{U}_{\vec{x}_n,i_n} \, K^{ab}_{\vec{x}_n}(t_1,t_2)
-    U_{\vec{x}_n,i_n}^{bc}(t_2) K^{cd}_{\vec{x}_{n+1}}(t_2,t_2)
+    2 \kappa^2 \sum_{i_n} \int \mathrm{d} \vec{U}_{\vec{x}_n,i_n} \, \bmat{}^{ab}_{\vec{x}_n}(t_1,t_2)
+    U_{\vec{x}_n,i_n}^{bc}(t_2) \bmat{}^{cd}_{\vec{x}_{n+1}}(t_2,t_2)
     U_{\vec{x}_n,i_n}^{\dagger,de}(t_2) \nonumber \\
-  &= \frac{2 \kappa^2}{N_c} \sum_{i_n}K^{ae}_{\vec{x}_n}(t_1,t_2)
+  &= \frac{2 \kappa^2}{N_c} \sum_{i_n}\bmat{}^{ae}_{\vec{x}_n}(t_1,t_2)
   \begin{tikzpicture}[baseline={(trace.base)}]
     \node[inner sep=0pt] (trace) {%
-      $\tr_c \big[ K_{\vec{x}_{n+1}}(t_2,t_2) \big]$};
+      $\tr_c \big[ \bmat{}_{\vec{x}_{n+1}}(t_2,t_2) \big]$};
     \draw [
       decorate,
       line width=1.4pt,
@@ -1626,11 +1626,11 @@ result for the full chain matrix
 %
 \begin{multline}
   G_{n}^{ab}(t_1,t_2;\vec{x}_0) =
-    K_{\vec{x}_0}^{ab}(t_1,t_2) \bigg(\frac{2 \kappa^2}{N_c}\bigg)^n
+  \bmat{}_{\vec{x}_0}^{ab}(t_1,t_2) \bigg(\frac{2 \kappa^2}{N_c}\bigg)^n
     \sum_{\substack{t_3,t_4,\\\dots,t_{n+1}}}
     \sum_{\substack{i_0,i_1,\\\dots,i_n}}
       W_{11}(\vec{x}_{n+1}) \prod_{k=2}^{n} \big(-W_{21}(\vec{x}_k)\big) \\
-  =K_{\vec{x}_0}^{ab}(t_1,t_2) \bigg(\frac{2 \kappa^2}{N_c}\bigg)^n 
+  =\bmat{}_{\vec{x}_0}^{ab}(t_1,t_2) \bigg(\frac{2 \kappa^2}{N_c}\bigg)^n 
   N_{t}^{n-1} \sum_{\substack{i_0,i_1,\\\dots,i_n}}
     W_{11}(\vec{x}_{n+1}) \prod_{k=2}^{n} \big(-W_{21}(\vec{x}_k)\big)\;. \label{eq:full_gn}
 \end{multline}
@@ -1657,8 +1657,8 @@ $G_1$ gives
 \begin{multline}
   \mathcal{C}_0 =
     \frac{1}{g} \tr \big[
-      K(t_1,t_2;\vec{x}_1) M_1 K(t_3,t_4;\vec{x}_2) M_2
-      \cdots K(t_{2N-1},t_{2N};\vec{x}_N) M_N
+    \bmat{}(t_1,t_2;\vec{x}_1) M_1 \bmat{}(t_3,t_4;\vec{x}_2) M_2
+      \cdots \bmat{}(t_{2N-1},t_{2N};\vec{x}_N) M_N
     \big] \\
   \times \bigg(\frac{\kappa^2}{N_c}\bigg)^N\;\sum_{\mathclap{i_1,i_2,\dots,i_N}}
     W_{1,1}(\vec{x}_1 + i_1) W_{1,1}(\vec{x}_2 + i_2) 
@@ -1690,8 +1690,8 @@ gives us
     \hskip .2cm\sum_{\mathclap{n_1,n_2,\dots,n_N}} \hskip .5cm
       \frac{1}{g_{\{n_i\}}}
       \tr \big[
-        K(t_1,t_2;\vec{x}_1) M_1 K(t_3,t_4;\vec{x}_2) M_2 \cdots
-        K(t_{2N-1},t_{2N};\vec{x}_N) M_N
+      \bmat{}(t_1,t_2;\vec{x}_1) M_1 \bmat{}(t_3,t_4;\vec{x}_2) M_2 \cdots
+      \bmat{}(t_{2N-1},t_{2N};\vec{x}_N) M_N
       \big]\\
   \times \bigg(\frac{\kappa^2}{N_c}\bigg)^{N+\mathrlap{n}}
     N_{t}^n \sum_{\{\vec{x}_i\}} \prod_{j=1}^N W_{1,1}(\vec{x}_{j (n_j+1)})
@@ -1765,9 +1765,9 @@ exactly the ones we argued for in \meqref{eq:resummed_symmetry}
 The spatial integral over the $\mathcal{C}_n^*$ is
 %
 \begin{multline}
-  \int [\mathrm{d} U]_0 \, \mathcal{C}_n^*
-  = \frac{1}{g} \binom{N-1+n}{n} \Omega \int [\mathrm{d} U]_0 \, \det{}^{N_f}\big[Q_{\mathrm{stat}}\big]
-    \tr \big[ K_1 M_1 K_2 M_2 \cdots K_N M_N  \big] \\
+  \int [\mathrm{d} U]_0 \, \mathcal{C}_n^* \; = \;
+  \frac{1}{g} \binom{N-1+n}{n} \Omega \int [\mathrm{d} U]_0 \, \det{}^{N_f}\big[Q_{\mathrm{stat}}\big]
+    \tr \big[ \bmat{}_1 M_1 \bmat{}_2 M_2 \cdots \bmat{}_N M_N  \big] \\
   \times \bigg(\frac{2d \kappa^2}{N_c}\int [\mathrm{d} U]_0 \,
     \det{}^{N_f}\big[Q_{\mathrm{stat}}\big] W_{11}\bigg)^N
   \bigg(\minus{}\frac{2d \kappa^2N_{\tau}}{N_c}\int [\mathrm{d} U]_0 \,
@@ -2143,7 +2143,7 @@ which gives
 \begin{equation}
   \mathcal{A}_n = \frac{1}{n} \bigg(\frac{2 \kappa^2}{N_c} \bigg)^{\mathrlap{n}}
   \:\sum_{\{t_i\}}
-    \tr (K_{\vec{x}} (t_1, t_2) K_{\vec{x}} (t_2, t_3) \cdots K_{\vec{x}}(t_n, t_1))
+    \tr (\bmat{}_{\vec{x}} (t_1, t_2) \bmat{}_{\vec{x}} (t_2, t_3) \cdots \bmat{}_{\vec{x}}(t_n, t_1))
       \prod_{i=1}^n \sum_{\{\vec{x}_i\}} \textstyle\frac{1}{2} W_{11}(\vec{x}_i)
 \end{equation}
 %
@@ -2155,8 +2155,8 @@ example the three star term gives
 %
 \begin{multline}
   \mathcal{A}_3 = \frac{1}{3} \bigg(\frac{2\kappa^2}{N_c}\bigg)^3
-  \sum_{\mathclap{t_1,t_2,t_3}} \tr (K_{\vec{x}} (t_1,t_2) K_{\vec{x}} (t_2, t_3)
-    K_{\vec{x}} (t_3, t_1))
+  \sum_{\mathclap{t_1,t_2,t_3}} \tr (\bmat{}_{\vec{x}} (t_1,t_2) \bmat{}_{\vec{x}} (t_2, t_3)
+  \bmat{}_{\vec{x}} (t_3, t_1))
     \prod_{i=1}^{3} \sum_{\{\vec{x}_i\}}{\textstyle\frac{1}{2}} W_{11}(\vec{x}_i) \\
   = \frac{1}{3} h_2^3 \big( {\textstyle\frac{1}{2}} W_{31} -
     {\textstyle\frac{1}{2}} W_{32} \big)

@@ -20,9 +20,9 @@
 
 \begin{document}
 
-\include{other/titlepage}
+\include{front_back_matter/titlepage}
 \cleardoublepage
-\include{other/quote_page}
+\include{front_back_matter/quote_page}
 
 \cleardoublepage
 \pagenumbering{roman}
@@ -30,12 +30,16 @@
 
 \cleardoublepage
 \addcontentsline{toc}{chapter}{Abstract}
-\include{chapters/abstract}
+\include{front_back_matter/abstract}
 
 \cleardoublepage
 \addcontentsline{toc}{chapter}{Deutsche Zusammenfassung}
 \markboth{Deutsche Zusammenfassung}{Deutsche Zusammenfassung}
-\include{chapters/german_summary}
+\include{front_back_matter/german_summary}
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\include{front_back_matter/acknowledgements}
 
 \cleardoublepage
 \pagenumbering{arabic}
@@ -96,6 +100,6 @@
 \bibliography{references/refs,references/books}
 
 \cleardoublepage
-\includepdf[pages=-]{other/curriculum_vitae/curriculum_vitae.pdf}
+\includepdf[pages=-]{front_back_matter/curriculum_vitae/curriculum_vitae.pdf}
 
 \end{document}

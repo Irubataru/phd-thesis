@@ -448,17 +448,17 @@ $T^+$. This matrix can be easily inverted by standard row reduction, giving
 which on component form simplifies to
 %
 \begin{equation}
-  (1 - \kappa T^{\pm})^{-1}_{t_yt_x} = \delta_{t_y,t_x} + \frac{1 \pm \gamma^0}{2} K^{\pm}_{t_yt_x},
+  (1 - \kappa T^{\pm})^{-1}_{t_yt_x} = \delta_{t_y,t_x} + \frac{1 \pm \gamma^0}{2} \bmat{}^{\pm}_{t_yt_x},
 \end{equation}
 %
 \vspace*{-2em}
 %
 \begin{alignat}{4}
-  K^+_{t_y t_x} &= \frac{h_1 W}{1 + h_1 W} \delta_{t_y t_x} &&+
+  \bmat{}^+_{t_y t_x} &= \frac{h_1 W}{1 + h_1 W} \delta_{t_y t_x} &&+
   (2 e^{a\mu}\kappa)^{t_y-t_x}
   &\frac{U_0(t_x \!\to\! t_y)}{1 + h_1 W}
   ( \theta_{t_y, t_x} - h_1 W\, \theta_{t_x, t_y}),\\
-  K^-_{t_y t_x} &= \frac{\bar{h}_1 W^{\dagger}}{1 + \bar{h}_1 W^{\dagger}} \delta_{t_y t_x} &&+
+  \bmat{}^-_{t_y t_x} &= \frac{\bar{h}_1 W^{\dagger}}{1 + \bar{h}_1 W^{\dagger}} \delta_{t_y t_x} &&+
   (2 e^{-a\mu}\kappa)^{t_x-t_y}
   &\frac{U_0(t_x \!\to\! t_y)}{1 + \bar{h}_1 W^{\dagger}}
   ( \theta_{t_x, t_y} - \bar{h}_1 W^{\dagger} \theta_{t_y, t_x}).
@@ -486,8 +486,8 @@ The full static propagator therefore reads
 %
 \begin{equation} \label{eq:qstat-full}
   (\qstat^{-1})_{t_y,t_x} = \delta_{t_y,t_x}
-   + \frac{1 + \gamma^0}{2} K^+_{t_y,t_x}
-   + \frac{1 - \gamma^0}{2} K^-_{t_y,t_x}
+   + \frac{1 + \gamma^0}{2} \bmat{}^+_{t_y,t_x}
+   + \frac{1 - \gamma^0}{2} \bmat{}^-_{t_y,t_x}
 \end{equation}
 
 \subsection{Spatial hopping expansion}
@@ -568,12 +568,12 @@ we get
 %
 \begin{multline} \textstyle
   \tr_s \Big( ( 1
-   + \frac{1 + \gamma^0}{2} K^+_{\vec{x}}
-   + \frac{1 - \gamma^0}{2} K^-_{\vec{x}} ) (1+\gamma_j)
-  ( 1 + \frac{1 + \gamma^0}{2} K^+_{\vec{x}+\hat{j}}
-   + \frac{1 - \gamma^0}{2} K^-_{\vec{x}+\hat{j}} ) (1-\gamma_j) \Big) \\[5pt]
-   = 2 (K^+_{\vec{x}} - K^-_{\vec{x}})
-    (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}}).
+   + \frac{1 + \gamma^0}{2} \bmat{}^+_{\vec{x}}
+   + \frac{1 - \gamma^0}{2} \bmat{}^-_{\vec{x}} ) (1+\gamma_j)
+  ( 1 + \frac{1 + \gamma^0}{2} \bmat{}^+_{\vec{x}+\hat{j}}
+   + \frac{1 - \gamma^0}{2} \bmat{}^-_{\vec{x}+\hat{j}} ) (1-\gamma_j) \Big) \\[5pt]
+   = 2 (\bmat{}^+_{\vec{x}} - \bmat{}^-_{\vec{x}})
+    (\bmat{}^+_{\vec{x}+\hat{j}} - \bmat{}^-_{\vec{x}+\hat{j}}).
 \end{multline}
 %
 Inserted back into \meqref{eq:second-order-spatial-integral} we have reduced its
@@ -582,10 +582,10 @@ complexity
 \begin{multline}
   I\big[PM\big]
    = 2\kappa^2 \int \big[ \mathrm{d} U \big]_i \scalemath{0.95}{\sum_{\vec{x}, j}} \tr_{ct} \hskip-.5ex
-   \big( (K^+_{\vec{x}} - K^-_{\vec{x}}) U_j(\vec{x},t_1) 
-   (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}})U^{\dagger}_j(\vec{x},t_2) \big), \\
+   \big( (\bmat{}^+_{\vec{x}} - \bmat{}^-_{\vec{x}}) U_j(\vec{x},t_1) 
+   (\bmat{}^+_{\vec{x}+\hat{j}} - \bmat{}^-_{\vec{x}+\hat{j}})U^{\dagger}_j(\vec{x},t_2) \big), \\
   = 2\kappa^2 \tr_t \scalemath{0.95}{\sum_{\vec{x}, j}}
-    (K^+_{\vec{x}} - K^-_{\vec{x}})_{ab} (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}})_{cd}
+    (\bmat{}^+_{\vec{x}} - \bmat{}^-_{\vec{x}})_{ab} (\bmat{}^+_{\vec{x}+\hat{j}} - \bmat{}^-_{\vec{x}+\hat{j}})_{cd}
     \>\delta_{t_1,t_2} \int \mathrm{d} U \, U_{bc} U^{\dagger}_{da}.
 \end{multline}
 %
@@ -595,19 +595,20 @@ the group integral \meqref{eq:uub-integral}, we get
 %
 \begin{align}
   I\big[ PM \big] &= \frac{2\kappa^2}{N_c} \tr_t \scalemath{0.95}{\sum_{\vec{x}, j}}
-    (K^+_{\vec{x}} - K^-_{\vec{x}})_{ab} (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}})_{cd}
+    (\bmat{}^+_{\vec{x}} - \bmat{}^-_{\vec{x}})_{ab} (\bmat{}^+_{\vec{x}+\hat{j}} - \bmat{}^-_{\vec{x}+\hat{j}})_{cd}
     \>\delta_{t_1,t_2} \delta_{ab} \delta_{cd}, \nonumber\\
   &=\frac{2\kappa^2}{N_c} \tr_t \scalemath{0.95}{\sum_{\vec{x}, j}}
-   \tr_c (K^+_{\vec{x}} - K^-_{\vec{x}}) \tr_c (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}})
+   \tr_c (\bmat{}^+_{\vec{x}} - \bmat{}^-_{\vec{x}}) \tr_c (\bmat{}^+_{\vec{x}+\hat{j}} - \bmat{}^-_{\vec{x}+\hat{j}})
     \>\delta_{t_1,t_2}.
 \end{align}
 %
 The final step missing is evaluating the temporal trace, which is easily done by
-summing over the delta and picking out only the diagonal pieces of $K^{\pm}$
+summing over the delta and picking out only the diagonal pieces of $\bmat{}^{\pm}$
 %
 \begin{multline}
   I\big[ PM \big] = \frac{2\kappa^2}{N_c} \sum_{t_1, t_2} \sum_{\vec{x, j}}
-   \tr_c (K^+_{\vec{x}} - K^-_{\vec{x}})_{t_1 t_2} \tr_c (K^+_{\vec{x}+\hat{j}} - K^-_{\vec{x}+\hat{j}})_{t_2 t_1}
+   \tr_c (\bmat{}^+_{\vec{x}} - \bmat{}^-_{\vec{x}})_{t_1 t_2}
+   \tr_c (\bmat{}^+_{\vec{x}+\hat{j}} - \bmat{}^-_{\vec{x}+\hat{j}})_{t_2 t_1}
     \>\delta_{t_1,t_2}, \\
   = \frac{\kappa^2 N_t}{N_c} \sum_{\langle \vec{x}, \vec{y} \rangle}
     \tr_c \bigg(\frac{h_1 W_{\vec{x}}}{1 + h_1 W_{\vec{x}}}
@@ -676,7 +677,7 @@ $\kappa_f$ only. For degenerate flavours the situation is even simpler, in that
 case $N_f$ enters as a simple number in the equations
 %
 \begin{equation}
-  \mathcal{Z} = \int [\mathrm{d} U]_{\mu}  \det{}^{N_f} Q_{f,\mathrm{stat}} \,
+  \mathcal{Z} = \int [\mathrm{d} U]_{\mu}  \det{}^{N_f} Q_{\mathrm{stat}} \,
   \exp \bigg( -\sum_{f=1}^{N_f} \sum_{n=1}^{\infty}
   \frac{1}{n} \tr (P_f + M_f)^n \bigg).
 \end{equation}
@@ -1308,10 +1309,10 @@ simplifies to
 %
 \begin{equation}
   Q^{-1}_{\text{stat},t_y t_x} \approx (1-\kappa T^+)^{-1}_{t_y t_x}
-    =\, \delta_{t_y t_x} + \frac{1+\gamma_0}{2} K^+_{t_y t_x} \,,
+    =\, \delta_{t_y t_x} + \frac{1+\gamma_0}{2} \bmat{}^+_{t_y t_x} \,,
 \end{equation}
 %
-in which the matrix $K$ has no spin dependence. We see from the definition of a
+in which the matrix $\bmat{}$ has no spin dependence. We see from the definition of a
 contraction, \meqrefs[, ]{eq:contraction_def_pm,eq:contraction_def_pp}, that
 the $\delta_{t_y t_x}$ in $\qstat^{-1}$ would impose additional constraints on
 the temporal index and will therefore produce terms which are subleading when
@@ -1337,10 +1338,10 @@ to leading order use the following expression for the static propagator
       \node (equal) {$=$};
       \node[above=0pt of equal] [scale=0.65,align=center] {leading\\[0pt]order};
     \end{tikzpicture}\,
-    \frac{1+\gamma_0}{2} K^+_{t_y t_x} \,.
+    \frac{1+\gamma_0}{2} \bmat{}^+_{t_y t_x} \,.
 \end{equation}
 %
-Since the $K^{\pm}$ matrix has no spin structure, we can easily identify the full Dirac
+Since the $\bmat{}^{\pm}$ matrix has no spin structure, we can easily identify the full Dirac
 trace of any contributing term as
 %
 \begin{equation}
@@ -1378,7 +1379,7 @@ that the above expression simplifies
 We therefore replace every $g_0 g_i$ and every $g_0 \bar{g}_j$ pair with a
 factor $2$ until there is only one pair left. The trace of the final pair is
 simply the dimension of the system, in this case $4$. The spin trace of the
-large $N_t$ limit can thus be considered trivial
+large-$N_t$ limit can thus be considered trivial
 %
 \begin{equation}
   \tr_s(X'_s) = \tr ( 
