@@ -152,7 +152,7 @@ $g(\alpha_i) \in G$, we call that group a Lie group. Lie groups make up the
 theory of continuous transformations, and are therefore of special interest to
 physics. The continuous nature of the Lie groups creates a sense of closeness
 where two elements that are close to each other can be represented through
-differentials. For example
+differentials, e.g.
 %
 \begin{equation}
   D_R(g(\delta\alpha_i)) = \mathbb{1}_R + i\, \delta \alpha_i T_{Ri} +
@@ -173,7 +173,7 @@ group multiplication law. They are also referred to as the \emph{algebra} of the
 group, $\mathfrak{g}$. The generators and the group algebra will come into play
 when we later introduce continuous symmetries of our quantum theory of fields.
 Using the Jacobi identity, it is possible to see that the structure constants
-themselves comply wiht the multiplication law. We can therefore use the structure
+themselves comply with the multiplication law. We can therefore use the structure
 constants as a representation of the algebra $\mathfrak{g}$ called the
 \emph{adjoint representation}
 %
@@ -490,8 +490,8 @@ and magnetic dipole interactions
   \mathcal{L}_{\mathrm{MD}} = g_{\mathrm{MD}} \bar{\psi} \sigma^{\mu\nu} F^i_{\mu\nu} \psi\,.
 \end{equation}
 %
-We ignore there in the present study as they contribute to the breaking of other
-symmetries and or systematics, some of which we are interested in conserving at
+We ignore these in the present study as they contribute to the breaking of other
+symmetries and/or systematics, some of which we are interested in conserving at
 the scope of this thesis, such as CP symmetry and renormalisability,
 
 \section{Lattice discretisation} \label{sec:lattice_intro}
@@ -499,7 +499,7 @@ the scope of this thesis, such as CP symmetry and renormalisability,
 With the Lagrangian at hand we want to actually evaluate the partition function
 integral from \meqref{eq:partition}. The integral is however infinite
 dimensional, and has no known closed analytical form unless the theory is
-trivial (non interacting). If the theory is close to being trivial, one can
+trivial (non-interacting). If the theory is close to being trivial, one can
 apply perturbation theory and systematically solve the integral order by order.
 This is however not the case for the theories we plan to study, and we must
 resort to other means.
@@ -549,7 +549,7 @@ In the previous section we introduced the parallel transporters to define how to
 associate two different points in space that can belong to different vector
 spaces. This procedure complies nicely with the lattice approach, as the only modification we
 have to make to the definition of the covariant derivative is to
-replace $\delta$ by $a$, and not take the limit. We will exclusively use the
+replace $\delta$ by $a$, and abolish the limit. We will exclusively use the
 transporter between nearest neighbour lattice sites, and therefore make the
 abbreviation $U(x + a \eta_\mu, x) = U_{\mu}(x) =
 U_{-\mu}^{\dagger}(x+a\eta_{\mu})$. Hence, the fermion contribution to the
@@ -585,7 +585,7 @@ for the integral over the fermion fields, which can be evaluated exactly
 %
 with $Q$ commonly referred to as the \emph{Dirac operator} or the \emph{fermion
   matrix}, and $\det Q$ the \emph{fermion determinant}. The matrix can either be
-represented as a higher dimensional tensor or with a super index describing all
+represented as a higher dimensional tensor, or using a super index describing all
 degrees of freedom.
 
 Having introduced the \emph{plaquette} transporter in
@@ -653,7 +653,7 @@ which for every momentum $\vec{p}$ is $8$-fold degenerate, owing to the
 periodicity of the sine function. This implies that we have $7$ additional,
 unwanted fermions in the theory whenever we put one in. These \emph{doublers}
 come from the corners of the Brillouin zone, and therefore disappear as we go
-to the continuum limit. That is however of little comfort as they would give
+to the continuum limit. This is however of little comfort, as they would give
 incalculable effects to loop diagrams at finite volumes which cannot easily be
 factored out. In four dimensional space-time an additional set of $8$ energy
 eigenstates appear from doublings in the additional temporal Brillion corners.
@@ -800,7 +800,7 @@ integration, only samples a small number of these configurations. The value of
 the integral is then reconstructed using this (small) number of configurations.
 
 For this to work well one has to sample the configuration space in an
-intelligent way as the integrand is usually sharply peaked around a small set of
+optimal way as the integrand is usually sharply peaked around a small set of
 very specific configurations. A first step is to do importance sampling, where
 one uses the integrand as a probability distribution for the configuration
 space, in the case of the partition function

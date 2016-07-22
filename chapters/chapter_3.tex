@@ -24,15 +24,14 @@ contained in the previously mentioned partition function
 \begin{equation} \label{eq:sm-partition-function} \mathcal{Z} = \sum_i
   \mathcal{Z}_i = \sum_i e^{-\beta E_i} \,.  \end{equation}
 %
-The sum is over all states of the degrees of freedom of the system, $E_i$
-being the energy cost of the configuration, and $\beta = 1/T$ the reciprocal
+The sum is over all states of the degrees of freedom of the system, $E_i$ being
+the energy cost of the configuration, and $\beta = 1/T$ the reciprocal
 temperature\footnote{This should not be confused with the lattice gauge
-  coupling, which was introduced in the previous chapter. $\beta$ will
-  be used to indicate $1/T$ in this chapter only.}. How one chooses
-to define the scope of these \emph{states} depends on the physics one is
-interested in, as all choices should in the end be independent,
-although different physical quantities are easier to extract in some rather than
-others. Three common descriptions are the \emph{microcanonical},
+  coupling, which was introduced in the previous chapter. $\beta$ will be used
+  to indicate $1/T$ in this chapter only.}.  How one chooses to define the scope
+of these \emph{states} depends on the physics one is interested in, as different
+physical quantities are more accessible to certain descriptions compared to
+others.  Three common descriptions are the \emph{microcanonical},
 \emph{canonical} and \emph{grand canonical} ensembles.  They differ in their
 scope as the microcanonical ensemble includes systems at a fixed energy shell,
 the canonical ensemble a system of fixed temperature and particle number while
@@ -66,7 +65,7 @@ The phase of a system is linked to the characteristic behaviour of one or more
 of its physical quantities, such as the magnetisation of spin glasses, the
 average positions of atoms in a crystal and the molecular composition of
 solutions. We refer to these defining physical quantities as the
-\emph{order parameters} of the phase.  The transitions between two or more phases
+\emph{order parameters} of the phases.  The transitions between two or more phases
 is known as a \emph{phase transition}, and due to the very nature of phases,
 happens through the induction of mathematical singularities. 
 
@@ -182,8 +181,8 @@ asymmetry, while adjusting $\mu_f$ induces a particle/antiparticle imbalance.
 
 Following the same path as in \secref{sec:lattice_intro}, discretising the
 expression for the partition function $\mathcal{Z}$ is straightforward. We see
-that lattice theory naturally describe systems at non zero temperature, as the
-temporal extent always will be finite. The temperature is given in terms of the
+that lattice theory naturally describe systems at non-zero temperature, as the
+temporal extent is always finite. The temperature is given in terms of the
 number of temporal lattice sites, $N_t$,
 %
 \begin{equation}
@@ -253,7 +252,7 @@ previously introduced Monte Carlo methods to estimate their values.
 
 \section{Finite density simulations} \label{sec:finite-density-lattice}
 
-In order to carry out simulations of systems with non zero quark number density
+In order to carry out simulations of systems with non-zero quark number density
 we saw that we have to introduce a quark chemical potential. Unfortunately, a
 naive discretisation of the quark number operator from
 \meqref{eq:quark-number-density-op} leads to divergences in the thermodynamic
@@ -305,7 +304,7 @@ lattice curve has been plotted. At small and intermediate values of the chemical
 potential, we see the \emph{Silver Blaze} property. Coined by
 \cite{Cohen:2003kd}, is the phenomenon that at any chemical potentials smaller
 than the smallest mass of the theory, the eigenvalues of the Dirac operator are
-$\mu$ independent. Slightly before $\mu = m$ er have onset, which signals the
+$\mu$ independent. Slightly before $\mu = m$ we have onset, which signals the
 beginning of the nuclear condensation phase change, after which the system will
 eventually reach half-filling, where half of the states on the lattice are
 occupied. One should generally ignore results beyond this point, as lattice
@@ -369,7 +368,7 @@ size, making continuum studies impossible.
 
 There are multiple workarounds devised to allow for evaluating finite density
 systems using Monte Carlo methods. Such methods include reweighting, Taylor
-expansions, analytic continuation from imaginary chemical potential and  the
+expansions, analytic continuation from imaginary chemical potential, and  the
 method of stochastic quantisation. Although none of these methods actually
 tackles the essence of the sign problem, with sufficiently powerful computers 
 results with reasonable accuracy can be obtained. However, one should take great
