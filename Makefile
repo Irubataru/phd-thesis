@@ -8,7 +8,7 @@ FIGDIR   := figures
 FIGTEX   := $(wildcard $(FIGDIR)/chapter_*/*.tex)
 FIGPDF   := $(FIGTEX:.tex=.pdf)
 
-BACKMTR  := $(wildcard other/*/*.tex)
+BACKMTR  := $(wildcard front_back_matter/**/*.tex)
 BMTRPDF  := $(BACKMTR:.tex=.pdf)
 
 PLOTDIR  := plots
