@@ -47,8 +47,9 @@ expressed.
 To introduce the framework we consider a scalar field with a two-point coupling
 %
 \begin{equation} \label{eq:scalar_field_Z}
-  \mathcal{Z} = \int [\mathrm{d} \phi] e^{-S_0[\phi] + \frac{1}{2} \sum_{x,y}
-    \phi(x) v(x,y) \phi(y)},
+  \mathcal{Z} = \int [\mathrm{d} \phi] e^{-S_0[\phi] + \frac{1}{2}
+    \sum_{x,y}
+    \phi(x) v(x,y) \phi(y)}, \hskip .5cm v(x,x) = 0 \,,
 \end{equation}
 %
 where the function $v(x,y)$ encodes the coupling information. We will assume that the
@@ -123,7 +124,7 @@ which in turn define the free theory $n$-point functions
 %
 \begin{equation}
    \mathcal{M}_n(x_1, x_2, \dots, x_n) \big|_{v = 0}
-   = M_n(x_1) \delta(x_1, x_2, \dots, x_n)
+   \equiv M_n(x_1) \delta(x_1, x_2, \dots, x_n)
 \end{equation}
 %
 where the Kronecker deltas naturally arise in the free theory
@@ -154,7 +155,6 @@ Although the coefficients for the $v^n$ term can be computed systematically from
 exists a formalism in which the terms and their prefactors can be written down
 immediately in an intuitive way.
 %
-%\theoremstyle{definition}%
 \begin{definition}{Connected graph}\label{def:graph}\\
   A graph is a set of vertices and bonds where every bond connects two distinct
   vertices. An $n$-rooted graph has $n$ fixed, distinguishable, external
@@ -179,7 +179,6 @@ or fewer bonds. The final ingredient is a rule for transforming between the
 graphical representation and the mathematical expression for the grand canonical
 potential
 %
-%\theoremstyle{ruledef}%
 \begin{ruledef}{Grand canonical potential $\mathcal{W}$} \label{rule:free_energy}
   \begin{enumerate}
     \item Assign a symbol, $x_1, x_2, \dots, x_n$ to every vertex.
@@ -225,7 +224,7 @@ Using this rule we can write the grand canonical potential in
 The equality between \ruleref{rule:free_energy} and the grand canonical
 potential LCE \meqref{eq:cluster_expansion_def} is in no way trivial, and proofs
 for the equality are given in e.g.  \citep{Englert:1963pr,Bloch:1965jp}. The
-topology of the interaction is yet to be specified, and the sum over the
+geometry of the interaction is yet to be specified, and the sum over the
 symbols \{$x_1$,\dots,$x_n$\} runs over the entire lattice. Further
 simplification can be achieved by choosing e.g. a uniform nearest neighbour
 coupling
@@ -256,19 +255,20 @@ potential simplifies further
     + \frac{q^2}{2} v^2 N M_1^2 M_2 + \dots
 \end{equation}
 %
-where $q$ is the $2 d$ for a $d$-dimensional square lattice. This factor is
-called the embedding number\footnote{Also referred to as the \emph{lattice
-    constant} in the lattice community.} of a graph onto the lattice, and will
-differ from lattice to lattice. For every graph arising from an action with a
-uniform two-point interaction, the sum over the symbols / coordinates will
-yield $N$, the number of lattice sites, times the (free) embedding number of the
-graph. It might seem wrong at first to include all possible embeddings, as e.g.
-the $q^2$ in the $M_1^2 M_2$ term will naturally include the embedding
-corresponding to the $M_2^2$ term. This is however not a problem, as the $M_n$
-factors are given in terms of source derivatives, and applying the methods of
-moments and cumulants from \secref{sec:moments_cumulants} we see that the system
-resolves these issues automatically. The embedding number is dependent on the
-lattice, so that e.g.  the three bond graph
+where $q$ is $2 d$ for a $d$-dimensional square lattice. The prefactor of a
+term that arise from the spatial sum is called the embedding
+number\footnote{Also referred to as the \emph{lattice constant} in the lattice
+  community.} of a graph onto the lattice, and will differ from lattice to
+lattice. For every graph arising from an action with a uniform two-point
+interaction, the sum over the symbols / coordinates will yield $N$, the number
+of lattice sites, times the (free) embedding number of the graph. It might seem
+wrong at first to include all possible embeddings, as e.g.  the $q^2$ in the
+$M_1^2 M_2$ term will naturally include the embedding corresponding to the
+$M_2^2$ term. This is however not a problem, as the $M_n$ factors are given in
+terms of source derivatives, and applying the methods of moments and cumulants
+from \secref{sec:moments_cumulants} we see that the system resolves these issues
+automatically. The embedding number is dependent on the lattice, so that e.g.
+the three bond graph
 %
 \begin{equation}
   \begin{tikzpicture}[graph style]
@@ -300,7 +300,7 @@ $\kappa^8$.
 \end{table}
 
 In the next section we will see how to map the effective theory onto an LCE
-framework and the additional considerations that have to be taken into account.
+framework and which additional considerations have to be taken into account.
 
 \subsection{LCE for the effective theory at LO}
 
@@ -394,7 +394,8 @@ numerical evaluation. However, we first need to establish the observables.
 
 The definitions of the observables were given in \secref{sec:stat-mech}, but
 just as they were defined on the lattice in \secref{sec:thermal-lattice-theory},
-we have to give them in terms of the parameters we are working with. We exploit
+we have to give them in terms of the parameters we are working with in the
+analytic treatment of the effective theory. We exploit
 the fact that  $\mathcal{W}$ is linear in volume in the thermodynamic limit,
 which means that the pressure is given simply as
 %
@@ -476,7 +477,7 @@ derivative in $\beta$ through the use of implicit functions
 \end{equation}
 %
 Assuming strong coupling for now, we observe that the energy density is given in
-terms of the two parameters of the theory
+terms of the two parameters of the theory, $h_1$ and $h_2$
 %
 \begin{equation} \label{eq:energy_dens_mid_calc}
   e =  -\frac{1}{a N_t} a\frac{\partial \kappa}{\partial a}
@@ -506,7 +507,7 @@ to see that the first part of \meqref{eq:energy_dens_mid_calc} is
 %
 after inserting the definition of $n_B$. Using that to first order in $\kappa$,
 $\frac{\partial \kappa}{\partial a} \sim \minus{}\kappa \frac{m_B}{3}$, we
-notice that the first term is somehow related to the rest energy of the system.
+notice that the first term to be somehow related to the rest energy of the system.
 We subtract this shift from the energy density, and the resulting quantity
 should give a good estimate for the binding energy of the system at low
 temperatures where thermal fluctuations are suppressed. We define the
@@ -532,7 +533,7 @@ where
 We plot the effective baryon mass vs the real baryon mass in the strong coupling
 limit for different values of $\kappa$ in \figref{fig:mb_eff_comparison}, and
 see that they mostly agree all the way to $\kappa_{\mathrm{crit}}$, which is far
-enough from the parameter range in this study that the two can be interchanged.
+enough from the parameter range in this study for the two to be interchangeable.
 
 \Figref{fig:convergence_cluster_Z2} shows the baryon number density in the
 strong coupling limit at varying coupling parameter $h_2$. This can be used to
@@ -588,7 +589,7 @@ behaviour at higher chemical potential.
 \subsection{Scale setting and the continuum limit}
 
 Until now we have only considered observables at finite lattice spacing, and
-these observables have always been computed as dimensionless ratios of these,
+these observables have always been computed as dimensionless ratios of the,
 thus far unspecified, lattice spacings. However, for us to be able to make any
 connections to other fields, we first have to determine the physical scale of
 the problem. As outlined in \secref{sec:scale_setting}, we need to determine the
@@ -597,7 +598,7 @@ static potential and link the curvature of this potential to the characteristic
 length scale of QCD interactions (the so called \emph{Sommer parameter}
 \citep{Sommer:1993ce}). In this way we can determine a function
 $a(\beta,\kappa)$ that encodes the scale information. We assume that the heavy
-quarks have little influence over the running of the coupling, and so for small
+quarks have little influence on the running of the coupling, and so for small
 $\kappa$ we assume $a(\beta,\kappa) \approx a(\beta)$. We make use of the
 interpolation formula for $a(\beta)$ \citep{Necco:2001xg}
 %
@@ -663,12 +664,12 @@ N_t / N_c$, as is clearly demonstrated in \figref{fig:a_of_beta} (right).
 
 Finally, we demonstrate how the continuum limit is approached. We first compute
 the desired observable at multiple values for $\beta$, whose upper limit is
-determined my the convergence limit of our theory. For instance the convergence
-plot \figref{fig:numerical_convergence} (right) tells us that $h_2 \lesssim
-0.04$ for $\mathcal{Z}_2$ if we demand at most $10 \%$ deviation. If we then fix
+determined by the convergence limit of our theory. For instance the convergence
+plot \figref{fig:numerical_convergence} (left) tells us that $h_2 \lesssim
+0.04$ for $\mathcal{Z}_2$ if we demand at most $10 \%$ deviation. If we fix
 $m_B = 30 \:\mathrm{GeV}$ and $T = 10 \:\mathrm{MeV}$, we find an upper limit
-for $\beta \lesssim 6.02$. We then analyse the scaling of the observable with
-respect to the lattice spacing
+for $\beta \lesssim 6.02$. Afterwards, the scaling of the observable with
+respect to the lattice spacing is analysed
 %
 \begin{equation}
   O_{\mathrm{lattice}} = O_{\mathrm{continuum}} + O_1 \,a + O_2 \,a^2 +
@@ -677,18 +678,19 @@ respect to the lattice spacing
 %
 As the expansion is based on unimproved Wilson fermions, the lattice spacing
 corrections enter already at the linear level. We somewhat conservatively assume
-that we still have $\mathcal{O}(a^2)$ remnants in the observables. We then fit
-the observable to this function and extract the continuum limit result from
-this. The fit is carried out with two sets of data points, which are chosen
-based on the observable and the value for $\mu$. A common choice here is
-$\Delta \beta = 0.01$ and then using the final $10$ and $6$ points respectively
-for the two fits. One then averages over the two values, and takes the difference
-as an error estimate for the systematic error. The difference in the observable
-at a fixed lattice spacing for two consecutive orders in the expansion is taken
-as an error estimate which is included in the fit. The fitting procedure is
-illustrated in \figref{fig:continuum_extrapolation} (left). In the right hand
-plot is the continuum extrapolated baryon number density of the $\mathcal{Z}_2$
-partition function expanded to four bonds using the linked cluster expansion.
+that we still have $\mathcal{O}(a^2)$ remnants in the observables.  The
+observables are then fitted to the quadratic function, and the continuum limit
+results are extracted from an extrapolation to $a=0$. The fit is carried out
+with two sets of data points, which are chosen based on the observable and the
+value for $\mu$. A common choice here is $\Delta \beta = 0.01$ and then using
+the final $10$ and $6$ points respectively for the two fits. One then averages
+over the two values, and takes the difference as an error estimate for the
+systematic error. The importance of a data point for the fit is weighted by the
+difference in the computed observable at a fixed lattice spacing for two
+consecutive orders. The fitting procedure is illustrated in
+\figref{fig:continuum_extrapolation} (left). In the right hand plot is the
+continuum extrapolated baryon number density of the $\mathcal{Z}_2$ partition
+function expanded to four bonds using the linked cluster expansion.
 
 \begin{figure}
   \begin{center}
@@ -797,8 +799,8 @@ where we have reverted to the one-components fields for simplicity. Using this
 definition for $u$, $\mathcal{W}$ evaluates to 
 %
 \begin{multline}
-  \mathcal{W}[v,u] = N M_0 + \frac{q}{2} v N M_1^2 + \frac{q}{4} v^2 N M_2^2 \\
-    + \frac{q^2}{2} v^2 N M_1^2 M_2 + \frac{q^2}{2} u N M_1^3 + \frac{q}{2} u N
+  \mathcal{W}[v,u] = N M_0 + \frac{q}{2} v N M_1^2 + \frac{q^2}{2} v^2 N M_1^2 M_2 \\
+     + \frac{q}{4} v^2 N M_2^2 + \frac{q^2}{2} u N M_1^3 + \frac{q}{2} u N
     M_1 M_2 + \dots
 \end{multline}
 %
@@ -852,7 +854,7 @@ The above expression can be represented graphically as
 %
 where the $v$ bonds are coloured \ColBaseText{} and the $u$ bond pair
 \ColHlIText{}. The nodes are represented by concentric circles, where every
-additional node from a base diagram adds an additional circle of appropriate
+additional node from a base interaction adds an additional circle of appropriate
 colour.  This is necessary to distinguish e.g. the nodes in the final term.  An
 alternative three-point coupling could be a triangular nearest neighbour
 coupling
@@ -931,8 +933,8 @@ through a second embedding step
     \item Embed all $n$-point interaction graphs onto the skeleton graphs.
     \item For every embedded $n$-point graph that visits $x_{n_1}, x_{n_2},
       \dots, x_{n_n}$, add a factor\\ $v_n(x_{n_1}, x_{n_2}, \dots, x_{n_n})$.
-    \item For every vertex that with \emph{modified valence}\footnote{%
-        Modified valence is the number of bonds connecting a vertex originating
+    \item For every vertex with \emph{modified valence}\footnote{%
+        Modified valence is the number of bonds entering a vertex originating
         from \emph{different} $n$-point interactions.} $p$, add a factor $M_p(x_i)$.
     \item The correct symmetry factor will be the symmetry factor of the skeleton
           graph times the number of unique isomorphic embeddings.
@@ -1031,11 +1033,11 @@ been considered for the upcoming result. The $\mathcal{O}(\kappa^4)$ partition
 function is
 %
 \begin{multline}
-  \mathcal{Z}_4 = \int [ \mathrm{d} U ]_0 \det{}^{N_f} \qstat \exp \bigg(-\frac{1}{2}
+  \mathcal{Z}_4 = \int [ \mathrm{d} U ]_0 \det{}^{N_f} \qstat \exp \bigg(-2
     h_2 N_f \sum_{\langle x,y \rangle} W_{11} (x) W_{11} (y)\\
-  + h_2^2 N_f \sum_{\langle x,y \rangle} \sum_{\langle y,z \rangle} W_{11}(x)
+  + 2 h_2^2 N_f \sum_{\langle x,y \rangle} \sum_{\langle y,z \rangle} W_{11}(x)
     W_{21}(y) W_{11}(z)
-  + h_2^2 N_f^2 \sum_{\langle x,y \rangle} W_{21}(x) W_{21}(y) \bigg).
+  + 2 h_2^2 N_f^2 \sum_{\langle x,y \rangle} W_{21}(x) W_{21}(y) \bigg).
 \end{multline}
 %
 The correspondence is now between the two component field $\phi_i$ in the
@@ -1083,10 +1085,10 @@ which would result in the following two-point interaction matrix
       0 & 2 h_2^2 N_f^2 & 0 & 0\\
       0 & 0 & -\textstyle\frac{1}{3} h_2^3 N_f & \textstyle\frac{4}{3} h_2^3 N_f^3\\
       0 & 0 & \textstyle\frac{4}{3} h_2^3 N_f^3 & -\textstyle\frac{1}{3} h_2^3 N_f
-    \end{pmatrix}_{ij},
+    \end{pmatrix}_{ij} \,.
 \end{equation}
 %
-and the other $n$-point functions are too long to list. The computation of the
+The other $n$-point functions are too long to list. The computation of the
 analytic formula for $\mathcal{W}$ has been carried out using all three methods
 outlined above (calculating derivatives, computing graphs directly as well as
 using the embedding method). This was done to verify the result. The number of
@@ -1108,7 +1110,7 @@ four bond level.
 
 We are now in a position where we can evaluate thermodynamic functions fully
 analytically. Using the LCE we have computed the grand canonical partition
-function in the thermodynamic limit though $\kappa^8 u^5$ to first order in
+function in the thermodynamic limit through $\kappa^8 u^5$ to first order in
 $N_t^{-1}$. We first compare the convergence of the theory in the two parameters
 to that obtained through simulating the effective theory. The convergence in the
 nearest neighbour effective coupling, $h_2$, is shown in
@@ -1132,7 +1134,7 @@ of the system.
   \end{center}\vskip -.6cm
   \caption{Convergence of the analytic expressions in $h_2$ (left) and $\beta$
     (right) overlayed with the simulation results at highest order. The
-    normalised baryon number density has been used in the rightmost plot.}
+    normalised baryon number density has been used in the right plot.}
   \label{fig:analytic_convergeance}
 \end{figure}
 
@@ -1218,7 +1220,7 @@ After discarding the approximants with artificial singularities, we can
 compare the convergence to that of the Maclaurin series. This is shown in
 \figref{fig:pade_results} (left) where we have once more used the baryon number
 density to investigate convergence. We see that the order by order convergence
-rate of the Pad\'e approximants are far superior to those of the pure linked
+rate of the Pad\'e approximants is far superior to that of the pure linked
 cluster expansion, as expected. 
 
 \begin{figure}
@@ -1242,8 +1244,8 @@ in \meqref{eq:epsilon_definition} with the Pad\'e series in
 in this case becomes negative, as demonstrated in \citep{Langelage:2014vpa}. With
 the fourth order Pad\'e, we can extend the study to higher densities. Although
 the quantitative convergence breaks down shortly after the onset transition near
-$\mu_B \approx m_B$, we see new qualitative behaviour. At higher orders we
-see that the binding has a minimum and reaches a positive value at growing
+$\mu_B \approx m_B$, we see new qualitative behaviour. At higher orders
+the binding energy has a minimum and reaches a positive value at growing
 chemical potential, as expected from nuclear physics. This means that we have
 a qualitative bulk nuclear density, whose quantitative value is still unsettled
 by the present study.
@@ -1474,7 +1476,7 @@ appear.  As argued, the chain can be express as
 %
 where $X$ represents the remainder of the term, which may or may not include
 additional open ends, and/or chains. Since the expression has a recursive
-structure it is natural to define the matrices $G_n$ so that
+structure it is natural to define the integrated matrices $G_n$ so that
 %
 \begin{equation}
   \begin{tikzpicture}[baseline={(nodes.base)}]
@@ -1556,7 +1558,7 @@ We are now ready to evaluate the colour integrals over the matrix $G_n$
 %
 The coordinate $\vec{x}_0$ is the coordinate of the beginning of the chain, and
 we see that we have a recursive structure for these spatial positions as we move
-on the chain $\vec{x}_{m+1} = \vec{x}_m + i_m$. We use the above equation to
+along the chain $\vec{x}_{m+1} = \vec{x}_m + i_m$. We use the above equation to
 define $G_{n-1}$ in terms of $G_{n-2}$
 %
 \begin{equation}
@@ -2282,7 +2284,7 @@ density as a function of the chemical potential for ever finer lattices. At
 smaller lattice spacings the baryon number density increases, especially in the onset
 and half-filling regions. It is therefore clear that we resolve this particular
 lattice artefact as we move towards the continuum. For instance, the line at
-$a = 0.12\:\mathrm{fm}$ saturates both quicker, and at lower densities than
+$a = 0.12\:\mathrm{fm}$ saturates both quicker, and at lower densities, than
 the same system at $a = 0.07 \:\mathrm{fm}$. Another interesting observation
 regarding the difficulty of studying the dense regime is made by observing the
 $a$-scaling of the curves at increasing values of $\mu$. We see that they split
@@ -2356,7 +2358,7 @@ that we not only have three quark baryons, but also combination such as
 hexaquarks (dibaryon), enneaquarks (tribaryon) and dodecaquarks (tetrabaryon).
 We note that the hexaquarks and dodecaquarks are bosonic in nature, which might
 have an effect on the dense dynamics below half-filling, after which the system
-only see the quark degrees of freedom, and the statistics of combinations
+only sees the quark degrees of freedom, and the statistics of combinations
 becomes irrelevant.
 
 To further study this, we plot the density and the pressure separately as a
@@ -2391,9 +2393,9 @@ enlightening.
 \section{Further applications}
 
 In this final section, we will review two further applications of the analytic
-treatment of the effective theories where numerics are less adequate.  We first
-summarise the implementation of different continuous groups, especially higher
-$N_c$, in \secref{sec:large_nc_study}. Subsequently, in
+treatment of the effective theories where numerical approaches are less
+adequate.  We first summarise the implementation of different continuous groups,
+especially higher $N_c$, in \secref{sec:large_nc_study}. Subsequently, in
 \secref{sec:yang_lee_zeros} we round off this chapter with a look at the
 extraction of the Yang Lee zeros, which were introduced in
 \secref{sec:yang_lee_zeros_intro}. Both of these topics are in progress, and
@@ -2422,31 +2424,32 @@ be found in \citep{Lucini:2013qja}.
 We already pointed out the reduced numerical cost of simulating the effective
 theory at higher $N_c$ in \secref{sec:numerical_evaluation}, as compared to a
 full scale lattice gauge theory implementation. Furthermore, the graphs that
-enter analytic computation does not change as we increase $N_c$. This means that
+enter analytic computations do not change as we increase $N_c$. This means that
 in the strong coupling limit, all we have to do is recompute the $z$-functions
-using the methods outlined in the appendices for every $N_c$. This is plotted in
-\figref{fig:diff_nc_plots}. We see that at higher and higher values of $N_c$,
-the transition becomes steeper and steeper. We have defined $n_B$ by dividing
-out a factor of $N_c$ from the quark number density, a colour neutral state
-requires at least $N_c$ quarks.  The behaviour at increasing $N_c$ can be easily
-seen from the static determinants in \tabref{tab:static-determinant}.  The
-static determinant will always have a fugacity coefficient to power $N_c$ at
-highest order.  This means that the onset is exponentially suppressed by $N_c$,
-and the saturation exponentially enhanced. In the limit this gives a natural
-transition which matches physical intuition.  As the number of quarks needed to
-form a baryon increases, it becomes more and more energetically expensive to
-create one. The silver blaze phenomenon is therefore strengthened, and in the
-actual limit, one will always have a first order transition to nuclear matter,
-independent of the temperature. It would be very interesting to use the
-effective theory to find the liquid gas endpoint as a function function of
-$N_c$, $\kappa$ and $T$. Similar to the fact that such an endpoint exists at a
-critical temperature depending on the quark mass, it also exist for any
-temperature and $\kappa$ at a critical $N_c$.  However, this can only be seen if
-one includes gauge corrections, as the transition point is defined by an
-interplay between the fermion-gauge interactions. We already see that our
-effective coupling $h_2 \propto N_c^{-1}$, and will thus become small. The gauge
-sector on the other hand has graphs that do not suffer from this suppression,
-and will therefore compete with the quarks.
+using the methods outlined in the appendices for every $N_c$. The baryon number
+density for different gauge groups is plotted in \figref{fig:diff_nc_plots}. We
+see that at higher and higher values of $N_c$, the transition becomes steeper
+and steeper. We have defined $n_B$ by dividing out a factor of $N_c$ from the
+quark number density, a colour neutral state requires at least $N_c$ quarks.
+The behaviour at increasing $N_c$ can be easily seen from the static
+determinants in \tabref{tab:static-determinant}.  The static determinant will
+always have a fugacity coefficient to power $N_c$ at highest order.  This means
+that the onset is exponentially suppressed by $N_c$, and the saturation
+exponentially enhanced. In the limit this gives a natural transition which
+matches physical intuition.  As the number of quarks needed to form a baryon
+increases, it becomes more and more energetically expensive to create one. The
+silver blaze phenomenon is therefore strengthened, and in the actual limit, one
+will always have a first order transition to nuclear matter, independent of the
+temperature. It would be very interesting to use the effective theory to find
+the liquid gas endpoint as a function function of $N_c$, $\kappa$ and $T$.
+Similar to the fact that such an endpoint exists at a critical temperature
+depending on the quark mass, it also exist for any temperature and $\kappa$ at a
+critical $N_c$.  However, this can only be seen if one includes gauge
+corrections, as the transition point is defined by an interplay between the
+fermion-gauge interactions. We already see that our effective coupling $h_2
+\propto N_c^{-1}$, and will thus become small. The gauge sector on the other
+hand has graphs that do not suffer from this suppression, and will therefore
+compete with the quarks.
 
 \begin{figure}[t]
   \begin{center}
