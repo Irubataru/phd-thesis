@@ -25,13 +25,13 @@
 
 \begin{tikzpicture}
     \begin{axis}[
-      xlabel={$a \:[\mathrm{fm}]$},
+      xlabel={$\strut{}a \:[\mathrm{fm}]$},
       ylabel={$n_B / m_B^3$},
       xmin=-5e-4, xmax=0.17,
       ymin=1e-5, ymax=0.0011,
-      %ticklabel style={
-        %scale=0.7,
-      %},
+      ticklabel style={
+        scale=0.9,
+      },
       xticklabel style={
         /pgf/number format/precision=2,
         /pgf/number format/fixed,
@@ -53,62 +53,68 @@
       },
       y post scale=0.85
     ]
-    \addplot+[
-      no marks,node style 2,
-      line width=1.6pt,
-      name path=U,
-      samples=201,
-      domain=0:0.17,
-      forget plot,
-    ] {0.00103364 - 0.00882261*x - 0.00328682*x^2};
 
-    \addplot+[
-      no marks,node style 2,
-      line width=1.6pt,
-      name path=L,
-      samples=201,
-      domain=0:0.17,
-      forget plot,
-    ] {0.0005169 + 0.0044747*x - 0.0883533*x^2};
-
-    \addplot+[
-      only marks, node style 1,
-      error bars/y dir=both, error bars/y explicit,
-      legend image post style={sharp plot,|-|},
-    ] table [
-      x index=0,
-      y index=1,
-      y error index=2
-    ] {data/nb_of_a_Z2_6_8.table};
-    \addlegendentry{$\mu_B / m_B = 0.999$}
-
-    \addlegendimage{empty legend}
-    \addlegendentry{\vphantom{x}}
-
-    \addplot[
-      no markers,
-      ColourHl1!10,
-      domain=0:0.06,
-      area legend,
-      legend image post style={draw=ColourHl1, thick},
-    ] fill between[of=U and L];
-    \addlegendentry{$a + b x + c x^2$ fit}
-
-    \addplot+[
-      node style data,
-      mark size=2,
-      error bars/y dir=both, error bars/y explicit,
-      legend image post style={sharp plot,|-|},
-      error bars/error bar style={
-        line width=1.2pt,
-      },
-      error bars/error mark options={
-        rotate=90,
-        mark size=4pt,
-        line width=1.2pt,
-      }
-    ] coordinates {(0,0.000775272) +- (0,0.000258372)};
-    \addlegendentry{$n_B / m_B^3 (a = 0)$}
+    \begin{scope}
+      \clip 
+        (axis cs:\pgfkeysvalueof{/pgfplots/xmin},\pgfkeysvalueof{/pgfplots/ymin}) rectangle
+        (axis cs:\pgfkeysvalueof{/pgfplots/xmax},\pgfkeysvalueof{/pgfplots/ymax});
+      \addplot+[
+        no marks,node style 2,
+        line width=1.6pt,
+        name path=U,
+        samples=201,
+        domain=0:0.17,
+        forget plot,
+      ] {0.00103364 - 0.00882261*x - 0.00328682*x^2};
+      
+      \addplot+[
+        no marks,node style 2,
+        line width=1.6pt,
+        name path=L,
+        samples=201,
+        domain=0:0.17,
+        forget plot,
+      ] {0.0005169 + 0.0044747*x - 0.0883533*x^2};
+      
+      \addplot+[
+        only marks, node style 1,
+        error bars/y dir=both, error bars/y explicit,
+        legend image post style={sharp plot,|-|},
+      ] table [
+        x index=0,
+        y index=1,
+        y error index=2
+      ] {data/nb_of_a_Z2_6_8.table};
+      \addlegendentry{$\mu_B / m_B = 0.999$}
+      
+      \addlegendimage{empty legend}
+      \addlegendentry{\vphantom{x}}
+      
+      \addplot[
+        no markers,
+        ColourHl1!10,
+        domain=0:0.06,
+        area legend,
+        legend image post style={draw=ColourHl1, thick},
+      ] fill between[of=U and L];
+      \addlegendentry{$a + b x + c x^2$ fit}
+      
+      \addplot+[
+        node style data,
+        mark size=2,
+        error bars/y dir=both, error bars/y explicit,
+        legend image post style={sharp plot,|-|},
+        error bars/error bar style={
+          line width=1.2pt,
+        },
+        error bars/error mark options={
+          rotate=90,
+          mark size=4pt,
+          line width=1.2pt,
+        }
+      ] coordinates {(0,0.000775272) +- (0,0.000258372)};
+      \addlegendentry{$n_B / m_B^3 (a = 0)$}
+    \end{scope}
   \end{axis}
 
   \node[scale=0.75,inner sep=0pt, anchor=north] [below=.35cm of thelegend] {

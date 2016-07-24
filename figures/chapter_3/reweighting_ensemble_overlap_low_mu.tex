@@ -21,7 +21,8 @@
 
   \begin{scope}
     \clip plot (\x, { 3* exp(-2*(\x-0.15)*(\x-0.15)) });
-    \fill[pattern color=ColourHl2, opacity=0.75, pattern=crosshatch] plot (\x, { 3* exp(-2*(\x+0.15)*(\x+0.15)) });
+    %\fill[pattern color=ColourHl2, opacity=0.75, pattern=crosshatch] plot (\x, { 3* exp(-2*(\x+0.15)*(\x+0.15)) });
+    \fill[ColourHl2, opacity=0.25] plot (\x, { 3* exp(-2*(\x+0.15)*(\x+0.15)) });
   \end{scope}
 
   \draw[ColourHl1,thick] plot (\x, { 3* exp(-2*(\x-0.15)*(\x-0.15)) });

@@ -1,20 +1,21 @@
 \chapter{Analytical Tools For SU(\texorpdfstring{$N$}{N})} \label{apxA}
 
-The analytic computations contained herein revolve around various SU$(N)$
-dependent quantities, and we therefore need basis for computing these. In this
-appendix we will look at how to compute all the necessary components such as the
-Haar measure in \secref{sec:haar_measure}, the character integrals in
+The analytic computations contained herein revolve around various SU($N$)
+dependent quantities, and we therefore need a basis for computing these. In this
+appendix we look at how to compute all the necessary components such as the Haar
+measure in \secref{sec:haar_measure}, the character integrals in
 \secref{sec:character_integrals}, integrals over group polynomials in
-\secref{sec:sun_integrals} and finally the fermionic functions in
+\secref{sec:sun_integrals} and finally the fermionic functions of the effective
+theory in
 \secrefs{sec:evaluating-fermion-determinants,sec:evaluating-polyakov-coupling-terms}.
 
 \section{Computing the Haar measure} \label{sec:haar_measure}
 
-We want the invariant measure of a group element expressed in terms of its
-spectral decomposition. Any matrix representation of an U$(N)$ matrix has
-unitary eigenvalues $\lambda_i = e^{i\theta_i}$ only, where $\sum_i \theta_i =
-0 \bmod 2\pi$ for the elements of SU$(N)$. We write a matrix $U$ that is a representation
-of U$(N)$ in its decomposed form
+Our first goal is to obtain the invariant group measure of a group element
+expressed in terms of its spectral decomposition. Any matrix representation of
+an U($N$) matrix has unitary eigenvalues $\lambda_i = e^{i\theta_i}$ only, where
+$\sum_i \theta_i = 0 \bmod 2\pi$ for the elements of SU($N$). We write a matrix
+$U$ that is a representation of U($N$) in its decomposed form
 %
 \begin{equation}
   U = W \Lambda W^{\dagger},
@@ -28,14 +29,14 @@ where $\Lambda = \diag (e^{i\theta_1}, ..., e^{i\theta_n})$, and $W W^{\dagger}
   W, \Lambda \big] W^{\dagger}.
 \end{equation}
 %
-Using the standard unitary matrix metric, $||M||^2 = \tr(M^{\dagger} M)$, we get
-the size of an infinitesimal square to be
+Using the standard unitary matrix metric, $||M||^2 = \tr(M^{\dagger} M)$,
+the size of an infinitesimal square in this coordinate space is
 %
 \begin{equation} \label{eq:infinitesimal-group-square}
   \mathrm{d} s^2 = \tr (\mathrm{d} U^{\dagger} \mathrm{d} U)
   = \sum_i \mathrm{d} \theta_i^2 + 2 \sum_{i > j}
     \big|e^{i \theta_i} - e^{i\theta_j}\big|^2
-    \big| (W^{\dagger} \mathrm{d} W)_{ij} \big|^2
+    \big| (W^{\dagger} \mathrm{d} W)_{ij} \big|^2 .
 \end{equation}
 %
 Since one identifies the set of coordinates to the metric through
@@ -47,7 +48,7 @@ it is natural to construct the measure as
 \end{equation}
 %
 To reconcile these two formulae we use the Baker-Campbell-Hausdorff formula to
-express $W^{\dagger} \mathrm{d} W$ in terms of the generators of U$(d_R)$
+express $W^{\dagger} \mathrm{d} W$ in terms of the generators of U($d_R$)
 %
 \begin{equation}
   (W^{\dagger} \mathrm{d} W)_{ij} = i (T_a)_{ij} f_{a b}(w) \mathrm{d} w_b
@@ -55,7 +56,7 @@ express $W^{\dagger} \mathrm{d} W$ in terms of the generators of U$(d_R)$
 \end{equation}
 %
 with $f$ being some function of the parameters of the generator decomposition.
-The general coordinates will therefore be a combination of the eigenvalue angles
+The general coordinates will thus be a combination of the eigenvalue angles
 $\theta_i$ and the parameters $w_i$. The determinant of the metric factorise
 into parts dependent on these coordinates, and we get
 %
@@ -64,7 +65,7 @@ into parts dependent on these coordinates, and we get
   e^{i\theta_j}\big|^4.
 \end{equation}
 %
-Since we are mostly concerned with the integrals over the eigenvalues only, one
+Since we are concerned with the integrals over the eigenvalues only, one
 can integrate out the $w_i$, and get the invariant measure
 %
 \begin{equation}
@@ -80,7 +81,6 @@ can integrate out the $w_i$, and get the invariant measure
         mirror,
         amplitude=5pt
       },
-      %transform canvas={yshift=-.2cm},
     ]
       ([yshift=-.2cm]trace.south west) -- ([yshift=-.2cm]trace.south east)
       node[midway,below=5pt] {$H(U)$};
@@ -89,11 +89,11 @@ can integrate out the $w_i$, and get the invariant measure
 \end{equation}
 %
 where we have identified the Haar measure, $H(U)$. Although this relation is
-only true for U$(N)$, it can be trivially extended to SU$(N)$ through the
+only true for U($N$), it can be trivially extended to SU($N$) through the
 previously mentioned restriction, $\sum_i \theta_i = 0 \bmod 2\pi$.
 
-To facilitate the calculation of the Haar measure, we introduce the Vandermonde
-determinant
+The \emph{Vandermonde determinant} is introduced to facilitate the calculation
+of the Haar measure
 %
 \begin{equation}
   \prod_{i>j} (z_i - z_j) = \det \mathcal{M} =
@@ -102,10 +102,10 @@ determinant
     1 & z_2 & \cdots & z_2^{N-1} \\
     \vdots & \vdots & \ddots & \vdots \\
     1 & z_N & \cdots & z_N^{N-1} 
-  \end{vmatrix}.
+  \end{vmatrix},
 \end{equation}
 %
-This relation one can use to rewrite the Haar measure
+which can be used to rewrite the Haar measure
 %
 \begin{equation}
   H(U) = \prod_{i>j} \big| z_i - z_j \big|^2
@@ -118,36 +118,38 @@ This relation one can use to rewrite the Haar measure
   \end{vmatrix}}.
 \end{equation}
 %
-For the fundamental representation of SU$(N)$, one has $N - 1$ independent
-eigenvalues. We know that
+The fundamental representation of SU($N$) has $N - 1$ independent eigenvalues.
+We know that
 %
 \begin{equation}
   \sum_i z_i^m = \tr U^m \equiv \chi_m,
 \end{equation}
 %
-correspond to the $m$'th powered character. One can therefore employ the
+correspond to the $m$'th powered character. One can therefore use the
 Cayley-Hamilton theorem to determine how these angles depend on each other.
-This equation reads
+The Cayley-Hamilton equation reads
 %
 \begin{equation} \label{eq:caylay-hamilton}
   M^N + c_{N-1} M^{N-1} + \cdots + c_1 M + (-1)^N \det M\: \mathbb{1}_R = 0,
 \end{equation}
 %
-where the coefficients can be computed with the recursive \emph{Faddeev-LeVerrier
+where the coefficients can be computed recursively using the \emph{Faddeev-LeVerrier
 algorithm}
 %
 \begin{equation}
-  c_{N-m} = -\frac{1}{m} \sum_{k=1}^m c_{N-m+k} \tr (M^k),
+  c_{N-m} = -\frac{1}{m} \sum_{k=1}^m c_{N-m+k} \tr (M^k).
 \end{equation}
 %
-with $c_N = 1$ and $c_1 = (-1)^N \det M$ as seen in \meqref{eq:caylay-hamilton}.
+The first and last coefficient are $c_N = 1$ and $c_1 = (-1)^N \det M$, as can
+be inferred from \meqref{eq:caylay-hamilton}.
 
-Since we know that $\det U = 1$ and $U^{\dagger} U = \mathbb{1}$ for all
-matrices in SU$(N)$, \meqref{eq:caylay-hamilton} can be multiplied by powers of
-$U^{\dagger}$ and be traced to find relations to reduce the number of unknowns in
-the Haar measure.
+Using the defining properties of SU($N$), $\det U = 1$ and $U^{\dagger} U =
+\mathbb{1}$, we can multiply \meqref{eq:caylay-hamilton} with powers of
+$U^{\dagger}$ and trace the equation to find relations between the different
+fundamental characters, and thus reduce the number of unknowns in the Haar
+measure.
 
-As an example, for SU$(3)$, $\chi_2 = \chi^2 - 2 \chi^*$, giving
+For instance, for SU($3$), $\chi_2 = \chi^2 - 2 \chi^*$, giving
 %
 \begin{equation} \label{eq:su3-haar-measure}
   H(U) =
@@ -160,14 +162,14 @@ As an example, for SU$(3)$, $\chi_2 = \chi^2 - 2 \chi^*$, giving
 
 \section{\texorpdfstring{$\chi_r \chi_s$}{Ln Lm} integrals} \label{sec:character_integrals}
 
-One type of integrals we will encounter often are integrals of the form
+A specific set of integrals we encounter often are integrals of the form
 %
-\begin{equation}
+\begin{equation} \label{eq:character_integral_before}
   I_{nm} = \int \mathrm{d} U \, \chi(U)^n \chi(U^{\dagger})^m.
 \end{equation}
 %
-These can be most easily calculated through their trigonometric decomposition,
-using the fact that
+These can be most easily calculated through their trigonometric decomposition.
+Using
 %
 \begin{equation}
   \begin{tikzpicture}[baseline={([yshift=-.55ex] aligned.center)}]
@@ -181,40 +183,39 @@ using the fact that
       decoration={ brace, mirror, amplitude=5pt },
     ] (aligned.south east) -- (aligned.north east);
   \end{tikzpicture}
-  \hskip1em {\textstyle\sum_{\alpha=1}^N} \theta_{\alpha} = 0 \bmod 2\pi
+  \hskip1em {\textstyle\sum_{\alpha=1}^N} \theta_{\alpha} = 0 \bmod 2\pi,
 \end{equation}
 %
-together with
-%
-\begin{equation} \label{eq:oscillating-integral}
-  \int_{\mathrlap{-\pi}}^{\pi} \mathrm{d}\alpha \, e^{in \alpha} = \delta(n),
-  \text{ for } n \in \mathbb{Z}
-\end{equation}
-%
-We thus get
+\meqref{eq:character_integral_before} yields
 %
 \begin{equation}
   I_{nm} = \int \big[ \mathrm{d} \theta \big]_i\, H(U)
   \delta\big({\textstyle\sum}\theta_i = 0\big)
   \sum_{\{n_i\}} \sum_{\{m_i\}} \prod_{k=1}^n
-  \prod_{l=1}^m \frac{k l}{n_k! m_l!} e^{i n_k \theta_k - i m_l \theta_l}
+  \prod_{l=1}^m \frac{k l}{n_k! m_l!} e^{i n_k \theta_k - i m_l \theta_l} \,,
 \end{equation}
 %
-with the sum over integer partitions so that
+with sums over integer partitions so that
 %
 \begin{equation}
   \sum_{i=1}^N (n,m)_i = (n,m).
 \end{equation}
 %
-Because of \meqref{eq:oscillating-integral}, only the combinations where the sum
-over the angles in the exponent equals zero will survive the integral, and
-therefore calculating the integral reduces to counting all these combinations.
+As the pure phase integrals give
+%
+\begin{equation} \label{eq:oscillating-integral}
+  \int_{\mathrlap{-\pi}}^{\pi} \mathrm{d}\alpha \, e^{in \alpha} = \delta(n),
+  \text{ for } n \in \mathbb{Z} \,,
+\end{equation}
+%
+only combinations where the exponential's arguments cancel will give a non-zero
+contribution, and calculating the integral reduces to finding these combinations.
 
-\subsection{Integrals over characters of SU\texorpdfstring{$(3)$}{(3)}}
+\subsection{Integrals over characters of SU\texorpdfstring{($3$)}{(3)}}
 
-Since this is not a problem that is solvable in general, we will specialise on
-the group SU$(3)$. In this case we only have two free angles, let's call them
-$\theta$ and $\phi$. The integral is thus
+As this is not a problem that is solvable in general, we specialise to the group
+SU($3$). In this case we only have two free angles, which we label $\theta$ and
+$\phi$. The full integral is
 %
 \begin{align}
   &I_{nm} = \int \mathrm{d} \theta \mathrm{d} \phi \, H(\theta,\phi)
@@ -225,9 +226,8 @@ $\theta$ and $\phi$. The integral is thus
     k_3!} e^{i \theta (l_1 - l_3 - k_1 + k_3) + i \phi (l_2 - l_3 - k_2 + k_3)}.
 \end{align}
 %
-If we ignore the Haar measure and define a new integral, $J_{nm} = \int
-[\mathrm{d} \theta]_i\, \chi^n \chi^{*m}$, we see by the arguments at the previous
-section that this integral is
+We define the measure-less integral $J_{nm} = \int [\mathrm{d} \theta]_i\,
+\chi^n \chi^{*m}$, which is
 %
 \begin{equation}
   J_{nm} = (2\pi)^2 \sum_{\{l_i\}} \sum_{\{k_i\}}
@@ -235,8 +235,7 @@ section that this integral is
     \delta\big(l_1 - l_3 - k_1 + k_3\big)\, \delta\big(l_2 - l_3 - k_2 + k_3\big).
 \end{equation}
 %
-We carry out the explicit sum over four of the variables, and are left
-with
+Carrying out the explicit sums over four variables yields
 %
 \begin{equation}
   J_{nm} = (2\pi)^2 \sum_{l = 0}^n \sum_{k = 0}^m
@@ -246,23 +245,22 @@ with
 %
 where the remaining variables $l$ and $k$ are restricted by the requirement that
 the factorials all have non-negative arguments. Since the Haar measure itself is
-expressed in terms of the characters, using \meqref{eq:su3-haar-measure} we see
-that the full integral is
+expressed in terms of the characters, we see from \meqref{eq:su3-haar-measure}
+that
 %
 \begin{equation}
   I_{n,m} = 27\, J_{n,m} - 18\, J_{n+1,m+1} + 4\, J_{n+3,m} + 4\, J_{n,m+3} - J_{n+2,m+2}.
 \end{equation}
 %
-From the equation for $J_{nm}$, is is easy to see that it is symmetric in its
-indices, $J_{nm} = J_{mn}$, and by extension, so is $I_{nm}$. Since all the
-quantities of interest are normalised, we introduce the normalised integral,
-$\tilde{I}_{nm} = I_{nm} / I_{00}$, the value of some of which are listed in 
+It is easy to see that $J_{nm}$ is symmetric in its indices, $J_{nm} = J_{mn}$,
+and by extension, so it $I_{nm}$. We introduce the normalised integral,
+$\tilde{I}_{nm} = I_{nm} / I_{00}$, the value of some of which are listed in
 \tabref{tab:character-integrals}. Analysing the sequences one notices that they
-have deep combinatorial connections \citep{OEIS}. E.g. the first row is the sequence of
-permutations of $S_n$ with longest increasing subsequence length $<=3$
-(A005802). The first column on the other hand corresponds to the 3 dimensional
-Catalan numbers (A005789). A more thorough review of the combinatorics of
-SU$(3)$ can be found in \citep{Unger:2014oga}.
+have deep combinatorial connections \citep{OEIS}. For instance, the first row of
+this table is the sequence of permutations of $S_n$ with longest increasing
+subsequence length $<=3$ (A005802). The first column of the table on the other
+hand corresponds to the 3 dimensional Catalan numbers (A005789). A more thorough
+review of the combinatorics of SU($3$) can be found in \citep{Unger:2014oga}.
 
 \begin{table}
   \begin{center}
@@ -277,7 +275,7 @@ SU$(3)$ can be found in \citep{Unger:2014oga}.
       $\chi^{15}$ & 6\,006 & 36\,036 & 223\,652 & 1\,429\,428 & 9\,372\,168 & 62\,833\,836 & 429\,568\,036 \\\bottomrule
     \end{tabular}
   \end{center}
-  \caption{Some integrals over the characters of SU$(3)$ where the integrand is made
+  \caption{Some integrals over the characters of SU($3$) where the integrand is made
     up of the product of the topmost row with the leftmost column. All other
     integrals are zero due to the selection rule of
     \protect\meqref{eq:integral-selection-rule}.}
@@ -286,17 +284,17 @@ SU$(3)$ can be found in \citep{Unger:2014oga}.
 
 \subsection{Characters of plaquettes}
 
-Another type of integrals that appear often are those of characters over
-plaquettes sharing a common line, like the ones in
-\secref{sec:pure-gauge-theory}. These are integrals of the form
+Another set of integrals that appears often, are those of characters over
+plaquettes sharing a common link, such as the ones in
+\secref{sec:pure-gauge-theory}. These integrals are of the form
 %
 \begin{equation}
   F_{nm}^r(V,W) = \int \mathrm{d} U \, \chi_r(VU)^n \chi_r(WU^{\dagger})^m.
 \end{equation}
 %
 In \citep{Bars:1979xb} the authors introduced a recursive formula to evaluate
-the diagonal integrals on this form in the fundamental representation of U$(N)$,
-namely the integrals $F_{nn}^f(V,V^{\dagger})$. The procedure goes as follows. First one
+the diagonal integrals of this form in the fundamental representation of U($N$),
+namely the integrals $F_{nn}^f(V,V^{\dagger})$. The procedure is as follows. First one
 introduces a new integral
 %
 \begin{equation}
@@ -304,17 +302,17 @@ introduces a new integral
     \chi_f(V_1^{\dagger} U^{\dagger}) \cdots \chi_f(V_n^{\dagger} U^{\dagger}),
 \end{equation}
 %
-and verifies that by introducing the special form $(A_n)_{kl} = \delta_{ik}
-\delta_{lq}$, $(A_n^{\dagger})_{kl} = \delta_{qk} \delta_{lj}$ for some integers
-$i,j,q$, the final factors of $G$ simplify when summing over $k$
+and verifies that by using the special form $(A_n)_{kl} = \delta_{ik}
+\delta_{lq}$, $(A_n^{\dagger})_{kl} = \delta_{qk} \delta_{lj}$ for some of the
+integers $i,j,q$, the final factors of $G$ simplify when summing over $k$
 %
 \begin{equation}
   {\textstyle\sum_k} G_n(\{V_i\}) = \delta_{ij} G_{n-1}(\{V_i\}').
 \end{equation}
 %
-Due to the properties of the integrand of $G$, it has to be U$(N)$ $\times$
-U$(N)$ invariant, and we can therefore decompose any $G$ into its invariant
-combinations. Examples of the two lowest orders give
+Due to the properties of the integrand of $G$, it has to be U($N$) $\times$
+U($N$) invariant, and we can therefore decompose any $G$ into its invariant
+combinations. For instance, the two lowest orders yield
 %
 \begin{align}
   G_1(A_1) &= \int \mathrm{d} U \> \chi_f(A_1 U) \, \chi_f(A_1^{\dagger} U^{\dagger})
@@ -332,8 +330,8 @@ the equations and systematically determine the unknown parameters $C_i$.
 
 \section{\texorpdfstring{$g^n (g^{-1})^m$}{Un Udm} integrals} \label{sec:sun_integrals}
 
-In this section we will present a method of computing integrals over
-matrix representations of the SU$(N)$ members. Namely integrals of the form
+In this section we present a method of computing integrals over
+matrix representations of the SU($N$) members, namely integrals of the form
 \meqref{eq:group-integrals-representation}
 %
 \begin{equation}
@@ -342,8 +340,8 @@ matrix representations of the SU$(N)$ members. Namely integrals of the form
 \end{equation}
 %
 Although there are multiple ways to approach this, we will closely follow the
-paper of \citeauthor{Creutz:1977yy} [\citeyear{Creutz:1977yy,Creutz:1978ub}]. First we introduce the generating
-functional
+paper of \citeauthor{Creutz:1977yy} [\citeyear{Creutz:1977yy,Creutz:1978ub}].
+First we introduce the generating functional
 %
 \begin{equation}
   \mathcal{W}(J,K) = \int \mathrm{d} U \, \exp \Big( \tr \big(J U + K U^{\dagger}\big) \Big)
@@ -368,7 +366,7 @@ $K$
 \end{align}
 %
 where we have introduced the completely anti-symmetric tensors $\epsilon$.
-With this we can factor out the dependence of $K$ on the generating function
+We factor out the dependence on $K$ of the generating functional
 %
 \begin{equation}
   \mathcal{W}(J,K) = \exp\bigg( \tr \Big( K \cof \frac{\delta}{\delta J} \Big) \bigg)
@@ -383,7 +381,6 @@ With this we can factor out the dependence of $K$ on the generating function
         mirror,
         amplitude=5pt
       },
-      %transform canvas={yshift=-.2cm},
     ]
       ([yshift=-.2cm]trace.south west) -- ([yshift=-.2cm]trace.south east)
       node[midway,below=5pt] {$\mathcal{W}(J)$};
@@ -399,7 +396,7 @@ $\mathcal{W}(VUW) = \mathcal{W}(U)$ for arbitrary matrices $W, V \in
     (i+N-1)!} \big(\det J\big)^i.
 \end{equation}
 %
-Although this expression is a little unwieldy, we can see an immediate selection
+Although this expression is a little unwieldy, we immediately see a selection
 rule for the integrals. Using the fact that the determinant of an $N \times N$ matrix is a
 polynomial of $N$'th power of its elements
 %
@@ -408,7 +405,7 @@ polynomial of $N$'th power of its elements
   M_{i_1j_1} \cdots M_{i_Nj_N},
 \end{equation}
 %
-we see that only factors of $N$'th power derivatives of $\mathcal{W}$ will
+only factors of $N$'th power derivatives of $\mathcal{W}$ will
 survive when we set $J=0$. Since the cofactor is a $N-1$'th power polynomial we
 get the selection rule
 %
@@ -416,7 +413,7 @@ get the selection rule
   \int \mathrm{d} U \, U^n U^{\dagger m} \neq 0  \hskip1em\iff\hskip1em n + (N-1)m = 0 \pmod N.
 \end{equation}
 %
-Finally we will compute the most commonly used integral in this thesis
+Finally, we compute the most used integral of this thesis
 %
 \begin{align}
   I_{ij}^{kl} &= \int \mathrm{d} U \, U_{ij} U^{\dagger}_{kl} \nonumber\\
@@ -435,7 +432,7 @@ Finally we will compute the most commonly used integral in this thesis
 
 \section{Static determinant} \label{sec:evaluating-fermion-determinants}
 
-With the measure and various link integrals at hand it is time we approach the
+With the measure and various link integrals at hand, it is time we approach the
 two fundamental fermionic quantities of the effective theory, namely the static
 determinant and one-site interactive loop terms. The latter we will cover in the
 next section, and we will focus on the static determinant here, namely
@@ -447,7 +444,7 @@ next section, and we will focus on the static determinant here, namely
 %
 Since these factors are all independent quantities, we can focus on determining
 a single determinant $\det(1 + h_1 W)$, restricting ourselves to $W \in
-\text{SU}(N)$ for the current study. The determinant can be rewritten using the
+\text{SU($N$)}$ for the current study. The determinant can be rewritten using the
 trace log identity together with the Mercator series, giving
 %
 \begin{equation}
@@ -455,21 +452,22 @@ trace log identity together with the Mercator series, giving
   \frac{(-1)^{(l+1)k_l}}{l^{k_l} k_l!} h_1^{l k_l} \tr (W^l)^{k_l},
 \end{equation}
 %
-with the indices $\{k_i\}_n$ summed over a range bounded by the equations
+with indices $\{k_i\}_n$ summed over a range bounded by the equations
 %
 \begin{equation} \textstyle
   \sum_{i=1}^{N} k_i = n, \hskip1em\text{and}\hskip1em
   \sum_{i=1}^N i k_i \leq N .
 \end{equation}
 %
-Due to the fact that the last power is independent, we can use the
-Cayley-Hamilton equation \eqref{eq:caylay-hamilton} to reduce it out. The first five
-groups are listed in \tabref{tab:static-determinant}.
+The highest power term of the Mercator series is fixed by the fact that $\det W
+= 1$, and we can thus reduce it out of the problem using the Cayley-Hamilton
+equation \eqref{eq:caylay-hamilton}. The static determinants of groups SU($1 \to
+5$) are listed in \tabref{tab:static-determinant}.
 
 \begin{table}
   \begin{center}
     \begin{tabular}{cl} \toprule
-      SU$(N)$ & $\det(1 + h_1 W)$ \\ \midrule
+      SU($N$) & $\det(1 + h_1 W)$ \\ \midrule
       $1$ & $1 + h_1$ \\
       $2$ & $1 + h_1^2 + h_1 \chi_1$ \\
       $3$ & $1 + h_1^3 + h_1\chi_1 + \frac{1}{2} h_1^2 (\chi_1^2 - \chi_2)$ \\
@@ -481,7 +479,7 @@ groups are listed in \tabref{tab:static-determinant}.
       8\chi_1 \chi_3 - 6\chi_4 )$ \\ \bottomrule
     \end{tabular}
   \end{center}
-  \caption{Static determinants calculated in various groups SU$(N)$ with the
+  \caption{Static determinants calculated in various groups SU($N$) with the
     independent characters $\chi_i = \tr(U^i)$.}
   \label{tab:static-determinant}
 \end{table}
@@ -489,7 +487,7 @@ groups are listed in \tabref{tab:static-determinant}.
 \section{\texorpdfstring{$W_{nm}$}{Wnm} terms}
 \label{sec:evaluating-polyakov-coupling-terms}
 
-The last group dependent quantity of interest are the effective theory nodes
+The last group dependent quantity of interest is the effective theory nodes,
 which have the form
 %
 \begin{equation}
@@ -504,7 +502,7 @@ their series expansion
   W_{nm} = \tr \Big( (h_1 W)^m \sum_{k=0}^{\infty} \binom{k + n - 1}{k} (-h_1 W)^k \Big)
 \end{equation}
 %
-which is useful for some particular identites. Alternately one can rewrite it in
+which is useful for some particular identities. Alternately one can rewrite it in
 terms of its independent factors
 %
 \begin{equation}
@@ -521,7 +519,7 @@ determinant
   G(\alpha,\beta) = \log \det ( \alpha + \beta h_1 W ),
 \end{equation}
 %
-where we can write
+from which
 %
 \begin{equation}
   W_{nm} = \frac{(-1)^{n-1}}{(n-1)!} \frac{\partial^{(n-m)}}{\partial \alpha^{(n-m)}}
@@ -529,5 +527,5 @@ where we can write
     \bigg|_{\alpha=\beta=1}.
 \end{equation}
 %
-The static determinant can of course be calculated with the methods outlined in
-the previous section.
+The generating functional can in turn be calculated with the methods outlined in
+the previous sections.

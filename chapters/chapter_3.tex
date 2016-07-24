@@ -1,6 +1,6 @@
 \chapter{Statistical Mechanics and Phase Transitions} \label{chap3}
 
-This chapter will give a short overview of some aspects of statistical mechanics
+This chapter give a short overview of some aspects of statistical mechanics
 that are important in the present work. This is done in \secref{sec:stat-mech}.
 Then the field theoretical equivalent is given in
 \secref{sec:thermal-field-theory}, before we once more study the discretised
@@ -9,7 +9,7 @@ in \secrefs{sec:finite-density-lattice,sec:sign-problem} with a
 thorough discussion of simulations of finite density systems, and the hurdles
 that need to be overcome.
 
-Several volumes of the standard literature have consulted with respect to
+Several volumes of the standard literature have been consulted with respect to
 the contents of this chapter. These include, but are not limited to,
 \cite{landau2013statistical,pathria2011statistical} for introductions to
 statistical mechanics, \cite{kapusta2006finite} with an introduction to Thermal
@@ -44,7 +44,7 @@ functions, and the two are related through
   \mathcal{Z}_{\text{GC}}(z, V, T) = \sum_{N=0}^{\infty} z^N \mathcal{Z}_{\text{C}}(N, V, T),
 \end{equation}
 %
-where $z = e^{\beta \mu}$ is the fugacity and $\mu$the chemical
+where $z = e^{\beta \mu}$ is the fugacity and $\mu$ the chemical
 potential. The partition function can in turn be used to calculate a multitude
 of thermodynamic quantities
 %
@@ -157,7 +157,7 @@ Noether charges, such as the one from \meqref{eq:noether-charge}. For every
 distinct conserved charge one wishes to study the dynamics of, there should be a
 separate chemical potential. Two common systems of interest are those of quark-
 and isospin chemical potential. Quark chemical potential is connected to the
-global U$(1)$ symmetry of the fermion fields. The associated Noether charge is
+global U($1$) symmetry of the fermion fields. The associated Noether charge is
 that of total fermion number
 %
 \begin{equation} \label{eq:quark-number-density-op}
@@ -165,7 +165,7 @@ that of total fermion number
 \end{equation}
 %
 with either separate or degenerate $\mu_f$ for each of the fermion species. The
-isospin charge is related to the Cartan generator of the flavour mixing SU$(2)$
+isospin charge is related to the Cartan generator of the flavour mixing SU($2$)
 symmetry of a two flavour system (the third Pauli matrix)
 %
 \begin{equation}
@@ -299,7 +299,7 @@ of it, a lattice cannot accommodate more than $2 N_f N_c N_t N_s^3$ fermions.
   \label{fig:saturation_sketch}
 \end{figure}
 
-This limitation is sketched in \figref{fig:saturation_sketch} where a typical
+This limitation is sketched in \figref{fig:saturation_sketch} where a stereotypical
 lattice curve has been plotted. At small and intermediate values of the chemical
 potential, we see the \emph{Silver Blaze} property. Coined by
 \cite{Cohen:2003kd}, is the phenomenon that at any chemical potentials smaller
@@ -320,8 +320,8 @@ populated by $2 N_f N_c$ fermions.
 \section{The sign problem} \label{sec:sign-problem}
 
 An issue arises when trying to numerically evaluate the partition function
-integrals through Monte Carlo methods. We saw that we can use the probability
-density
+integrals of finite chemical potential systems through Monte Carlo methods. We
+saw that we can use the probability density
 %
 \begin{equation}
   P\big([U_{\mu}]\big) \propto \det Q [U_{\mu}] \, e^{-\mathcal{S}_g[U_{\mu}]}
@@ -338,8 +338,8 @@ The partition function has to be a real positive quantity, and so we know that
 if we carry out the integral properly, all the imaginary contributions have to
 cancel out in the end. It is getting these exact cancellations out of inexact
 numerical methods that is the underlying complication. This is what is referred
-to as the \emph{sign problem}, and the problem is not exclusive to lattice
-studies of finite density fermions. Being categorised as an NP-hard problem
+to as the \emph{sign problem}, and the issue is not exclusive to lattice studies
+of fermionic systems at finite density. Being categorised as an NP-hard problem
 \citep{Troyer:2004ge}, it is unlikely that we will ever find a generic solution
 to it, and it needs to be tackled through deep understanding of the source of
 the issue itself.
@@ -368,12 +368,12 @@ size, making continuum studies impossible.
 
 There are multiple workarounds devised to allow for evaluating finite density
 systems using Monte Carlo methods. Such methods include reweighting, Taylor
-expansions, analytic continuation from imaginary chemical potential, and  the
-method of stochastic quantisation. Although none of these methods actually
-tackles the essence of the sign problem, with sufficiently powerful computers 
-results with reasonable accuracy can be obtained. However, one should take great
-care to sample correctly if one wants sensible results, as was demonstrated in
-\citep{Osborn:2008eg}.
+expansions, and analytic continuation from imaginary chemical potential; there
+is also stochastic quantisation, which is not a Monte Carlo method.  Although
+none of these procedures actually tackle the essence of the sign problem, with
+sufficiently powerful computers results with reasonable accuracy can be
+obtained. However, one should take great care to sample correctly if one wants
+sensible results, as was demonstrated in \citep{Osborn:2008eg}.
 
 The remainder of this chapter is dedicated to covering the basic ideas of these
 methods, and refer to \citep{deForcrand:2010ys} for a more thorough review.
@@ -439,7 +439,7 @@ sampled configurations will be discarded, often referred to as the \emph{overlap
 
 \subsection{Imaginary chemical potentials}
 
-Another method that has been given attention recently is simulating at purely
+Another method that has been given much attention recently is simulating at purely
 imaginary chemical potentials, and then using analytic continuation from the
 negative $\mu^2$ parameter region to the positive. At purely imaginary $\mu$ the
 measure becomes a real, positive quantity, which can be seen from
@@ -449,8 +449,8 @@ measure becomes a real, positive quantity, which can be seen from
 \end{equation}
 %
 This has been used to study the critical surfaces of the Columbia plot
-(\figref{fig:phase_diags} right), where one sees a trend as upon crossing
-into the region of real chemical potential
+(\figref{fig:phase_diags}, right), where one can compute the curvature of this
+surface upon crossing into the region of real chemical potential
 \citep{deForcrand:2002hgr,D'Elia:2002gd}.
 
 In addition to being a useful method of extrapolating to real chemical
@@ -524,17 +524,18 @@ limit for physical observables. This is not always the case, as the complex
 Langevin sometimes diverges towards unphysical solutions \citep{Ambjorn:1985iw},
 the reason for which is still an open question.
 
-The sign problem manifests itself in the complex flow of the fields. For
-large values of the chemical potential, the field configurations will spend a
+The sign problem manifests itself in the complex flow of the fields. For large
+values of the chemical potential, the field configurations will spend a
 considerable amount of time in the complex phase, resulting in the need for
 longer flow times before the imaginary contributions average out. This can to
 some extent be remedied by the introduction of gauge cooling
-\citep{Seiler:2012wz}, which are invariant transformations on the variables that
-push them closer to the real field values. For QCD it has been shown that this
-places a restriction on the coupling strengths for which the method is
-applicable.  A recent comparison made between the reach of reweighting to that
-of stochastic quantisation shows that they are comparable \citep{Fodor:2015doa}.
-The newest developments can be found in \citep{Aarts:2016qrv}.
+\citep{Seiler:2012wz}, which is the application of invariant transformations on
+the variables that push them closer to non-complex field values. For QCD it
+has been shown that this places a restriction on the coupling strengths for
+which the method is applicable. A recent comparison made between the reach of
+reweighting to that of stochastic quantisation shows that they are comparable
+\citep{Fodor:2015doa}.  The newest developments can be found in
+\citep{Aarts:2016qrv}.
 
 \begin{figure}
   \begin{center}
@@ -551,7 +552,7 @@ The newest developments can be found in \citep{Aarts:2016qrv}.
 \end{figure}
 
 To demonstrate a case in which we can clearly see the Langevin flow converging
-to the wrong theory, we can study a \emph{Random Matrix Theory} (RMT), which is
+to the wrong theory, we study a \emph{Random Matrix Theory} (RMT), which is
 a simple model also suffering from a strong sign problem.  One such RMT is the
 Stephanov model \citep{Stephanov:1996ki}, whose partition function is
 %
