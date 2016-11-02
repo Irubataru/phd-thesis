@@ -5,6 +5,8 @@ This is my Ph.D. thesis, completed at the Goethe University, Frankfurt in July 2
 Title:
 "Heavy Quark QCD at Finite Temperature and Density Using an Effective Theory"
 
+A pdf of the printed thesis can be found [here](https://github.com/Irubataru/phd-thesis/releases/download/printed/thesis_glesaaen_2016.pdf).
+
 ## Resources
 
 Inspiration for theme and layout was taken from the following sources
