@@ -1,11 +1,15 @@
-# PhD Thesis
+# Table of Contents
+
+- [Table of Contents](#table-of-contents)
+    - [Resources](#resources)
+    - [TODO](#todo)
 
 This is my Ph.D. thesis, completed at the Goethe University, Frankfurt in July 2016, added to github for safe-keeping.
 
 Title:
 "Heavy Quark QCD at Finite Temperature and Density Using an Effective Theory"
 
-A pdf of the printed thesis can be found [here](https://github.com/Irubataru/phd-thesis/releases/download/printed/thesis_glesaaen_2016.pdf).
+A pdf of the thesis can be found [on the release page](https://github.com/Irubataru/phd-thesis/releases/latest).
 
 ## Resources
 
