@@ -1,5 +1,5 @@
-LATEXMK  := latexmk
-LATEX    := xelatex
+LATEXMK  := latexmk -lualatex
+LATEX    := lualatex
 
 MAINTEX  := thesis.tex
 MAINPDF  := $(MAINTEX:.tex=.pdf)
