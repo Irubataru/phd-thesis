@@ -1,8 +1,4 @@
-# Table of Contents
-
-- [Table of Contents](#table-of-contents)
-    - [Resources](#resources)
-    - [TODO](#todo)
+# PhD Thesis
 
 This is my Ph.D. thesis, completed at the Goethe University, Frankfurt in July 2016, added to github for safe-keeping.
 
